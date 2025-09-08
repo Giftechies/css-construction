@@ -3,6 +3,7 @@
 import { cn } from "@/utils/cn";
 import {
   IconArrowUpRight,
+  IconBrandTelegram,
   IconChevronDown,
   IconLock,
 } from "@tabler/icons-react";
@@ -11,18 +12,19 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 // import { navbarData } from "../../../public/data/navbarData";
 import { navbar } from "../../../public/data/navbar";
+import { PhoneCallIcon } from "lucide-react";
 
 const DeskTopNavbarTwo = ({className}:{className?:string}) => {
   const pathName = usePathname();
 
   return (
     <div
-      className={cn(" w-full theme-transition-3 leading-[19.2px]   font-[700] ",className
+      className={cn(" w-full theme-transition-3 leading-[19.2px]    ",className
       )}
     >
       <div
         className="transition-primary py-4 theme-transition-3 mx-auto hidden
-      w-full items-center justify-between max-4xl:container xl:flex 4xl:max-w-[1674px] min-[1920px]:max-w-[1774px]"
+      w-full items-center justify-between max-4xl:container xl:flex 4xl:max-w-[1674px] min-[1920px]:max-w-[1774px]  "
       >
         <div>
           <Link href={`/`}>
@@ -30,7 +32,7 @@ const DeskTopNavbarTwo = ({className}:{className?:string}) => {
           </Link>
         </div>
 
-        <ul className="flex items-center justify-between gap-10  font-[700] ">
+        <ul className="flex items-center justify-between gap-10  ">
           {navbar.map(({ id, menuTitle, path, menuItems }) => {
             let isActive = menuItems?.some(
               (path) => pathName == path.menuItemPath,
@@ -40,12 +42,12 @@ const DeskTopNavbarTwo = ({className}:{className?:string}) => {
                 <Link
                 href={`${path}`}
                   className={cn(
-                    " l-text theme-transition-3 relative z-10 flex cursor-pointer items-center justify-between gap-1 before:theme-transition-3 before:absolute before:bottom-0  before:block before:h-px before:w-0 before:bg-primary hover:text-primary hover:before:w-full",
+                    " theme-transition-3 relative z-10 flex cursor-pointer items-center justify-between gap-1 before:theme-transition-3 before:absolute before:bottom-0  before:block before:h-px before:w-0 before:bg-primary hover:text-primary hover:before:w-full",
                     isActive && "text-primary before:w-full before:bg-primary",
                   )}
                 >
                   {" "}
-                  <span className="l-text">{menuTitle}</span>
+                  <span className="">{menuTitle}</span>
                   <IconChevronDown stroke="2" />
                 </Link>
 
@@ -57,7 +59,7 @@ const DeskTopNavbarTwo = ({className}:{className?:string}) => {
                     <li key={id}>
                       <Link
                         href={`${menuItemPath}`}
-                        className={`l-text font-extralight  theme-transition-3 relative block w-full border-b border-accent-3/20 bg-black-4 px-6 py-1  before:theme-transition-3 hover:before:theme-transition-3 before:left-2  before:top-1/2 before:size-2 before:-translate-y-1/2 before:rounded-full hover:tracking-wide  hover:text-accent-3 hover:before:absolute hover:before:bg-accent-3 ${
+                        className={`   theme-transition-3 relative block w-full border-b border-accent-3/20 bg-black-4 px-6 py-1  before:theme-transition-3 hover:before:theme-transition-3 before:left-2  before:top-1/2 before:size-2 before:-translate-y-1/2 before:rounded-full hover:tracking-wide  hover:text-accent-3 hover:before:absolute hover:before:bg-accent-3 ${
                           pathName === menuItemPath &&
                           "tracking-wide text-accent-3 before:absolute before:bg-accent-3"
                         }`}
@@ -73,7 +75,7 @@ const DeskTopNavbarTwo = ({className}:{className?:string}) => {
                 <Link
                   href={`${path}`}
                   className={cn(
-                    "l-text navbar-hover-text font-l-text theme-transition-3 relative z-10 flex cursor-pointer items-center justify-between gap-1 before:theme-transition-3 before:absolute before:bottom-0  before:block before:h-px before:w-0 before:bg-primary hover:text-primary hover:before:w-full",
+                    " navbar-hover-text  theme-transition-3 relative z-10 flex cursor-pointer items-center justify-between gap-1 before:theme-transition-3 before:absolute before:bottom-0  before:block before:h-px before:w-0 before:bg-primary hover:text-primary hover:before:w-full",
                     { "text-primary before:w-full": pathName === path },
                   )}
                 >
@@ -87,23 +89,23 @@ const DeskTopNavbarTwo = ({className}:{className?:string}) => {
 
         <div className="flex gap-8">
           {/* <Link
-            href={`/login`}
+            href={`tel:123456789`}
             className={cn(
-              "l-text theme-transition-3 flex items-center gap-1  hover:text-accent-3  text-black-4"
+              "l-text theme-transition-3 flex items-center gap-1  hover:text-primary  text-white-1"
             
             )}
           >
-            <IconLock />
-            <span>Login</span>
+            <PhoneCallIcon className=" text-primary mr-2 " />
+            <span>123456789</span>
           </Link> */}
           <Link
             href={`/pick-details`}
             className={cn(
-              "l-text spx24px group theme-transition-3 rounded-full flex gap-3  text-white-1 bg-prim py-3",
+              " spx24px group theme-transition-3 rounded-full flex gap-3  p-2 text-white-1 bg-primary ",
             )}
           >
-            <span className=" uppercase" >Enquire Now</span>
-            <IconArrowUpRight className="theme-transition-3 group-hover:rotate-45" />{" "}
+            {/* <IconBrandTelegram className=" size-5 theme-transition-3  fill-white-1 group-hover:rotate-45" />{" "} */}
+            <span className=" capitalize " >Book appointment</span>
           </Link>
         </div>
       </div>

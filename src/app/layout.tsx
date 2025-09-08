@@ -13,7 +13,7 @@ import "swiper/css/pagination";
 
 import Footer from "@/components/footer/Footer";
 import { ReactLenis } from "@studio-freight/react-lenis";
-import { roboto, sairaCondensed } from "@/utils/fonts";
+import { oswald,manrope } from "@/utils/fonts";
 
 export default function RootLayout({
   children,
@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${roboto.className} ${sairaCondensed.variable}`}> {/* ✅ Global Roboto */}
+    <html lang="en" className={`  ${oswald.variable} ${manrope.variable} ${manrope.className}    `}> 
       <link
         href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
         rel="stylesheet"

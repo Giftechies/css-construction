@@ -11,6 +11,7 @@
   --primary-light:#f9d0aa;
   --blue:rgba(4, 32, 68, 0.71)
 }
+ 
 
 .work{
   position: relative;
@@ -39,7 +40,7 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-attachment: fixed; /* This is the key property for the steady effect */
+      background-attachment: fixed;
       height: 70vh;
       width: 100%;
       position: relative;
@@ -73,6 +74,7 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 
 
 
@@ -125,22 +127,22 @@ p{
     @apply text-[24px] leading-[120%]  sm:text-[32px] md:text-[40px] lg:text-[44px] xl:text-[50px] xxl:text-[56px];
   }
   .h1 {
-    @apply text-[24px] leading-[120%] sm:text-[32px] md:text-[36px] lg:text-[40px] xxl:text-[48px];
+    @apply !font-oswald text-[24px] leading-[120%] sm:text-[32px] md:text-[36px] lg:text-[40px] xxl:text-[48px];
   }
   .h2 {
-    @apply text-[20px] leading-[120%]  sm:text-[24px] md:text-[28px] lg:text-[32px] xl:text-[36px] xxl:text-[40px];
+    @apply  font-oswald  text-[20px] leading-[120%]  sm:text-[24px] md:text-[28px] lg:text-[32px] xl:text-[36px] xxl:text-[40px];
   }
   .h3 {
-    @apply text-[16px] leading-[120%] xs:text-[18px] sm:text-[20px] md:text-[20px] lg:text-[24px] xl:text-[28px] xxl:text-[32px];
+    @apply   font-oswald  text-[16px] leading-[120%] xs:text-[18px] sm:text-[20px] md:text-[20px] lg:text-[24px] xl:text-[28px] xxl:text-[32px];
   }
   .h4 {
-    @apply text-[16px] leading-[130%] lg:text-[18px] xl:text-[20px] xxl:text-[24px];
+    @apply   font-oswald  text-[16px] leading-[130%] lg:text-[18px] xl:text-[20px] xxl:text-[24px];
   }
   .h5 {
-    @apply text-[16px] leading-[130%] xl:text-[18px] xxl:text-[20px];
+    @apply  font-oswald   text-[16px] leading-[130%] xl:text-[18px] xxl:text-[20px];
   }
   .h6 {
-    @apply text-[14px] leading-[130%] tracking-wider xxl:text-[16px];
+    @apply  font-oswald   text-[14px] leading-[130%] tracking-wider xxl:text-[16px];
   }
   .lead-text {
     @apply text-[16px] leading-[150%] lg:text-[18px] xl:text-[20px] xxl:text-[24px];

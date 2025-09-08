@@ -9,6 +9,10 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+       fontFamily: {
+      oswald: "var(--font-oswald)",
+      manrope: "var(--font-manrope)",
+    },
     extend: {
     
       container: {
