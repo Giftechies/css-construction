@@ -1,33 +1,25 @@
+
 import Animations from "@/components/animations/Animations";
-import Footer from "@/components/footer/Footer";
-import NavbarContainer from "@/components/navbar/NavbarContainer";
-import BannerOne from "@/pages/home-one/BannerOne";
-// import HomeThreeBanner from "@/pages/home-three/HomeThreeBanner";
-import HomeOneFaq from "@/pages/home-one/HomeOneFaq";
 import HomeOneFinancialPlanning from "@/pages/home-one/HomeOneFinancialPlanning";
 import HomeOneInfo from "@/pages/home-one/HomeOneInfo";
-import HomeOneMission from "@/pages/home-one/HomeOneMission";
-import HomeOneOurTeam from "@/pages/home-one/HomeOneOurTeam";
-import HomeOnePricingPlan from "@/pages/home-one/HomeOnePricingPlan";
-import HomeOneRecentBlog from "@/pages/home-one/HomeOneRecentBlog";
-import HomeOneService from "@/pages/home-one/HomeOneService";
+
 import HomeOneTestimonials from "@/pages/home-one/HomeOneTestimonials";
 import HomeThreeBanner from "@/pages/home-three/HomeThreeBanner";
-import NavbarContainerTwo from "@/components/navbar/NavbarContainerTwo";
 import { Metadata } from "next";
-import HomeThreeService from "@/pages/home-three/HomeThreeService";
-import HomeThreeAbout from "@/pages/home-three/HomeThreeAbout";
-import OurWorks from "@/pages/home-three/OurWorks";
-import HomeService from "@/pages/home-three/HomeService";
-import HomeTwoServices from "@/pages/landing-two/HomeTwoServices";
+
 import HomeTwoFaq from "@/pages/local/HomeTwoFaq";
 import HowItrWorksContent from "@/pages/how-it-works/HowItrWorksContent";
 import AboutLocal from "@/pages/local/AboutPage";
+import ServicePage from "@/pages/services/Servicespage";
+import Projects from "@/pages/projects/Projects";
+import HomeTwoServices from "@/pages/landing-two/HomeTwoServices";
+import Vision from "@/pages/home/Vision"
+import Logocontainer from "@/pages/home/Logocontainer"
 
-export const metadata: Metadata = {
-  title: "Interstate removalists",
-  description: "Providing the solution for relocations.",
-};
+// export const metadata: Metadata = {
+//   title: "Interstate removalists",
+//   description: "Providing the solution for relocations.",
+// };
 
 export default function Home() {
   return (
@@ -52,22 +44,21 @@ export default function Home() {
         stepText1={"Designing every move with precision and perfection."}
         stepText2={"Structured planning ensures smooth and reliable relocation."}
         stepText3={"Strong foundations make your moving journey stress-free."}
-        />
-      <HomeTwoServices />
-      <HowItrWorksContent />
-      <HomeOneFinancialPlanning />
-      <HomeOneTestimonials  />
+      />
+
+      <ServicePage />
+      <Projects/>
+      <HomeTwoServices/>
+    
+
+      {/* <HowItrWorksContent /> */}
+      {/* <HomeOneFinancialPlanning />
       <HomeTwoFaq />
-      <HomeOneInfo />
+      <HomeOneInfo /> */}
+      <HomeOneTestimonials />
+      <Vision/>
       <Animations />
-        {/* <BannerOne /> */}
-        {/* <HomeThreeAbout/> */}
-      {/* <HomeThreeService/> */}
-      {/* <HomeOneService /> */}
-      {/* <OurWorks/> */}
-      {/* <HomeOnePricingPlan /> */}
-      {/* <HomeOneOurTeam /> */}
-      {/* <HomeOneRecentBlog /> */}
+
     </div>
   );
 }

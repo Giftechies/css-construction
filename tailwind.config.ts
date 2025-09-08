@@ -1,3 +1,4 @@
+
 const plugin = require("tailwindcss/plugin");
 import type { Config } from "tailwindcss";
 
@@ -9,6 +10,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
+    
       container: {
         center: true,
         screens: {
@@ -35,7 +37,8 @@ const config: Config = {
       },
 
       colors: {
-        primary: "#F39740",
+        primary: "#ED7527",
+        skinColor:"#FBF3EA",
         secondary: "#09307B",
         secondaryLight: "#8eafed",
         accent: {
@@ -62,10 +65,6 @@ const config: Config = {
       backgroundImage: {
         "hero-pattern":
           "linear-gradient(256deg, #CBF1D3 2.16%, #FFEFD7 109.64%)",
-      },
-
-      fontFamily: {
-        kanit: ["var(--body-font)"],
       },
       boxShadow: {
         custom1: "0px 6px 30px 0px rgba(0, 0, 0, 0.04)",

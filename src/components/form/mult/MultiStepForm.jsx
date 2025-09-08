@@ -238,7 +238,7 @@ export default function MultiStepForm() {
 
                 {formData?.calendar?.dates && (
                   <div className="date">
-                    {formData?.calendar?.dates && (
+                    {formData?.calendar?.dates.length >0 && (
                       <div className="flex justify-between">
                         <span className="">Pickup date</span>
                         <span>{formData?.calendar?.dates}</span>

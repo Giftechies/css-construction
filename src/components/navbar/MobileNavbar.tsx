@@ -1,6 +1,5 @@
 "use client";
 import logo from "@/../public/img/logo/interstate logo v4-01.png";
-import logoOne from "@/../public/images/home-one/logo.png";
 import { cn } from "@/utils/cn";
 import { IconChevronDown } from "@tabler/icons-react";
 import Image from "next/image";
@@ -9,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import AnimateHeight from "react-animate-height";
 import { navbarData } from "../../../public/data/navbarData";
+import { navbar } from "../../../public/data/navbar";
 
 type Props = {
   scrollHight: number;
@@ -16,7 +16,7 @@ type Props = {
 
 const MobileNavbar = ({ scrollHight }: Props) => {
   const [dropDown, setDropDown] = useState("");
-  const [sidebarToggle, setSidebarToggle] = useState(false);
+  const [sidebarToggle, setSidebarToggle] = useState(true);
   const handleDropDown = (id: string) => {
     if (dropDown === id) {
       setDropDown("");
@@ -46,8 +46,8 @@ const MobileNavbar = ({ scrollHight }: Props) => {
         "border-b border-white-3/30 bg-white-1 shadow-sm backdrop-blur-2xl backdrop-brightness-100 backdrop-contrast-100"
       )}
     >
-      <div className="container left-0 top-0 flex w-full items-center justify-between py-4 xl:hidden xl:py-5">
-        <div className="">
+      <div className="container left-0 top-0  flex w-full items-center justify-between py-4 xl:hidden xl:py-5">
+        <div className=" ">
           <Link href={`/`}>
             <Image
               src={logo}
@@ -81,18 +81,18 @@ const MobileNavbar = ({ scrollHight }: Props) => {
       <div className="theme-transition-3 block xl:hidden">
         <div
           className={cn(
-            "fixed left-0 top-0 z-20 h-[100vh] w-[100vw] bg-primary/20 transition-all duration-500",
+            "fixed left-0 top-0 z-20 h-[100vh] w-[100vw] bg-secondary/40  transition-all duration-500",
 
-            { "translate-y-0": sidebarToggle },
-            { "-translate-y-full": !sidebarToggle },
+            { "translate-x-0": sidebarToggle },
+            { "-translate-x-full": !sidebarToggle },
           )}
           onClick={handleToggle}
         ></div>
         <div
           className={cn(
-            `mobile-menu-scrollbar fixed left-0 top-0 z-40 m-3  h-[96vh] w-[250px] overflow-y-auto rounded-2xl bg-black-4 pt-5 text-black-4 transition-all duration-700`,
-            { "translate-y-0 opacity-100": sidebarToggle },
-            { "translate-y-full opacity-0": !sidebarToggle },
+            `mobile-menu-scrollbar fixed left-0 top-0 z-40  h-screen w-[60%]  lg:px-10  overflow-y-auto rounded-r-2xl bg-white-1 pt-8 text-black-4 transition-all duration-700`,
+            { "translate-x-0 opacity-100": sidebarToggle },
+            { "-translate-x-full opacity-0": !sidebarToggle },
           )}
         >
           <div className="px-5 pb-4">
@@ -102,13 +102,13 @@ const MobileNavbar = ({ scrollHight }: Props) => {
                 width={167}
                 height={60}
                 alt="Desktop Logo"
-                className="mx-auto block w-[130px]"
+                className="mx-auto block w-[200px]"
               />
             </Link>
           </div>
-          <div className="min-h-screen rounded-xl bg-white-1 p-2 pt-10">
+          <div className="min-h-screen rounded-xl bg-white-1 p-2 ">
             <ul data-lenis-prevent className="flex flex-col">
-              {navbarData.map(({ id, menuTitle, path, menuItems }) => {
+              {navbar.map(({ id, menuTitle, path, menuItems }) => {
                 let isActive = menuItems?.some(
                   (path) => pathName == path.menuItemPath,
                 );

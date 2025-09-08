@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 * {
   -webkit-tap-highlight-color: transparent;
 }
@@ -33,7 +32,24 @@
   left: -15px;
   box-sizing: border-box;
   border-radius: 50%;
+}
 
+  .parallax-bg {
+      background-image: url('https://media.istockphoto.com/id/615926270/photo/night-in-warsaw.webp?a=1&b=1&s=612x612&w=0&k=20&c=j-zWimePBOwt-oqaFlaVJzECEW4zc9nyOExxPZuJ5l4=');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed; /* This is the key property for the steady effect */
+      height: 70vh;
+      width: 100%;
+      position: relative;
+    }
+
+text-s{
+font-size: 17px;
+font-weight: 700;
+line-height: 20.4px;
+color: rgb(236, 116, 39);
 }
  
 /* odomeeter reset */
@@ -58,8 +74,11 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-body {
-  font-family: var(--body-font);
+
+
+
+p{
+  letter-spacing: 1px;
 }
 
 .innershadow{

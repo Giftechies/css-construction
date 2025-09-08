@@ -47,13 +47,18 @@ export const sliderData = [
 
 const HomeOneTestimonials = () => {
   return (
-    <section className=" spy80px relative overflow-hidden bg-zinc-100  ">
-      <div className="container relative ">
-      <div className="flex flex-col items-center" >
-          <SectionSubTitle text="Testimonial " className=" mx-auto " />
-        <SectionTitle text="What people say" className="mt-3" />
+    <section className=" spy80px relative overflow-hidden  ">
+      <div className="  absolute inset-0 -z-10  before:bg-skinColor/10 before:absolute before:inset-0 " >
+        <img src="\img\innerimg\Pattern-1.jpg" className=" w-full h-full object-cover object-center " alt="" />
       </div>
-        <div className="spt60px  ">
+      <div className="container relative flex items-center justify-center ">
+      <div className=" space-y-6 w-[60%] spy40px spx40px  flex flex-col items-center justify-center bg-white-1 " >
+        <div className="flex flex-col items-center text-center  gap-2 " >
+          <SectionSubTitle text="Testimonial " className=" " />
+        <SectionTitle text="What Our Clients Say" className=" text-primary " />
+        <p className=" text-black-3 " >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos voluptate animi nostrum fugit accusamus ipsam ea iure vitae, voluptatum ab?</p>
+      </div>
+        <div className="spt60px   w-[80%] flex items-center justify-center  ">
           <Swiper
             // slidesPerView={1}
             spaceBetween={30}
@@ -75,27 +80,28 @@ const HomeOneTestimonials = () => {
                 slidesPerView: 1,
               },
               768: {
-                slidesPerView: 2,
+                slidesPerView: 1,
               },
               992: {
-                slidesPerView: 3,
+                slidesPerView: 1,
               },
               1200: {
-                slidesPerView: 3,
+                slidesPerView: 1,
               },
               1400: {
-                slidesPerView: 3,
+                slidesPerView: 1,
               },
             }}
           >
             {sliderData.map((item, index) => (
-              <SwiperSlide key={`rtrtr${index}`}>
+              <SwiperSlide key={`rtrtr${index}`}  >
                 <HomeOneTestimonialCard {...item} />
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
         <ButtonSlider className="mt-12 mx-auto  flex  justify-center right-0 bottom-0 " />
+      </div>
       </div>
       {/* <Lines /> */}
     </section>

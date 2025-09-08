@@ -1,5 +1,5 @@
 "use client";
-import logo from "@/../public/img/logo/interstate logo v4-01.png";
+// import logo from "../../../public/img/logo/nav-logo.svg";
 import { cn } from "@/utils/cn";
 import {
   IconArrowUpRight,
@@ -12,12 +12,12 @@ import { usePathname } from "next/navigation";
 // import { navbarData } from "../../../public/data/navbarData";
 import { navbar } from "../../../public/data/navbar";
 
-const DeskTopNavbarTwo = () => {
+const DeskTopNavbarTwo = ({className}:{className?:string}) => {
   const pathName = usePathname();
 
   return (
     <div
-      className={cn(" fixed  top-0 z-50 w-full theme-transition- bg-white-1 shadow-sm"
+      className={cn(" w-full theme-transition-3 leading-[19.2px]   font-[700] ",className
       )}
     >
       <div
@@ -26,11 +26,11 @@ const DeskTopNavbarTwo = () => {
       >
         <div>
           <Link href={`/`}>
-            <Image src={logo} width={200} height={60} alt="Desktop Logo" />
+            <Image src={'/img/logo/nav-logo.svg'} width={200} height={60} className=" size-30 " alt="Desktop Logo" />
           </Link>
         </div>
 
-        <ul className="flex items-center justify-between gap-10 ">
+        <ul className="flex items-center justify-between gap-10  font-[700] ">
           {navbar.map(({ id, menuTitle, path, menuItems }) => {
             let isActive = menuItems?.some(
               (path) => pathName == path.menuItemPath,
@@ -40,7 +40,7 @@ const DeskTopNavbarTwo = () => {
                 <Link
                 href={`${path}`}
                   className={cn(
-                    " l-text theme-transition-3 relative z-10 flex cursor-pointer items-center justify-between gap-1 text-black-4 before:theme-transition-3 before:absolute before:bottom-0  before:block before:h-px before:w-0 before:bg-primary hover:text-primary hover:before:w-full",
+                    " l-text theme-transition-3 relative z-10 flex cursor-pointer items-center justify-between gap-1 before:theme-transition-3 before:absolute before:bottom-0  before:block before:h-px before:w-0 before:bg-primary hover:text-primary hover:before:w-full",
                     isActive && "text-primary before:w-full before:bg-primary",
                   )}
                 >
@@ -73,7 +73,7 @@ const DeskTopNavbarTwo = () => {
                 <Link
                   href={`${path}`}
                   className={cn(
-                    "l-text navbar-hover-text font-l-text theme-transition-3 relative z-10 flex cursor-pointer items-center justify-between gap-1 text-black-4 before:theme-transition-3 before:absolute before:bottom-0  before:block before:h-px before:w-0 before:bg-primary hover:text-primary hover:before:w-full",
+                    "l-text navbar-hover-text font-l-text theme-transition-3 relative z-10 flex cursor-pointer items-center justify-between gap-1 before:theme-transition-3 before:absolute before:bottom-0  before:block before:h-px before:w-0 before:bg-primary hover:text-primary hover:before:w-full",
                     { "text-primary before:w-full": pathName === path },
                   )}
                 >
@@ -99,10 +99,10 @@ const DeskTopNavbarTwo = () => {
           <Link
             href={`/pick-details`}
             className={cn(
-              "l-text spx24px group theme-transition-3 rounded-full flex gap-3 text-white-1 bg-prim py-3",
+              "l-text spx24px group theme-transition-3 rounded-full flex gap-3  text-white-1 bg-prim py-3",
             )}
           >
-            <span>Get Price</span>
+            <span className=" uppercase" >Enquire Now</span>
             <IconArrowUpRight className="theme-transition-3 group-hover:rotate-45" />{" "}
           </Link>
         </div>

@@ -16,28 +16,35 @@ const AboutLocal = ({imagepath1,imagepath2,counterNumber,counterText,title,text1
       id="scrollPosition"
     >
       <div className="container  grid grid-cols-12 items-center gap-6">
-        <div className="relative  col-start-1 col-end-13 grid grid-cols-1 items-center gap-6 md:grid-cols-2 xl:col-end-7 xl:grid-cols-6 xl:items-end">
-          <div className=" border xl:col-start-1  xl:col-end-5">
+        <div className="relative h-full   col-start-1 col-end-13 grid grid-cols-1 items-center  md:grid-cols-2 xl:col-end-7 xl:grid-cols-12 xl:items-end gap-5">
+          <div className=" absolute bottom-0 left-0 hover:bottom-2  theme-transition-4 rounded-md overflow-hidden  h-[70%] xl:col-start-1  xl:col-end-5">
             <Image
               src={imagepath1}
               width={416}
               height={444}
               alt="Mission image one"
-              className="appear-down w-full mx-auto"
+              className=" w-full h-full object-cover object-center"
             />
           </div>
-          <div className=" max-sm:w-full xl:col-start-5 xl:col-end-7">
+          <div className=" hover:bottom-2 h-[85%]  xl:col-start-5 xl:col-end-9 rounded-md overflow-hidden">
             <Image
               src={imagepath2}
               width={330}
               height={348}
               alt="Mission image two"
-              className="appear-down xl:-ms-25 max-lg:w-full h-[350px] object-cover xl:max-w-[unset] "
+              className="  h-full object-cover object-center "
             />
-            <div className="d3 max-md:hidden font-semibold text-primary">
-              <Counter value={counterNumber} />+
-            <p className="xl-text text-black-1">{counterText}</p>
-            </div>
+           
+          </div>
+          <div className="  absolute bottom-0 right-0 hover:bottom-2  h-[95%] xl:col-start-9 xl:col-end-13 theme-transition-4 rounded-md overflow-hidden ">
+            <Image
+              src={imagepath2}
+              width={330}
+              height={348}
+              alt="Mission image two"
+              className="   h-full object-cover object-center "
+            />
+           
           </div>
         </div>
         <div className="col-start-1 col-end-13 xl:col-start-8">

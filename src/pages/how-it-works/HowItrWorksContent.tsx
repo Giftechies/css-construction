@@ -52,7 +52,7 @@ const HowItrWorksContent = () => {
   ];
 
   return (
-    <section className="spy120px fade-wrapper" id="scrollPosition">
+    <section className="spy120px bg-zinc-100 fade-wrapper" id="scrollPosition">
       <div className="container">
         <div className="grid grid-cols-12 items-center space-y-4 ">
           <div className="col-start-1 col-end-13 lg:col-end-6 xl:col-end-6 space-y-4 ">
