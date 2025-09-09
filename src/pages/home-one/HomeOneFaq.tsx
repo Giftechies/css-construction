@@ -35,16 +35,7 @@ export const faqData = [
   answer:
     "Yes, if your skip will be located on a public highway or road, a council-issued skip permit is required. We can arrange the permit on your behalf; costs and durations vary depending on borough regulations.",
 },
-{
-  question: "How quickly can you deliver a skip?",
-  answer:
-    "We offer same-day or next-day skip delivery across all London areas, subject to availability. Bookings made early in the day are most likely to be fulfilled promptly.",
-},
-{
-  question: "What are your skip hire prices?",
-  answer:
-    "Prices depend on skip size, hire duration, and delivery postcode. We offer competitive, transparent rates for cheap skip hire across London. Contact us for an instant quote.",
-},
+
 
 ];
 

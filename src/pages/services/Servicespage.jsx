@@ -8,9 +8,9 @@ import { IconArrowForward, IconArrowRight } from "@tabler/icons-react";
 
 const Servicespage = () => {
   const cards = [
-    { title: "Skip Hire", content: "We supply a full range of skip sizes for hire in London, from 4-yard mini skips - ideal for small household clearances, through to 8-yard, 10-yard, 12-yard, and 16-yard skips..", link: "dfs" },
-    { title: "Concrete Supply", content: "We are trusted concrete suppliers in London, offering ready mix concrete delivery for small domestic jobs to large construction projects.", link: "dfs" },
-    { title: "Tipper & Grab Services", content: "Our grab hire service is an affordable alternative to skips for heavy waste. Our grab lorries can collect muck, soil, rubble, concrete, hardcore, and green waste.", link: "dfs" },
+    { title: "Skip Hire", content: "We supply a full range of skip sizes for hire in London, from 4-yard mini skips - ideal for small household clearances, through to 8-yard, 10-yard, 12-yard, and 16-yard skips..", link: "dfs",img:"/img/innerimg/skip-hire-pic.jpg" },
+    { title: "Concrete Supply", content: "We are trusted concrete suppliers in London, offering ready mix concrete delivery for small domestic jobs to large construction projects.", link: "dfs",img:"/img/innerimg/concrete.jpg" },
+    { title: "Tipper & Grab Services", content: "Our grab hire service is an affordable alternative to skips for heavy waste. Our grab lorries can collect muck, soil, rubble, concrete, hardcore, and green waste.", link: "#",img:"/img/innerimg/Tipper-Grab.jpg" },
   
   ];
 
@@ -18,7 +18,7 @@ const Servicespage = () => {
     <div className=" bg-primary/15 py-25 ">
       <div className="container  gap-4 ">
         <div className="text mb-8 flex flex-col items-center justify-center gap-4 px-10">
-          <p className=" text-[17px] font-[700] tracking-wider leading-[20px] tracking-tight text-primary  ">
+          <p className=" text-[17px] font-[700] tracking-wider leading-[20px] text-primary  ">
             Our Services
           </p>
           <h2 className=" h2 text-center text-black-2 font-oswald  font-[700] ">
@@ -35,9 +35,9 @@ const Servicespage = () => {
               >
                 <div className="img group h-60 w-full overflow-hidden rounded-3xl bg-red-50 ">
                   <img
-                    src="https://plus.unsplash.com/premium_photo-1681412504505-c3161f898893?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YnVsZGluZ3xlbnwwfHwwfHx8MA%3D%3D"
+                    src={item.img}
                     alt=""
-                    className=" theme-transition-3 h-full w-full group-hover:scale-[1.1] "
+                    className=" theme-transition-3  object-cover object-center h-full w-full group-hover:scale-[1.1] "
                   />
                 </div>
                 <div className="text theme-transition-4 flex flex-col items-start justify-center gap-4   p-6  ">
