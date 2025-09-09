@@ -18,16 +18,16 @@ const Blocks = ({className}) => {
   return (
     <div className={cn(` container  `,className)} >
 
-        <div className='flex   gap-10'>
+        <div className='flex  max-lg:flex-col   gap-10'>
        {cards.map((item,id)=>{
         return(
-             <div key={id} className="card1  w-[35%] p-8 flex bg-primary text-white-1   gap-4 " >
+             <div key={id} className="card1  lg:w-[35%] p-8 flex bg-primary text-white-1   gap-4 " >
 
             <div className="img w-16 h-16 aspect-square bg-red-50 rounded-full  flex items-center justify-center">
-              < AsteriskSquare className= ' text-primary  siz5 ' />
+              < AsteriskSquare className= ' text-primary  size-6 ' />
             </div>
             <div className="content">
-              <SectionSubTitle className='h4 text-white-1 ' text={item.title} />
+              <SectionSubTitle className='h4 text-white-1 capitalize font-oswald ' text={item.title} />
               <SectionText className='text-white-1 ' text={item.content} />
             </div>
 

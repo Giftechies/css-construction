@@ -49,12 +49,6 @@ export default function Home() {
       <ServicePage />
       <Projects/>
       <HomeTwoServices/>
-    
-
-      {/* <HowItrWorksContent /> */}
-      {/* <HomeOneFinancialPlanning />
-      <HomeTwoFaq />
-      <HomeOneInfo /> */}
       <HomeOneTestimonials />
       <Vision/>
       <Animations />

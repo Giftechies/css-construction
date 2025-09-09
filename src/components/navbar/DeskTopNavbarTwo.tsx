@@ -32,7 +32,8 @@ const DeskTopNavbarTwo = ({className}:{className?:string}) => {
           </Link>
         </div>
 
-        <ul className="flex items-center justify-between gap-10  ">
+       <div className=" flex gap-10 " >
+         <ul className="flex items-center justify-between gap-10  ">
           {navbar.map(({ id, menuTitle, path, menuItems }) => {
             let isActive = menuItems?.some(
               (path) => pathName == path.menuItemPath,
@@ -108,6 +109,7 @@ const DeskTopNavbarTwo = ({className}:{className?:string}) => {
             <span className=" capitalize " >Book appointment</span>
           </Link>
         </div>
+       </div>
       </div>
     </div>
   );

@@ -16,9 +16,9 @@ import Counter from "@/components/shared/scroll-top/Counter";
 
 const card = [
   { title: "title_test", text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.", path: '/img/svg/wallet.svg' },
-  { title: "title_test", text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.", path: '/img/svg/wallet.svg' },
-  { title: "title_test", text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.", path: '/img/svg/wallet.svg' },
-  { title: "title_test", text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ", path: '/img/svg/wallet.svg' },
+  { title: "title_test", text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.", path: '/img/svg/cube.svg' },
+  { title: "title_test", text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.", path: '/img/svg/sheild.svg' },
+  { title: "title_test", text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ", path: '/img/svg/leaf.svg' },
 ]
 
 const HomeTwoServices = () => {

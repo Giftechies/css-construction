@@ -1,5 +1,5 @@
 "use client";
-import logo from "@/../public/img/logo/interstate logo v4-01.png";
+import logo from "@/../public/img/logo/nav-logo.svg";
 import { cn } from "@/utils/cn";
 import { IconChevronDown } from "@tabler/icons-react";
 import Image from "next/image";
@@ -10,13 +10,10 @@ import AnimateHeight from "react-animate-height";
 import { navbarData } from "../../../public/data/navbarData";
 import { navbar } from "../../../public/data/navbar";
 
-type Props = {
-  scrollHight: number;
-};
 
-const MobileNavbar = ({ scrollHight }: Props) => {
+const MobileNavbar = ({className}:{className?:string}) => {
   const [dropDown, setDropDown] = useState("");
-  const [sidebarToggle, setSidebarToggle] = useState(true);
+  const [sidebarToggle, setSidebarToggle] = useState(false);
   const handleDropDown = (id: string) => {
     if (dropDown === id) {
       setDropDown("");
@@ -42,19 +39,18 @@ const MobileNavbar = ({ scrollHight }: Props) => {
 
   return (
     <div
-      className={cn("fixed top-0 z-50 w-full", 
-        "border-b border-white-3/30 bg-white-1 shadow-sm backdrop-blur-2xl backdrop-brightness-100 backdrop-contrast-100"
+      className={cn("top-0 w-full z-50 bg-transparent",className
       )}
     >
       <div className="container left-0 top-0  flex w-full items-center justify-between py-4 xl:hidden xl:py-5">
         <div className=" ">
           <Link href={`/`}>
             <Image
-              src={logo}
+              src={'/img/logo/nav-logo.svg'}
               width={250}
               height={100}
               alt="Desktop Logo"
-              className="max-xl:w-[200px]"
+              className="max-xl:w-[80px]"
             />
           </Link>
         </div>

@@ -11,8 +11,8 @@ import Link from "next/link";
 
 const FooterLeftColumn = () => {
   return (
-    <div className="flex-1">
-      <Image src={'/img/logo/whiteLogo.svg'} width={230} height={80} alt="Footer Logo" />
+    <div className="flex-1    ">
+      <Image src={'/img/logo/nav-logo.svg'} width={230} height={80} className=" w-40  "  alt="Footer Logo" />
 
       <div className="smt40px flex items-center gap-3">
         <Link
@@ -33,9 +33,15 @@ const FooterLeftColumn = () => {
           >
           <IconBrandYoutube />
         </Link>
+
       
         
-      </div>
+      </div >
+      {/* <div className=" flex text-center flex-nowrap mt-3" >
+           <p className="m-text text-white-1  ">
+          Copyright @ {new Date().getFullYear()} <span className=" " >CSS Construction.</span> All rights reserved.
+        </p>
+      </div> */}
     </div>
   );
 };

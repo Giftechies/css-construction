@@ -124,25 +124,26 @@ p{
     @apply text-[28px] leading-[120%]  sm:text-[36px] md:text-[44px] lg:text-[50px] xl:text-[55px] xxl:text-[64px];
   }
   .d4 {
-    @apply text-[24px] leading-[120%]  sm:text-[32px] md:text-[40px] lg:text-[44px] xl:text-[50px] xxl:text-[56px];
+    @apply  text-[24px] leading-[120%]  sm:text-[32px] md:text-[40px] lg:text-[44px] xl:text-[50px] xxl:text-[56px];
+     font-family: var(--font-oswald);
   }
   .h1 {
-    @apply !font-oswald text-[24px] leading-[120%] sm:text-[32px] md:text-[36px] lg:text-[40px] xxl:text-[48px];
+    @apply  text-[24px] leading-[120%] sm:text-[32px] md:text-[36px] lg:text-[40px] xxl:text-[48px];
   }
   .h2 {
-    @apply  font-oswald  text-[20px] leading-[120%]  sm:text-[24px] md:text-[28px] lg:text-[32px] xl:text-[36px] xxl:text-[40px];
+    @apply   text-[20px] leading-[120%]  sm:text-[24px] md:text-[28px] lg:text-[32px] xl:text-[36px] xxl:text-[40px];
   }
   .h3 {
-    @apply   font-oswald  text-[16px] leading-[120%] xs:text-[18px] sm:text-[20px] md:text-[20px] lg:text-[24px] xl:text-[28px] xxl:text-[32px];
+    @apply    text-[16px] leading-[120%] xs:text-[18px] sm:text-[20px] md:text-[20px] lg:text-[24px] xl:text-[28px] xxl:text-[32px];
   }
   .h4 {
-    @apply   font-oswald  text-[16px] leading-[130%] lg:text-[18px] xl:text-[20px] xxl:text-[24px];
+    @apply    text-[16px] leading-[130%] lg:text-[18px] xl:text-[20px] xxl:text-[24px];
   }
   .h5 {
-    @apply  font-oswald   text-[16px] leading-[130%] xl:text-[18px] xxl:text-[20px];
+    @apply    text-[16px] leading-[130%] xl:text-[18px] xxl:text-[20px];
   }
   .h6 {
-    @apply  font-oswald   text-[14px] leading-[130%] tracking-wider xxl:text-[16px];
+    @apply    text-[14px] leading-[130%] tracking-wider xxl:text-[16px];
   }
   .lead-text {
     @apply text-[16px] leading-[150%] lg:text-[18px] xl:text-[20px] xxl:text-[24px];

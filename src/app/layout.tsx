@@ -3,6 +3,7 @@ import "@/../node_modules/react-modal-video/scss/modal-video.scss";
 import ScrollProgressButton from "@/components/shared/scroll-top/ScrollProgressButton";
 import "@/styles/globals.css";
 
+
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 
