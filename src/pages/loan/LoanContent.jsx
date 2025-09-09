@@ -43,10 +43,10 @@ const LoanContent = () => {
               {/* hover content */}
               <div className="rounded-16px theme-transition-4 absolute bottom-0 left-0 flex h-0 w-full items-center justify-center gap-6 bg-[linear-gradient(0deg,#005655_0%,rgba(9,91,90,0.20)_100%)] opacity-0 group-hover:visible group-hover:h-full group-hover:opacity-100 max-sm:flex-col-reverse  sm:flex-col xxl:gap-8">
                 <RoundedLink
-                  buttonText="View Details"
+                  buttonText="View"
                   className="border-primary bg-primary text-white-1 hover:border-accent-3 hover:bg-transparent hover:text-black-4"
                 />
-                <p className="h3 font-medium text-white-1">Education Loan</p>
+                {/* <p className="h3 font-medium text-white-1">Education Loan</p> */}
               </div>
             </div>
 
@@ -63,10 +63,10 @@ const LoanContent = () => {
               />
               <div className="rounded-16px theme-transition-4 absolute bottom-0 left-0 flex h-0 w-full items-center justify-center gap-6 bg-[linear-gradient(0deg,#005655_0%,rgba(9,91,90,0.20)_100%)] opacity-0 group-hover:visible group-hover:h-full group-hover:opacity-100 max-sm:flex-col-reverse  sm:flex-col xxl:gap-8">
                 <RoundedLink
-                  buttonText="View Details"
+                  buttonText="View"
                   className="border-primary bg-primary text-white-1 hover:border-accent-3 hover:bg-transparent hover:text-black-4"
                 />
-                <p className="h3 font-medium text-white-1">Business Loan</p>
+                {/* <p className="h3 font-medium text-white-1">Business Loan</p> */}
               </div>
             </div>
           </div>
@@ -86,10 +86,10 @@ const LoanContent = () => {
               />
               <div className="rounded-16px theme-transition-4 absolute bottom-0 left-0 flex h-0 w-full items-center justify-center gap-6 bg-[linear-gradient(0deg,#005655_0%,rgba(9,91,90,0.20)_100%)] opacity-0 group-hover:visible group-hover:h-full group-hover:opacity-100 max-sm:flex-col-reverse sm:flex-col xxl:gap-8">
                 <RoundedLink
-                  buttonText="View Details"
+                  buttonText="View"
                   className="border-primary bg-primary text-white-1 hover:border-accent-3 hover:bg-transparent hover:text-black-4"
                 />
-                <p className="h3 font-medium text-white-1">Car Loan</p>
+                {/* <p className="h3 font-medium text-white-1">Car Loan</p> */}
               </div>
             </div>
 
@@ -106,10 +106,10 @@ const LoanContent = () => {
               />
               <div className="rounded-16px theme-transition-4 absolute bottom-0 left-0 flex h-0 w-full items-center justify-center gap-6 bg-[linear-gradient(0deg,#005655_0%,rgba(9,91,90,0.20)_100%)] opacity-0 group-hover:visible group-hover:h-full group-hover:opacity-100 max-sm:flex-col-reverse sm:flex-col xxl:gap-8">
                 <RoundedLink
-                  buttonText="View Details"
+                  buttonText="View"
                   className="border-primary bg-primary text-white-1 hover:border-accent-3 hover:bg-transparent hover:text-black-4"
                 />
-                <p className="h3 font-medium text-white-1">Home Loan</p>
+                {/* <p className="h3 font-medium text-white-1">Home Loan</p> */}
               </div>
             </div>
           </div>
@@ -129,10 +129,10 @@ const LoanContent = () => {
               />
               <div className="rounded-16px theme-transition-4 absolute bottom-0 left-0 flex h-0 w-full items-center justify-center gap-6 bg-[linear-gradient(0deg,#005655_0%,rgba(9,91,90,0.20)_100%)] opacity-0 group-hover:visible group-hover:h-full group-hover:opacity-100 max-sm:flex-col-reverse sm:flex-col xxl:gap-8">
                 <RoundedLink
-                  buttonText="View Details"
+                  buttonText="View"
                   className="border-primary bg-primary text-white-1 hover:border-accent-3 hover:bg-transparent hover:text-black-4"
                 />
-                <p className="h3 font-medium text-white-1">Personal Loan</p>
+                {/* <p className="h3 font-medium text-white-1">Personal Loan</p> */}
               </div>
             </div>
 
@@ -149,10 +149,10 @@ const LoanContent = () => {
               />
               <div className="rounded-16px theme-transition-4 absolute bottom-0 left-0 flex h-0 w-full items-center justify-center gap-6 bg-[linear-gradient(0deg,#005655_0%,rgba(9,91,90,0.20)_100%)] opacity-0 group-hover:visible group-hover:h-full group-hover:opacity-100 max-sm:flex-col-reverse  sm:flex-col xxl:gap-8">
                 <RoundedLink
-                  buttonText="Contact"
+                  buttonText="view"
                   className="border-primary bg-primary text-white-1 hover:border-accent-3 hover:bg-transparent  hover:text-black-4"
                 />
-                <p className="h3 font-medium text-white-1">Business Loan</p>
+                {/* <p className="h3 font-medium text-white-1">Business Loan</p> */}
               </div>
             </div>
           </div>
