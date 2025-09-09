@@ -15,6 +15,7 @@ import Projects from "@/pages/projects/Projects";
 import HomeTwoServices from "@/pages/landing-two/HomeTwoServices";
 import Vision from "@/pages/home/Vision"
 import Logocontainer from "@/pages/home/Logocontainer"
+import EducationLoanFaq from "@/pages/education-loan/EducationLoanFaq";
 
 // export const metadata: Metadata = {
 //   title: "Interstate removalists",
@@ -32,22 +33,24 @@ export default function Home() {
         }
         counterText={"Family choose us"}
         counterNumber={50}
-        title={"Few words about"}
-        subheading={"Interstate Removalists"}
+        title={"Welcome to"}
+        subheading={" Construction Site Services"}
         text1={
-          "Local moving refers to the process of relocating household goods or personal belongings within the same city or metropolitan area. ."
+          "At Construction Site Service, we are proud to be one of the trusted names in skip hire and waste management / removal company in London, UK. With over 20-year experience of our promoters, we have provided thousands of households, contractors, and businesses with fast, affordable, and reliable waste disposal solutions."
         }
         text2={
-          "With our expert team, your local move becomes stress-free. From careful packing to quick transport, we handle everything smoothly so you can settle into your new place with ease and peace of mind. 🚛✨"
+          ""
         }
         buttonText={"Know More"}
-        stepText1={"Designing every move with precision and perfection."}
-        stepText2={"Structured planning ensures smooth and reliable relocation."}
-        stepText3={"Strong foundations make your moving journey stress-free."}
+        stepText1={"Affordable skip hire in London (all sizes available)."}
+        stepText2={"Roll-on Roll-off skips for industrial waste removal"}
+        stepText3={"Builders waste clearance and site clearances."}
       />
 
       <ServicePage />
       <Projects/>
+       {/* <EducationLoanFaq /> */}
+       <EducationLoanFaq/>
       <HomeTwoServices/>
       <HomeOneTestimonials />
       <Vision/>

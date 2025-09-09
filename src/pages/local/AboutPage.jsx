@@ -17,7 +17,7 @@ const AboutLocal = ({imagepath1,imagepath2,counterNumber,counterText,title,text1
     >
       <div className="container  grid grid-cols-12 items-center gap-6">
         <div className="relative h-full   col-start-1 col-end-13 grid grid-cols-1 items-center  md:grid-cols-2 xl:col-end-7 xl:grid-cols-12 xl:items-end gap-5">
-          <div className=" absolute bottom-0 left-0 hover:bottom-2  theme-transition-4 rounded-md overflow-hidden  h-[70%] xl:col-start-1  xl:col-end-5">
+          <div className="  absolute bottom-0 left-0 hover:bottom-2  theme-transition-4 rounded-md overflow-hidden  h-[70%] xl:col-start-1  xl:col-end-5 ">
             <Image
               src={imagepath1}
               width={416}
@@ -26,7 +26,7 @@ const AboutLocal = ({imagepath1,imagepath2,counterNumber,counterText,title,text1
               className=" w-full h-full object-cover object-center"
             />
           </div>
-          <div className=" hover:bottom-2 h-[85%]  xl:col-start-5 xl:col-end-9 rounded-md overflow-hidden">
+          <div className="  hover:bottom-2 h-[85%]  xl:col-start-5 xl:col-end-9 rounded-md overflow-hidden">
             <Image
               src={imagepath2}
               width={330}
@@ -51,16 +51,16 @@ const AboutLocal = ({imagepath1,imagepath2,counterNumber,counterText,title,text1
           <SectionSubTitle text={title? title: "Who we are"} className="fade-top" />
           <SectionTitle
             text={subheading?subheading:"Our Mission & Vision"}
-            className="h1 pt-3"
+            className="h1 text-black-2 pt-3"
           />
           <SectionText
-            className="fade-top pt-5"
+            className="fade-top   pt-5"
             text={text1}
           />
-          <SectionText
+          {/* <SectionText
             className="fade-top pt-5"
             text={text2}
-          />
+          /> */}
           <div className="spt32px flex flex-col gap-3">
             <div className="m-text fade-top flex items-center gap-2 text-accent-1">
               <IconCheckbox /> <span>{stepText1?stepText1:"Designing every move with precision and perfection."}</span>

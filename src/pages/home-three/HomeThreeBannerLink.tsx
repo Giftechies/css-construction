@@ -13,9 +13,9 @@ const HomeThreeBannerLink: React.FC<HomeThreeBannerLinkProps> = ({ href, childre
   return (
     <Link
       href={`${href}`}
-      className={cn("s-text theme-transition-3 px-8 flex items-center gap-3 border  tracking-normal  font-[600] border-primary bg-primary py-[10px] text-white-1  hover:bg-transparent rounded-full capitalize ", className)}
+      className={cn("s-text theme-transition-3 px-8 flex items-center gap-3 border  tracking-wider  font-[600] border-primary bg-primary py-[10px] text-white-1  hover:bg-transparent rounded-full capitalize ", className)}
     >
-         <IconBrandTelegram className=" size-5 theme-transition-3  fill-white-1 group-hover:rotate-45" />{" "}
+        
       {children}
     </Link>
   );

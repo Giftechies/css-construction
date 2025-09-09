@@ -10,31 +10,42 @@ import { useState } from "react";
 import SingleFaq from "./SingleFaq";
 
 export const faqData = [
-  {
-    question: "How do I report fraudulent activity on my account?",
-    answer:
-      "If you notice any suspicious or unauthorized activity on your account, follow these steps:\n1. Contact your bank or credit card issuer immediately.\n2. Report the fraudulent transactions and provide details of the unauthorized activity.\n3. Request to block or deactivate the affected card or account.\n4. Follow any additional instructions provided by your bank to resolve the issue.",
-  },
-  {
-    question: "Can I set up account alerts for unusual transactions?",
-    answer:
-      "Yes, many banks offer account alert services. You can set up alerts for unusual transactions, large withdrawals, or any other specific activity. Check with your bank to explore the available alert options and customize them according to your preferences.",
-  },
-  {
-    question: "What should I do if my card is damaged?",
-    answer:
-      "If your debit/credit card is damaged, follow these steps:\n1. Contact your bank or credit card issuer.\n2. Report the damage and request a replacement card.\n3. Destroy the damaged card securely by cutting it into multiple pieces.\n4. Activate the new card once you receive it.",
-  },
-  {
-    question: "Is there a way to dispute a transaction on my account?",
-    answer:
-      "Yes, if you believe a transaction on your account is incorrect or unauthorized, you can dispute it. Contact your bank or credit card issuer, provide details of the disputed transaction, and follow their dispute resolution process. Be sure to report the issue promptly for a quicker resolution.",
-  },
-  {
-    question: "What steps should I take if I forget my card PIN?",
-    answer:
-      "If you forget your card PIN, follow these steps:\n1. Contact your bank or credit card issuer.\n2. Request a PIN reset or reissue.\n3. Authenticate your identity through the bank's security measures.\n4. Choose a new PIN and update it securely. Avoid using easily guessable PINs for your security.",
-  },
+{
+  question: "What is skip hire and why should I use it in London?",
+  answer:
+    "Skip hire is the service of providing large containers for the safe disposal of waste from domestic and commercial projects, including clearances, renovations, and construction sites. It is a cost-effective, convenient solution, especially for residents and businesses in London where waste disposal regulations are strict.",
+},
+{
+  question: "What areas and postcodes do you cover?",
+  answer:
+    "We offer skip hire, waste clearance, and materials supply in all London boroughs and postcodes, including Central (EC, WC), North (N, NW, EN), East (E, IG, RM), South (SE, SW, CR, BR), and West London (W, UB, TW, HA).",
+},
+{
+  question: "How long can I keep the skip for?",
+  answer:
+    "Standard hire periods range from 7 to 14 days. Longer or shorter terms can be arranged to suit your needs; please discuss this when booking your skip.",
+},
+{
+  question: "What sizes of skips are available?",
+  answer:
+    "Our skip range starts at 4-yard mini skips (for garden and household waste), going up to 16-yard maxi skips for bulky or heavy materials, and 20–40-yard roll-on roll-off skips for large commercial sites.",
+},
+{
+  question: "Do I need a permit for a skip on the road?",
+  answer:
+    "Yes, if your skip will be located on a public highway or road, a council-issued skip permit is required. We can arrange the permit on your behalf; costs and durations vary depending on borough regulations.",
+},
+{
+  question: "How quickly can you deliver a skip?",
+  answer:
+    "We offer same-day or next-day skip delivery across all London areas, subject to availability. Bookings made early in the day are most likely to be fulfilled promptly.",
+},
+{
+  question: "What are your skip hire prices?",
+  answer:
+    "Prices depend on skip size, hire duration, and delivery postcode. We offer competitive, transparent rates for cheap skip hire across London. Contact us for an instant quote.",
+},
+
 ];
 
 const HomeOneFaq = () => {

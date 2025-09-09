@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.0",
+    "@radix-ui/react-dialog": "^1.1.15",
     "@react-google-maps/api": "^2.20.7",
     "@reduxjs/toolkit": "^2.8.2",
     "@studio-freight/hamo": "^0.6.28",
@@ -17,7 +18,8 @@
     "@tabler/icons-react": "^2.46.0",
     "@types/react-modal-video": "^1.2.3",
     "@types/uuid": "^9.0.7",
-    "clsx": "^2.1.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
     "gsap": "^3.12.5",
     "leaflet": "^1.9.4",
@@ -37,7 +39,8 @@
     "sharp": "^0.34.3",
     "split-type": "^0.3.4",
     "swiper": "^11.0.5",
-    "tailwind-merge": "^2.2.0",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7",
     "uuid": "^9.0.1",
     "vanilla-tilt": "^1.8.1"
   },

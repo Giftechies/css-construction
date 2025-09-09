@@ -1,52 +1,63 @@
-import Home from '@/app/page'
-import SectionText from '@/components/shared/SectionText'
-import React from 'react'
-import HomeThreeBannerLink from '../home-three/HomeThreeBannerLink'
+import Home from "@/app/page";
+import SectionText from "@/components/shared/SectionText";
+import React from "react";
+import HomeThreeBannerLink from "../home-three/HomeThreeBannerLink";
+import Link from "next/link";
+import { IconArrowForward, IconArrowRight } from "@tabler/icons-react";
 // import { link } from 'fs'
 
 const Servicespage = () => {
-
-    const cards = [
-   
-        {title:"df",content:"ds",link:"dfs" }, 
-        {title:"df",content:"ds",link:"dfs" }, 
-        {title:"df",content:"ds",link:"dfs" }, 
-        {title:"df",content:"ds",link:"dfs" }, 
-        {title:"df",content:"ds",link:"dfs" }, 
-        {title:"df",content:"ds",link:"dfs" }, 
-    ]
+  const cards = [
+    { title: "Skip Hire", content: "We supply a full range of skip sizes for hire in London, from 4-yard mini skips - ideal for small household clearances, through to 8-yard, 10-yard, 12-yard, and 16-yard skips..", link: "dfs" },
+    { title: "Concrete Supply", content: "We are trusted concrete suppliers in London, offering ready mix concrete delivery for small domestic jobs to large construction projects.", link: "dfs" },
+    { title: "Tipper & Grab Services", content: "Our grab hire service is an affordable alternative to skips for heavy waste. Our grab lorries can collect muck, soil, rubble, concrete, hardcore, and green waste.", link: "dfs" },
+  
+  ];
 
   return (
-    <div className=' bg-primary/30 py-25 ' >
-        <div className="container  gap-4 " >
-           <div className="text px-10 mb-8 flex flex-col justify-center items-center gap-4">
-             <p className= ' text-[17px] text-primary font-[700] leading-[20px] tracking-tight  ' >Our Services</p>
-            <h2 className=' h2 text-center font-[700] ' >We Provide Best Services</h2>
-           <SectionText className=' text-center font-[500] tracking-tight  ' text={'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, adipiscing elit. Sed euismod, nunc ut.'} />
-           </div>
-           <div className="card flex flex-wrap justify-center items-center gap-10 " >
-
-            {cards.map((item,id)=>{
-                return(
-                     <div key={id} className="card1 w-[380px] border   rounded-md overflow-hidden group ">
-                <div className="img w-full h-60 bg-red-50 rounded-md overflow-hidden group ">
-                    <img src="https://plus.unsplash.com/premium_photo-1681412504505-c3161f898893?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YnVsZGluZ3xlbnwwfHwwfHx8MA%3D%3D" alt="" className=' w-full h-full group-hover:scale-[1.1] theme-transition-3 ' />
-                </div>
-                <div className="text flex flex-col gap-4 p-6 items-center justify-center bg-primary/20  group-hover:bg-primary/30 theme-transition-4  ">
-                    <h3 className=' h4 font-[700] ' >Service Title</h3>
-                    <SectionText className=' text-[15px] font-[500] ' text={'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut.'} />
-                    <HomeThreeBannerLink href={'/'} className={' text-s text-white-1'} >Service details</HomeThreeBannerLink> 
-                </div>
-            </div>
-                )
-            })}
+    <div className=" bg-primary/15 py-25 ">
+      <div className="container  gap-4 ">
+        <div className="text mb-8 flex flex-col items-center justify-center gap-4 px-10">
+          <p className=" text-[17px] font-[700] tracking-wider leading-[20px] tracking-tight text-primary  ">
+            Our Services
+          </p>
+          <h2 className=" h2 text-center text-black-2 font-oswald  font-[700] ">
+            Skip Hire Services You Can Rely On
+          </h2>
          
-           
-           </div>
         </div>
-        
+        <div className="card flex flex-wrap items-center justify-center gap-10 ">
+          {cards.map((item, id) => {
+            return (
+              <div
+                key={id}
+                className="card1 group w-[380px]    overflow-hidden rounded-[2em] border p-4 bg-white-1 sp "
+              >
+                <div className="img group h-60 w-full overflow-hidden rounded-3xl bg-red-50 ">
+                  <img
+                    src="https://plus.unsplash.com/premium_photo-1681412504505-c3161f898893?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YnVsZGluZ3xlbnwwfHwwfHx8MA%3D%3D"
+                    alt=""
+                    className=" theme-transition-3 h-full w-full group-hover:scale-[1.1] "
+                  />
+                </div>
+                <div className="text theme-transition-4 flex flex-col items-start justify-center gap-4   p-6  ">
+                  <h3 className=" h4 font-[700] text-primary font-oswald ">{item.title}</h3>
+                  <SectionText
+                    className=" text-[15px] font-[500] text-justify "
+                    text={
+                      item.content
+                    }
+                  />
+                  
+                 <Link href={"#"} className=" flex text-[14px] gap-2 font-semibold " ><span>Read More</span> <i className="ri-arrow-right-line font-medium text-[18px] "></i>  </Link>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Servicespage
+export default Servicespage;

@@ -27,7 +27,7 @@ const HomeTwoSingleFaq = ({
   return (
     <div
       key={id}
-      className={`rounded-16px appear-down  rounded-xl p-4 shadow-custom3 sm:p-5`}
+      className={`rounded-16px appear-down  bg-white-1 shadow-md  rounded-xl p-4  sm:p-5`}
     >
       <div
         onClick={() => handleDropDown(id)}

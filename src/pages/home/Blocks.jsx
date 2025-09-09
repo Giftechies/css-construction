@@ -7,12 +7,12 @@ import { AsteriskSquare, icons, PersonStandingIcon } from 'lucide-react'
 const Blocks = ({className}) => {
   const cards = [
     {
-      title: 'Personal care',content:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut.',
+      title: 'Affordable Skip Hire',content:'Get skips at the best prices in London. Quick delivery, easy booking, and budget-friendly rates for every project.',
     icon: "",  },
     {
-      title: 'Personal care',content:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut.'   },
+      title: 'Reliable & Fast Service',content:'From same-day delivery to hassle-free collection, we make skip hire simple and reliable whenever you need it.'   },
     {
-      title: 'Personal care',content:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut.'   },
+      title: 'Sizes for Every Need',content:'Choose from a wide range of skip sizes – perfect for home clear-outs, renovations, or large construction jobs'   },
 
     ]
   return (
@@ -21,7 +21,7 @@ const Blocks = ({className}) => {
         <div className='flex  max-lg:flex-col   gap-10'>
        {cards.map((item,id)=>{
         return(
-             <div key={id} className="card1  lg:w-[35%] p-8 flex bg-primary text-white-1   gap-4 " >
+             <div key={id} className="card1  lg:w-[35%] p-8 flex max-xl:flex-col bg-primary text-white-1   gap-4 " >
 
             <div className="img w-16 h-16 aspect-square bg-red-50 rounded-full  flex items-center justify-center">
               < AsteriskSquare className= ' text-primary  size-6 ' />
