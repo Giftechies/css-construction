@@ -24,7 +24,7 @@ const NavbarContainerTwo = () => {
       <DeskTopNavbarTwo/>
       <MobileNavbar
        
-        scrollHight={scrollHight}
+       
       />
     </div>
   );
