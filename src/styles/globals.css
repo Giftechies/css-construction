@@ -38,13 +38,12 @@
 }
 
   .parallax-bg {
-      background-image: url('https://media.istockphoto.com/id/615926270/photo/night-in-warsaw.webp?a=1&b=1&s=612x612&w=0&k=20&c=j-zWimePBOwt-oqaFlaVJzECEW4zc9nyOExxPZuJ5l4=');
+      /* background-image: url(''); */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      height: 70vh;
-      width: 100%;
+    
       position: relative;
     }
 

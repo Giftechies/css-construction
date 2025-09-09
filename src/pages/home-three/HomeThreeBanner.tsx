@@ -30,7 +30,7 @@ const HomeThreeBanner = () => {
             
             <div className="smt40px  max-xs:flex-wrap fade-top flex gap-5 items-start ">
              <HomeThreeBannerLink href="/pick-details" className=" w-fit   rounded-full text-white-1    hover:bg-transparent hover:text-white-1  hover:border-white-1  capitalize  " >   Get Instant Quote  <IconEdit className=" size-5 theme-transition-3  group-hover:rotate-45" />{" "} </HomeThreeBannerLink>
-             <HomeThreeBannerLink href="/pick-details" className=" w-fit   rounded-full text-white  border-white  bg-transparent hover:text-white-1 hover:bg-primary  " > Our Services <IconArrowUpRight/> </HomeThreeBannerLink>
+             <HomeThreeBannerLink href="/pick-details" className=" w-fit   rounded-full text-white  border-white  bg-transparent hover:border-primary hover:text-primary  " > Our Services <IconArrowUpRight/> </HomeThreeBannerLink>
               {/* <HomeThreeBannerLink href="/pick-details" className=" border-[var(--primary)] text-[var(--primary)] hover:bg-prim hover:text-white-1 " >Get Instant Quote</HomeThreeBannerLink> */}
             </div>
           </div>

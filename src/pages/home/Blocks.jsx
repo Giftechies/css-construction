@@ -4,6 +4,7 @@ import SectionSubTitle from '@/components/shared/SectionSubTitle'
 import SectionText from '@/components/shared/SectionText'
 import { title } from 'process'
 import { AsteriskSquare, icons, PersonStandingIcon } from 'lucide-react'
+import Counter from '@/components/shared/scroll-top/Counter'
 const Blocks = ({className}) => {
   const cards = [
     {
@@ -19,21 +20,30 @@ const Blocks = ({className}) => {
     <div className={cn(` container  `,className)} >
 
         <div className='flex  max-lg:flex-col   gap-10'>
-       {cards.map((item,id)=>{
-        return(
-             <div key={id} className="card1  lg:w-[35%] p-8 flex max-xl:flex-col bg-primary text-white-1   gap-4 " >
+       {/* {cards.map((item,id)=>{
+        return( */}
+             <div className="card1 font-oswald  lg:w-[30%] py-4 flex flex-col items-center justify-center bg-primary text-white-1    " >
 
-            <div className="img w-16 h-16 aspect-square bg-red-50 rounded-full  flex items-center justify-center">
-              < AsteriskSquare className= ' text-primary  size-6 ' />
-            </div>
-            <div className="content">
-              <SectionSubTitle className='h4 text-white-1 capitalize font-oswald ' text={item.title} />
-              <SectionText className='text-white-1 ' text={item.content} />
-            </div>
+                  <div className=' d4 font-semibold flex  items-center   ' > <Counter value={200} />+ Years </div>
+              <h2 className='h6 text-white-1  capitalize  '  > of waste mangment experience </h2>
 
           </div>
+             <div className="card1 font-oswald  lg:w-[30%] py-4 flex flex-col items-center justify-center bg-primary text-white-1    " >
+
+                  <div className=' d4 font-semibold flex  items-center   ' > <Counter value={300} />+ Areas  </div>
+              <h2 className='h6 text-white-1  capitalize  '  >Serving Across London & Slough </h2>
+
+          </div>
+             <div className="card1 font-oswald  lg:w-[30%] py-4 flex flex-col items-center justify-center bg-primary text-white-1    " >
+
+                  <div className=' d4 font-semibold flex  items-center   ' > <Counter value={1000} />+  </div>
+              <h2 className='h6 text-white-1  capitalize  '  > happy clients </h2>
+
+          </div>
+       {/* 
         )
        })}
+        */}
 
         </div>
     </div>

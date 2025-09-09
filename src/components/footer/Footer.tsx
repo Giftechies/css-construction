@@ -1,40 +1,129 @@
-import footerCoin from "@/../public/img/logo/interstate logo v4-01.png";
-import animal from "@/../public/images/home-one/footer-crown.png";
-import Image from "next/image";
-import FooterBottom from "./FooterBottom";
-import FooterLeftColumn from "./FooterLeftColumn";
-import FooterMiddleColumn from "./FooterMiddleColumn";
-import FooterRight from "./FooterRight";
-import FooterSideSection from "./FooterSideSection";
+import Link from 'next/link'
+import React from 'react'
+import FooterSideSection from './FooterSideSection'
+import FooterBottom from './FooterBottom'
+
+const footer =[
+  {title:"Quick Links",
+    li:[
+      {
+        sublinks:"About Us",
+        path:"#"
+      },
+      {
+        sublinks:"Area We Serve",
+        path:"#"
+      },
+      {
+        sublinks:"Contact",
+        path:"#"
+      },
+      {
+        sublinks:"Privacy Policy",
+        path:"#"
+      },
+    ]
+  },
+  {title:"Skip Hire",
+    li:[
+      {
+        sublinks:"Skip Hire",
+        path:"#"
+      },
+      {
+        sublinks:"RORO Skip Hire",
+        path:"#"
+      },
+      {
+        sublinks:"Builders Waste Clearance",
+        path:"#"
+      },
+      {
+        sublinks:"Waste Management",
+        path:"#"
+      },
+    ]
+  },
+  {
+    title: "Concrete Supply",
+  
+    li: [
+      {
+  
+        sublinks: "Concrete Supply",
+        path: "/concrete-supply",
+      },
+      {
+  
+        sublinks: "Screed",
+        path: "/screed",
+      },
+      {
+  
+        sublinks: "Ready Mix Concrete",
+        path: "/ready-mix-concrete",
+      },
+    ],
+  },
+  {
+    title: "Tipper & Grab Services",
+    li: [
+      {
+  
+        sublinks: "Grab Hire",
+        path: "/grab-hire",
+      },
+      {
+  
+        sublinks: "Cage Lorrie’s",
+        path: "/cage-lorries",
+      },
+      {
+  
+        sublinks: "Man and Van",
+        path: "/man-and-van",
+      },
+      {
+  
+        sublinks: "Aggregates",
+        path: "/aggregates",
+      },
+    ],
+  },
+]
 
 const Footer = () => {
   return (
-    <footer className="relative overflow-hidden bg-black-4 text-white-1">
-      <div className="max-xl:container xxl:ml-[calc((100%-1296px)/2)]">
-        <div className="flex    justify-between max-xxl:flex-col-reverse ">
-          <div>
-            <div className="spy120px flex flex-shrink-0 gap-40   max-md:flex-col max-md:gap-8">
-              <FooterLeftColumn />
-              <FooterMiddleColumn  />
-              <FooterRight />
-            </div>
-              <FooterBottom/>
-          </div>
-          {/* side section start */}
-          <FooterSideSection />
-          {/* side section end */}
-        </div>
-      </div>
-     
-      <Image
-        src={animal}
-        width={222}
-        height={214}
-        alt="footer animale"
-        className="absolute bottom-0 left-0 block max-3xl:size-30 max-[1500px]:hidden   "
-      />
-    </footer>
-  );
-};
+    <section className='footer bg-black-4 text-white-4 py-24   ' >
+      <div className="container     ">
+      <main className='flex gap-4' >
+        <div className="links  grid grid-cols-[150px_150px_200px_250px] gap-12  ">
+         {footer.map((item,id)=>{
+        return(
+             <div key={id} className='' >
 
-export default Footer;
+            <ul className=' space-y-5 ' >
+              <span className=' h5 font-semibold' >{item.title}</span>
+            {item.li.map((el,id)=>{
+              return(
+                  <li key={id}  className=' text-[14px] hover:text-primary ' ><Link href={el.path}>{el.sublinks}</Link></li>
+             
+              )
+            })}
+
+            </ul>
+          </div>
+        )
+       })}
+      </div>
+      <FooterSideSection/>
+      </main>
+      <FooterBottom/>
+        
+      </div>
+
+    </section>
+  )
+}
+
+export default Footer

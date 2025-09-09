@@ -47,18 +47,17 @@ export const sliderData = [
 
 const HomeOneTestimonials = () => {
   return (
-    <section className=" spy80px relative overflow-hidden  ">
-      <div className="  absolute inset-0 -z-10  before:bg-skinColor/10 before:absolute before:inset-0 " >
-        <img src="\img\innerimg\Pattern-1.jpg" className=" w-full h-full object-cover object-center " alt="" />
-      </div>
+    <section className="parallax-bg bg-[url(https://media.istockphoto.com/id/615926270/photo/night-in-warsaw.webp?a=1&b=1&s=612x612&w=0&k=20&c=j-zWimePBOwt-oqaFlaVJzECEW4zc9nyOExxPZuJ5l4=)] spy80px relative overflow-hidden  ">
+       <div className="bg-black-4/60 absolute inset-0 "></div>
+     
       <div className="container relative flex items-center justify-center ">
-      <div className=" space-y-6 w-[60%] spy40px spx40px  flex flex-col items-center justify-center bg-white-1 " >
+      <div className=" space-y-6 w-[55%] spy40px spx40px  flex flex-col items-center justify-center bg-white-4 rounded-3xl " >
         <div className="flex flex-col items-center text-center  gap-2 " >
           <SectionSubTitle text="Testimonial " className=" " />
-        <SectionTitle text="What Our Clients Say" className=" text-primary " />
+        <SectionTitle text="What Our Clients Say" className=" text-black-2" />
         <p className=" text-black-3 " >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos voluptate animi nostrum fugit accusamus ipsam ea iure vitae, voluptatum ab?</p>
       </div>
-        <div className="spt60px   w-[80%] flex items-center justify-center  ">
+        <div className="spt60px   w-[90%] flex items-center justify-center  ">
           <Swiper
             // slidesPerView={1}
             spaceBetween={30}

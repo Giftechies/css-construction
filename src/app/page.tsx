@@ -48,12 +48,11 @@ export default function Home() {
       />
 
       <ServicePage />
-      <Projects/>
-       {/* <EducationLoanFaq /> */}
-       <EducationLoanFaq/>
-      <HomeTwoServices/>
-      <HomeOneTestimonials />
+      {/* <HomeTwoServices/> */}
       <Vision/>
+      <Projects/>
+       <EducationLoanFaq/>
+      <HomeOneTestimonials />
       <Animations />
 
     </div>

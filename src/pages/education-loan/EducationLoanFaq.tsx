@@ -10,10 +10,10 @@ import HomeTwoSingleFaq from "../landing-two/HomeTwoSingleFaq";
 const EducationLoanFaq = () => {
   const [dropDown, setDropDown] = useState("");
   return (
-    <section className=" bg-primary/5 relative overflow-hidden">
-      <div className="container">
+    <section className="  py-24 bg-primary/5 relative overflow-hidden">
+      <div className="container  ">
         {" "}
-        <div className="smt120px grid grid-cols-12 items-center gap-6">
+        <div className=" grid grid-cols-12 items-center gap-6">
           <div className="col-start-1 col-end-13 lg:col-end-7">
             <SectionSubTitle className="font-oswald"  text="FAQ" />
             <h3 className="h3 mt-5 font-medium">General Skip Hire</h3>
@@ -32,15 +32,16 @@ const EducationLoanFaq = () => {
           </div>
           <div className="col-start-1 col-end-13 max-lg:row-start-1 lg:col-start-8 ">
             <Image
-              src={image4}
+              src={'/img/innerimg/faq.jpg'}
               width={526}
               height={526}
-              alt="Service details four"
+
+              alt="faq img"
+              className=" w-full h-full object-center object-cover "
             />
           </div>
         </div>
       </div>
-      {/* <Lines /> */}
     </section>
   );
 };

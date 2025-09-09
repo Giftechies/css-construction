@@ -10,7 +10,7 @@ const Servicespage = () => {
   const cards = [
     { title: "Skip Hire", content: "We supply a full range of skip sizes for hire in London, from 4-yard mini skips - ideal for small household clearances, through to 8-yard, 10-yard, 12-yard, and 16-yard skips..", link: "dfs",img:"/img/innerimg/skip-hire-pic.jpg" },
     { title: "Concrete Supply", content: "We are trusted concrete suppliers in London, offering ready mix concrete delivery for small domestic jobs to large construction projects.", link: "dfs",img:"/img/innerimg/concrete.jpg" },
-    { title: "Tipper & Grab Services", content: "Our grab hire service is an affordable alternative to skips for heavy waste. Our grab lorries can collect muck, soil, rubble, concrete, hardcore, and green waste.", link: "#",img:"/img/innerimg/Tipper-Grab.jpg" },
+    { title: "Tipper & Grab Services", content: "Our grab hire service is an affordable alternative to skips for heavy waste. Our grab lorries can collect muck, soil, rubble, concrete, hardcore, and green..", link: "#",img:"/img/innerimg/Tipper-Grab.jpg" },
   
   ];
 
@@ -48,8 +48,12 @@ const Servicespage = () => {
                       item.content
                     }
                   />
+
+
+                  <div className=" border-t h-[8px]  w-full border-black-3/40 "  >
                   
-                 <Link href={"#"} className=" flex text-[14px] gap-2 font-semibold " ><span>Read More</span> <i className="ri-arrow-right-line font-medium text-[18px] "></i>  </Link>
+                 <Link href={"#"} className=" mt-2 flex text-[14px] gap-2 font-semibold " ><span>Read More</span> <i className="ri-arrow-right-line font-medium text-[18px] "></i>  </Link>
+                 </div>
                 </div>
               </div>
             );
