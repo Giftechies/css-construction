@@ -78,12 +78,12 @@ const Mobilenav = ({className}) => {
         >
           <div
             className={cn(
-              "w-0 opacity-0 h-screen bg-black-4 transition-all",
+              "w-0 opacity-0 h-screen p-6 bg-black-4 transition-all",
               { "w-[70%] opacity-100": sideopen }
             )}
           >
             {/* Header */}
-            <div className="icon w-full flex justify-between p-4">
+            <div className="icon w-full flex justify-between ">
               <div className="logo w-18">
                 <img src="/img/logo/nav-logo.svg" alt="logo" />
               </div>
@@ -96,7 +96,7 @@ const Mobilenav = ({className}) => {
             </div>
 
             {/* Menu List */}
-            <ul className="list text-white-1 px-4 mt-4 space-y-4 overflow-auto ">
+            <ul className="list text-white-1  mt-4 space-y-4 overflow-auto ">
               {mobilenav.map((item, idx) => (
                 <li key={idx} className="border-b border-white-2 pb-2">
                   <div
@@ -126,7 +126,7 @@ const Mobilenav = ({className}) => {
                 </li>
               ))}
             </ul>
-          <Media className={"border-none"}  />
+          <Media className={" mt-4"}  />
           </div>
 
         </div>

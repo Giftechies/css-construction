@@ -13,7 +13,7 @@ import { cn } from '@/lib/utils';
 const Media = ({className}) => {
   return (
     <div>
-         <div className={cn(" pt-4 border-white-1/30 flex items-start justify-start gap-3",className)}>
+         <div className={cn("  border-white-1/30 flex items-start justify-start gap-3",className)}>
         <Link
           href={`/`}
           className="theme-transition-3 rounded-xl bg-primary p-2 hover:bg-white-1 hover:text-primary"
