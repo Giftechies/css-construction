@@ -8,13 +8,13 @@ import { IconEdit, IconArrowUpRight,IconPhone } from "@tabler/icons-react";
 
 const HomeThreeBanner = () => {
   return (
-    <section className="fade-wrapper homebanner relative w-full h-[70vh] lg:h-[100vh] flex flex-col items-center justify-center  before:absolute before:inset-0 before:-z-40 before:bg-black-4/60     mb-[90vh] lg:mb-25 ">
+    <section className="fade-wrapper homebanner relative w-full h-[60vh] lg:h-[100vh] flex flex-col items-center justify-center  before:absolute before:inset-0 before:-z-40 before:bg-black-4/60     mb-[80vh] lg:mb-25 ">
       <div className="img absolute inset-0 w-full h-full -z-50">
         <img src="/img/innerimg/skip-hire.jpg" className="size-full object-cover object-center "  alt="" />
       </div>
       <DeskTopNavbarTwo className=" z-80 absolute -top-3 z-80 left-0   text-white-1 s-text font-oswald  font-medium tracking-wider  " />
       <Mobilenav className={''}  />
-      <Blocks className='absolute -bottom-[34rem]  lg:-bottom-20 left-[50%] -translate-x-[50%] ' />
+      <Blocks className='absolute -bottom-[32rem]  lg:-bottom-20 left-[50%] -translate-x-[50%] ' />
       <div className="container relative  max-lg:py-20 text-white-1 sm:pt-30   ">
          
         <div className="grid grid-cols-12  w-full lg:w-[60%]  ">

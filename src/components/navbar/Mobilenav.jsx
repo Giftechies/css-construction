@@ -72,8 +72,8 @@ const Mobilenav = ({className}) => {
         <div
        
           className={cn(
-            "absolute z-50 inset-0 w-0 h-screen bg-black-4/70 opacity-0  transition-all duration-300 ease-linear ",
-            { "w-full opacity-100": sideopen }
+            "absolute z-50 inset-0 w-full -translate-x-full h-screen bg-black-4/70 opacity-0  transition-all duration-500 ease-linear ",
+            { "translate-x-0 duration-500 opacity-100": sideopen }
           )}
         >
           <div
