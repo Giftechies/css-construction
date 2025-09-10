@@ -8,7 +8,7 @@ import { IconEdit, IconArrowUpRight,IconPhone } from "@tabler/icons-react";
 
 const HomeThreeBanner = () => {
   return (
-    <section className="fade-wrapper homebanner relative w-full h-[60vh] lg:h-[100vh] flex flex-col items-center justify-center  before:absolute before:inset-0 before:-z-40 before:bg-black-4/60     mb-[80vh] lg:mb-25 ">
+    <section className="fade-wrapper homebanner relative w-full h-[60vh] lg:h-[100vh] flex flex-col items-center justify-center  before:absolute before:inset-0 before:-z-40 before:bg-black-4/60     mb-[60vh] lg:mb-25 ">
       <div className="img absolute inset-0 w-full h-full -z-50">
         <img src="/img/innerimg/skip-hire.jpg" className="size-full object-cover object-center "  alt="" />
       </div>
