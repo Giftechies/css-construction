@@ -94,7 +94,7 @@ const footer =[
 
 const Footer = () => {
   return (
-    <section className='footer bg-black-4 text-white-4 py-10 xl:py-24   ' >
+    <section className='footer bg-black-4 text-white-4 py-10    ' >
       <div className="container     ">
       <main className=' max-xl:flex-col-reverse  flex gap-4' >
         <div className="links   max-xl:my-5  justify-between  grid grid-cols-1 md:grid-cols-2   xl:grid xl:grid-cols-[150px_150px_200px_250px] gap-8 xl:gap-12  ">
