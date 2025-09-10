@@ -9,7 +9,7 @@ import HomeThreeBannerLink from "../home-three/HomeThreeBannerLink";
 import SectionSubTitle from "@/components/shared/SectionSubTitle";
 
 
-const AboutLocal = ({imagepath1,imagepath2,counterNumber,counterText,title,text1,text2,buttonText,stepText1,stepText2,stepText3,subheading}) => {
+const AboutLocal = ({imagepath1,imagepath2, imagepath3 ,counterNumber,counterText,title,text1,text2,buttonText,stepText1,stepText2,stepText3,subheading}) => {
   return (
     <section
       className="spt80px fade-wrapper spb120px relative overflow-hidden"
@@ -38,7 +38,7 @@ const AboutLocal = ({imagepath1,imagepath2,counterNumber,counterText,title,text1
           </div>
           <div className=" hidden xl:block absolute bottom-0 right-0 hover:bottom-2  h-[95%] xl:col-start-9 xl:col-end-13 theme-transition-4 rounded-md overflow-hidden ">
             <Image
-              src={imagepath2}
+              src={imagepath3}
               width={330}
               height={348}
               alt="Mission image two"

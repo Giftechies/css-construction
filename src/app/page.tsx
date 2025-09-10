@@ -29,7 +29,10 @@ export default function Home() {
       <AboutLocal
         imagepath1={"/img/innerimg/localimg.png"}
         imagepath2={
-          "https://media.istockphoto.com/id/487175846/photo/delivery-man-unloading-truck.webp?a=1&b=1&s=612x612&w=0&k=20&c=OkcEhNbpV0w9JPTgNqCkJ_IZx5fXnqktOdbOsffF3Es="
+          "/img/innerimg/project2.avif"
+        }
+        imagepath3={
+          "/img/innerimg/project4.avif"
         }
         counterText={"Family choose us"}
         counterNumber={50}
