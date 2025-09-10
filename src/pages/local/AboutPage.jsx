@@ -47,20 +47,17 @@ const AboutLocal = ({imagepath1,imagepath2, imagepath3 ,counterNumber,counterTex
            
           </div>
         </div>
-        <div className="col-start-1 col-end-13 xl:col-start-8">
-          <SectionSubTitle text={title? title: "Who we are"} className="" />
+        <div className="col-start-1 col-end-13 xl:col-start-8  ">
+          <SectionSubTitle text={title? title: "Who we are"} className=" text-center " />
           <SectionTitle
             text={subheading?subheading:"Our Mission & Vision"}
-            className="h1 text-black-2 pt-3"
+            className="h1 text-black-2 pt-3 text-center "
           />
           <SectionText
             className="fade-top   pt-5"
             text={text1}
           />
-          {/* <SectionText
-            className="fade-top pt-5"
-            text={text2}
-          /> */}
+  
           <div className="spt32px flex flex-col gap-3">
             <div className="m-text fade-top flex items-center gap-2 text-accent-1">
               <IconCheckbox /> <span>{stepText1?stepText1:"Designing every move with precision and perfection."}</span>
@@ -72,7 +69,7 @@ const AboutLocal = ({imagepath1,imagepath2, imagepath3 ,counterNumber,counterTex
               <IconCheckbox /> <span>{stepText3? stepText3:"Strong foundations make your moving journey stress-free."}</span>
             </div>
           </div>
-           <HomeThreeBannerLink href="/pick-details" className=" bg-prim rounded-full text-white-1    hover:bg-transparent hover:text-primary  hover:border-primary w-fit mt-6 " >{buttonText?  buttonText:"Get Instant Quote"}</HomeThreeBannerLink>  
+           <HomeThreeBannerLink href="/pick-details" className=" mx-auto bg-prim rounded-full text-white-1    hover:bg-transparent hover:text-primary  hover:border-primary w-fit mt-6 " >{buttonText?  buttonText:"Get Instant Quote"}</HomeThreeBannerLink>  
         </div>
       </div>
     </section>
