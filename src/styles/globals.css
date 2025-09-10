@@ -113,7 +113,11 @@ p{
     @apply flex items-center justify-center
   }
   .Block-card1 {
-    @apply  py-8 pb-9  w-[95%] mx-auto lg:w-[30%] flex flex-col   justify-center items-center bg-primary text-white-4 
+    @apply  py-[.7rem]  pb-[1.3rem]  w-[80%] mx-auto lg:w-[28%] flex flex-col   justify-center items-center bg-primary text-white-4 
+  }
+
+  .Block-counter{
+    @apply text-2xl font-semibold flex items-center justify-center
   }
 
   /*================ typography classes start ================ */

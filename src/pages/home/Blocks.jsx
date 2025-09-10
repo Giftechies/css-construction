@@ -25,7 +25,7 @@ const Blocks = ({className}) => {
            
           <div className='  Block-card1' >
              <div className="logo h-10 mb-3    " ><i className="ri-recycle-line text-[2.5rem]"></i></div>
-            <div className='text-4xl font-semibold  ' ><Counter value={20}/>+Years</div>
+            <div className=' Block-counter   ' ><Counter value={20}/>+Years</div>
             <span className='h6 capitalize' >of Waste mangment experience</span>
 
 
@@ -34,14 +34,14 @@ const Blocks = ({className}) => {
                 <div className="logo w-10 h-10   ">
                   <img src='/img/svg/map.svg' alt="" />
                   </div>  
-            <div className='text-4xl font-semibold  ' ><Counter value={300}/>+Area</div>
+            <div className='Block-counter  ' ><Counter value={300}/>+Area</div>
             <span className='h6 capitalize' >Serving Across London & Slough</span>
 
 
           </div>
           <div className='  Block-card1' >
             <div className="logo h-10 mb-3  " ><i className="ri-team-line text-[2.5rem]"></i></div>
-            <div className='text-4xl font-semibold  ' ><Counter value={1000}/>+</div>
+            <div className='Block-counter ' ><Counter value={1000}/>+</div>
             <span className='h6 capitalize' >Trusted by Many Happy Clients</span>
 
 

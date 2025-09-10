@@ -8,7 +8,7 @@ import { IconEdit } from "@tabler/icons-react";
 const Vision = () => {
   return (
     <section>
-      <div class="parallax-bg relative w-full h-[40vh] xl:h-[60vh]  bg-[url(https://media.istockphoto.com/id/615926270/photo/night-in-warsaw.webp?a=1&b=1&s=612x612&w=0&k=20&c=j-zWimePBOwt-oqaFlaVJzECEW4zc9nyOExxPZuJ5l4=)]   flex items-center justify-center">
+      <div class="parallax-bg relative w-full h-[30rem]   bg-[url(https://media.istockphoto.com/id/615926270/photo/night-in-warsaw.webp?a=1&b=1&s=612x612&w=0&k=20&c=j-zWimePBOwt-oqaFlaVJzECEW4zc9nyOExxPZuJ5l4=)]   flex items-center justify-center">
         {/* <!-- Overlay to make text more readable --> */}
         <div className="bg-black-4/80 absolute inset-0 "></div>
         <div class=" container text-white-1 relative z-10 p-8 text-center gap-4  flex flex-col items-center justify-center  ">
