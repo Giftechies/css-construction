@@ -112,6 +112,9 @@ p{
   .flex-center{
     @apply flex items-center justify-center
   }
+  .Block-card1 {
+    @apply  font-oswald  lg:w-[30%] py-10 flex flex-col items-center justify-center bg-primary text-white-1 
+  }
 
   /*================ typography classes start ================ */
 

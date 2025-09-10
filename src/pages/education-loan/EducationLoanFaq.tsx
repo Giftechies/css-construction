@@ -1,5 +1,5 @@
 "use client";
-import image4 from "@/../public/images/education-loan/education-faq.png";
+import faq from "@/../public/img/innerimg/faq.avif";
 import Lines from "@/components/shared/Lines";
 import SectionSubTitle from "@/components/shared/SectionSubTitle";
 import Image from "next/image";
@@ -32,7 +32,7 @@ const EducationLoanFaq = () => {
           </div>
           <div className="col-start-1 col-end-13 max-lg:row-start-1 lg:col-start-8 ">
             <Image
-              src={'/img/innerimg/faq.jpg'}
+              src={faq}
               width={526}
               height={526}
 

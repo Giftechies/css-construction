@@ -22,21 +22,21 @@ const Blocks = ({className}) => {
         <div className='flex  max-lg:flex-col   gap-10'>
        {/* {cards.map((item,id)=>{
         return( */}
-             <div className="card1 font-oswald  lg:w-[30%] py-4 flex flex-col items-center justify-center bg-primary text-white-1    " >
+             <div className="Block-card1   " >
 
-                  <div className=' d4 font-semibold flex  items-center   ' > <Counter value={200} />+ Years </div>
+                  <div className='  text-[36px] font-semibold flex  items-center justify-center   ' > <Counter value={200}  />+ Years </div>
               <h2 className='h6 text-white-1  capitalize  '  > of waste mangment experience </h2>
 
           </div>
-             <div className="card1 font-oswald  lg:w-[30%] py-4 flex flex-col items-center justify-center bg-primary text-white-1    " >
+             <div className="Block-card1     " >
 
-                  <div className=' d4 font-semibold flex  items-center   ' > <Counter value={300} />+ Areas  </div>
+                  <div className=' text-[36px] font-semibold flex  items-center justify-center   ' > <Counter value={300} />+ Areas  </div>
               <h2 className='h6 text-white-1  capitalize  '  >Serving Across London & Slough </h2>
 
           </div>
-             <div className="card1 font-oswald  lg:w-[30%] py-4 flex flex-col items-center justify-center bg-primary text-white-1    " >
+             <div className="Block-card1  " >
 
-                  <div className=' d4 font-semibold flex  items-center   ' > <Counter value={1000} />+  </div>
+                  <div className='  text-[36px] font-semibold flex  items-center justify-center  ' > <Counter value={1000} />+  </div>
               <h2 className='h6 text-white-1  capitalize  '  > happy clients </h2>
 
           </div>
