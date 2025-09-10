@@ -17,7 +17,7 @@ const AboutLocal = ({imagepath1,imagepath2, imagepath3 ,counterNumber,counterTex
     >
       <div className="container  grid grid-cols-12 items-center gap-6">
         <div className="relative h-full   col-start-1 col-end-13 grid grid-cols-12 items-center   xl:col-end-7 xl:grid-cols-12 xl:items-end gap-5">
-          <div className=" col-start-1  col-end-7 xl:absolute bottom-0 left-0 hover:bottom-2  theme-transition-4 rounded-md overflow-hidden  xl:h-[70%]   xl:col-end-5 ">
+          <div className=" col-start-1 max-xl:h-[20vh]  col-end-7 xl:absolute bottom-0 left-0 hover:bottom-2  theme-transition-4 rounded-md overflow-hidden  xl:h-[70%]   xl:col-end-5 ">
             <Image
               src={imagepath1}
               width={416}
@@ -26,7 +26,7 @@ const AboutLocal = ({imagepath1,imagepath2, imagepath3 ,counterNumber,counterTex
               className=" w-full h-full object-cover object-center"
             />
           </div>
-          <div className="  hover:bottom-2  col-start-7 col-end-13  h-[85%]  xl:col-start-5 xl:col-end-9 rounded-md overflow-hidden">
+          <div className="  hover:bottom-2  col-start-7 col-end-13 max-xl:h-[25vh] xl:h-[85%]  xl:col-start-5 xl:col-end-9 rounded-md overflow-hidden">
             <Image
               src={imagepath2}
               width={330}
