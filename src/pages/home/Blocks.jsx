@@ -5,6 +5,7 @@ import SectionText from '@/components/shared/SectionText'
 import { title } from 'process'
 import { AsteriskSquare, icons, PersonStandingIcon } from 'lucide-react'
 import Counter from '@/components/shared/scroll-top/Counter'
+// import map from "@/../public/img/svg/map.svg"
 const Blocks = ({className}) => {
   const cards = [
     {
@@ -20,31 +21,34 @@ const Blocks = ({className}) => {
     <div className={cn(` container  `,className)} >
 
         <div className='flex  max-lg:flex-col   gap-10'>
-       {/* {cards.map((item,id)=>{
-        return( */}
-             <div className="Block-card1   " >
+     
+           
+          <div className='  Block-card1' >
+             <div className="logo h-10 mb-3    " ><i className="ri-recycle-line text-[2.5rem]"></i></div>
+            <div className='text-4xl font-semibold  ' ><Counter value={20}/>+Years</div>
+            <span className='h6 capitalize' >of Waste mangment experience</span>
 
-                  <div className='  text-[36px] font-semibold flex  items-center justify-center   ' > <Counter value={200}  />+ Years </div>
-              <h2 className='h6 text-white-1  capitalize  '  > of waste mangment experience </h2>
-
-          </div>
-             <div className="Block-card1     " >
-
-                  <div className=' text-[36px] font-semibold flex  items-center justify-center   ' > <Counter value={300} />+ Areas  </div>
-              <h2 className='h6 text-white-1  capitalize  '  >Serving Across London & Slough </h2>
 
           </div>
-             <div className="Block-card1  " >
+          <div className='  Block-card1' >
+                <div className="logo w-10 h-10   ">
+                  <img src='/img/svg/map.svg' alt="" />
+                  </div>  
+            <div className='text-4xl font-semibold  ' ><Counter value={300}/>+Area</div>
+            <span className='h6 capitalize' >Serving Across London & Slough</span>
 
-                  <div className='  text-[36px] font-semibold flex  items-center justify-center  ' > <Counter value={1000} />+  </div>
-              <h2 className='h6 text-white-1  capitalize  '  > happy clients </h2>
 
           </div>
-       {/* 
-        )
-       })}
-        */}
+          <div className='  Block-card1' >
+            <div className="logo h-10 mb-3  " ><i className="ri-team-line text-[2.5rem]"></i></div>
+            <div className='text-4xl font-semibold  ' ><Counter value={1000}/>+</div>
+            <span className='h6 capitalize' >Trusted by Many Happy Clients</span>
 
+
+          </div>
+       
+   
+        
         </div>
     </div>
   ) 

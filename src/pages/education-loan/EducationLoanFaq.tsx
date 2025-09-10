@@ -1,5 +1,5 @@
 "use client";
-import faq from "@/../public/img/innerimg/faq.avif";
+import faq from "@/../public/img/innerimg/faq.jpg";
 import Lines from "@/components/shared/Lines";
 import SectionSubTitle from "@/components/shared/SectionSubTitle";
 import Image from "next/image";
@@ -15,7 +15,7 @@ const EducationLoanFaq = () => {
         {" "}
         <div className=" grid grid-cols-12 items-center gap-6">
           <div className="col-start-1 col-end-13 lg:col-end-7">
-            <SectionSubTitle className="font-oswald"  text="FAQ" />
+            <SectionSubTitle className=""  text="FAQ" />
             <h3 className="h3 mt-5 font-medium">General Skip Hire</h3>
             <div className="smt32px flex flex-col gap-5">
               {faqData?.map(({ question, answer }, index) => (

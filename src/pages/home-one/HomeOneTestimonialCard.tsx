@@ -31,7 +31,7 @@ const HomeOneTestimonialCard = ({ image, text, name, title }: Props) => {
 const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
   return (
-    <div className="appear-down  w-full flex items-center bg-[#FBF2EB] p-4 flex-col gap-6 ">
+    <div className="appear-down    w-full flex items-center bg-[#FBF2EB] p-4 flex-col gap-6 ">
 
       <div className="relative shrink-0 "> 
       <span className={` ${randomColor}  border-4 border-white-1 rounded-full w-[60px] aspect-square flex items-center justify-center h4 font-semibold `} >{name?.charAt(0)}</span>

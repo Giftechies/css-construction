@@ -8,12 +8,11 @@ const Address = () => {
          <div className=" flex flex-col max-md:px-4  items-start justify-start   gap-2 " >
         <Link href={"email:#"} className="flex gap-5 " >
           <IconMail />
-          css@gamil.com
+          cssconstruction@gmail.com
         </Link>
         <Link href={"email:#"} className="flex gap-5  items-start  text-left " >
           <IconMapPin className=" max-md:w-10 w-8 " />
-          Valentin, Street Road 27, New sdfdsfsfsdfsd
-York. USA - 752252
+         Mr. John Smith 123 London Street ,Sampleton London, SW1A 1AA United Kingdom
         </Link>
       </div>
     </div>

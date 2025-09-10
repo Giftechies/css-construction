@@ -7,12 +7,13 @@ import {
   IconBrandYoutube,
 } from "@tabler/icons-react";
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 
-const Media = () => {
+const Media = ({className}) => {
   return (
     <div>
-         <div className=" border-dashed border-t pt-4 border-white-1/30 flex items-center justify-center gap-3">
+         <div className={cn(" pt-4 border-white-1/30 flex items-start justify-start gap-3",className)}>
         <Link
           href={`/`}
           className="theme-transition-3 rounded-xl bg-primary p-2 hover:bg-white-1 hover:text-primary"

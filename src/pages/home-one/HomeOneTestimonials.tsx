@@ -51,13 +51,13 @@ const HomeOneTestimonials = () => {
        <div className="bg-black-4/60 absolute inset-0 "></div>
      
       <div className="container relative flex items-center justify-center ">
-      <div className=" space-y-6 w-[55%] spy40px spx40px  flex flex-col items-center justify-center bg-white-4 rounded-3xl " >
+      <div className=" space-y-6  w-[90%] mx-auto lg:w-[55%] spy40px spx40px  flex flex-col items-center justify-center bg-white-4 rounded-3xl " >
         <div className="flex flex-col items-center text-center  gap-2 " >
           <SectionSubTitle text="Testimonial " className=" " />
         <SectionTitle text="What Our Clients Say" className=" text-black-2" />
         <p className=" text-black-3 " >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos voluptate animi nostrum fugit accusamus ipsam ea iure vitae, voluptatum ab?</p>
       </div>
-        <div className="spt60px   w-[90%] flex items-center justify-center  ">
+        <div className="   w-[90%] flex items-center justify-center  ">
           <Swiper
             // slidesPerView={1}
             spaceBetween={30}

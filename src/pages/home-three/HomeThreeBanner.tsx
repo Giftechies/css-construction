@@ -1,23 +1,20 @@
-import bannerImage from "@/../public/images/home-three/banner-three-image.png";
-import SectionSubTitle from "@/components/shared/SectionSubTitle";
-import Image from "next/image";
+
 import HomeThreeBannerLink from "./HomeThreeBannerLink";
-import HomeThreeBannerSideElement from "./HomeThreeBannerSideElement";
+import ButtonHallow from "./ButtonHallow"
 import DeskTopNavbarTwo from "@/components/navbar/DeskTopNavbarTwo";
 import Blocks from "@/pages/home/Blocks";
-import { oswald } from "@/utils/fonts";
-import MobileNavbar from "@/components/navbar/MobileNavbar"
+import Mobilenav from "@/components/navbar/Mobilenav"
 import { IconEdit, IconArrowUpRight,IconPhone } from "@tabler/icons-react";
 
 const HomeThreeBanner = () => {
   return (
-    <section className="fade-wrapper homebanner relative w-full h-[100vh] flex flex-col items-center justify-center  before:absolute before:inset-0 before:-z-40 before:bg-black-4/60  mb-[130vh] md:mb-[80vh] lg:mb-25 ">
+    <section className="fade-wrapper homebanner relative w-full h-[70vh] lg:h-[100vh] flex flex-col items-center justify-center  before:absolute before:inset-0 before:-z-40 before:bg-black-4/60   mb-[70vh] sm:mb-[80vh] md:mb-[90vh] lg:mb-25 ">
       <div className="img absolute inset-0 w-full h-full -z-50">
         <img src="/img/innerimg/skip-hire.jpg" className="size-full object-cover object-center "  alt="" />
       </div>
       <DeskTopNavbarTwo className=" z-80 absolute -top-3 z-80 left-0   text-white-1 s-text font-oswald  font-medium tracking-wider  " />
-      <MobileNavbar  className=" z-80 absolute -top-0 left-0 "   />
-      <Blocks className='absolute   -bottom-[130vh] md:-bottom-[100vh]  lg:-bottom-20 left-[50%] -translate-x-[50%] ' />
+      <Mobilenav className={''}  />
+      <Blocks className='absolute   -bottom-[30rem] md:-bottom-[35rem]  lg:-bottom-20 left-[50%] -translate-x-[50%] ' />
       <div className="container relative  max-lg:py-20 text-white-1 sm:pt-30   ">
          
         <div className="grid grid-cols-12  w-full lg:w-[60%]  ">
@@ -29,8 +26,8 @@ const HomeThreeBanner = () => {
             <p className=" mt-4  tracking-wider " >London’s trusted experts in affordable skip hire services</p>
             
             <div className="smt40px  max-xs:flex-wrap fade-top flex gap-5 items-start ">
-             <HomeThreeBannerLink href="/pick-details" className=" w-fit   rounded-full text-white-1    hover:bg-transparent hover:text-white-1  hover:border-white-1  capitalize  " >   Get Instant Quote  <IconEdit className=" size-5 theme-transition-3  group-hover:rotate-45" />{" "} </HomeThreeBannerLink>
-             <HomeThreeBannerLink href="/pick-details" className=" w-fit   rounded-full text-white  border-white  bg-transparent hover:border-primary hover:text-primary  " > Our Services <IconArrowUpRight/> </HomeThreeBannerLink>
+             <HomeThreeBannerLink href="/pick-details" className="  " >   Get Instant Quote  <IconEdit className=" size-5 theme-transition-3  group-hover:rotate-45" />{" "} </HomeThreeBannerLink>
+             <ButtonHallow href="/pick-details" className=" max-lg:px-10  " > Our Services <IconArrowUpRight/> </ButtonHallow>
               {/* <HomeThreeBannerLink href="/pick-details" className=" border-[var(--primary)] text-[var(--primary)] hover:bg-prim hover:text-white-1 " >Get Instant Quote</HomeThreeBannerLink> */}
             </div>
           </div>

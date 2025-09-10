@@ -113,7 +113,7 @@ p{
     @apply flex items-center justify-center
   }
   .Block-card1 {
-    @apply  font-oswald  lg:w-[30%] py-10 flex flex-col items-center justify-center bg-primary text-white-1 
+    @apply  py-8 pb-9  w-[95%] mx-auto lg:w-[30%] flex flex-col   justify-center items-center bg-primary text-white-4 
   }
 
   /*================ typography classes start ================ */

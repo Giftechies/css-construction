@@ -16,8 +16,8 @@ const AboutLocal = ({imagepath1,imagepath2,counterNumber,counterText,title,text1
       id="scrollPosition"
     >
       <div className="container  grid grid-cols-12 items-center gap-6">
-        <div className="relative h-full   col-start-1 col-end-13 grid grid-cols-1 items-center  md:grid-cols-2 xl:col-end-7 xl:grid-cols-12 xl:items-end gap-5">
-          <div className="  absolute bottom-0 left-0 hover:bottom-2  theme-transition-4 rounded-md overflow-hidden  h-[70%] xl:col-start-1  xl:col-end-5 ">
+        <div className="relative h-full   col-start-1 col-end-13 grid grid-cols-12 items-center   xl:col-end-7 xl:grid-cols-12 xl:items-end gap-5">
+          <div className=" col-start-1  col-end-7 xl:absolute bottom-0 left-0 hover:bottom-2  theme-transition-4 rounded-md overflow-hidden  xl:h-[70%]   xl:col-end-5 ">
             <Image
               src={imagepath1}
               width={416}
@@ -26,7 +26,7 @@ const AboutLocal = ({imagepath1,imagepath2,counterNumber,counterText,title,text1
               className=" w-full h-full object-cover object-center"
             />
           </div>
-          <div className="  hover:bottom-2 h-[85%]  xl:col-start-5 xl:col-end-9 rounded-md overflow-hidden">
+          <div className="  hover:bottom-2  col-start-7 col-end-13  h-[85%]  xl:col-start-5 xl:col-end-9 rounded-md overflow-hidden">
             <Image
               src={imagepath2}
               width={330}
@@ -36,7 +36,7 @@ const AboutLocal = ({imagepath1,imagepath2,counterNumber,counterText,title,text1
             />
            
           </div>
-          <div className="  absolute bottom-0 right-0 hover:bottom-2  h-[95%] xl:col-start-9 xl:col-end-13 theme-transition-4 rounded-md overflow-hidden ">
+          <div className=" hidden xl:block absolute bottom-0 right-0 hover:bottom-2  h-[95%] xl:col-start-9 xl:col-end-13 theme-transition-4 rounded-md overflow-hidden ">
             <Image
               src={imagepath2}
               width={330}
@@ -48,7 +48,7 @@ const AboutLocal = ({imagepath1,imagepath2,counterNumber,counterText,title,text1
           </div>
         </div>
         <div className="col-start-1 col-end-13 xl:col-start-8">
-          <SectionSubTitle text={title? title: "Who we are"} className="fade-top" />
+          <SectionSubTitle text={title? title: "Who we are"} className="" />
           <SectionTitle
             text={subheading?subheading:"Our Mission & Vision"}
             className="h1 text-black-2 pt-3"

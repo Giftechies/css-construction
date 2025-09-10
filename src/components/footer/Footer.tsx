@@ -94,16 +94,16 @@ const footer =[
 
 const Footer = () => {
   return (
-    <section className='footer bg-black-4 text-white-4 py-24   ' >
+    <section className='footer bg-black-4 text-white-4 py-10 xl:py-24   ' >
       <div className="container     ">
-      <main className='flex gap-4' >
-        <div className="links  grid grid-cols-[150px_150px_200px_250px] gap-12  ">
+      <main className=' max-xl:flex-col-reverse  flex gap-4' >
+        <div className="links flex max-xl:mb-4  justify-between flex-auto  flex-wrap xl:grid xl:grid-cols-[150px_150px_200px_250px] gap-12  ">
          {footer.map((item,id)=>{
         return(
              <div key={id} className='' >
 
             <ul className=' space-y-5 ' >
-              <span className=' h5 font-semibold' >{item.title}</span>
+              <span className=' h5 font-semibold text-primary hover:text-primary/70 ' >{item.title}</span>
             {item.li.map((el,id)=>{
               return(
                   <li key={id}  className=' text-[14px] hover:text-primary ' ><Link href={el.path}>{el.sublinks}</Link></li>

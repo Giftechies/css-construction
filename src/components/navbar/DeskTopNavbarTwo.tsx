@@ -14,6 +14,7 @@ import { usePathname } from "next/navigation";
 // import { navbarData } from "../../../public/data/navbarData";
 import { navbar, navbar2 } from "../../../public/data/navbar";
 import { PhoneCallIcon } from "lucide-react";
+import HomeThreeBannerLink from "@/pages/home-three/HomeThreeBannerLink";
 
 const DeskTopNavbarTwo = ({ className }: { className?: string }) => {
   const pathName = usePathname();
@@ -155,15 +156,9 @@ const DeskTopNavbarTwo = ({ className }: { className?: string }) => {
             <PhoneCallIcon className=" text-primary mr-2 " />
             <span>123456789</span>
           </Link> */}
-            <Link
-              href={`/pick-details`}
-              className={cn(
-                "   spx24px group theme-transition-3 rounded-full flex gap-3  p-2 text-white-1 bg-primary ",
-              )}
-            >
-              {/* <IconEdit className="theme-transition-3   group-hover:rotate-45" />{" "} */}
-              <span className=" capitalize " >  Order online </span>
-            </Link>
+          
+
+            <HomeThreeBannerLink href="/#" >Order Online</HomeThreeBannerLink>
           </div>
         </div>
       </div>

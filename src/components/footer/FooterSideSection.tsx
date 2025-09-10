@@ -11,12 +11,10 @@ import Media from "@/components/footer/Media"
 
 const FooterSideSection = () => {
   return (
-    <div className="  flex flex-col  gap-4 bg-black-4 px-10 text-center max-xxl:justify-between max-xxl:py-6  lg:max-xxl:flex-row xxl:w-[508px] max-md:items-center  xxl:pb-8">
-      <Image src={"/img/logo/nav-logo.svg"} width={250} height={250} className=" w-30 "  alt="logo" />
-      
+    <div className="  flex flex-col  gap-4 bg-black-4  text-center max-xxl:justify-between   lg:max-xxl:flex-row xxl:w-[508px]   xxl:pb-8">
       <Talk/>
      <Address/>
-     <Media/>
+     <Media className={' capitalize'} />
     </div>
   );
 };

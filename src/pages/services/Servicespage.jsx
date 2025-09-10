@@ -4,6 +4,7 @@ import React from "react";
 import HomeThreeBannerLink from "../home-three/HomeThreeBannerLink";
 import Link from "next/link";
 import { IconArrowForward, IconArrowRight } from "@tabler/icons-react";
+import SectionSubTitle from "@/components/shared/SectionSubTitle";
 // import { link } from 'fs'
 
 const Servicespage = () => {
@@ -15,12 +16,13 @@ const Servicespage = () => {
   ];
 
   return (
-    <div className=" bg-primary/15 py-25 ">
+    <div className=" bg-primary/15 py-10 xl:py-25 ">
       <div className="container  gap-4 ">
         <div className="text mb-8 flex flex-col items-center justify-center gap-4 px-10">
-          <p className=" text-[17px] font-[700] tracking-wider leading-[20px] text-primary  ">
+          {/* <p className=" text-[17px] font-[700] tracking-wider leading-[20px] text-primary  ">
             Our Services
-          </p>
+          </p> */}
+          <SectionSubTitle className=" font-[700] tracking-wider leading-[20px] text-primary  " text="Our Services"/>
           <h2 className=" h2 text-center text-black-2 font-oswald  font-[700] ">
             Skip Hire Services You Can Rely On
           </h2>
