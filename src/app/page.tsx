@@ -27,7 +27,7 @@ export default function Home() {
     <div>
       <HomeThreeBanner />
       <AboutLocal
-        imagepath1={"/img/innerimg/localimg.png"}
+        imagepath1={"/img/innerimg/project6.webp"}
         imagepath2={
           "/img/innerimg/project2.avif"
         }
