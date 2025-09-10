@@ -16,12 +16,9 @@ const Project = () => {
   ]
 
   return (
-    <div className=" bg-white-1/40 p-10 xl:py-25  ">
+    <div className=" bg-white-1/40 py-10 xl:py-25  ">
       <div className="container  gap-4 ">
         <div className="text mb-8 flex flex-col items-center justify-center gap-4 px-10">
-          {/* <p className=" text-[17px] font-[700] leading-[20px] tracking-tight text-primary  ">
-            Recents Projects
-          </p> */}
           <SectionSubTitle text="  Recents Projects"/>
                     <h2 className=" h2 text-center font-[700] ">
             What we Have Done
