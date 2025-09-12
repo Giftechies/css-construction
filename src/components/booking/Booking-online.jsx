@@ -47,7 +47,7 @@ const methods = useForm({ defaultValues });
   };
 
   const prevStep = () => {
-    if (currentStep > 0) {
+    if (currentStep > 0) {  
       setCurrentStep((s) => s - 1);
     }
   };
