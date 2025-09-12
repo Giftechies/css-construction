@@ -5,7 +5,7 @@ import { IconPhoneCall } from "@tabler/icons-react";
 import React from "react";
 import { useFormContext, Controller } from "react-hook-form";
 
-export const PostDetails = () => {
+export default function PostDetails  () {
   const { register, control,watch } = useFormContext();
   const selected = watch('permitOnHighway')
   const selectedPostcode = watch("postcodeArea");

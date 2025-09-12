@@ -21,7 +21,7 @@ export const Skipcard = () => {
 const totalprice = baseprice * tones
 
   return (
-     <div className= ' w-[18rem]  min-h-[25rem] border-2 bg-white-1  rounded-xl   p-6 group hover:bg-primary ' >
+     <div className= ' w-[18rem]  min-h-[25rem] border-2 bg-white-1  rounded-xl   p-6  ' >
         <div className="img  size-32 mx-auto ">
             <img src="/img/innerimg/lorry.png" alt=""  className=' size-full  object-cover object-center ' />
         </div>
@@ -40,7 +40,7 @@ const totalprice = baseprice * tones
         <button onClick={AddTones}  className='border size-fit rounded bg-gray-100  hover:bg-gray-200  group-hover:text-primary  '  > <IconPlus  className=' h-4 ' /> </button>
        </div>
 
-       <div className=' bg-primary/20 px-4 py-2 rounded-full h5 group-hover:text-white-1 '>
+       <div className=' bg-primary/20 px-4 py-2 rounded-full h6 group-hover:text-white-1 '>
         <span>£</span>
         <span>{totalprice}</span>
         <span>(+ VAT)</span>
