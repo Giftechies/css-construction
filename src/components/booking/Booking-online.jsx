@@ -8,6 +8,7 @@ import Cart from "@/components/booking/steps/Cart"
 import PostDetails from "@/components/booking/steps/PostDetails"
 import Skip from "@/components/booking/steps/Skip"
 import   ProgressBar      from "./ProgressBar"
+import InnerBanner from "@/components/ui/InnerBanner"
 
 
 const BoonkingOnline = () => {
@@ -63,16 +64,17 @@ const onSubmit = (data) => {
   };
   return (
     <>
+    
   <FormProvider {...methods}>
       <form
         onSubmit={methods.handleSubmit(onSubmit)}
-        className="container m-8 p-4 shadow-md rounded-lg"
+        className="container m-8 flex flex-col gap-4 p-4 shadow-md rounded-lg"
       >
         {/* Progress bar */}
         <ProgressBar currentStep={currentStep} steps={steps} />
 
         {/* Render current step */}
-        <div className="mt-6 w-[70%] mx-auto ">{steps[currentStep].component}</div>
+        <div className="mt-8 w-[70%] mx-auto ">{steps[currentStep].component}</div>
 
         {/* Navigation buttons */}
         <div className="flex  gap-4 justify-center  mt-10">
@@ -105,7 +107,7 @@ const onSubmit = (data) => {
         </div>
       </form>
     </FormProvider>
-    </>
+    </>   
   )
 }
 

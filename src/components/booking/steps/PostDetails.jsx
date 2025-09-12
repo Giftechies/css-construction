@@ -16,7 +16,7 @@ export default function PostDetails  () {
     <div className=" space-y-8 ">
       <SectionInnerTitle
         text="Step 2: Please Indicate your skip requirements below"
-        className="text-center"
+        className="text-center h4"
       />
 
       <div className=" flex justify-between gap-8 ">
@@ -55,16 +55,16 @@ export default function PostDetails  () {
       </div>
 
       <div className="relative min-h-32  w-full rounded-lg border-2 border-primary px-10 py-10  ">
-        <span className="  absolute -top-[1.3rem] left-4 rounded-full bg-primary px-4 py-2 font-semibold text-white-1 ">
+        <span className="  absolute -top-[1.3rem] left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-2 font-semibold text-white-1 ">
           Permit check
         </span>
         {/* <SectionInnerTitle text="" /> */}
-        <span className=" h3 mb-8 block font-semibold ">
+        <span className=" h5 mb-8 block font-semibold text-center ">
           Will the skip be placed on a public highway?
         </span>
-        <div className="space-x-4">
+        <div className="space-x-4 flex items-center justify-center ">
          
-          <label className={cn(" h5 rounded-full border-2 border-primary  px-4  py-2 font-semibold  ",{"bg-primary/10 text-primary":selected==="Yes"})}>
+          <label className={cn(" h6 rounded-full border-2 border-primary  px-6  py-2 font-semibold  ",{"bg-primary/10 text-primary":selected==="Yes"})}>
             <input
               type="radio"
               value="Yes"
@@ -76,7 +76,7 @@ export default function PostDetails  () {
             />
             Yes
           </label>
-           <label className={cn(" h5 rounded-full border-2 border-primary  px-4  py-2 font-semibold  ",{  "bg-primary/10 text-primary" : selected==='No'})}>
+           <label className={cn(" h6 rounded-full border-2 border-primary  px-6  py-2 font-semibold  ",{  "bg-primary/10 text-primary" : selected==='No'})}>
             <input
               type="radio"
               value="No"
@@ -105,6 +105,7 @@ export default function PostDetails  () {
           className="w-full rounded border px-3 py-2"
         >
           <option value="">-- Select Job Type --</option>
+          <option value="skip-delivery">Skip Delivery</option>
           <option value="roll-on-roll-off">Roll on Roll off</option>
           <option value="collection">Skip Collection</option>
           <option value="exchange">Skip Exchange</option>

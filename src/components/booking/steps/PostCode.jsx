@@ -53,8 +53,8 @@ export default function PostCode() {
 
   return (
     <div>
-    <div className=""  > 
-         <SectionInnerTitle text="Step 1: Select the postcode area where your skip will be delivered."  />
+    <div className=" "  > 
+         <SectionInnerTitle className=" h5 text-center " text="Step 1: Select the postcode area where your skip will be delivered."  />
          
     </div>
 
