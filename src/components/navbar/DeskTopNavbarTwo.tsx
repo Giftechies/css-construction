@@ -158,7 +158,7 @@ const DeskTopNavbarTwo = ({ className }: { className?: string }) => {
           </Link> */}
           
 
-            <HomeThreeBannerLink href="/#" >Order Online</HomeThreeBannerLink>
+            <HomeThreeBannerLink href="/booking-skip-online" >Order Online</HomeThreeBannerLink>
           </div>
         </div>
       </div>
