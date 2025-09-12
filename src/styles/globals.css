@@ -99,6 +99,7 @@ p{
 }
 
 
+
 @layer utilities {
   .container {
     @apply mx-auto max-w-[540px] max-sm:px-4 md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px] xxl:max-w-[1296px];
@@ -118,6 +119,10 @@ p{
 
   .Block-counter{
     @apply text-2xl font-semibold flex items-center justify-center
+  }
+
+  .postcode,.date{
+    @apply w-full border border-primary rounded-full  px-3 py-2
   }
 
   /*================ typography classes start ================ */

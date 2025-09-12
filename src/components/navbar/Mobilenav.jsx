@@ -68,18 +68,19 @@ const Mobilenav = ({className}) => {
       </div>
 
       {/* Sidebar */}
-      {sideopen && (
+      
         <div
        
-          className={cn(
-            "absolute z-50 inset-0 w-full -translate-x-full h-screen bg-black-4/70 opacity-0  transition-all duration-500 ease-linear ",
-            { "translate-x-0 duration-500 opacity-100": sideopen }
-          )}
+      className={cn(
+    "fixed top-0 left-0 h-screen  bg-black z-50 transform transition-transform duration-500 ease-in-out",
+    { "-translate-x-full w-0 ": !sideopen, "translate-x-0 w-full ": sideopen }
+  )}
+
         >
           <div
             className={cn(
-              "w-0 opacity-0 h-screen p-6 bg-black-4 transition-all",
-              { "w-[70%] opacity-100": sideopen }
+              "w-0 invisible h-screen p-6 bg-black-4 transition-all",
+              { "w-[70%] visible": sideopen }
             )}
           >
             {/* Header */}
@@ -130,7 +131,7 @@ const Mobilenav = ({className}) => {
           </div>
 
         </div>
-      )}
+    
     </section>
   )
 }
