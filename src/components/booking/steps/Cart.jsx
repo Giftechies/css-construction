@@ -31,7 +31,7 @@ export default function Cart() {
       <div className="shadow max-w-[30rem] mx-auto mt-8 flex flex-col gap-4 p-6">
         {/* Job Type Row */}
         <div className="flex justify-between gap-8">
-          <div className="logo size-[5rem] shrink-0 border rounded-full overflow-hidden">
+          <div className="logo size-[5rem] shrink-0  border rounded-full overflow-hidden">
             <Image
               height={100}
               width={100}
