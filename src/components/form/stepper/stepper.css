@@ -1,0 +1,13 @@
+body{
+    transform: .5s ease;
+}
+.active{
+    background:var(--primary);
+    color: white;
+}
+
+.completed{
+    background: green;
+    color: white;
+    
+}
