@@ -1,6 +1,5 @@
 "use client";
 import "@/../node_modules/react-modal-video/scss/modal-video.scss";
-import ScrollProgressButton from "@/components/shared/scroll-top/ScrollProgressButton";
 import "@/styles/globals.css";
 
 
@@ -32,13 +31,11 @@ export default function RootLayout({
   root 
   options={{ smooth: true, smoothTouch: true, duration: 2.5 }}
 >
-  <Provider store={store}>
     <main>
       <div className="relative">{children}</div>
-      <Footer />
-      <ScrollProgressButton />
+    
     </main>
-  </Provider>
+
 </ReactLenis>
       </body>
     </html>
