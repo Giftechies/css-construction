@@ -1,4 +1,4 @@
-import Home from "@/app/page";
+import Home from "@/app/(inner-pages)/page";
 import SectionText from "@/components/shared/SectionText";
 import React from "react";
 import HomeThreeBannerLink from "../home-three/HomeThreeBannerLink";

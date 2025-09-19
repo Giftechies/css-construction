@@ -1,5 +1,7 @@
 import Footer from "@/components/footer/Footer";
 import NavbarContainerThree from "@/components/navbar/NavbarContainerThree";
+import ScrollProgressButton from "@/components/shared/scroll-top/ScrollProgressButton";
+
 
 export default function RootLayout({
   children,
@@ -10,6 +12,9 @@ export default function RootLayout({
     <div className="relative">
       {/* <NavbarContainerThree /> */}
       {children}
+        <Footer />
+            <ScrollProgressButton />
+      
       {/* <Footer /> */}
     </div>
   );
