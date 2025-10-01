@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import Rates from "./rates";
 
 const sizeSchema = new Schema({
   size: {
@@ -12,6 +13,20 @@ const sizeSchema = new Schema({
     required: true,
   },
 });
+
+sizeSchema.pre("findOneAndDelete", async function(next){
+ try {
+   const sizeid = this.getQuery()._id;
+if(sizeid){
+    await Rates.deleteMany({sizeId:sizeid});
+}
+  next();
+  
+ } catch (error) {
+  next(error)
+  
+ }
+})
 
 const Size = mongoose.models.Size || mongoose.model("Size", sizeSchema);
 

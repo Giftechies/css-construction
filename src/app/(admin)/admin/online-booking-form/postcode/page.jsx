@@ -96,10 +96,13 @@ export default function PostcodePage() {
     const formData = new FormData();
     formData.append("file", file);
 
-    await fetch("/api/form/postcode/bulk", {
+    const data=  await fetch("/api/form/postcode/bulk", {
       method: "POST",
       body: formData,
     });
+    const res = await data.json()
+     console.log("bulk>>>>>",res);
+     setisopen(false)
 
     fetchPostcodes();
   };
