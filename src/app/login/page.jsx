@@ -12,37 +12,31 @@ export default function LoginForm() {
   const [password, setPassword] = useState("");
 const router = useRouter();
 
-  // const handleForm = async  (e) => {
-  //   e.preventDefault();
-  //   console.log(e);
-  //   const form = e.target
-  //   const formData = new FormData(form)
-  //   console.log("formdata>>>",formData);
-
-  //   const data = object.formEnteries(formData.entries())
-  //   console.log("formdataentries>>>>>",data);
-    
-    
-  //   // console.log({ username, password });
-  //   // const data = await loginuser({username,password})
-  //   // if(data){
-  //   //     console.log(data);
-        
-  //   // }
-  //   // console.log("login data",data);
-  //   // router.push("/admin")
-    
-  // };
-
-
-const handleForm = (e)=>{
+const handleForm = async (e) => {
   e.preventDefault();
-   const form = e.target;
-   const formData = new FormData(form);
-   const data = Object.fromEntries(formData.entries())
-   console.log(data,"dsfsdfsdfsdfsdfsd");
-   
-}
+
+  console.log({ username, password });
+
+  try {
+    const data = await loginuser({ username, password });
+
+    // If loginuser returns data even on failure
+    if (data?.success) {
+      console.log("Login successful:", data);
+      router.push("/admin");
+    } else {
+      console.error("Login failed:", data?.message || "Unknown error");
+      alert(data?.message || "Login failed"); // show message to user
+    }
+  } catch (err) {
+    // Catch errors thrown inside loginuser
+    console.error("Error during login:", err.message);
+    alert(err.message); // show error to user
+  }
+};
+
+
+
 
   return (
     <div className="relative grid h-screen">
@@ -70,8 +64,8 @@ const handleForm = (e)=>{
             name="username"
             id="username"
             placeholder="Username"
-            // value={username}
-            // onChange={(e) => setUsername(e.target.value)}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             className="w-full p-2 rounded-md bg-transparent border"
           />
           <input
@@ -79,13 +73,10 @@ const handleForm = (e)=>{
             name="password"
             id="password"
             placeholder="Password"
-            // value={password}
-            // onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="w-full p-2 rounded-md bg-transparent border"
           />
-
-          <input type="textarea" name="dsa" id="arer" />
-          <input type="file" name="file" id="" />
           <Button type="submit">Login</Button>
         </form>
       </div>
