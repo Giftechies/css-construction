@@ -1,18 +1,20 @@
+"use client"
 import Sidebar from "@/components/admin/Sidebar"
 import { Button } from "@/components/ui/button";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
- DialogOverlay
-} from "@/components/ui/dialog"
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
 import { MenuIcon } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function RootLayout({ children }) {
+  const [isMenuOpen,setIsMenuOpen] = useState(false)
   return (
     <div className="min-h-screen flex">
       {/* Sidebar (fixed/sticky) */}
@@ -22,18 +24,20 @@ export default function RootLayout({ children }) {
       <div className=" flex-1 flex flex-col lg:ml-80  ">
         {/* Header */}
         <header className="shadow-md sticky top-0 right-0 bg-white-1 w-full  z-50 bg-white h-16 flex items-center  justify-between lg:justify-end px-8 ">
-       <Dialog>
-  <DialogTrigger asChild>
-    <Button variant="outline" className="lg:hidden">
+          
+  <Sheet>
+  <SheetTrigger >
+      <Button variant="outline" className="lg:hidden">
       <MenuIcon />
     </Button>
-  </DialogTrigger>
-  <DialogOverlay className="fixed inset-0 bg-black/50" />
-  <DialogContent  className=" w-80 h-screen bg-white-1">
-    <Sidebar className=" " />
-    <div>dlksfj</div>
-  </DialogContent>
-</Dialog>
+
+  </SheetTrigger>
+  <SheetContent side="left" >
+   
+   
+    <Sidebar  />
+  </SheetContent>
+</Sheet>
 
 
           <div className="flex justify-between items-center space-x-6">
