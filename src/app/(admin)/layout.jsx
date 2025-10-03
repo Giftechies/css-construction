@@ -1,5 +1,5 @@
-"use client"
-import Sidebar from "@/components/admin/Sidebar"
+"use client";
+import Sidebar from "@/components/admin/Sidebar";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -8,67 +8,67 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet"
+} from "@/components/ui/sheet";
 import { ChartArea, MenuIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import {MenuItem} from "@/components/ui/Menuitem"
+import { MenuItem } from "@/components/ui/Menuitem";
 import { useRouter } from "next/navigation";
 
-
 export default function RootLayout({ children }) {
-  const [isMenuOpen,setIsMenuOpen] = useState(false)
-  const navigate = useRouter()
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useRouter();
+  const Openhandling = ()=>{
+    setIsMenuOpen(!isMenuOpen)
+    console.log("clicking");
+    
+  }
   return (
-    <div className="min-h-screen flex">
+    <div className="flex min-h-screen">
       {/* Sidebar (fixed/sticky) */}
-        <Sidebar className='fixed top-0 w-80 left-0  z-50  h-screen  hidden lg:block shadow-lg '  />
+      <Sidebar className="fixed left-0 top-0 z-50  hidden  h-screen  w-80 shadow-lg lg:block " />
 
       {/* Main Content Area */}
-      <div className=" flex-1 flex flex-col lg:ml-80  ">
+      <div className=" flex flex-1 flex-col lg:ml-80  ">
         {/* Header */}
-        <header className="shadow-md sticky top-0 right-0 bg-white-1 w-full  z-50 bg-white h-16 flex items-center  justify-between lg:justify-end px-8 ">
-          
-  <Sheet>
-  <SheetTrigger >
-      <Button variant="outline" className="lg:hidden">
-      <MenuIcon />
-    </Button>
+        <header className="bg-white sticky right-0 top-0 z-50 flex  h-16 w-full items-center justify-between bg-white-1  px-8 shadow-md lg:justify-end ">
 
-  </SheetTrigger>
-  <SheetContent side="left" className=" bg-black-4 text-white-1 " >
-    <SheetHeader>
-      <SheetTitle>   <h3
-              onClick={() => navigate.push("/admin")}
-              className="h4 cursor-pointer font-semibold text-white-1 flex gap-2"
-            >
-              <ChartArea /> Admin Panel
-            </h3></SheetTitle>
-      {/* <SheetDescription>
-        This action cannot be undone. This will permanently delete your account
-        and remove your data from our servers.
-      </SheetDescription> */}  
+             <Button variant="outline" onClick={Openhandling} className="lg:hidden">
+                <MenuIcon   />
+              </Button>
+          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}  >
+            <SheetTrigger>
+           
+            </SheetTrigger>
+            <SheetContent side="left" className=" bg-black-4 text-white-1 ">
+              <SheetHeader>
+                <SheetTitle>
+                  {" "}
+                  <h3
+                    onClick={() => navigate.push("/admin")}
+                    className="h4 flex cursor-pointer gap-2 font-semibold text-white-1"
+                  >
+                    <ChartArea /> Admin Panel
+                  </h3>
+                </SheetTitle>
+              </SheetHeader>
 
-    
-    </SheetHeader>
-    {/* <Sidebar  /> */}
-    <div>
-      <MenuItem/>
-    </div>
-  </SheetContent>
-</Sheet>
+              <div>
+                <MenuItem />
+              </div>
+            </SheetContent>
+          </Sheet>
 
-
-          <div className="flex justify-between items-center space-x-6">
+          <div className="flex items-center justify-between space-x-6">
             <Link
               href="/"
               target="_blank"
-              className="bg-black-4 text-[13px] text-white-1 px-3 py-2 rounded"
+              className="rounded bg-black-4 px-3 py-2 text-[13px] text-white-1"
             >
               Go To Frontend
             </Link>
 
-            <button className="text-gray-600 hover:text-[#154583] relative">
+            <button className="relative text-gray-600 hover:text-[#154583]">
               <svg
                 className="h-6 w-6"
                 fill="none"
@@ -82,15 +82,17 @@ export default function RootLayout({ children }) {
                   d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
                 />
               </svg>
-              <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+              <span className="absolute right-0 top-0 h-2 w-2 rounded-full bg-red-500"></span>
             </button>
 
             <div className="flex items-center space-x-3">
-              <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-600 font-medium">MS</span>
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-200">
+                <span className="font-medium text-gray-600">MS</span>
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-700">Mandeep Singh</p>
+                <p className="text-sm font-medium text-gray-700">
+                  Mandeep Singh
+                </p>
                 <p className="text-xs text-gray-500">Administrator</p>
               </div>
             </div>
@@ -98,9 +100,7 @@ export default function RootLayout({ children }) {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 w-full  ">
-          {children}
-        </main>
+        <main className="w-full flex-1  ">{children}</main>
       </div>
     </div>
   );
