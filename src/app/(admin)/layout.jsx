@@ -9,12 +9,15 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { MenuIcon } from "lucide-react";
+import { ChartArea, MenuIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import {MenuItem} from "@/components/ui/Menuitem"
+import { useRouter } from "next/router";
 
 export default function RootLayout({ children }) {
   const [isMenuOpen,setIsMenuOpen] = useState(false)
+  const navigate = useRouter();
   return (
     <div className="min-h-screen flex">
       {/* Sidebar (fixed/sticky) */}
@@ -32,10 +35,25 @@ export default function RootLayout({ children }) {
     </Button>
 
   </SheetTrigger>
-  <SheetContent side="left" >
-   
-   
-    <Sidebar  />
+  <SheetContent side="left" className=" bg-black-4 text-white-1 " >
+    <SheetHeader>
+      {/* <SheetTitle>Are you absolutely sure?</SheetTitle>
+      <SheetDescription>
+        This action cannot be undone. This will permanently delete your account
+        and remove your data from our servers.
+      </SheetDescription> */}
+
+       <h3
+              onClick={() => navigate.push("/admin")}
+              className="h4 cursor-pointer font-semibold flex gap-2"
+            >
+              <ChartArea /> Admin Panel
+            </h3>
+    </SheetHeader>
+    {/* <Sidebar  /> */}
+    <div>
+      <MenuItem/>
+    </div>
   </SheetContent>
 </Sheet>
 
