@@ -42,22 +42,54 @@ export async function POST(req) {
 
     const existingPostcodes = existing.map((e) => e.postcode);
 
-    // 6️⃣ Separate new and duplicate postcodes
-    const newDocs = docs.filter((d) => !existingPostcodes.includes(d.postcode));
-    const skippedDocs = docs.filter((d) => existingPostcodes.includes(d.postcode));
+    // 6️⃣ Prepare result arrays
+    const report = [];
 
-    // 7️⃣ Insert only new postcodes
-    let insertedDocs = [];
-    if (newDocs.length > 0) {
-      insertedDocs = await Postcode.insertMany(newDocs, { ordered: false });
+    // 7️⃣ Loop through docs
+    for (const d of docs) {
+      if (!d.postcode || d.postcode.toString().trim() === "") {
+        report.push({
+          postcode: d.postcode || null,
+          status: "failed",
+          reason: "Invalid postcode (empty or missing)",
+        });
+        continue;
+      }
+
+      if (existingPostcodes.includes(d.postcode)) {
+        report.push({
+          postcode: d.postcode,
+          status: "skipped",
+          reason: "Duplicate - already exists in database",
+        });
+        continue;
+      }
+
+      // If valid and not duplicate → insert
+      try {
+        await Postcode.create(d);
+        report.push({
+          postcode: d.postcode,
+          status: "inserted",
+          reason: "Successfully added",
+        });
+      } catch (err) {
+        report.push({
+          postcode: d.postcode,
+          status: "failed",
+          reason: "DB insert error",
+        });
+      }
     }
 
-    // 8️⃣ Return report
+    // 8️⃣ Final response
     return NextResponse.json({
       success: true,
       total: docs.length,
-      inserted: insertedDocs.length,
-      skipped: skippedDocs.map((d) => d.postcode),
+      inserted: report.filter((r) => r.status === "inserted").length,
+      skipped: report.filter((r) => r.status === "skipped").length,
+      failed: report.filter((r) => r.status === "failed").length,
+      details: report,
     });
   } catch (err) {
     console.error(err);

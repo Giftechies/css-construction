@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
       {/* Main Content Area */}
       <div className=" flex-1 flex flex-col lg:ml-80  ">
         {/* Header */}
-        <header className="shadow-md sticky top-0 right-0 bg-white-1 w-full  z-60 bg-white h-16 flex items-center   justify-end px-8 ">
+        <header className="shadow-md sticky top-0 right-0 bg-white-1 w-full  z-50 bg-white h-16 flex items-center   justify-end px-8 ">
           <div className="flex justify-between items-center space-x-6">
             <Link
               href="/"

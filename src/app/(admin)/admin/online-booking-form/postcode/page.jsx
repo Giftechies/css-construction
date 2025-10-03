@@ -10,7 +10,7 @@ import {
   DialogOverlay,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton"; // ✅ shadcn skeleton
+import { Skeleton } from "@/components/ui/skeleton"; 
 
 export default function PostcodePage() {
   const [postcodes, setPostcodes] = useState([]);
@@ -19,6 +19,10 @@ export default function PostcodePage() {
   const [editCode, setEditCode] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [open, setisopen] = useState(false);
+  const [totalpostcode,setTotalPostCode] = useState(null);
+
+  // Bulk upload popup message
+  const [bulkMessage, setBulkMessage] = useState(null);
 
   // Loading states
   const [loading, setLoading] = useState(true);
@@ -28,13 +32,15 @@ export default function PostcodePage() {
 
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = 30;
 
   // Fetch all postcodes
   const fetchPostcodes = async () => {
     setLoading(true);
     const res = await fetch("/api/form/postcode");
     const data = await res.json();
+    if(data)setTotalPostCode(data.length)
+    
     setPostcodes(data);
     setLoading(false);
   };
@@ -96,15 +102,35 @@ export default function PostcodePage() {
     const formData = new FormData();
     formData.append("file", file);
 
-    const data=  await fetch("/api/form/postcode/bulk", {
-      method: "POST",
-      body: formData,
-    });
-    const res = await data.json()
-     console.log("bulk>>>>>",res);
-     setisopen(false)
+    try {
+      const data = await fetch("/api/form/postcode/bulk", {
+        method: "POST",
+        body: formData,
+      });
+      const res = await data.json();
 
-    fetchPostcodes();
+      if (res.success) {
+        setBulkMessage({
+          type: "success",
+          text: `✅ Uploaded ${res.inserted} new, skipped ${res.skipped.length}`,
+        });
+      } else {
+        setBulkMessage({
+          type: "error",
+          text: `❌ ${res.error || "Bulk upload failed"}`,
+        });
+      }
+      setisopen(false);
+      fetchPostcodes();
+    } catch (err) {
+      setBulkMessage({
+        type: "error",
+        text: "❌ Something went wrong while uploading.",
+      });
+    }
+
+    // Auto hide after 4 sec
+    setTimeout(() => setBulkMessage(null), 6000);
   };
 
   // Filter postcodes
@@ -125,12 +151,23 @@ export default function PostcodePage() {
   };
 
   return (
-    <section className="p-6 border border-red-200">
+    <section className="p-6 border border-red-200 relative">
       <h1 className="mb-4 text-2xl font-bold">Postcode Management</h1>
+
+      {/* ✅ Bulk Upload Popup */}
+      {bulkMessage && (
+        <div
+          className={`fixed top-5 right-5 px-4 py-2 rounded shadow-lg text-white z-50 transition-opacity duration-300
+          ${bulkMessage.type === "success" ? "bg-green-600" : "bg-red-600"}`}
+        >
+          {bulkMessage.text}
+        </div>
+      )}
 
       {/* Search + Add + Bulk Import */}
       <div className="mb-6 flex flex-wrap justify-between gap-2 items-center">
         {/* Search */}
+      
         <span className="rounded border p-2 w-96 flex items-center">
           <input
             type="text"
@@ -143,6 +180,8 @@ export default function PostcodePage() {
         </span>
 
         {/* Add + Bulk */}
+    <div className=" flex  gap-4 items-center " >
+        <span>Total PostCode: {loading? "loading...":`${totalpostcode}`}</span>
         <Dialog open={open} onOpenChange={setisopen}>
           <DialogTrigger asChild>
             <Button className="text-white-1">Add New Postcode</Button>
@@ -193,6 +232,7 @@ export default function PostcodePage() {
             </form>
           </DialogContent>
         </Dialog>
+    </div>
       </div>
 
       {/* Postcode Table */}
@@ -205,7 +245,6 @@ export default function PostcodePage() {
           </tr>
         </thead>
         <tbody>
-          {/* Loading skeletons */}
           {loading ? (
             [...Array(itemsPerPage)].map((_, idx) => (
               <tr key={idx} className="border-t">
