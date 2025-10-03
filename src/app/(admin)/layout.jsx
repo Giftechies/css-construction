@@ -40,14 +40,14 @@ export default function RootLayout({ children }) {
     <SheetHeader>
       <SheetTitle>   <h3
               onClick={() => navigate.push("/admin")}
-              className="h4 cursor-pointer font-semibold flex gap-2"
+              className="h4 cursor-pointer font-semibold text-white-1 flex gap-2"
             >
               <ChartArea /> Admin Panel
             </h3></SheetTitle>
       {/* <SheetDescription>
         This action cannot be undone. This will permanently delete your account
         and remove your data from our servers.
-      </SheetDescription> */}
+      </SheetDescription> */}  
 
     
     </SheetHeader>
