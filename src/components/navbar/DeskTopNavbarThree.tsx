@@ -1,5 +1,4 @@
 "use client";
-import logo from "@/../public/img/logo/interstate logo v4-01.png";
 import { cn } from "@/utils/cn";
 import { IconChevronDown, IconLock } from "@tabler/icons-react";
 import Image from "next/image";
@@ -10,6 +9,7 @@ import LinkPrimary from "../link/LinkPrimary";
 
 const DeskTopNavbarThree = ({ scrollHight }: { scrollHight: number }) => {
   const pathName = usePathname();
+  const logo ="#"
 
   return (
     <div className="pb-[108px]">
