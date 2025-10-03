@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 import { ChartArea, ChevronDown, ChevronRight } from "lucide-react"
 import { useRouter, usePathname } from "next/navigation"
 import { useState, useEffect } from "react"
-import {menu} from "@/data/menu" 
+import {menu} from "@/data/adminMenu" 
 
 export default function Sidebar({ className }) {
   const pathname = usePathname()

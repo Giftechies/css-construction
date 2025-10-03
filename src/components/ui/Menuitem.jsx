@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 import { ChevronDown, ChevronRight } from "lucide-react"
 import { useRouter, usePathname } from "next/navigation"
 import { useState, useEffect } from "react"
-import {menu} from "@/data/menu"
+import {menu} from "@/data/adminMenu"
 
 export function MenuItem({ menuData }) {
   const pathname = usePathname()

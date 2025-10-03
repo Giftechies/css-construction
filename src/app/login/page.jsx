@@ -60,7 +60,7 @@ const handleForm = async (e) => {
                 <Image alt="logo" src={"/img/logo/nav-logo.svg"}  width={200} height={200}  />
             </div>
           <input
-            type="application/pdf"
+            type="text"
             name="username"
             id="username"
             placeholder="Username"
