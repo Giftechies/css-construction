@@ -101,7 +101,7 @@ export default function Sidebar({ className }) {
   return (
     <section
       className={cn(
-        "shrink-0 hidden lg:block shadow-lg min-h-screen bg-black-4 text-white-1 p-6",
+        "shrink-0 min-h-screen bg-black-4 text-white-1 p-6",
         className
       )}
     >

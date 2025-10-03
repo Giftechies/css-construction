@@ -30,11 +30,16 @@ export async function PUT(req, { params }) {
 // DELETE category
 export async function DELETE(req, { params }) {
   try {
+    console.log("ddd>>>>",params)
     await ConnectDb();
     const category = await Category.findByIdAndDelete(params.id);
-    if (!category) return NextResponse.json({ error: "Not found" }, { status: 404 });
-    return NextResponse.json({ message: "Category deleted" });
+    if (!category) return NextResponse.json({ error: "Not found",
+      message:"not deleted",
+      sucess:false
+     }, { status: 404 });
+    return NextResponse.json({ sucess:true,
+      message: "Category deleted" });
   } catch (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ sucess:false,message:"delete failed",error: error.message }, { status: 500 });
   }
 }

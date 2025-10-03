@@ -90,11 +90,14 @@ export default function CategoryPage() {
   const handleDelete = async (id) => {
     if (!confirm("Delete this category?")) return;
     setDeletingId(id);
+    console.log("id>>>",id);
+    
 
     const res = await fetch(`/api/form/category/${id}`, { method: "DELETE" });
     const data = await res.json();
+    console.log("daia>>>>>",data)
 
-    if (data.success) {
+    if (data.sucess) {
       toast.success("Category deleted successfully!");
       fetchCategories();
     } else {

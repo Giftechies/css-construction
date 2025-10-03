@@ -1,16 +1,41 @@
 import Sidebar from "@/components/admin/Sidebar"
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+ DialogOverlay
+} from "@/components/ui/dialog"
+import { MenuIcon } from "lucide-react";
 import Link from "next/link";
 
 export default function RootLayout({ children }) {
   return (
     <div className="min-h-screen flex">
       {/* Sidebar (fixed/sticky) */}
-        <Sidebar className='fixed top-0 w-80 left-0  z-50  h-screen '  />
+        <Sidebar className='fixed top-0 w-80 left-0  z-50  h-screen  hidden lg:block shadow-lg '  />
 
       {/* Main Content Area */}
       <div className=" flex-1 flex flex-col lg:ml-80  ">
         {/* Header */}
-        <header className="shadow-md sticky top-0 right-0 bg-white-1 w-full  z-50 bg-white h-16 flex items-center   justify-end px-8 ">
+        <header className="shadow-md sticky top-0 right-0 bg-white-1 w-full  z-50 bg-white h-16 flex items-center  justify-between lg:justify-end px-8 ">
+       <Dialog>
+  <DialogTrigger asChild>
+    <Button variant="outline" className="lg:hidden">
+      <MenuIcon />
+    </Button>
+  </DialogTrigger>
+  <DialogOverlay className="fixed inset-0 bg-black/50" />
+  <DialogContent  className=" w-80 h-screen bg-white-1">
+    <Sidebar className=" " />
+    <div>dlksfj</div>
+  </DialogContent>
+</Dialog>
+
+
           <div className="flex justify-between items-center space-x-6">
             <Link
               href="/"
