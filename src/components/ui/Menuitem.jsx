@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils"
 import { ChevronDown, ChevronRight } from "lucide-react"
 import { useRouter, usePathname } from "next/navigation"
 import { useState, useEffect } from "react"
+import {menu} from "@/data/menu"
 
 export function MenuItem({ menuData }) {
   const pathname = usePathname()
@@ -12,7 +13,7 @@ export function MenuItem({ menuData }) {
 
   // auto-open parent if child is active
   useEffect(() => {
-    menuData.forEach((el, id) => {
+    menu.forEach((el, id) => {
       if (el.children?.some((child) => pathname === child.path)) {
         setOpenMenu(id)
       }
@@ -21,7 +22,7 @@ export function MenuItem({ menuData }) {
 
   return (
     <aside className="flex flex-col gap-2 mt-6 w-full">
-      {menuData.map((el, id) => {
+      {menu.map((el, id) => {
         const hasChildren = el.children && el.children.length > 0
         const isChildActive = hasChildren
           ? el.children.some((child) => pathname === child.path)
