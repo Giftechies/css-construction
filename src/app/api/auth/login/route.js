@@ -95,6 +95,7 @@ export async function POST(req) {
       message: "Login successful",
       user: { id: existUser._id, username: existUser.username, role: existUser.role },
     });
+    if(res) console.log(res)
 
     res.cookies.set("token", token, {
       httpOnly: true,
