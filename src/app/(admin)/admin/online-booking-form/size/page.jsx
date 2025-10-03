@@ -90,6 +90,7 @@ export default function SizePage() {
         body: JSON.stringify({ size: newSize, categoryId: selectedCategory }),
       });
       const data = await res.json();
+      console.log("data size>>>>",data)
 
       if (data.success) {
         toast.success("Size added successfully");
