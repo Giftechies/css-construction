@@ -68,7 +68,7 @@
 import { NextResponse } from "next/server";
 import { ConnectDb } from "../../../helper/db";
 import userModel from "../../../helper/models/user";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 export async function POST(req) {
@@ -95,7 +95,7 @@ export async function POST(req) {
       message: "Login successful",
       user: { id: existUser._id, username: existUser.username, role: existUser.role },
     });
-    if(res) console.log(res)
+   
 
     res.cookies.set("token", token, {
       httpOnly: true,
