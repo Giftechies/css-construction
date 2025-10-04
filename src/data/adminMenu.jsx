@@ -10,34 +10,19 @@
       ],
     },
     {
-      label:"Skip Hire",
-      path:"#",
-      children:[
-        {label:" Sub Skip Hire",path:"/admin/skip-hire/sub-skip-hire"},
-        {label:"Index Content Page",path:"/admin/skip-hire"},
-        
-      ]
+      label:"Category",
+      path:"/admin/category",
     },
 
         {
-      label:"Concrete Supply",
+      label:"All Pages",
       path:"#",
       children:[
-        {label:"Sub Concrete Supply",path:"/admin/concrete-supply/sub-concrete-supply"},
-        // {label:" Waste Managment",path:"/admin/waste-managment"},
+        {label:"Add New Page",path:"/admin/all-pages/add-new-page"},
+        {label:" View All pages  ",path:"/admin/all-pages/view-all-pages"},
       ]
     },
-      {
-      label:"Tipper & Grab Services",
-      path:"#",
-      children:[
-        {label:"Grab Hire",path:"/admin/grab-hire"},
-        {label:"Cage Lorrie’s",path:"/admin/cage-lorrie’s"},
-        {label:"Man and Van",path:"/admin/man-and-van"},
-        {label:"Aggregates",path:"/admin/aggregates"},
-        // {label:" Waste Managment",path:"/admin/waste-managment"},
-      ] 
-    }
+    
 
   ]
 

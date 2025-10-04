@@ -283,20 +283,20 @@ export default function PostcodePage() {
                     <>
                       <Button
                         onClick={() => handleUpdate(pc._id)}
-                        className="bg-green-600 text-white-1"
+                        className=" bg-black-4 text-white-1"
                         disabled={updating}
                       >
                         {updating ? (
                           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                         ) : null}
-                        {updating ? "Saving..." : "Save"}
+                        {updating ? "Updating..." : "Update"}
                       </Button>
                       <Button
                         onClick={() => {
                           setEditId(null);
                           setEditCode("");
                         }}
-                        className="bg-gray-400 text-white-1"
+                        className=" bg-black-4 text-white-1"
                       >
                         Cancel
                       </Button>
