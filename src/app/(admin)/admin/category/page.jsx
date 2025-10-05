@@ -14,16 +14,25 @@ import Image from "next/image";
 import { EditIcon, Loader2, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Category() {
   const [category, setcategory] = useState([]);
   const [isloading, setisloading] = useState(false);
-  async function loadData() {
-    const data = await fetchData();
-    console.log(data);
+  const [fetchloading, setfetchloading] = useState(false);
 
-    setcategory(data);
+  async function loadData() {
+    try {
+      setfetchloading(true);
+      const data = await fetchData();
+      setcategory(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setfetchloading(false);
+    }
   }
+
   useEffect(() => {
     loadData();
   }, []);
@@ -72,7 +81,28 @@ export default function Category() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {category.map((item, id) => {
+              { fetchloading? (Array.from({length:4}).map(()=>{
+                return(
+                  <TableRow>
+                    <TableCell>
+                      <Skeleton className="h-[70px] w-[80%] " />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="h-[30px] w-full " />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="h-[30px] w-full " />
+                    </TableCell>
+                    <TableCell className="w-24" >
+                      <div className=" flex w-full justify-between" >
+                        <Skeleton className=" size-8 " />
+                        <Skeleton className=" size-8 " />
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                )
+              }))
+            :( category.map((item, id) => {
                 return (
                   <TableRow key={id} className="  ">
                     <TableCell className=" ">
@@ -108,7 +138,9 @@ export default function Category() {
                     </TableCell>
                   </TableRow>
                 );
-              })}
+              }))  
+            }
+             
             </TableBody>
           </Table>
         </div>
