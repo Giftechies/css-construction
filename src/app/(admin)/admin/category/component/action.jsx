@@ -1,3 +1,4 @@
+
 export async function fetchData() {
     try {
         const res = await fetch("/api/service-category",{
@@ -15,13 +16,13 @@ export async function fetchData() {
     
 }
 
-export async function deleteData({id}) {
-    console.log("action delete");
+export async function deleteData(id) {
+    console.log("action delete",id);
     
     try {
         const res = await fetch("/api/service-category",{
             method:"DELETE",
-            body:id
+            body:JSON.stringify({"_id":id})
         })
         const data = await res.json()
         return data

@@ -30,7 +30,7 @@ export async function PUT(req, { params }) {
 // DELETE category
 export async function DELETE(req, { params }) {
   try {
-    console.log("ddd>>>>",params)
+    
     await ConnectDb();
     const category = await Category.findByIdAndDelete(params.id);
     if (!category) return NextResponse.json({ error: "Not found",

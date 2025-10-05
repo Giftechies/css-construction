@@ -106,8 +106,16 @@ export async function DELETE(req) {
         await ConnectDb()
 
         const {_id} = await req.json()
-        const existService = await serviceCategoryModel.findById(_id)
+        console.log("sdfsdfsdf>>>>>>>>>>>>>",_id);
         if(!_id){
+            return NextResponse.json({
+                success:false,
+                message:"Did not recived id"
+            })
+        }
+        
+        const existService = await serviceCategoryModel.findById(_id)
+        if(!existService){
             return NextResponse.json({
                 success:false,
                 message:"service not exist"
