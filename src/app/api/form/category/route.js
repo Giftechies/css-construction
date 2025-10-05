@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { ConnectDb } from "../../../helper/db";
 import Category from "../../../helper/models/category";
-import { success } from "zod";
+
 
 // CREATE (Add new category)
 export async function POST(req) {
