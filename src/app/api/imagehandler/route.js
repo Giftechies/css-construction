@@ -1,50 +1,35 @@
-import multer from "multer";
-import { NextResponse } from "next/server";
+// /app/api/imagehandler/route.js
+import { writeFile } from "fs/promises";
 import path from "path";
-import fs from "fs";
-
-// Disable body parsing for multer
-export const config = { api: { bodyParser: false } };
-
-// Ensure uploads folder exists
-const uploadDir = path.join(process.cwd(), "public/uploads");
-if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
-
-// Multer storage configuration
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, uploadDir);
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    const ext = path.extname(file.originalname);
-    cb(null, file.fieldname + "-" + uniqueSuffix + ext);
-  },
-});
-
-const upload = multer({ storage: storage });
+import { NextResponse } from "next/server";
 
 export async function POST(req) {
-  return new Promise((resolve) => {
-    upload.single("file")(req, {}, (err) => {
-      if (err) {
-        console.error(err);
-        return resolve(NextResponse.json({ success: false, message: err.message }));
-      }
+  try {
+    const formData = await req.formData();
+    const file = formData.get("file");
 
-      const file = req.file;
-      if (!file) return resolve(NextResponse.json({ success: false, message: "No file uploaded" }));
+    if (!file) {
+      return NextResponse.json({ success: false, message: "No file uploaded" });
+    }
 
-      // Return URL path for frontend
-      const filePath = `/uploads/${file.filename}`;
+    const bytes = await file.arrayBuffer();
+    const buffer = Buffer.from(bytes);
 
-      resolve(
-        NextResponse.json({
-          success: true,
-          message: "File uploaded successfully",
-          filePath,
-        })
-      );
+    const fileName = `${Date.now()}-${file.name}`;
+    const uploadPath = path.join(process.cwd(), "public/uploads", fileName);
+
+    await writeFile(uploadPath, buffer);
+
+    return NextResponse.json({
+      success: true,
+      filePath: `/uploads/${fileName}`,
     });
-  });
+  } catch (error) {
+    console.error("Upload error:", error);
+    return NextResponse.json({
+      success: false,
+      message: "Upload failed",
+      error: error.message,
+    });
+  }
 }
