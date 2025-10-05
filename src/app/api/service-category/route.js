@@ -5,7 +5,7 @@ import serviceCategoryModel from "../../helper/models/serviceCategory";
 export  async function POST(req){
     try {
          await ConnectDb();
-        const {title,slug,featureImage,description } = await req.json()
+        const {title,slug,featureImage,discription } = await req.json()
         const existTitle = await serviceCategoryModel.findOne({title,slug})
         if(existTitle){
             return NextResponse.json({
@@ -15,7 +15,7 @@ export  async function POST(req){
             })
         }
 
-        const res = await serviceCategoryModel.create({title,slug,featureImage,description})
+        const res = await serviceCategoryModel.create({title,slug,featureImage,discription})
         if(res){
             return NextResponse.json({
                 success:true,
@@ -64,7 +64,7 @@ export  async function GET(req){
 export  async function PUT(req){
     try {
         await ConnectDb();
-         const {title,slug,featureImage,description,_id } = await req.json()
+         const {title,slug,featureImage,discription,_id } = await req.json()
          const  existService = await serviceCategoryModel.findById(_id)
           if(!existService){
             return NextResponse.json({
@@ -77,7 +77,7 @@ export  async function PUT(req){
           existService.title = title || existService.title
           existService.slug = slug || existService.slug
           existService.featureImage = featureImage || existService.featureImage
-          existService.description = description || existService.description
+          existService.discription = discription || existService.discription
        const updatedService = await existService.save();
 
        return NextResponse.json({

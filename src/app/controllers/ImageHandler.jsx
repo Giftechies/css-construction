@@ -2,8 +2,9 @@ export const ImageHandler = async (file) => {
   try {
     const data = new FormData();
     data.append("file", file);
+    if (!data) return;
 
-    const res = await fetch("/api/imagehandler", {
+    let res = await fetch("/api/imagehandler", {
       method: "POST",
       body: data, // ✅ don't add headers manually
     });
@@ -13,7 +14,8 @@ export const ImageHandler = async (file) => {
     }
 
     const result = await res.json();
-    return result; // ✅ return the API response (e.g. { success, filePath })
+
+    return result;
   } catch (error) {
     console.error("Error uploading image:", error);
     throw error;
