@@ -1,5 +1,4 @@
-
-"use client"
+"use client";
 
 import {
   Table,
@@ -9,30 +8,84 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-export default function AllPages(){
-    return(
-        <div className=" w-10/12 mx-auto  " >
-            <h1 className=" h3 font-semibold text-center  " >All Pges</h1>
-            <Table>
-  <TableCaption>A list of your recent invoices.</TableCaption>
-  <TableHeader>
-    <TableRow>
-      <TableHead className="w-[100px]">Invoice</TableHead>
-      <TableHead>Status</TableHead>
-      <TableHead>Method</TableHead>
-      <TableHead className="text-right">Amount</TableHead>
-    </TableRow>
-  </TableHeader>
-  <TableBody>
-    <TableRow>
-      <TableCell className="font-medium">INV001</TableCell>
-      <TableCell>Paid</TableCell>
-      <TableCell>Credit Card</TableCell>
-      <TableCell className="text-right">$250.00</TableCell>
-    </TableRow>
-  </TableBody>
-</Table>
-        </div>
-    )
+} from "@/components/ui/table";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { Deletepage } from "./component/action";
+import Link from "next/link";
+import { EditIcon, Trash2 } from "lucide-react";
+
+export default function AllPages() {
+  const [Pages, setPages] = useState();
+
+  useEffect(() => {
+    async function fetchpage() {
+      const res = await fetch("/api/page", {
+        method: "GET",
+      });
+      const data = await res.json();
+      console.log("dsfs",data);
+
+      if (data.success) {
+        setPages(data.data);
+      }
+    }
+    fetchpage();
+  }, []);
+  console.log(Pages);
+
+  const deleteHandler = async (id) => {
+    const res = await Deletepage(id);
+  };
+
+  return (
+    <div className=" mx-auto w-10/12   ">
+      <h1 className=" h3 text-center font-semibold  ">All Pges</h1>
+      <Table className="mt-4">
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-[150px]">Image</TableHead>
+            <TableHead>Titile</TableHead>
+            <TableHead>Category</TableHead>
+            <TableHead className="text-right w-[100px]  ">Action</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          { Pages && Pages.map((item, id) => {
+            return (
+              
+              <TableRow>
+                <TableCell className="font-medium">
+                  <div className=" h-18 w-[70%] overflow-hidden rounded-lg ">
+                    <Image
+                      height={200}
+                      width={200}
+                      alt="kd"
+                      className=" h-full w-full object-cover object-center  "
+                      src={item.pageimage}
+                    />
+                  </div>
+                </TableCell>
+                <TableCell>{item.title}</TableCell>
+                <TableCell> {item.category?.title} </TableCell>
+                <TableCell className="text-right">
+                  <div className="flex w-full justify-between ">
+                    <Link href={`/admin/all-pages/edit/${item._id}`}>
+                      {" "}
+                      <EditIcon />
+                    </Link>
+                    <Trash2
+                      onClick={() => {
+                        deleteHandler(item._id);
+                      }}
+                    />
+                  </div>
+                </TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </div>
+  );
 }
