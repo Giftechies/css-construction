@@ -107,7 +107,7 @@ export default function CategoryPage() {
   };
 
   return (
-    <section className="p-6 border border-red-200">
+    <section className="p-6 ">
       <Toaster position="top-right" reverseOrder={false} />
 
       <h1 className="mb-4 text-2xl font-bold">Category Management</h1>
@@ -152,7 +152,7 @@ export default function CategoryPage() {
       </Dialog>
 
       {/* Category Table */}
-      <table className="w-[90%] border-collapse border mt-4">
+      <table className="w-[90%] mx-auto border-collapse border mt-4">
         <thead>
           <tr className="bg-gray-100 text-left">
             <th className="w-[10%] p-2 border">#</th>
