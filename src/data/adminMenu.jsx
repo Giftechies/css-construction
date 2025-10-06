@@ -19,7 +19,7 @@
       path:"#",
       children:[
         {label:"Add New Page",path:"/admin/all-pages/add-new-page"},
-        {label:" View All pages  ",path:"/admin/all-pages/view-all-pages"},
+        {label:" View All pages  ",path:"/admin/all-pages"},
       ]
     },
     

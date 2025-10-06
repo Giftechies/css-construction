@@ -40,7 +40,7 @@ export  async function POST(req){
 export  async function GET(req){
     try {
         await ConnectDb();
-        const res = await serviceCategoryModel.find({}).sort({title:1})
+        const res = await serviceCategoryModel.find().sort({title:1})
         if(res){
             return NextResponse.json({
                 success:true,

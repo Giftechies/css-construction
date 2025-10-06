@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const subSkipHireSchema = new mongoose.Schema(
+const pageSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -14,7 +14,7 @@ const subSkipHireSchema = new mongoose.Schema(
       lowercase: true,
       trim: true,
     },
-    shortContent: {
+    shortcontent: {
       type: String,
       required: true,
       trim: true,
@@ -24,22 +24,22 @@ const subSkipHireSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    image: {
+    pageimage: {
       type: String,
       required: true,
     },
-    imageAlt: {
+    imagealt: {
       type: String,
       required: true,
       trim: true,
     },
-    metaTitle: {
+    metatitle: {
       type: String,
       required: true,
       trim: true,
       maxlength: 70, // ✅ standard SEO title limit
     },
-    metaDescription: {
+    metadiscription: {
       type: String,
       required: true,
       trim: true,
@@ -51,6 +51,6 @@ const subSkipHireSchema = new mongoose.Schema(
 );
 
 // Avoid OverwriteModelError in Next.js Hot Reload
-const SubSkipHireModel =
-  mongoose.models.SubSkipHire || mongoose.model("SubSkipHire", subSkipHireSchema);
-export default SubSkipHireModel;
+const pageModel =
+  mongoose.models.SubSkipHire || mongoose.model("Page", pageSchema);
+export default pageModel;

@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/pages/home-three/OurWorks.jsx", "src/pages/loan/LoanContent.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/pages/home-three/OurWorks.jsx", "src/pages/loan/LoanContent.jsx", "src/components/EditorClient.jsx"],
   "exclude": ["node_modules"]
 }
