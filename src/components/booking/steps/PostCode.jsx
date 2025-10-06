@@ -1,10 +1,24 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import SectionInnerTitle from "@/components/shared/SectionInnerTitle";
 import Select, { components } from "react-select";
+import {FetchpostCode} from "../action/action"
 
 export default function PostCode() {
+  const [Ispostcode,setispostcode] =useState()
+useEffect(()=>{
+async function data(){
+    const res = await FetchpostCode()
+    
+    if(res){console.log("api is calling",res);
+      setispostcode(res)
+    }
+    
+}
+data()
+
+},[])
  const POSTCODE = [
     "BR1", "BR2", "BR3", "BR4", "BR5", "BR6", "BR7", "BR8",
   "CR0", "CR2", "CR3", "CR4", "CR5", "CR6", "CR7", "CR8", "CR9",
@@ -49,6 +63,13 @@ export default function PostCode() {
   "W10", "W11", "W12", "W13", "W14",
   "WC", "WIT"
 ]
+  const postcodeOptions =
+    Ispostcode && Ispostcode.length > 0
+      ? Ispostcode.map((item) => ({
+          value: item.postcode,
+          label: item.postcode,
+        }))
+      : POSTCODE.map((pc) => ({ value: pc, label: pc }));
 
   // ✅ Custom Menu with data-lenis-prevent (fix for wheel scroll)
   const CustomMenu = (props) => {
@@ -86,7 +107,8 @@ export default function PostCode() {
           <Select
   value={field.value ? { value: field.value, label: field.value } : null}
   onChange={(option) => field.onChange(option?.value)}
-  options={POSTCODE.map((pc) => ({ value: pc, label: pc }))}
+  // options={Ispostcode?.map((item) => ({ value: item.postcode, label: item.postcode }))}
+  options={postcodeOptions}
   // menuPortalTarget={document.body}
   menuPosition="fixed"
   menuShouldBlockScroll={true}

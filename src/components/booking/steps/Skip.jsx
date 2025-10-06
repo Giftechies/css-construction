@@ -43,7 +43,7 @@ export default function Skip({ goToNextStep }) {
 
   return (
     <>
-      {type === "skip-delivery" && (
+      {type === "skip delivery" && (
         <section className="skip grid grid-cols-3 gap-8">
           {delivery.map((el, id) => (
             <Cardskip
@@ -56,7 +56,7 @@ export default function Skip({ goToNextStep }) {
         </section>
       )}
 
-      {type === "wait-and-load" && (
+      {type === "skip wait and load" && (
         <section className="skip grid grid-cols-3 gap-8">
           {delivery.map((el, id) => (
             <Cardskip
@@ -81,7 +81,7 @@ export default function Skip({ goToNextStep }) {
         </section>
       )}
 
-      {type === "waste-removal" && (
+      {type === "transit waste removal" && (
         <section className="skip grid grid-cols-3 gap-8 justify-center">
           {transit.map((item, id) => (
             <Cardskip
@@ -93,7 +93,7 @@ export default function Skip({ goToNextStep }) {
           ))}
         </section>
       )}
-      {type === "exchange" && (
+      {type === "skip exchange" && (
         <section className="skip grid grid-cols-3 gap-8 justify-center">
           {transit.map((item, id) => (
             <Cardskip
