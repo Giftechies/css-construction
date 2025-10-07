@@ -8,6 +8,7 @@ import {
   ChevronRight,
   ChevronsUpDown,
   Check,
+  ArrowUpDown,
 } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
 import { Button } from "@/components/ui/button";
@@ -51,23 +52,22 @@ export default function RatePage() {
 
   // UI state
   const [loading, setLoading] = useState(false);
-  // NOTE: You were missing rowLoadingId from the previous version, 
-  // but I'll stick to what you provided and use the main `loading` state for updates/deletes.
   const [isOpen, setIsOpen] = useState(false);
 
-  // Pagination state
+  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
-  // Search/Popover state (postcodeQuery is now only for input display)
-  const [postcodeQuery, setPostcodeQuery] = useState(""); 
+  // Popover/Search
+  const [postcodeQuery, setPostcodeQuery] = useState("");
   const [editPostcodeQuery, setEditPostcodeQuery] = useState("");
-
-  // Popover open states
   const [postPopoverOpen, setPostPopoverOpen] = useState(false);
   const [editPostPopoverOpen, setEditPostPopoverOpen] = useState(false);
 
-  // Fetch rates
+  // Sorting
+  const [sortConfig, setSortConfig] = useState({ key: "", direction: "asc" });
+
+  // --- Fetch Rates ---
   const fetchRates = async () => {
     setLoading(true);
     try {
@@ -83,21 +83,25 @@ export default function RatePage() {
     }
   };
 
-  // Fetch meta (postcodes, categories, sizes)
+  // --- Fetch Meta (Postcodes, Categories, Sizes) ---
   const fetchMeta = async () => {
-    const [postRes, catRes, sizeRes] = await Promise.all([
-      fetch("/api/form/postcode"),
-      fetch("/api/form/category"),
-      fetch("/api/form/size"),
-    ]);
-    const [postData, catData, sizeData] = await Promise.all([
-      postRes.json(),
-      catRes.json(),
-      sizeRes.json(),
-    ]);
-    if (postData) setPostcodes(postData);
-    if (catData.success) setCategories(catData.data);
-    if (sizeData.success) setSizes(sizeData.data);
+    try {
+      const [postRes, catRes, sizeRes] = await Promise.all([
+        fetch("/api/form/postcode"),
+        fetch("/api/form/category"),
+        fetch("/api/form/size"),
+      ]);
+      const [postData, catData, sizeData] = await Promise.all([
+        postRes.json(),
+        catRes.json(),
+        sizeRes.json(),
+      ]);
+      if (postData) setPostcodes(postData);
+      if (catData.success) setCategories(catData.data);
+      if (sizeData.success) setSizes(sizeData.data);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   useEffect(() => {
@@ -105,13 +109,49 @@ export default function RatePage() {
     fetchMeta();
   }, []);
 
-  // Filter sizes by selected category
+  // --- Filter sizes by selected category ---
   const filteredSizes = sizes.filter((s) => s.category?._id === selectedCategory);
   const filteredSizesEdit = sizes.filter((s) => s.category?._id === editCategory);
 
-  // Pagination
-  const totalPages = Math.ceil(rates.length / itemsPerPage);
-  const paginatedRates = rates.slice(
+  // --- Sorting ---
+  const sortedRates = [...rates].sort((a, b) => {
+    if (!sortConfig.key) return 0;
+    let aValue, bValue;
+
+    switch (sortConfig.key) {
+      case "postcode":
+        aValue = a.postId?.postcode || "";
+        bValue = b.postId?.postcode || "";
+        break;
+      case "category":
+        aValue = a.categoryId?.category || "";
+        bValue = b.categoryId?.category || "";
+        break;
+      case "size":
+        aValue = a.sizeId?.size || "";
+        bValue = b.sizeId?.size || "";
+        break;
+      case "rate":
+        aValue = Number(a.rate) || 0;
+        bValue = Number(b.rate) || 0;
+        break;
+      default:
+        return 0;
+    }
+    if (aValue < bValue) return sortConfig.direction === "asc" ? -1 : 1;
+    if (aValue > bValue) return sortConfig.direction === "asc" ? 1 : -1;
+    return 0;
+  });
+
+  const handleSort = (key) => {
+    let direction = "asc";
+    if (sortConfig.key === key && sortConfig.direction === "asc") direction = "desc";
+    setSortConfig({ key, direction });
+  };
+
+  // --- Pagination ---
+  const totalPages = Math.ceil(sortedRates.length / itemsPerPage);
+  const paginatedRates = sortedRates.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
@@ -121,82 +161,121 @@ export default function RatePage() {
     setCurrentPage(page);
   };
 
-  // Create Rate
+  // --- CRUD Operations ---
   const handleCreate = async (e) => {
     e.preventDefault();
     if (!selectedPostcode || !selectedCategory || !selectedSize || !newRate)
       return toast.error("All fields are required");
 
     setLoading(true);
-    const res = await fetch("/api/form/rates", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        postId: selectedPostcode,
-        categoryId: selectedCategory,
-        sizeId: selectedSize,
-        rate: newRate,
-      }),
-    });
-    const data = await res.json();
-    if (data.success) {
-      toast.success("Rate added successfully");
-      setNewRate("");
-      setSelectedPostcode("");
-      setSelectedCategory("");
-      setSelectedSize("");
-      setPostcodeQuery("");
-      setIsOpen(false);
-      fetchRates();
-    } else toast.error(data.message || "Failed to add rate");
-    setLoading(false);
+    try {
+      const res = await fetch("/api/form/rates", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          postId: selectedPostcode,
+          categoryId: selectedCategory,
+          sizeId: selectedSize,
+          rate: newRate,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        toast.success("Rate added successfully");
+        setNewRate("");
+        setSelectedPostcode("");
+        setSelectedCategory("");
+        setSelectedSize("");
+        setPostcodeQuery("");
+        setIsOpen(false);
+        fetchRates();
+      } else toast.error(data.message || "Failed to add rate");
+    } catch (err) {
+      console.error(err);
+      toast.error("Error adding rate");
+    } finally {
+      setLoading(false);
+    }
   };
 
-  // Update Rate
   const handleUpdate = async (id) => {
     if (!editPostcode || !editCategory || !editSize || !editRate)
       return toast.error("All fields are required");
 
     setLoading(true);
-    const res = await fetch("/api/form/rates", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        id,
-        postId: editPostcode,
-        categoryId: editCategory,
-        sizeId: editSize,
-        rate: editRate,
-      }),
-    });
-    const data = await res.json();
-    if (data.success) {
-      toast.success("Rate updated successfully");
-      setEditId(null);
-      setEditPostcode("");
-      setEditCategory("");
-      setEditSize("");
-      setEditRate("");
-      setEditPostcodeQuery("");
-      fetchRates();
-    } else toast.error(data.message || "Failed to update rate");
-    setLoading(false);
+    try {
+      const res = await fetch("/api/form/rates", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id,
+          postId: editPostcode,
+          categoryId: editCategory,
+          sizeId: editSize,
+          rate: editRate,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        toast.success("Rate updated successfully");
+        setEditId(null);
+        setEditPostcode("");
+        setEditCategory("");
+        setEditSize("");
+        setEditRate("");
+        setEditPostcodeQuery("");
+        fetchRates();
+      } else toast.error(data.message || "Failed to update rate");
+    } catch (err) {
+      console.error(err);
+      toast.error("Error updating rate");
+    } finally {
+      setLoading(false);
+    }
   };
 
-  // Delete Rate
   const handleDelete = async (id) => {
     if (!confirm("Delete this rate?")) return;
     setLoading(true);
-    const res = await fetch(`/api/form/rates?id=${id}`, { method: "DELETE" });
-    const data = await res.json();
-    if (data.success) toast.success("Rate deleted successfully");
-    else toast.error(data.message || "Failed to delete rate");
-    fetchRates();
-    setLoading(false);
+    try {
+      const res = await fetch(`/api/form/rates?id=${id}`, { method: "DELETE" });
+      const data = await res.json();
+      if (data.success) toast.success("Rate deleted successfully");
+      else toast.error(data.message || "Failed to delete rate");
+      fetchRates();
+    } catch (err) {
+      console.error(err);
+      toast.error("Error deleting rate");
+    } finally {
+      setLoading(false);
+    }
   };
 
-  // NOTE: Removed manual filtering (filteredPostcodes/filteredEditPostcodes) 
-  // as the Command component will now handle it efficiently based on CommandItem's value prop.
+  // --- Bulk Upload ---
+  const handleBulkUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    setLoading(true);
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await fetch("/api/form/rates/bulk", { method: "POST", body: formData });
+      const data = await res.json();
+      if (data.success) {
+        toast.success(`✅ Imported ${data.inserted} items, skipped ${data.skipped?.length || 0}`);
+        fetchRates();
+        setIsOpen(false);
+      } else toast.error(`❌ ${data.message || "Bulk upload failed"}`);
+    } catch (err) {
+      console.error(err);
+      toast.error("❌ Error uploading file");
+    } finally {
+      setLoading(false);
+      e.target.value = null;
+    }
+  };
 
   return (
     <section className="p-6 border border-gray-200">
@@ -216,7 +295,7 @@ export default function RatePage() {
             </DialogHeader>
 
             <form className="flex flex-col gap-3 mt-2" onSubmit={handleCreate}>
-              {/* Searchable Postcode */}
+              {/* Postcode Popover */}
               <Popover open={postPopoverOpen} onOpenChange={setPostPopoverOpen}>
                 <PopoverTrigger asChild>
                   <Button variant="outline" role="combobox" className="w-full justify-between">
@@ -230,21 +309,18 @@ export default function RatePage() {
                   <Command>
                     <CommandInput
                       placeholder="Search postcode..."
-                      // PostcodeQuery state is updated on type
                       value={postcodeQuery}
                       onValueChange={setPostcodeQuery}
                     />
                     <CommandEmpty>No postcodes found.</CommandEmpty>
                     <CommandGroup className="max-h-56 overflow-y-auto">
-                      {/* FIX: Use p.postcode as the value for CommandItem */}
                       {postcodes.map((p) => (
                         <CommandItem
                           key={p._id}
-                          // This is the key change: Command will now filter based on this string
-                          value={p.postcode} 
+                          value={p.postcode}
                           onSelect={() => {
                             setSelectedPostcode(p._id);
-                            setPostcodeQuery(p.postcode); // Set input text to the selected postcode
+                            setPostcodeQuery(p.postcode);
                             setPostPopoverOpen(false);
                           }}
                         >
@@ -295,6 +371,7 @@ export default function RatePage() {
                 ))}
               </select>
 
+              {/* Rate Input */}
               <input
                 type="number"
                 placeholder="Enter Rate"
@@ -303,17 +380,145 @@ export default function RatePage() {
                 className="p-2 border rounded"
               />
 
-              <button
-                type="submit"
-                disabled={loading}
-                className="bg-primary text-white-1 p-2 rounded disabled:opacity-50"
-              >
-                {loading ? "Adding..." : "Add Rate"}
-              </button>
+              {/* Add & Bulk Buttons */}
+              <div className="flex gap-2 mt-2">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="bg-primary text-white-1 p-2 rounded disabled:opacity-50"
+                >
+                  {loading ? "Adding..." : "Add Rate"}
+                </button>
+
+                <input
+                  id="bulkFile"
+                  type="file"
+                  accept=".xlsx, .xls, .csv"
+                  className="hidden"
+                  onChange={handleBulkUpload}
+                />
+                <label
+                  htmlFor="bulkFile"
+                  className="cursor-pointer bg-gray-700 text-white rounded px-4 py-2 hover:bg-gray-800"
+                >
+                  Import Bulk
+                </label>
+              </div>
             </form>
           </DialogContent>
         </Dialog>
       </div>
+
+      {/* Edit Rate Dialog */}
+      <Dialog open={!!editId} onOpenChange={() => setEditId(null)}>
+        <DialogContent className="w-[90%] md:w-[500px] p-4 rounded-lg">
+          <DialogHeader>
+            <DialogTitle className="text-center">Edit Rate</DialogTitle>
+          </DialogHeader>
+
+          <form
+            className="flex flex-col gap-3 mt-2"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleUpdate(editId);
+            }}
+          >
+            {/* Postcode Popover */}
+            <Popover open={editPostPopoverOpen} onOpenChange={setEditPostPopoverOpen}>
+              <PopoverTrigger asChild>
+                <Button variant="outline" role="combobox" className="w-full justify-between">
+                  {editPostcode
+                    ? postcodes.find((p) => p._id === editPostcode)?.postcode
+                    : "Select Postcode"}
+                  <ChevronsUpDown className="ml-2 h-4 w-4 opacity-50" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-[300px] p-0">
+                <Command>
+                  <CommandInput
+                    placeholder="Search postcode..."
+                    value={editPostcodeQuery}
+                    onValueChange={setEditPostcodeQuery}
+                  />
+                  <CommandEmpty>No postcodes found.</CommandEmpty>
+                  <CommandGroup className="max-h-56 overflow-y-auto">
+                    {postcodes.map((p) => (
+                      <CommandItem
+                        key={p._id}
+                        value={p.postcode}
+                        onSelect={() => {
+                          setEditPostcode(p._id);
+                          setEditPostcodeQuery(p.postcode);
+                          setEditPostPopoverOpen(false);
+                        }}
+                      >
+                        <Check
+                          className={cn(
+                            "mr-2 h-4 w-4",
+                            editPostcode === p._id ? "opacity-100" : "opacity-0"
+                          )}
+                        />
+                        {p.postcode}
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
+                </Command>
+              </PopoverContent>
+            </Popover>
+
+            {/* Category */}
+            <select
+              required
+              value={editCategory}
+              onChange={(e) => {
+                setEditCategory(e.target.value);
+                setEditSize("");
+              }}
+              className="p-2 border rounded"
+            >
+              <option value="">Select Category</option>
+              {categories.map((c) => (
+                <option key={c._id} value={c._id}>
+                  {c.category}
+                </option>
+              ))}
+            </select>
+
+            {/* Size */}
+            <select
+              required
+              value={editSize}
+              onChange={(e) => setEditSize(e.target.value)}
+              className="p-2 border rounded"
+            >
+              <option value="">Select Size</option>
+              {filteredSizesEdit.map((s) => (
+                <option key={s._id} value={s._id}>
+                  {s.size}
+                </option>
+              ))}
+            </select>
+
+            {/* Rate Input */}
+            <input
+              type="number"
+              placeholder="Enter Rate"
+              value={editRate}
+              onChange={(e) => setEditRate(e.target.value)}
+              className="p-2 border rounded"
+            />
+
+            {/* Update Button */}
+            <button
+              type="submit"
+              disabled={loading}
+              className="bg-primary text-white-1 p-2 rounded disabled:opacity-50"
+            >
+              {loading ? "Updating..." : "Update Rate"}
+            </button>
+          </form>
+        </DialogContent>
+      </Dialog>
 
       {/* Table */}
       <div className="overflow-x-auto mt-4">
@@ -321,10 +526,36 @@ export default function RatePage() {
           <thead>
             <tr className="bg-gray-100 text-left">
               <th className="border p-2 w-[5%]">#</th>
-              <th className="border p-2 w-[20%]">Postcode</th>
-              <th className="border p-2 w-[20%]">Category</th>
-              <th className="border p-2 w-[20%]">Size</th>
-              <th className="border p-2 w-[15%]">Rate</th>
+              <th
+                className="border p-2  cursor-pointer  "
+                onClick={() => handleSort("postcode")}
+              >
+             <div className=" flex gap-2" >   Postcode  <ArrowUpDown className=" w-5 " /></div>
+              </th>
+              <th
+                className="border p-2 w-[20%]  cursor-pointer"
+                onClick={() => handleSort("category")}
+              >
+              <div className=" flex gap-2" >
+                  Category<ArrowUpDown className=" w-5 " /> 
+              </div>
+              </th>
+              <th
+                className="border p-2 w-[20%] cursor-pointer"
+                onClick={() => handleSort("size")}
+              >
+              <div className=" flex gap-2" >
+                  Size <ArrowUpDown className=" w-5 " /> 
+              </div>
+              </th>
+              <th
+                className="border p-2 w-[15%] cursor-pointer"
+                onClick={() => handleSort("rate")}
+              >
+                 <div className=" flex gap-2" >
+                Rate <ArrowUpDown className=" w-5 " /> 
+                   </div>
+              </th>
               <th className="border p-2 text-center w-[20%]">Actions</th>
             </tr>
           </thead>
@@ -340,160 +571,23 @@ export default function RatePage() {
               : paginatedRates.map((r, idx) => (
                   <tr key={r._id}>
                     <td className="border p-2">{(currentPage - 1) * itemsPerPage + idx + 1}</td>
-
-                    {/* Edit Postcode */}
-                    <td className="border p-2">
-                      {editId === r._id ? (
-                        <Popover
-                          open={editPostPopoverOpen}
-                          onOpenChange={setEditPostPopoverOpen}
-                        >
-                          <PopoverTrigger asChild>
-                            <Button
-                              variant="outline"
-                              role="combobox"
-                              className="w-full justify-between"
-                            >
-                              {editPostcode
-                                ? postcodes.find((p) => p._id === editPostcode)?.postcode
-                                : "Select Postcode"}
-                              <ChevronsUpDown className="ml-2 h-4 w-4 opacity-50" />
-                            </Button>
-                          </PopoverTrigger>
-                          <PopoverContent className="w-[300px] p-0">
-                            <Command>
-                              <CommandInput
-                                placeholder="Search postcode..."
-                                value={editPostcodeQuery}
-                                onValueChange={setEditPostcodeQuery}
-                              />
-                              <CommandEmpty>No postcodes found.</CommandEmpty>
-                              <CommandGroup className="max-h-56 overflow-y-auto">
-                                {/* FIX: Use p.postcode as the value for CommandItem */}
-                                {postcodes.map((p) => (
-                                  <CommandItem
-                                    key={p._id}
-                                    // This is the key change: Command will now filter based on this string
-                                    value={p.postcode} 
-                                    onSelect={() => {
-                                      setEditPostcode(p._id);
-                                      setEditPostcodeQuery(p.postcode); // Set input text to the selected postcode
-                                      setEditPostPopoverOpen(false);
-                                    }}
-                                  >
-                                    <Check
-                                      className={cn(
-                                        "mr-2 h-4 w-4",
-                                        editPostcode === p._id ? "opacity-100" : "opacity-0"
-                                      )}
-                                    />
-                                    {p.postcode}
-                                  </CommandItem>
-                                ))}
-                              </CommandGroup>
-                            </Command>
-                          </PopoverContent>
-                        </Popover>
-                      ) : (
-                        r.postId?.postcode
-                      )}
-                    </td>
-
-                    {/* Category */}
-                    <td className="border p-2">
-                      {editId === r._id ? (
-                        <select
-                          value={editCategory}
-                          onChange={(e) => {
-                            setEditCategory(e.target.value);
-                            setEditSize("");
-                          }}
-                          className="p-1 border rounded w-full"
-                        >
-                          {categories.map((c) => (
-                            <option key={c._id} value={c._id}>
-                              {c.category}
-                            </option>
-                          ))}
-                        </select>
-                      ) : (
-                        r.categoryId?.category
-                      )}
-                    </td>
-
-                    {/* Size */}
-                    <td className="border p-2">
-                      {editId === r._id ? (
-                        <select
-                          value={editSize}
-                          onChange={(e) => setEditSize(e.target.value)}
-                          className="p-1 border rounded w-full"
-                        >
-                          {filteredSizesEdit.map((s) => (
-                            <option key={s._id} value={s._id}>
-                              {s.size}
-                            </option>
-                          ))}
-                        </select>
-                      ) : (
-                        r.sizeId?.size
-                      )}
-                    </td>
-
-                    {/* Rate */}
-                    <td className="border p-2">
-                      {editId === r._id ? (
-                        <input
-                          type="number"
-                          value={editRate}
-                          onChange={(e) => setEditRate(e.target.value)}
-                          className="p-1 border rounded w-full"
-                        />
-                      ) : (
-                        r.rate
-                      )}
-                    </td>
-
-                    {/* Actions */}
+                    <td className="border p-2">{r.postId?.postcode}</td>
+                    <td className="border p-2">{r.categoryId?.category}</td>
+                    <td className="border p-2">{r.sizeId?.size}</td>
+                    <td className="border p-2">{r.rate}</td>
                     <td className="border p-2 flex justify-center gap-2">
-                      {editId === r._id ? (
-                        <>
-                          <Button
-                            className="text-white-1"
-                            onClick={() => handleUpdate(r._id)}
-                            disabled={loading}
-                          >
-                            Save
-                          </Button>
-                          <Button
-                            className="bg-black-4 text-white-1"
-                            onClick={() => setEditId(null)}
-                          >
-                            Cancel
-                          </Button>
-                        </>
-                      ) : (
-                        <>
-                          <Button
-                            variant="outline"
-                            onClick={() => {
-                              setEditId(r._id);
-                              setEditPostcode(r.postId?._id || "");
-                              setEditCategory(r.categoryId?._id || "");
-                              setEditSize(r.sizeId?._id || "");
-                              setEditRate(r.rate);
-                            }}
-                          >
-                            <Pencil size={18} />
-                          </Button>
-                          <Button
-                            variant="destructive"
-                            onClick={() => handleDelete(r._id)}
-                          >
-                            <Trash size={18} />
-                          </Button>
-                        </>
-                      )}
+                      <Button variant="outline" onClick={() => {
+                        setEditId(r._id);
+                        setEditPostcode(r.postId?._id || "");
+                        setEditCategory(r.categoryId?._id || "");
+                        setEditSize(r.sizeId?._id || "");
+                        setEditRate(r.rate);
+                      }}>
+                        <Pencil size={18} />
+                      </Button>
+                      <Button variant="destructive" onClick={() => handleDelete(r._id)}>
+                        <Trash size={18} />
+                      </Button>
                     </td>
                   </tr>
                 ))}
@@ -510,11 +604,7 @@ export default function RatePage() {
 
       {/* Pagination */}
       <div className="mt-4 flex justify-center gap-2">
-        <Button
-          variant="outline"
-          onClick={() => goToPage(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
+        <Button variant="outline" onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1}>
           <ChevronLeft />
         </Button>
         {[...Array(totalPages)].map((_, idx) => (
@@ -527,11 +617,7 @@ export default function RatePage() {
             {idx + 1}
           </Button>
         ))}
-        <Button
-          variant="outline"
-          onClick={() => goToPage(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        >
+        <Button variant="outline" onClick={() => goToPage(currentPage + 1)} disabled={currentPage === totalPages}>
           <ChevronRight />
         </Button>
       </div>
