@@ -20,13 +20,15 @@ export default function Skip({ goToNextStep }) {
 
    const fetchPostcodes = async () => {
     try {
-      setloading(true)
+      // setloading(true)
       const res = await fetch("/api/form/rollandroll");
       const data = await res.json();
       console.log(data.data);
       const response = data.data;
-      const filterdata = response.filter((item)=>item.
-postId.postcode ===postcode )
+      const filterdata = response.filter(item=>item.
+postId.postcode.trim().toLowerCase() == postcode.trim().toLowerCase() )
+console.log("sd>>>>>",filterdata);
+
 
 if(filterdata && filterdata.length > 0){
   const dilveryoption = filterdata.map((item)=>({
@@ -41,10 +43,10 @@ if(filterdata && filterdata.length > 0){
 }
     } catch (err) {
       console.error(err);
-      setloading(false)
+      // setloading(false)
     }
     finally{
-      setloading(false)
+      // setloading(false)
     }
   };
   
@@ -169,7 +171,7 @@ if(filterdata && filterdata.length > 0){
         </section>
       )}
 
-      {type === "roll and roll off" && (
+      {type == "roll and roll off" && (
         <section className="skip grid grid-cols-3 gap-8">
           {Isdelivery.map((item, id) => (
             <Skipcard
