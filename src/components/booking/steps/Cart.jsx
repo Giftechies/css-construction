@@ -1,19 +1,33 @@
+"use client";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 
 export default function Cart() {
   const { watch } = useFormContext();
-  const jobtype = watch("skipSize");
+  const skipsize = watch("skipSize") || {};
   const extras = watch("extras") || {};
 
-  // Calculate extras total
-  const extrasTotal = Object.values(extras).reduce(
-    (sum, item) => sum + item.qty * item.price,
-    0
-  );
+  const [subtotal, setSubtotal] = useState(0);
 
-  // Base price + extras
-  const subtotal = (jobtype?.price || 0) + extrasTotal;
+  useEffect(() => {
+    // calculate total whenever skipSize or extras changes
+    const extrasTotal = Object.values(extras).reduce(
+      (sum, item) => sum + item.qty * item.price,
+      0
+    );
+
+    const roll = "roll and roll off"; // fixed typo: you had "oll and roll off"
+    let sub = (skipsize?.rate || 0) + extrasTotal;
+
+    // (optional) if you want specific logic when roll and roll off
+    if (skipsize.label?.trim()?.toLowerCase() === roll.trim().toLowerCase()) {
+      console.log("Roll and roll off selected");
+      sub = (skipsize?.rate || 0) + extrasTotal;
+    }
+
+    setSubtotal(sub);
+  }, [skipsize, extras]); // ✅ runs only when these change
 
   // VAT 20%
   const vat = subtotal * 0.2;
@@ -22,7 +36,7 @@ export default function Cart() {
   const total = subtotal + vat;
 
   return (
-    <section>
+       <section>
       <h6 className="h5 text-center">
         <span className="font-semibold text-primary">Step 5: </span>Your Cart
       </h6>
@@ -41,9 +55,9 @@ export default function Cart() {
           </div>
           <div className="flex flex-1 justify-between items-center">
             <h3 className="h4 mb-4 text-black-2 font-semibold text-center">
-              Skip-{jobtype?.distance} Yard
+              Skip-{skipsize?.size}
             </h3>
-            <span>£{jobtype?.price || 0}</span>
+            <span>£{skipsize?.rate || 0}</span>
           </div>
         </div>
 
@@ -64,7 +78,7 @@ export default function Cart() {
           {/* Totals */}
           <label className="flex justify-between">
             <span className="text-gray-500 text-[14px]">Subtotal</span>
-            <span>£{subtotal.toFixed(2)}</span>
+            <span>£{subtotal?.toFixed(2)}</span>
           </label>
 
           <label className="flex justify-between">
