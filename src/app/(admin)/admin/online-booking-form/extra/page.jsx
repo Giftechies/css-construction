@@ -69,7 +69,7 @@ export default function ExtraPage() {
     e.preventDefault();
     if (!newExtra.label.trim() || !newExtra.price) {
       alert("⚠️ Please fill all fields.");
-      return;
+      return; 
     }
 
     setCreating(true);
