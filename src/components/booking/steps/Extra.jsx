@@ -1,8 +1,15 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useFormContext, Controller } from "react-hook-form";
+import { Fetchextra } from "../action/action";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Extra() {
+
+
+  const [Isextra, setIsexta] = useState([]);
+
+
   const EXTRAS = [
     { id: "cookers", label: "Cookers", price: 50 },
     { id: "rubber_tracks", label: "Rubber Tracks", price: 50 },
@@ -28,6 +35,23 @@ export default function Extra() {
     { id: "footstools", label: "Footstools, Pouffes, Bean bags", price: 50 },
     { id: "pops_contaminated", label: "POPs Contaminated (Full load)", price: 250 },
   ];
+
+   const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+  async function loadextra() {
+    setLoading(true);
+    const res = await Fetchextra();
+    if (res.success) {
+      setIsexta(res.data);
+    } else {
+      setIsexta(EXTRAS);
+    }
+    setLoading(false);
+  }
+  loadextra();
+}, []);
+
 
   const { control } = useFormContext();
 
@@ -75,9 +99,22 @@ export default function Extra() {
               data-lenis-prevent
               className="h-[25rem] space-y-4 overflow-y-scroll p-4 scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-primary"
             >
-              {EXTRAS.map((extra) => (
+
+              {loading? 
+
+              Array.from({length:6}).map(()=>{
+                return(
+                  <div className="flex items-center justify-between w-full" >
+                    <Skeleton className=" w-4 " />
+                    <Skeleton className="w-full" />
+                    <Skeleton className="w-5" />
+                  </div>
+                )
+              })
+              :
+               Isextra.map((extra,id) => (
                 <div
-                  key={extra.id}
+                  key={id}
                   className="flex items-center justify-between rounded-lg border bg-gray-100 p-3 even:bg-white-1"
                 >
                   {/* Checkbox + Label */}
@@ -103,7 +140,6 @@ export default function Extra() {
                         }
                         className="rounded bg-gray-300 px-2 text-white hover:bg-gray-200"
                       >
-                        -
                       </button>
                       <span className="w-8 text-center font-semibold">
                         {value[extra.label].qty}
@@ -120,7 +156,10 @@ export default function Extra() {
                     </div>
                   )}
                 </div>
-              ))}
+              ))
+              
+              };
+             
             </div>
           );
         }}

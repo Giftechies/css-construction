@@ -82,6 +82,7 @@ export default function RatePage() {
       setLoading(false);
     }
   };
+console.log("rate page>>>>",rates);
 
   // --- Fetch Meta (Postcodes, Categories, Sizes) ---
   const fetchMeta = async () => {
