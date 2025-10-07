@@ -7,6 +7,7 @@ import { FetchpostCode } from "../action/action";
 
 export default function PostCode() {
   const [Ispostcode, setispostcode] = useState();
+  const [loading,setloading]= useState(false)
   useEffect(() => {
     async function data() {
       const res = await FetchpostCode();

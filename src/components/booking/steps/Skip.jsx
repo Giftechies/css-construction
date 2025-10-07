@@ -12,8 +12,7 @@ export default function Skip({ goToNextStep }) {
   const type = watch("jobType");
   const postcode = watch("postcodeArea")
   const [Isdelivery,setIsdelivery] = useState([])
-  console.log(postcode);
-  
+ 
 
   const [mounted, setMounted] = useState(false);
   const [loading,setloading] = useState(false)
@@ -126,7 +125,7 @@ if(filterdata && filterdata.length > 0){
   return (
 
     <div>
-      {loading? <div className="skip grid grid-cols-3 gap-8">
+      {loading? <div className="skip grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {Array.from({length:3}).map(()=>{
           return(
             <div className="p-4 flex items-center justify-center w-48 " >
@@ -146,7 +145,7 @@ if(filterdata && filterdata.length > 0){
     }
    <>
       {type === "skip delivery" && (
-        <section className="skip grid grid-cols-3 gap-8">
+        <section className="skip grid md:grid-cols-2 lg:grid-cols-3 gap-8  ">
           {Isdelivery.map((el, id) => (
             <Cardskip
               key={id}
@@ -159,7 +158,7 @@ if(filterdata && filterdata.length > 0){
       )}
 
       {type === "skip wait and load" && (
-        <section className="skip grid grid-cols-3 gap-8">
+        <section className="skip grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {Isdelivery.map((el, id) => (
             <Cardskip
               key={id}
@@ -171,24 +170,27 @@ if(filterdata && filterdata.length > 0){
         </section>
       )}
 
-      {type == "roll and roll off" && (
-        <section className="skip grid grid-cols-3 gap-8">
-          {Isdelivery.map((item, id) => (
-            <Skipcard
-              key={id}
-              item={item}
-              onClick={() => handleSelect(item)}
-            />
-          ))}
-        </section>
-      )}
+     {type == "roll and roll off" && (
+  <section className="skip grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {Isdelivery.map((item, id) => (
+      <Skipcard
+        key={id}
+        item={item}
+        setValue={setValue}   // ✅ send this down
+        onClick={(selected) => handleSelect(selected)} // ✅ receive from Skipcard
+      />
+    ))}
+  </section>
+)}
+
 
       {type === "transit waste removal" && (
-        <section className="skip grid grid-cols-3 gap-8 justify-center">
+        <section className="skip grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
           {Isdelivery.map((item, id) => (
             <Cardskip
               key={id}
               item={item}
+              setValue={setValue} 
               isSelected={selectedSkip?.size === item.size}
               onClick={() => handleSelect(item)}
             />
@@ -196,7 +198,7 @@ if(filterdata && filterdata.length > 0){
         </section>
       )}
       {type === "skip exchange" && (
-        <section className="skip grid grid-cols-3 gap-8 justify-center">
+        <section className="skip grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
           {Isdelivery.map((item, id) => (
             <Cardskip
               key={id}
