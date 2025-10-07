@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 import { useFormContext } from "react-hook-form";
 
 export default function Cart() {

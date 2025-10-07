@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { ImageHandler } from "@/app/controllers/ImageHandler";
 import Image from "next/image";
 import { CrossIcon, X } from "lucide-react";
+import Link from "next/link";
 
 
 export default function FormCom({onSubmit,initalData ={},mode="create"}) {
@@ -60,6 +61,7 @@ export default function FormCom({onSubmit,initalData ={},mode="create"}) {
   return (
     <div className="   p-7 ">
       <h1 className=" h3 mx-auto w-fit ">{mode=="edit"?"Update Category":"Add New Category"}</h1>
+      <div className=" w-full flex justify-end " ><Link href={'/admin/category'} ><Button className="text-white-1">Back To Category</Button></Link></div>
       <div className=" mt-7 h-full w-full  ">
         <form onSubmit={formhandler} className=" grid grid-cols-12 gap-7 ">
           <div className=" col-span-7 flex  flex-col gap-6 ">
