@@ -7,7 +7,8 @@ import { useFormContext } from "react-hook-form";
 import { Fetchjobtype } from "../action/action";
 
 export default function PostDetails() {
-  const { register, watch } = useFormContext();
+  const { register, watch, formState: { errors } } = useFormContext();
+
   const selected = watch("permitOnHighway");
   const selectedPostcode = watch("postcodeArea");
 
@@ -56,6 +57,10 @@ export default function PostDetails() {
               placeholder="E.g. SE1 2AB"
             />
           </div>
+            {errors.fullPostcode &&(
+              <p className=" text-center h6 text-red-400 " >{errors.fullPostcode.message}</p>
+              
+            )}
         </div>
 
         {/* Delivery Date */}
@@ -71,6 +76,10 @@ export default function PostDetails() {
             className="date !py-3"
             onFocus={(e) => e.target.showPicker?.()}
           />
+           {errors.deliveryDate &&(
+              <p className=" text-center h6 text-red-400 " >{errors.deliveryDate.message}</p>
+              
+            )}
         </div>
       </div>
 

@@ -4,20 +4,25 @@ import { Controller, useFormContext } from "react-hook-form";
 import SectionInnerTitle from "@/components/shared/SectionInnerTitle";
 import Select, { components } from "react-select";
 import { FetchpostCode } from "../action/action";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function PostCode() {
   const [Ispostcode, setispostcode] = useState();
   const [loading,setloading]= useState(false)
   useEffect(() => {
+    setloading(true)
     async function data() {
+
       const res = await FetchpostCode();
 
       if (res) {
         console.log("api is calling", res);
         setispostcode(res);
+        setloading(false)
       }
     }
     data();
+    setloading(false)
   }, []);
   const POSTCODE = [
     "BR1",
@@ -368,7 +373,13 @@ export default function PostCode() {
   const { control } = useFormContext();
 
   return (
-    <div>
+<>
+{
+loading ? <div>
+<Skeleton className="w-[80%]"/>
+<Skeleton className="w-[80%]"/>
+<Skeleton className="w-[20%]"/>
+</div> :     <div>
       <h5 className=" h5 text-center ">
         <span className=" font-semibold text-primary   ">Step 1:</span> Select
         the postcode area where your skip will be delivered.
@@ -441,5 +452,8 @@ export default function PostCode() {
         )}
       />
     </div>
+}
+
+</>
   );
 }
