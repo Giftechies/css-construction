@@ -8,6 +8,7 @@
         { label: "Size", path: "/admin/online-booking-form/size" },
         { label: "Rates", path: "/admin/online-booking-form/rates" },
         { label: "Extra", path: "/admin/online-booking-form/extra" },
+        { label: "Roll & Roll", path: "/admin/online-booking-form/roll-&-roll" },
       ],
     },
     {

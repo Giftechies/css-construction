@@ -17,10 +17,38 @@ export default function Skip({ goToNextStep }) {
 
   const [mounted, setMounted] = useState(false);
   const [loading,setloading] = useState(false)
-  useEffect(() =>{
-     setMounted(true)
 
-     async function loadrate(){
+   const fetchPostcodes = async () => {
+    try {
+      setloading(true)
+      const res = await fetch("/api/form/rollandroll");
+      const data = await res.json();
+      console.log(data.data);
+      const response = data.data;
+      const filterdata = response.filter((item)=>item.
+postId.postcode ===postcode )
+
+if(filterdata && filterdata.length > 0){
+  const dilveryoption = filterdata.map((item)=>({
+    label:item.label,
+    baseprice:item.baseprice,
+    tones:item.tones,
+    toneprice:item.toneprice
+  }))
+
+  setIsdelivery(dilveryoption)
+  setloading(false)
+}
+    } catch (err) {
+      console.error(err);
+      setloading(false)
+    }
+    finally{
+      setloading(false)
+    }
+  };
+  
+     const loadrate = async ()=>{
       setloading(true)
       const data = await Fetchrates()
      if(data.success){
@@ -48,7 +76,19 @@ export default function Skip({ goToNextStep }) {
       
 
      }
-     loadrate()
+  useEffect(() =>{
+     setMounted(true)
+     if(type == "roll and roll off" ){
+      console.log("rool");
+      console.log(type);
+      
+      fetchPostcodes()
+    }else{ 
+      console.log("sd skip");
+      
+      loadrate()}
+
+      console.log(type);
 
   }, []);
   if (!mounted) return null; // 🚀 prevents hydration error
@@ -129,9 +169,9 @@ export default function Skip({ goToNextStep }) {
         </section>
       )}
 
-      {type === "roll-on-roll-off" && (
+      {type === "roll and roll off" && (
         <section className="skip grid grid-cols-3 gap-8">
-          {roll.map((item, id) => (
+          {Isdelivery.map((item, id) => (
             <Skipcard
               key={id}
               item={item}

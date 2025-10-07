@@ -382,7 +382,7 @@ console.log("rate page>>>>",rates);
               />
 
               {/* Add & Bulk Buttons */}
-              <div className="flex gap-2 mt-2">
+              <div className="flex items-center justify-center gap-2 mt-2">
                 <button
                   type="submit"
                   disabled={loading}
@@ -400,7 +400,7 @@ console.log("rate page>>>>",rates);
                 />
                 <label
                   htmlFor="bulkFile"
-                  className="cursor-pointer bg-gray-700 text-white rounded px-4 py-2 hover:bg-gray-800"
+                  className="cursor-pointer bg-primary text-white-1 rounded px-4 py-2 hover:bg-primary/80"
                 >
                   Import Bulk
                 </label>
