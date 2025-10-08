@@ -1,10 +1,12 @@
 import { NextResponse } from "next/server";
 import { ConnectDb } from "../../helper/db";
 import pageModel from "../../helper/models/page";
-
+import serviceCategoryModel from "../../helper/models/serviceCategory"
 export async function GET(req) {
-  await ConnectDb();
   try {
+    await ConnectDb();
+    console.log("API /api/page called");
+
     const res = await pageModel.find().sort({ title: 1 }).populate("category", "title");
     if (!res) {
       return NextResponse.json(
