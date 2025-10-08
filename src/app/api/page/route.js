@@ -3,6 +3,7 @@ import { ConnectDb } from "../../helper/db";
 import pageModel from "../../helper/models/page";
 
 export async function GET(req) {
+  await ConnectDb();
   try {
     const res = await pageModel.find().sort({ title: 1 }).populate("category", "title");
     if (!res) {

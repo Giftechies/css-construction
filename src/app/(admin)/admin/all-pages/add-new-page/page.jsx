@@ -25,7 +25,8 @@ export default function AllPages(){
  
          }
        } catch (error) {
-log
+console.log(error);
+
        }finally{
         setIsloader(false)
        }

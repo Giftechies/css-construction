@@ -2,9 +2,9 @@
 import { cn } from "@/lib/utils";
 import React, { useState } from "react";
 
-export default function Cardskip({ item, isSelected, onClick,handleselect }) {
+export default function Cardskip({ item, isSelected, onClick }) {
   return (
-    <div onClick={handleselect}
+    <div 
       className={cn(
         " group min-h-[16rem]  w-[18rem] cursor-pointer space-y-8  rounded-xl  shadow-md  bg-white-1 p-8  ",
         { "bg-primary/10 ": isSelected },
@@ -20,7 +20,7 @@ export default function Cardskip({ item, isSelected, onClick,handleselect }) {
       <div className="mt-4   flex flex-col items-center justify-center gap-4    ">
         <span className=" h5  font-bold  text-primary   ">
           {item.size && ` ${item.size}`}
-          {item.label}
+          {item?.label}
         </span>
         <div className=" h6 rounded-full bg- px-4 py-2 ">
           <span>£{item.rate}(+ VAT)</span>

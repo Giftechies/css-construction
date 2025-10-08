@@ -19,6 +19,7 @@ export default function FormCom({
   initalData = {},
   mode = "create",
 }) {
+  
   const [slug, setslug] = useState(initalData.slug || "");
   const [title, settitle] = useState(initalData.title || "");
   const [shortcontent, setshortcontent] = useState(initalData.shortcontent || "");
@@ -27,10 +28,10 @@ export default function FormCom({
   const [imagealt, setimagealt] = useState(initalData.imagealt || "");
   const [metatitle, setmetatitle] = useState(initalData.metatitle || "");
   const [metadiscription, setmetadiscription] = useState(initalData.metadiscription || "");
+  const [category, setCategory] = useState(initalData.category || "");
   const [imageLoader, setImageLoader] = useState(false);
 
   // ✅ Category state
-  const [category, setCategory] = useState(initalData.category || "");
   const [categories, setCategories] = useState([]);
 
   // ✅ Fetch categories
