@@ -94,28 +94,7 @@ if(filterdata && filterdata.length > 0){
   }, []);
   if (!mounted) return null; // 🚀 prevents hydration error
 
-  const delivery = [
-    { distance: 4, rate: 250 },
-    { distance: 8, rate: 330 },
-    { distance: 10, rate: 380 },
-    { distance: 12, rate: 440 },
-    { distance: 16, rate: 540 },
-  ];
 
-  const roll = [
-    { label: "20/40yd mixed", baseprice: 280, tones: 5, toneprice: 190 },
-    { label: "20/40yd wood", baseprice: 280, tones: 5, toneprice: 190 },
-    { label: "20/40yd P/B", baseprice: 280, tones: 5, toneprice: 190 },
-    { label: "20yd hardcore", baseprice: 280, tones: 5, toneprice: 190 },
-  ];
-
-  const transit = [
-    { label: "One Yard", rate: 95 },
-    { label: "1/4 Load", rate: 130 },
-    { label: "1/2 load", rate: 200 },
-    { label: "3/4 Yard", rate: 260 },
-    { label: "Full Yard", rate: 330 },
-  ];
 
   const handleSelect = (item) => {
     setValue("skipSize", item);
@@ -125,7 +104,8 @@ if(filterdata && filterdata.length > 0){
   return (
 
     <div>
-      {loading? <div className="skip grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {loading?
+       <div className="skip grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {Array.from({length:3}).map(()=>{
           return(
             <div className="p-4 flex items-center justify-center w-48 " >
@@ -141,9 +121,7 @@ if(filterdata && filterdata.length > 0){
 
       </div>
     :
-    ""  
-    }
-   <>
+    <>
       {type === "skip delivery" && (
         <section className="skip grid md:grid-cols-2 lg:grid-cols-3 gap-8  ">
           {Isdelivery.map((el, id) => (
@@ -176,8 +154,8 @@ if(filterdata && filterdata.length > 0){
       <Skipcard
         key={id}
         item={item}
-        setValue={setValue}   // ✅ send this down
-        onClick={(selected) => handleSelect(selected)} // ✅ receive from Skipcard
+        setValue={setValue}  
+        onClick={(selected) => handleSelect(selected)} 
       />
     ))}
   </section>
@@ -210,6 +188,8 @@ if(filterdata && filterdata.length > 0){
         </section>
       )}
     </>
+    }
+ 
     </div>
  
   );

@@ -1,8 +1,22 @@
 "use client"
-
+import { useEffect } from "react";
+import FormCom from "../../component/FormCom"
 
 export default function AllPages(){
+
+    // useEffect(()=>{
+
+    // })
+
+    const  handlesubmit = async (data)=>{
+        console.log(data);
+        
+    }
+     
     return(
-        <div>edit pages</div>
+        <div>
+            <FormCom onSubmit={handlesubmit} />
+        
+        </div>
     )
 }

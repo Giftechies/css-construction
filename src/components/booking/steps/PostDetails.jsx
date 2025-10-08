@@ -5,17 +5,24 @@ import { IconPhoneCall } from "@tabler/icons-react";
 import React, { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { Fetchjobtype } from "../action/action";
+import { Skeleton } from "@/components/ui/skeleton"; // ✅ added
 
 export default function PostDetails() {
-  const { register, watch, formState: { errors } } = useFormContext();
+  const {
+    register,
+    watch,
+    formState: { errors },
+  } = useFormContext();
 
   const selected = watch("permitOnHighway");
   const selectedPostcode = watch("postcodeArea");
 
   const [jobtype, setJobtype] = useState([]);
+  const [loading, setLoading] = useState(false); // ✅ added loading state
 
   useEffect(() => {
     async function loadJobTypes() {
+      setLoading(true); // ✅ start loading
       try {
         const res = await Fetchjobtype();
         if (res?.success && Array.isArray(res.data)) {
@@ -24,6 +31,8 @@ export default function PostDetails() {
         }
       } catch (err) {
         console.error("Error fetching job types:", err);
+      } finally {
+        setLoading(false); // ✅ stop loading
       }
     }
 
@@ -57,10 +66,11 @@ export default function PostDetails() {
               placeholder="E.g. SE1 2AB"
             />
           </div>
-            {errors.fullPostcode &&(
-              <p className=" text-center h6 text-red-400 " >{errors.fullPostcode.message}</p>
-              
-            )}
+          {errors.fullPostcode && (
+            <p className="text-center h6 text-red-400">
+              {errors.fullPostcode.message}
+            </p>
+          )}
         </div>
 
         {/* Delivery Date */}
@@ -76,10 +86,11 @@ export default function PostDetails() {
             className="date !py-3"
             onFocus={(e) => e.target.showPicker?.()}
           />
-           {errors.deliveryDate &&(
-              <p className=" text-center h6 text-red-400 " >{errors.deliveryDate.message}</p>
-              
-            )}
+          {errors.deliveryDate && (
+            <p className="text-center h6 text-red-400">
+              {errors.deliveryDate.message}
+            </p>
+          )}
         </div>
       </div>
 
@@ -154,32 +165,46 @@ export default function PostDetails() {
       <div className="mb-4">
         <label className="mb-2 block text-sm font-medium">Job Type</label>
 
-        <select
-          {...register("jobType", { required: "Job type is required" })}
-          className="w-full rounded-full outline-none border tracking-wider px-4 focus:border-primary py-2"
-        >
-          <option value="">-- Select Job Type --</option>
+        {loading ? (
+          // ✅ Skeleton Loader
+          <div className="flex flex-col gap-2">
+            <Skeleton className="w-full h-10 rounded-full" />
+            <Skeleton className="w-3/4 h-10 rounded-full" />
+          </div>
+        ) : (
+          <select
+            {...register("jobType", { required: "Job type is required" })}
+            className="w-full rounded-full outline-none border tracking-wider px-4 focus:border-primary py-2"
+          >
+            <option value="">-- Select Job Type --</option>
 
-          {jobtype && jobtype.length > 0
-            ? jobtype.map((item) => (
-                <option key={item._id} value={item.category.toLowerCase()}>
-                  {item.category}
-                </option>
-              ))
-            : // fallback options if API not loaded
-              [
-                "Skip Delivery",
-                "Roll on Roll off",
-                "Skip Collection",
-                "Skip Exchange",
-                "Skip Wait and Load",
-                "Transit Waste Removal",
-              ].map((label) => (
-                <option key={label} value={label.toLowerCase()}>
-                  {label}
-                </option>
-              ))}
-        </select>
+            {jobtype && jobtype.length > 0
+              ? jobtype.map((item) => (
+                  <option key={item._id} value={item.category.toLowerCase()}>
+                    {item.category}
+                  </option>
+                ))
+              : // fallback options if API not loaded
+                [
+                  "Skip Delivery",
+                  "Roll on Roll off",
+                  "Skip Collection",
+                  "Skip Exchange",
+                  "Skip Wait and Load",
+                  "Transit Waste Removal",
+                ].map((label) => (
+                  <option key={label} value={label.toLowerCase()}>
+                    {label}
+                  </option>
+                ))}
+          </select>
+        )}
+
+        {errors.jobType && (
+          <p className="text-center h6 text-red-400 mt-2">
+            {errors.jobType.message}
+          </p>
+        )}
       </div>
     </div>
   );

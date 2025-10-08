@@ -10,9 +10,9 @@ const pageSchema = new mongoose.Schema(
     imagealt: { type: String, required: true, trim: true },
     metatitle: { type: String, required: true, trim: true, maxlength: 70 },
     metadiscription: { type: String, required: true, trim: true, maxlength: 160 },
+    category: { type: mongoose.Schema.Types.ObjectId, ref: "serviceCategory", required: true },
 
     // ✅ New field to link category
-    category: { type: mongoose.Schema.Types.ObjectId, ref: "serviceCategory", required: true },
   },
   { timestamps: true }
 );
