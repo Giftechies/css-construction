@@ -28,3 +28,29 @@ if(data){
         
     }
 }
+
+export async function Updatepage({ data, params }) {
+  try {
+    console.log("caliin updata page");
+    
+    const res = await fetch(`/api/page/${params.id}`, {
+      method: "PUT", 
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await res.json();
+    console.log(result);
+
+    if (result.success) {
+      return result;
+    } else {
+      throw new Error(result.message || "Update failed");
+    }
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
