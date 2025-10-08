@@ -43,7 +43,7 @@ export async function GET() {
       .populate({ path: "postId", select: "postcode" })
       .populate({ path: "categoryId", select: "category" })
       .populate({ path: "sizeId", select: "size" });
-
+  
     return Response.json({ success: true, data: rates });
   } catch (error) {
     console.error("GET /rates error:", error);
