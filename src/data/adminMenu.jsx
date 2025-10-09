@@ -8,9 +8,9 @@
         { label: "Size", path: "/admin/online-booking-form/size" },
         { label: "Rates", path: "/admin/online-booking-form/rates" },
         { label: "Extra", path: "/admin/online-booking-form/extra" },
-        { label: "Roll & Roll", path: "/admin/online-booking-form/roll-&-roll" },
-        { label: "Setting Rate", path: "/admin/online-booking-form/setting-rate" },
-        { label: "Setting Roll", path: "/admin/online-booking-form/setting-roll" },
+        { label: "Roll om Roll Off", path: "/admin/online-booking-form/roll-&-roll" },
+        { label: "Default Rates", path: "/admin/online-booking-form/setting-rate" },
+        { label: "Default Roll on Roll Off", path: "/admin/online-booking-form/setting-roll" },
       ],
     },
     {

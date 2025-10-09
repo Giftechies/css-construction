@@ -353,7 +353,7 @@ export default function RollAdminPage() {
                 onClick={() => handleSort("tones")}
               >
                 <div className="flex gap-2">
-                  Tones <ArrowUpDown className="w-5" />
+                  Minimum Tones <ArrowUpDown className="w-5" />
                 </div>
               </th>
               <th

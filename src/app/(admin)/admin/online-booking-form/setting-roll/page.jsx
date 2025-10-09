@@ -269,7 +269,7 @@ export default function RollAdminPage() {
                 <div className="flex gap-2">Base Price <ArrowUpDown className="w-5" /></div>
               </th>
               <th className="border p-2 cursor-pointer" onClick={() => handleSort("tones")}>
-                <div className="flex gap-2">Tones <ArrowUpDown className="w-5" /></div>
+                <div className="flex gap-2">Minimum Tones <ArrowUpDown className="w-5" /></div>
               </th>
               <th className="border p-2 cursor-pointer" onClick={() => handleSort("toneprice")}>
                 <div className="flex gap-2">Tone Price <ArrowUpDown className="w-5" /></div>
