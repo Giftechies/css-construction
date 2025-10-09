@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import {ConnectDb} from "../../../helper/db";
 import RollOnRollRate from "../../../helper/models/rollandroll";
+import Postcode from "../../../helper/models/postcode";
 
 // ✅ Connect to MongoDB
 export async function GET() {

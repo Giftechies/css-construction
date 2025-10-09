@@ -1,5 +1,8 @@
 import { ConnectDb } from "../../../helper/db";
 import settingRate from "../../../helper/models/settingRate";
+import Size from "../../../helper/models/size";
+import Category from "../../../helper/models/category";
+
 
 // ✅ POST — Create a new settingRate
 export async function POST(req) {
