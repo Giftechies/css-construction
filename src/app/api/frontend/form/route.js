@@ -1,9 +1,13 @@
 import { NextResponse } from "next/server";
 import settingRate from "../../../helper/models/settingRate";
 import settingRoll from "../../../helper/models/settingroll";
-import Rates from "../../../helper/models/rates";
+import Rate from "../../../helper/models/rates";
 import RollOnRollRate from "../../../helper/models/rollandroll";
+import Category from "../../../helper/models/category";
+import Postcode from "../../../helper/models/postcode";
+import Size from "../../../helper/models/size";
 import { ConnectDb } from "../../../helper/db";
+
 
 export async function GET(req) {
   try {
@@ -20,7 +24,7 @@ export async function GET(req) {
     let rates = [];
 
     if (jobType === "roll and roll off") {
-      const res = await RollOnRollRate.find({}).lean();
+      const res = await RollOnRollRate.find({}).populate("postId","postcode").lean();
       const filtered = res.filter(x => x.postId?.postcode?.trim().toLowerCase() === postcode);
 
       if (filtered.length > 0) {
@@ -30,7 +34,7 @@ export async function GET(req) {
         rates = defaultRolls;
       }
     } else {
-      const res = await Rates.find({}).populate("postId categoryId sizeId").lean();
+      const res = await Rate.find({}).populate({ path: "postId", select: "postcode" }) .populate({ path: "categoryId", select: "category" }) .populate({ path: "sizeId", select: "size" }).lean();
       const filtered = res.filter(
         x =>
           x.postId?.postcode?.trim().toLowerCase() === postcode &&

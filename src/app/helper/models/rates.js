@@ -10,6 +10,6 @@ const rateSchema = new Schema(
  
 );
 
-const Rates = mongoose.models.Rate || mongoose.model("Rate", rateSchema);
+const Rate = mongoose.models.Rate || mongoose.model("Rate", rateSchema);
 
-export default Rates;
+export default Rate;
