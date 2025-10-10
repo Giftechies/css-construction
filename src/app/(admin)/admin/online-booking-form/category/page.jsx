@@ -227,7 +227,7 @@ export default function CategoryPage() {
                         </button>
                         <button
                           onClick={() => handleDelete(cat._id)}
-                          className="text-red-600 px-2 py-1"
+                          // className="text-red-600 px-2 py-1"
                           disabled={deletingId === cat._id}
                         >
                           {deletingId === cat._id ? (

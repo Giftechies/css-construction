@@ -286,9 +286,9 @@ export default function SizePage() {
                     <button
                       onClick={() => handleUpdate(size._id)}
                       disabled={loading}
-                      className="text-white rounded bg-green-600 px-3 py-1 disabled:opacity-50"
+                      className="text-white-1 rounded bg-primary px-3 py-1 disabled:opacity-50"
                     >
-                      {loading ? "Saving..." : "Save"}
+                      {loading ? "Updating..." : "Udpate"}
                     </button>
                     <button
                       onClick={() => {
@@ -296,31 +296,31 @@ export default function SizePage() {
                         setEditSize("");
                         setEditCategory("");
                       }}
-                      className="text-white rounded bg-gray-400 px-3 py-1"
+                      className="text-white-1 rounded bg-primary px-3 py-1"
                     >
                       Cancel
                     </button>
                   </>
                 ) : (
-                  <>
+                  <div className="flex gap-6" >
                     <button
                       onClick={() => {
                         setEditId(size._id);
                         setEditSize(size.size);
                         setEditCategory(size.category?._id || "");
                       }}
-                      className="px-2 py-1 text-blue-500 hover:text-blue-400"
+                     
                     >
                       <Pencil size={20} />
                     </button>
                     <button
                       onClick={() => handleDelete(size._id)}
                       disabled={loading}
-                      className="px-2 py-1 text-red-600 disabled:opacity-50"
+                      
                     >
                       {loading ? "..." : <Trash size={20} />}
                     </button>
-                  </>
+                  </div>
                 )}
               </td>
             </tr>
