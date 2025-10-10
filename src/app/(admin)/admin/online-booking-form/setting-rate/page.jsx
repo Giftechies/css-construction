@@ -42,7 +42,7 @@ export default function SettingRatePage() {
 
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = 25;
 
   // Sorting
   const [sortConfig, setSortConfig] = useState({ key: "", direction: "asc" });
@@ -267,7 +267,7 @@ export default function SettingRatePage() {
       <div className="flex justify-end">
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
           <DialogTrigger asChild>
-            <Button className="text-white mb-4">Add New Setting Rate</Button>
+            <Button className="text-white-1 mb-4">Add New Setting Rate</Button>
           </DialogTrigger>
           <DialogOverlay className="fixed inset-0 bg-black/50" />
           <DialogContent className="w-[90%] md:w-[500px] p-4 rounded-lg">
@@ -323,7 +323,7 @@ export default function SettingRatePage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="bg-primary text-white p-2 rounded disabled:opacity-50"
+                  className="bg-primary text-white-1 p-2 rounded disabled:opacity-50"
                 >
                   {loading ? "Adding..." : "Add Rate"}
                 </button>
@@ -337,7 +337,7 @@ export default function SettingRatePage() {
                 />
                 {/* <label
                   htmlFor="bulkFile"
-                  className="cursor-pointer bg-primary text-white rounded px-4 py-2 hover:bg-primary/80"
+                  className="cursor-pointer bg-primary text-white-1 rounded px-4 py-2 hover:bg-primary/80"
                 >
                   Import Bulk
                 </label> */}
@@ -406,7 +406,7 @@ export default function SettingRatePage() {
             <button
               type="submit"
               disabled={loading}
-              className="bg-primary text-white p-2 rounded disabled:opacity-50"
+              className="bg-primary text-white-1 p-2 rounded disabled:opacity-50"
             >
               {loading ? "Updating..." : "Update Rate"}
             </button>
@@ -471,7 +471,7 @@ export default function SettingRatePage() {
                         <Pencil size={18} />
                       </Button>
                       <Button
-                        variant="destructive"
+                        variant="Outline"
                         onClick={() => handleDelete(r._id)}
                       >
                         <Trash size={18} />
@@ -491,7 +491,7 @@ export default function SettingRatePage() {
       </div>
 
       {/* Pagination */}
-      <div className="mt-4 flex justify-center gap-2">
+      <div className="mt-4 flex justify-center gap-2 ">
         <Button
           variant="outline"
           onClick={() => goToPage(currentPage - 1)}
@@ -504,6 +504,7 @@ export default function SettingRatePage() {
             key={idx}
             variant={currentPage === idx + 1 ? "default" : "outline"}
             onClick={() => goToPage(idx + 1)}
+            className="text-white-1"
           >
             {idx + 1}
           </Button>

@@ -48,13 +48,13 @@ const AboutLocal = ({imagepath1,imagepath2, imagepath3 ,counterNumber,counterTex
           </div>
         </div>
         <div className="col-start-1 col-end-13 xl:col-start-8  ">
-          <SectionSubTitle text={title? title: "Who we are"} className=" text-center " />
+          <SectionSubTitle text={title? title: "Who we are"} className=" " />
           <SectionTitle
             text={subheading?subheading:"Our Mission & Vision"}
-            className="h1 text-black-2 pt-3 text-center "
+            className="h1 text-left  text-black-2 pt-3  "
           />
           <SectionText
-            className="fade-top   pt-5"
+            className="fade-top text-left    pt-5"
             text={text1}
           />
   

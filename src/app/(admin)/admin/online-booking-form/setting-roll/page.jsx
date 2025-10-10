@@ -304,7 +304,7 @@ export default function RollAdminPage() {
                       >
                         <Pencil size={18} />
                       </Button>
-                      <Button variant="destructive" onClick={() => handleDelete(r._id)}>
+                      <Button variant="outline" onClick={() => handleDelete(r._id)}>
                         <Trash size={18} />
                       </Button>
                     </td>

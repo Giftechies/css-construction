@@ -362,14 +362,14 @@ export default function ExtraPage() {
                             price: item.price,
                           });
                         }}
-                        className="text-blue-500 hover:text-blue-400"
+                       
                       >
                         <Pencil size={18} />
                       </button>
                       <button
                         onClick={() => handleDelete(item._id)}
                         disabled={deletingId === item._id}
-                        className="text-red-500 hover:text-red-400"
+                        
                       >
                         {deletingId === item._id ? (
                           <Loader2 className="h-4 w-4 animate-spin" />
