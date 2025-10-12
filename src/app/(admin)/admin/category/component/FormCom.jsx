@@ -27,7 +27,7 @@ export default function FormCom({onSubmit,initalData ={},mode="create"}) {
         .toLowerCase()
         .trim()
         .replace(/\s+/g, "-")
-        .replace(/[^a-z0-9-]/g, "");
+        // .replace(/[^a-z0-9-]/g, "");
       setslug(slugText);
     }
   }, [title,mode]);
@@ -63,7 +63,7 @@ export default function FormCom({onSubmit,initalData ={},mode="create"}) {
       <h1 className=" h3 mx-auto w-fit ">{mode=="edit"?"Update Category":"Add New Category"}</h1>
       <div className=" w-full flex justify-end " ><Link href={'/admin/category'} ><Button className="text-white-1">Back To Category</Button></Link></div>
       <div className=" mt-7 h-full w-full  ">
-        <form onSubmit={formhandler} className=" grid grid-cols-12 gap-7 ">
+        <form onSubmit={formhandler} className=" all-pages grid grid-cols-12 gap-7 ">
           <div className=" col-span-7 flex  flex-col gap-6 ">
            <span  >
              <label htmlFor="title">Title</label>
@@ -126,7 +126,7 @@ export default function FormCom({onSubmit,initalData ={},mode="create"}) {
             
             }
           
-            <Button className=" w-fit text-white-1 " >{mode=="edit"?"Update Category":"Add New Category"}</Button>
+            <Button className=" w-fit text-white-1 mt-4  " >{mode=="edit"?"Update Category":"Add New Category"}</Button>
           </div>
         </form>
       </div>

@@ -6,76 +6,76 @@ export const navbar =[
  
   {id: uuidv4(),
     menuTitle: "Skip Hire",
-    path: "#",
+    path: "/skip-hire",
     menuItems: [
       {
         id: uuidv4(),
         title: "Skip Hire",
-        menuItemPath: "/skip-hire",
+        menuItemPath: "/skip-hire/skip-hire",
       },
       {
         id: uuidv4(),
         title: "RORO Skip Hire",
-        menuItemPath: "/roro-skip-hire",
+        menuItemPath: "/skip-hire/roro-skip-hire",
       },
       {
         id: uuidv4(),
         title: "Builders Waste Clearance",
-        menuItemPath: "/builders-waste-clearance",
+        menuItemPath: "/skip-hire/builders-waste-clearance",
       },
       {
         id: uuidv4(),
         title: "Waste Management",
-        menuItemPath: "/waste-management",
+        menuItemPath: "/skip-hire/waste-management",
       },
     ],
   },
   {
     id: uuidv4(),
     menuTitle: "Concrete Supply",
-    path: "#",
+    path: "/concrete-supply",
     menuItems: [
       {
         id: uuidv4(),
         title: "Concrete Supply",
-        menuItemPath: "/concrete-supply",
+        menuItemPath: "/concrete-supply/concrete-supply",
       },
       {
         id: uuidv4(),
         title: "Screed",
-        menuItemPath: "/screed",
+        menuItemPath: "/concrete-supply/screed",
       },
       {
         id: uuidv4(),
         title: "Ready Mix Concrete",
-        menuItemPath: "/ready-mix-concrete",
+        menuItemPath: "/concrete-supply/ready-mix-concrete",
       },
     ],
   },
   {
     id: uuidv4(),
     menuTitle: "Tipper & Grab Services",
-    path: "#",
+    path: "/tipper-&-grab-services",
     menuItems: [
       {
         id: uuidv4(),
         title: "Grab Hire",
-        menuItemPath: "/grab-hire",
+        menuItemPath: "/tipper-&-grab-services/grab-hire",
       },
       {
         id: uuidv4(),
         title: "Cage Lorrie’s",
-        menuItemPath: "/cage-lorries",
+        menuItemPath: "/tipper-&-grab-services/cage-lorries",
       },
       {
         id: uuidv4(),
         title: "Man and Van",
-        menuItemPath: "/man-and-van",
+        menuItemPath: "/tipper-&-grab-services/man-and-van",
       },
       {
         id: uuidv4(),
         title: "Aggregates",
-        menuItemPath: "/aggregates",
+        menuItemPath: "/tipper-&-grab-services/aggregates",
       },
     ],
   },

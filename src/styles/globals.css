@@ -46,6 +46,7 @@
     
       position: relative;
     }
+   
 
 text-s{
 font-size: 17px;
@@ -102,6 +103,10 @@ p{
   color: transparent; /* fill color */
   font-size: 26px;
 }
+.all-pages label{
+  margin-top: 10px !important ;
+  margin-bottom: 4px !important;
+ }
 
 
 
@@ -126,7 +131,7 @@ p{
   .Block-counter{
     @apply text-2xl font-semibold flex items-center justify-center
   }
-
+  
   .postcode,.date{
     @apply w-full border border-primary rounded-full  px-3 py-2
   }
@@ -138,6 +143,9 @@ p{
     @apply p-4 border border-primary rounded-xl font-medium tracking-wider placeholder:font-normal placeholder:text-black-3
   
 }
+ .all-pages label{
+  @apply !mb-8
+ }
 
 
   /*================ typography classes start ================ */

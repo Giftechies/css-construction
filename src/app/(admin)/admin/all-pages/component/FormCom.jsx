@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ImageHandler } from "@/app/controllers/ImageHandler";
 import { Button } from "@/components/ui/button";
-import { X } from "lucide-react";
+import { MoveLeft, X } from "lucide-react";
+import Link from "next/link";
 
 const EditorClient = dynamic(
   () => import("../../../../../components/EditorClient"),
@@ -108,12 +109,13 @@ export default function FormCom({
   }, [title]);
 
   return (
-    <div className="p-7">
+    <div className="p-7  ">
       <h1 className="h3 mx-auto w-fit">
         {mode == "edit" ? "Update Page" : "Add New Page"}
       </h1>
+      <div className="flex justify-end" ><Link href={'/admin/all-pages'} className="text-white-1"  ><Button><MoveLeft/>Go Back</Button></Link></div>
 
-      <form onSubmit={formhandler} className="grid grid-cols-12 gap-8 mt-8">
+      <form onSubmit={formhandler} className=" all-pages grid grid-cols-12 gap-8 mt-8">
         <div className="col-span-6 flex flex-col gap-4">
           <span>
             <label htmlFor="title">Title</label>
@@ -162,14 +164,29 @@ export default function FormCom({
               onChange={(e) => setshortcontent(e.target.value)}
             />
           </span>
+          
 
           <span>
-            <label htmlFor="content">Content</label>
-            <EditorClient
-              value={content}
-              onChange={(content) => setcontent(content)}
+            <label htmlFor="metatitle">Meta Title</label>
+            <Input
+              type="text"
+              value={metatitle}
+              name="metatitle"
+              onChange={(e) => setmetatitle(e.target.value)}
             />
           </span>
+            <span className="flex-col flex">
+            <label htmlFor="metadiscription">Meta Description</label>
+            <textarea
+              className="border h-30"
+              type="text"
+              value={metadiscription}
+              name="metadiscription"
+              onChange={(e) => setmetadiscription(e.target.value)}
+            />
+          </span>
+
+        
         </div>
 
         <div className="col-span-6 flex flex-col gap-4">
@@ -202,8 +219,7 @@ export default function FormCom({
               </span>
             )}
           </span>
-
-          <span>
+           <span>
             <label htmlFor="imagealt">Image Alt</label>
             <Input
               type="text"
@@ -213,34 +229,25 @@ export default function FormCom({
             />
           </span>
 
-          <span>
-            <label htmlFor="metatitle">Meta Title</label>
-            <Input
-              type="text"
-              value={metatitle}
-              name="metatitle"
-              onChange={(e) => setmetatitle(e.target.value)}
+         
+
+        
+            <span   className=''>
+            <label htmlFor="content">Content</label>
+            <EditorClient
+              value={content}
+              onChange={(content) => setcontent(content)}
+              className='h-[40px]'
             />
           </span>
 
-          <span className="flex-col flex">
-            <label htmlFor="metadiscription">Meta Description</label>
-            <textarea
-              className="border h-30"
-              type="text"
-              value={metadiscription}
-              name="metadiscription"
-              onChange={(e) => setmetadiscription(e.target.value)}
-            />
-          </span>
-
+        </div>
+      </form>
           <div className="flex justify-end">
-            <Button className="w-fit text-white-1">
+            <Button className="w-fit text-white-1 mt-6  ">
               {mode == "edit" ? "Update Page" : "Add Page"}
             </Button>
           </div>
-        </div>
-      </form>
     </div>
   );
 }

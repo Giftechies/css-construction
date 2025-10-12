@@ -9,7 +9,7 @@ export default function EditorClient({ value, onChange }) {
       value={value} // ✅ show existing content
       onEditorChange={(content) => onChange(content)} // ✅ send new content up
       init={{
-        height: 500,
+        height: 400,
         plugins: "lists link image table code help wordcount",
         toolbar:
           "undo redo | formatselect | bold italic emoticons | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent",

@@ -90,7 +90,7 @@ export default function Sidebar({ className }) {
   return (
     <section
       className={cn(
-        "shrink-0 min-h-[15rem] overflow-y-auto w-72 rounded-lg shadow-lg  p-6",
+        "shrink-0 min-h-[20rem]   overflow-y-auto w-72 rounded-lg shadow-lg  p-6",
         className
       )}
     >

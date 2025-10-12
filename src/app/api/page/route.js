@@ -5,14 +5,45 @@ import serviceCategoryModel from "../../helper/models/serviceCategory"
 export async function GET(req) {
   try {
     await ConnectDb();
-    console.log("API /api/page called");
+    const {searchParams} = new URL(req.url);
+    const category = searchParams?.get('category')
+    const dbcategory = category?.split('-').map(word=>word?.charAt(0).toUpperCase() + word?.slice(1).toLowerCase()).join(" ")
+    const page = searchParams.get('page')
 
     const res = await pageModel.find().sort({ title: 1 }).populate("category", "title");
-    if (!res) {
+    const service = await serviceCategoryModel.find({title:dbcategory})
+    
+    
+    
+    if (res.length==0) {
       return NextResponse.json(
         { success: false, message: "Fetching data failed" },
         { status: 404 }
       );
+    }
+    if(category && !page){ 
+     
+      const cleancategory = category.trim().replace(/['"]+/g,"").replace(/-/g," ").toLowerCase()
+      
+      const filterData = res.filter(item => item.category.title.trim().toLowerCase() == cleancategory)
+        return NextResponse.json({
+        success:true,
+        message:'page fetched successfully by category filted',
+        data:filterData,
+        category:service 
+      })
+    
+    }
+
+    if(category && page){
+       const cleancategory = category.trim().replace(/['"]+/g,"").replace(/-/g," ").toLowerCase()
+       const cleanpage = page.trim().replace(/['"]+/g,"").replace(/-/g," ").toLowerCase()
+      const filterdata = res.filter(item => item.category.title.trim().toLowerCase().includes(cleancategory) && item.title.trim().toLowerCase().includes(cleanpage))
+      return NextResponse.json({
+        success:true,
+        message:"fetched successfully from page filtered",
+        data:filterdata
+      })
     }
     return NextResponse.json(
       { success: true, message: "Page data fetched successfully!", data: res },
@@ -22,7 +53,7 @@ export async function GET(req) {
     console.log(error);
     return NextResponse.json(
       { success: false, message: "Fetching page details failed!" },
-      { status: 404 }
+      { status: 500 }
     );
   }
 }
