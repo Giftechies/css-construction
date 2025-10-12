@@ -1,7 +1,6 @@
 // /app/api/imagehandler/route.js
-import { writeFile } from "fs/promises";
-import path from "path";
 import { NextResponse } from "next/server";
+import { put } from "@vercel/blob";
 
 export async function POST(req) {
   try {
@@ -12,17 +11,29 @@ export async function POST(req) {
       return NextResponse.json({ success: false, message: "No file uploaded" });
     }
 
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
+    // Optional: limit file size (e.g., 2 MB)
+    const MAX_SIZE = 2 * 1024 * 1024;
+    if (file.size > MAX_SIZE) {
+      return NextResponse.json({
+        success: false,
+        message: "File is too large. Max 2 MB allowed.",
+      });
+    }
 
-    const fileName = `${Date.now()}-${file.name}`;
-    const uploadPath = path.join(process.cwd(), "public/uploads", fileName);
+    const fileBuffer = Buffer.from(await file.arrayBuffer());
+    const fileName = `${file.name}-${Date.now()}`;
 
-    await writeFile(uploadPath, buffer);
+    // Upload file to Vercel Blob
+    const upload = await put(fileName, fileBuffer, {
+      access: "public",     // file is publicly accessible
+      contentType: file.type,
+    });
+    console.log(upload.url);
+    
 
     return NextResponse.json({
       success: true,
-      filePath: `/uploads/${fileName}`,
+      filePath: upload.url, // public URL of uploaded file
     });
   } catch (error) {
     console.error("Upload error:", error);

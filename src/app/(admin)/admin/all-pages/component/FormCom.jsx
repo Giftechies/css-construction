@@ -234,11 +234,11 @@ export default function FormCom({
         
             <span   className=''>
             <label htmlFor="content">Content</label>
-            <EditorClient
+            {/* <EditorClient
               value={content}
               onChange={(content) => setcontent(content)}
               className='h-[40px]'
-            />
+            /> */}
           </span>
 
         </div>
