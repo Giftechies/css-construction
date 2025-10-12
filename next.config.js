@@ -8,6 +8,16 @@ const nextConfig = {
       "images.unsplash.com",
       "www.freepik.com",
     ],
+        remotePatterns: [
+      {
+        // This is the specific Vercel Blob domain pattern. 
+        // Note: The structure is always '*.public.blob.vercel-storage.com'
+        protocol: 'https',
+        hostname: '*.public.blob.vercel-storage.com',
+        port: '',
+        pathname: '/**', // Allows any path on this domain
+      },
+    ],
   },
    eslint: {
     ignoreDuringBuilds: true,
