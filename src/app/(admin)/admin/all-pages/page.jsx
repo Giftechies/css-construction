@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import { Deletepage } from "./component/action";
 import Link from "next/link";
 import { EditIcon, Trash2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function AllPages() {
   const [Pages, setPages] = useState();
@@ -41,6 +42,7 @@ export default function AllPages() {
   return (
     <div className=" mx-auto w-10/12   ">
       <h1 className=" h3 text-center font-semibold  ">All Pges</h1>
+      <div className="flex justify-end text-white-1" ><Link  href={"/admin/all-pages/add-new-page"}><Button>Add New Page</Button></Link></div>
       <Table className="mt-4">
         <TableHeader>
           <TableRow>

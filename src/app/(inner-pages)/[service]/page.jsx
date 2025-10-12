@@ -1,8 +1,9 @@
 import InnerBanner from "@/components/ui/InnerBanner";
 import CardContainer from "@/components/servicepage/CardContainer";
+import Animations from "@/components/animations/Animations";
 
-export default async function Skip() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/page`, {
+export default async function Skip({params}) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/page?category=${params.service}`, {
     method: "GET",
     cache: "no-store",
   });
@@ -11,15 +12,18 @@ export default async function Skip() {
     throw new Error("Failed to fetch data");
   }
   const response = await res.json()
-  const data = response.data.filter(item =>item.category.title.trim().toLowerCase() === "skip hire")
-
+  
+  
+  const data = response.data
+  const category = response.category[0]
   return (
     <>
       <InnerBanner
-        imgpath="/img/innerimg/skip-hire-pic.jpg"
-        pagename="Skip Hire"
+        imgpath={category?.featureImage}
+        pagename={category.title}
       />
       <CardContainer  data={data} pagelink="skip-hire" />
+      <Animations/>
     </>
   );
 }

@@ -86,7 +86,7 @@ export async function POST(req) {
       return NextResponse.json({ success: false, message: "Invalid password" }, { status: 401 });
 
     const token = jwt.sign({ username: existUser.username, id: existUser._id,role:existUser.role }, process.env.JWT_KEY, {
-      expiresIn: "60m",
+      expiresIn: "120m",
     });
 
     // ✅ Create response and attach cookie properly
