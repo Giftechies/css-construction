@@ -1,5 +1,5 @@
 import InnerBanner from "@/components/ui/InnerBanner";
-import CardContainer from "@/components/servicepage/CardContainer";
+import CardContainer from "../../../components/servicepage/Cardcontainer";
 import Animations from "@/components/animations/Animations";
 
 export default async function Skip({params}) {
