@@ -33,7 +33,7 @@ export default function AllPages() {
     }
     fetchpage();
   }, []);
-  console.log(Pages);
+
 
   const deleteHandler = async (id) => {
     const res = await Deletepage(id);
