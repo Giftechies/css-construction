@@ -234,17 +234,17 @@ export default function FormCom({
         
             <span   className=''>
             <label htmlFor="content">Content</label>
-            {/* <EditorClient
+            <EditorClient
               value={content}
               onChange={(content) => setcontent(content)}
               className='h-[40px]'
-            /> */}
+            />
           </span>
 
         </div>
       </form>
           <div className="flex justify-end">
-            <Button className="w-fit text-white-1 mt-6  ">
+            <Button onClick={formhandler}  className="w-fit text-white-1 mt-6  ">
               {mode == "edit" ? "Update Page" : "Add Page"}
             </Button>
           </div>

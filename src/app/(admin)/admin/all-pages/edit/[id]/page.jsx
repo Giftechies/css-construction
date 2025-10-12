@@ -16,7 +16,7 @@ export default function Editpage({ params }) {
     }
     fetchpage();
   }, []);
-  const handleSubmit = async (formData) => {
+  const handleSubmit = async (formData) => {  
     try {
 
       const res = await Updatepage({ data: formData, params });
