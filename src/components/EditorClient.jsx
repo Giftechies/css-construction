@@ -5,7 +5,7 @@ import { Editor } from "@tinymce/tinymce-react";
 export default function EditorClient({ value, onChange }) {
   return (
     <Editor
-      apiKey={process.env.Tinymce_Secert_key}
+      apiKey={process.env.Tinymce_Secert_key || "l97hxjl22hmpc7abrl4mt94jl4pgw7mx9z3s07i2z6osljpp"}
       value={value} // ✅ show existing content
       onEditorChange={(content) => onChange(content)} // ✅ send new content up
       init={{

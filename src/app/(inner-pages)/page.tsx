@@ -1,20 +1,16 @@
 
 import Animations from "@/components/animations/Animations";
-import HomeOneFinancialPlanning from "@/pages/home-one/HomeOneFinancialPlanning";
-import HomeOneInfo from "@/pages/home-one/HomeOneInfo";
 
 import HomeOneTestimonials from "@/pages/home-one/HomeOneTestimonials";
 import HomeThreeBanner from "@/pages/home-three/HomeThreeBanner";
 import { Metadata } from "next";
 
-import HomeTwoFaq from "@/pages/local/HomeTwoFaq";
-import HowItrWorksContent from "@/pages/how-it-works/HowItrWorksContent";
 import AboutLocal from "@/pages/local/AboutPage";
 import ServicePage from "@/pages/services/Servicespage";
 import Projects from "@/pages/projects/Projects";
-import HomeTwoServices from "@/pages/landing-two/HomeTwoServices";
+
 import Vision from "@/pages/home/Vision"
-import Logocontainer from "@/pages/home/Logocontainer"
+
 import EducationLoanFaq from "@/pages/education-loan/EducationLoanFaq";
 
 // export const metadata: Metadata = {

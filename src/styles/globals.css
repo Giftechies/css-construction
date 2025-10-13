@@ -108,6 +108,24 @@ p{
   margin-bottom: 4px !important;
  }
 
+ .editor {
+    ol{
+     list-style-type: decimal !important; 
+    padding-left: 1.5em !important;
+    margin-left: 1.5em !important;
+
+    }
+    ul{
+       list-style-type: disc !important; 
+        padding-left: 1.5em !important; 
+    margin-left: 1.5em !important;
+    }
+    li{
+      margin-top: 8px;
+        list-style-type: inherit !important;
+    }
+
+  }
 
 
 
@@ -198,7 +216,30 @@ p{
   }
   .xs-text {
     @apply text-[12px] leading-[150%];
+    
   }
+  .editor{
+    h1{
+      @apply h1
+    }
+    h2{
+      @apply h2
+    }
+    h3{
+      @apply h3
+    }
+    h4{
+      @apply h4
+    }
+    h5{
+      @apply h5
+    }
+    h6{
+      @apply h6
+    }
+   
+  }
+  
  
 
   /*================ typography classes end ================ */

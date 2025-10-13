@@ -85,7 +85,7 @@ export const navbar2 =[
       {
     id: uuidv4(),
     menuTitle: "About Us",
-    path: "/#",
+    path: "/about-us",
   },
   
   {
@@ -96,7 +96,7 @@ export const navbar2 =[
   {
     id: uuidv4(),
     menuTitle: "Contact",
-    path: "/#",
+    path: "/contact-us",
     menuItems:[
          {
         id: uuidv4(),

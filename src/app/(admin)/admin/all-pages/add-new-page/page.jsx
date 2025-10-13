@@ -21,10 +21,12 @@ export default function AllPages(){
          console.log("page create",responed);
          if(responed.success){
             setIsloader(false)
+            alert("Page is created successfully!")
             route.push("/admin/all-pages")
  
          }
        } catch (error) {
+        alert("Page is creation failed ")
 console.log(error);
 
        }finally{

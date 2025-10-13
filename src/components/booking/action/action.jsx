@@ -22,7 +22,8 @@ export async function Fetchjobtype(){
         console.log("indside fetchpostcode caklling");
         
         const res = await fetch("/api/form/category",{
-            method:"GET"
+            method:"GET",
+            cache:"no-store"
         })
         const data = await res.json()
         if(data){

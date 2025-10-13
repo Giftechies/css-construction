@@ -1,14 +1,21 @@
+"use client"
 import Image from "next/image";
 import SectionText from "../shared/SectionText";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-export default function CardContainer({data=[],pagelink=''}){
+export default function CardContainer({data=[]}){
+  const pathname = usePathname()
+
+
+
     return(
         <section className=" container flex flex-wrap items-center justify-center gap-10 py-10 " >
                  {data.map((item,id)=>(<div
                 key={id}
                 className="card1 group w-[380px]    overflow-hidden rounded-[2em] border p-4 bg-white-1 sp "
               >
+               <Link href={`${pathname}/${item.slug}`} >
                 <div className="img group h-60 w-full overflow-hidden rounded-3xl bg-red-50 ">
                   <Image
                     src={item.pageimage}
@@ -17,9 +24,9 @@ export default function CardContainer({data=[],pagelink=''}){
                     height={200}
                     className=" theme-transition-3  object-cover object-center h-full w-full group-hover:scale-[1.1] "
                   />
-                </div>
+                </div></Link>
                 <div className="text w-full theme-transition-4 flex flex-col items-start justify-center gap-4 py-6  ">
-                  <h3 className=" h4 font-[700] text-primary font-oswald ">{item.title}</h3>
+                  <Link href={`${pathname}/${item.slug}`} ><h3 className=" h4 font-[700] text-primary font-oswald ">{item.title}</h3></Link>
                   <SectionText
                     className=" text-[15px] font-[500] text-justify "
                     text={
@@ -30,7 +37,7 @@ export default function CardContainer({data=[],pagelink=''}){
 
                   <div className=" border-t h-[8px]  w-full border-black-3/40 "  >
                   
-                 <Link href={`/${pagelink}/${item.slug}`} className=" mt-2 flex text-[14px] gap-2 font-semibold " ><span>Read More</span> <i className="ri-arrow-right-line font-medium text-[18px] "></i>  </Link>
+                 <Link href={`${pathname}/${item.slug}`} className=" mt-2 flex text-[14px] gap-2 font-semibold " ><span>Read More</span> <i className="ri-arrow-right-line font-medium text-[18px] "></i>  </Link>
                  </div>
                 </div>
               </div>))}
