@@ -20,7 +20,7 @@ export default function FormCom({
   initalData = {},
   mode = "create",
 }) {
-  
+
   const [slug, setslug] = useState(initalData.slug || "");
   const [title, settitle] = useState(initalData.title || "");
   const [shortcontent, setshortcontent] = useState(initalData.shortcontent || "");
@@ -35,16 +35,18 @@ export default function FormCom({
   // ✅ Category state
   const [categories, setCategories] = useState([]);
 
+  // ✅ Error state
+  const [errors, setErrors] = useState({});
+
   // ✅ Fetch categories
   useEffect(() => {
-  async function loadcategory(){
-    const res = await fetch("/api/service-category",{method:"GET"})
-    const data = await res.json()
-    console.log("category",data.data);
-    setCategories(data.data)
-    
-  }
-  loadcategory()
+    async function loadcategory(){
+      const res = await fetch("/api/service-category",{method:"GET"})
+      const data = await res.json()
+      console.log("category",data.data);
+      setCategories(data.data)
+    }
+    loadcategory()
   }, []);
 
   const Imagehanlder = async (e) => {
@@ -71,6 +73,25 @@ export default function FormCom({
 
   const formhandler = (e) => {
     e.preventDefault();
+
+    // Validation
+    const newErrors = {};
+    if (!title.trim()) newErrors.title = "Title is required";
+    if (!slug.trim()) newErrors.slug = "Slug is required";
+    if (!shortcontent.trim()) newErrors.shortcontent = "Short Content is required";
+    if (!content.trim()) newErrors.content = "Content is required";
+    if (!pageimage.trim()) newErrors.pageimage = "Page Image is required";
+    if (!imagealt.trim()) newErrors.imagealt = "Image Alt is required";
+    if (!metatitle.trim()) newErrors.metatitle = "Meta Title is required";
+    if (!metadiscription.trim()) newErrors.metadiscription = "Meta Description is required";
+    if(!mode=="edit"){
+      if (!category?.trim()) newErrors.category = "Category is required";
+    }
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length > 0) return; // Stop submission if errors exist
+
     const payload = {
       title,
       slug,
@@ -80,8 +101,9 @@ export default function FormCom({
       imagealt,
       metatitle,
       metadiscription,
-      category, // included
+      category,
     };
+
     onSubmit(payload);
   };
 
@@ -109,13 +131,17 @@ export default function FormCom({
   }, [title]);
 
   return (
-    <div className="p-7  ">
+    <div className="p-7">
       <h1 className="h3 mx-auto w-fit">
         {mode == "edit" ? "Update Page" : "Add New Page"}
       </h1>
-      <div className="flex justify-end" ><Link href={'/admin/all-pages'} className="text-white-1"  ><Button><MoveLeft/>Go Back</Button></Link></div>
+      <div className="flex justify-end">
+        <Link href={'/admin/all-pages'} className="text-white-1">
+          <Button><MoveLeft/>Go Back</Button>
+        </Link>
+      </div>
 
-      <form onSubmit={formhandler} className=" all-pages grid grid-cols-12 gap-8 mt-8">
+      <form onSubmit={formhandler} className="all-pages grid grid-cols-12 gap-8 mt-8">
         <div className="col-span-6 flex flex-col gap-4">
           <span>
             <label htmlFor="title">Title</label>
@@ -125,6 +151,7 @@ export default function FormCom({
               name="title"
               onChange={(e) => settitle(e.target.value)}
             />
+            {errors.title && <p className="text-red-500 text-sm">{errors.title}</p>}
           </span>
 
           <span>
@@ -135,10 +162,11 @@ export default function FormCom({
               name="slug"
               onChange={(e) => setslug(e.target.value)}
             />
+            {errors.slug && <p className="text-red-500 text-sm">{errors.slug}</p>}
           </span>
 
           {/* ✅ Category dropdown */}
-          <span className=" flex flex-col " >
+          <span className="flex flex-col">
             <label htmlFor="category">Category</label>
             <select
               value={category}
@@ -152,6 +180,7 @@ export default function FormCom({
                 </option>
               ))}
             </select>
+            {errors.category && <p className="text-red-500 text-sm">{errors.category}</p>}
           </span>
 
           <span className="flex flex-col">
@@ -163,8 +192,8 @@ export default function FormCom({
               placeholder="write short content"
               onChange={(e) => setshortcontent(e.target.value)}
             />
+            {errors.shortcontent && <p className="text-red-500 text-sm">{errors.shortcontent}</p>}
           </span>
-          
 
           <span>
             <label htmlFor="metatitle">Meta Title</label>
@@ -174,8 +203,10 @@ export default function FormCom({
               name="metatitle"
               onChange={(e) => setmetatitle(e.target.value)}
             />
+            {errors.metatitle && <p className="text-red-500 text-sm">{errors.metatitle}</p>}
           </span>
-            <span className="flex-col flex">
+
+          <span className="flex-col flex">
             <label htmlFor="metadiscription">Meta Description</label>
             <textarea
               className="border h-30"
@@ -184,9 +215,8 @@ export default function FormCom({
               name="metadiscription"
               onChange={(e) => setmetadiscription(e.target.value)}
             />
+            {errors.metadiscription && <p className="text-red-500 text-sm">{errors.metadiscription}</p>}
           </span>
-
-        
         </div>
 
         <div className="col-span-6 flex flex-col gap-4">
@@ -195,6 +225,7 @@ export default function FormCom({
               <span>
                 <label htmlFor="">Image</label>
                 <Input type="file" onChange={Imagehanlder} />
+                {errors.pageimage && <p className="text-red-500 text-sm">{errors.pageimage}</p>}
               </span>
             ) : imageLoader ? (
               <div className="h-56 w-full bg-gray-200 animate-pulse rounded-md"></div>
@@ -219,7 +250,8 @@ export default function FormCom({
               </span>
             )}
           </span>
-           <span>
+
+          <span>
             <label htmlFor="imagealt">Image Alt</label>
             <Input
               type="text"
@@ -227,27 +259,26 @@ export default function FormCom({
               name="imagealt"
               onChange={(e) => setimagealt(e.target.value)}
             />
+            {errors.imagealt && <p className="text-red-500 text-sm">{errors.imagealt}</p>}
           </span>
 
-         
-
-        
-            <span   className=''>
+          <span className="">
             <label htmlFor="content">Content</label>
             <EditorClient
               value={content}
               onChange={(content) => setcontent(content)}
-              className='h-[40px]'
+              className="h-[40px]"
             />
+            {errors.content && <p className="text-red-500 text-sm">{errors.content}</p>}
           </span>
-
         </div>
       </form>
-          <div className="flex justify-end">
-            <Button onClick={formhandler}  className="w-fit text-white-1 mt-6  ">
-              {mode == "edit" ? "Update Page" : "Add Page"}
-            </Button>
-          </div>
+
+      <div className="flex justify-end">
+        <Button onClick={formhandler} className="w-fit text-white-1 mt-6">
+          {mode == "edit" ? "Update Page" : "Add Page"}
+        </Button>
+      </div>
     </div>
   );
 }

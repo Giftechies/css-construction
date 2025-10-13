@@ -1,42 +1,39 @@
-"use client"
-
+"use client";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import {loginuser} from "../controllers/loginuser"
+import { loginuser } from "../controllers/loginuser";
 import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-const router = useRouter();
+  const [loading, setLoading] = useState(false); // ✅ loading state
 
-const handleForm = async (e) => {
-  e.preventDefault();
+  const router = useRouter();
 
-  console.log({ username, password });
+  const handleForm = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-  try {
-    const data = await loginuser({ username, password });
+    try {
+      const data = await loginuser({ username, password });
 
-    // If loginuser returns data even on failure
-    if (data?.success) {
-      console.log("Login successful:", data);
-      router.push("/admin");
-    } else {
-      console.error("Login failed:", data?.message || "Unknown error");
-      alert(data?.message || "Login failed"); // show message to user
+      if (data?.success) {
+        console.log("Login successful:", data);
+        router.push("/admin");
+      } else {
+        console.error("Login failed:", data?.message || "Unknown error");
+        alert(data?.message || "Login failed");
+      }
+    } catch (err) {
+      console.error("Error during login:", err.message);
+      alert(err.message);
+    } finally {
+      setLoading(false);
     }
-  } catch (err) {
-    // Catch errors thrown inside loginuser
-    console.error("Error during login:", err.message);
-    alert(err.message); // show error to user
-  }
-};
-
-
-
+  };
 
   return (
     <div className="relative grid h-screen">
@@ -56,9 +53,10 @@ const handleForm = async (e) => {
       {/* Form container */}
       <div className="h-[300px] w-[500px] m-auto z-30 border border-white/20 p-6 rounded-md text-white bg-white/10 backdrop-blur-sm">
         <form onSubmit={handleForm} className="flex flex-col gap-6 text-white-1 ">
-            <div className="log  w-24 mx-auto ">
-                <Image alt="logo" src={"/img/logo/nav-logo.svg"}  width={200} height={200}  />
-            </div>
+          <div className="log w-24 mx-auto">
+            <Image alt="logo" src={"/img/logo/nav-logo.svg"} width={200} height={200} />
+          </div>
+
           <input
             type="text"
             name="username"
@@ -68,6 +66,7 @@ const handleForm = async (e) => {
             onChange={(e) => setUsername(e.target.value)}
             className="w-full p-2 rounded-md bg-transparent border"
           />
+
           <input
             type="password"
             name="password"
@@ -77,7 +76,19 @@ const handleForm = async (e) => {
             onChange={(e) => setPassword(e.target.value)}
             className="w-full p-2 rounded-md bg-transparent border"
           />
-          <Button type="submit">Login</Button>
+
+          <Button type="submit" disabled={loading} className="flex items-center justify-center gap-2">
+            {loading ? (
+              <>
+                <span
+                  className="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"
+                ></span>
+                Logging in...
+              </>
+            ) : (
+              "Login"
+            )}
+          </Button>
         </form>
       </div>
     </div>

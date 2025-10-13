@@ -12,8 +12,6 @@ export default async function Skip({params}) {
     throw new Error("Failed to fetch data");
   }
   const response = await res.json()
-  
-  
   const data = response.data
   const category = response.category[0]
   return (
@@ -22,7 +20,7 @@ export default async function Skip({params}) {
         imgpath={category?.featureImage}
         pagename={category.title}
       />
-      <CardContainer  data={data} pagelink="skip-hire" />
+      <CardContainer  data={data}/>
       <Animations/>
     </>
   );

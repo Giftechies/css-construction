@@ -1,4 +1,4 @@
-
+"use client"
 import RoundedLink from "@/components/link/RoundedLink";
 import SectionText from "@/components/shared/SectionText";
 import SectionTitle from "@/components/shared/SectionTitle";
@@ -7,9 +7,12 @@ import { IconCheckbox } from "@tabler/icons-react";
 import Image from "next/image";
 import HomeThreeBannerLink from "../home-three/HomeThreeBannerLink";
 import SectionSubTitle from "@/components/shared/SectionSubTitle";
+import { usePathname } from "next/navigation";
 
 
 const AboutLocal = ({imagepath1,imagepath2, imagepath3 ,counterNumber,counterText,title,text1,text2,buttonText,stepText1,stepText2,stepText3,subheading}) => {
+
+  const pathname = usePathname()
   return (
     <section
       className="spt80px fade-wrapper spb120px relative overflow-hidden"
@@ -69,7 +72,7 @@ const AboutLocal = ({imagepath1,imagepath2, imagepath3 ,counterNumber,counterTex
               <IconCheckbox /> <span>{stepText3? stepText3:"Strong foundations make your moving journey stress-free."}</span>
             </div>
           </div>
-           <HomeThreeBannerLink href="/pick-details" className=" mx-auto bg-prim rounded-full text-white-1    hover:bg-transparent hover:text-primary  hover:border-primary w-fit mt-6 " >{buttonText?  buttonText:"Get Instant Quote"}</HomeThreeBannerLink>  
+         {!pathname == "/about-us" &&   <HomeThreeBannerLink href="/pick-details" className="  bg-prim rounded-full text-white-1    hover:bg-transparent hover:text-primary  hover:border-primary w-fit mt-6 " >{buttonText?  buttonText:"Get Instant Quote"}</HomeThreeBannerLink>  }
         </div>
       </div>
     </section>
