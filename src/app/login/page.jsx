@@ -21,14 +21,14 @@ export default function LoginForm() {
       const data = await loginuser({ username, password });
 
       if (data?.success) {
-        console.log("Login successful:", data);
+    
         router.push("/admin");
       } else {
-        console.error("Login failed:", data?.message || "Unknown error");
+        
         alert(data?.message || "Login failed");
       }
     } catch (err) {
-      console.error("Error during login:", err.message);
+    
       alert(err.message);
     } finally {
       setLoading(false);
