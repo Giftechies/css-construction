@@ -16,7 +16,7 @@ export default function ProgressBar({ className,currentStep, setCurrentStep, ste
         const isClickable = idx <= currentStep;
 
         return (
-          <div key={idx} className="relative flex-1 flex flex-col items-center">
+          <div key={idx} className="relative flex-1 flex flex-col items-center  ">
             {/* Circle */}
             
             <div
@@ -41,10 +41,8 @@ export default function ProgressBar({ className,currentStep, setCurrentStep, ste
             {/* Connector line (background gray) */}
             {idx < steps.length - 1 && (
               <div
-                className="absolute top-[35%] left-[60%] bg-gray-300 h-2 w-[80%] z-35"
-                style={{
-                  transform: "translateY(-50%)",
-                }}
+                className="absolute top-[35%] left-[60%] bg-gray-300 h-2 w-[80%] z-35 transition-all -translate-y-1/2 "
+                
               ></div>
             )}
 
