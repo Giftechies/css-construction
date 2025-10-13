@@ -90,7 +90,7 @@ const onSubmit = (data) => {
 
         {/* Navigation buttons */}
         <div className="flex  gap-4 justify-center ">
-          {currentStep > 0 && (
+          {currentStep > 0 && ( 
             <button
               type="button"
               onClick={prevStep}
