@@ -38,7 +38,11 @@ export default function AllPages() {
   }, []);
 
   const deleteHandler = async (id) => {
-    await Deletepage(id);
+     const res=  await Deletepage(id);
+     if(res.success){
+      alert("Page deleted successfully")
+      
+     }
     setPages((prev) => prev.filter((page) => page._id !== id));
   };
 
