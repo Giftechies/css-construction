@@ -8,85 +8,81 @@ const footer =[
     li:[
       {
         sublinks:"About Us",
-        path:"#"
+        path:"/about-us"
       },
       {
         sublinks:"Area We Serve",
-        path:"#"
+        path:"area-we-server"
       },
       {
-        sublinks:"Contact",
-        path:"#"
+        sublinks:"Contact Us",
+        path:"/contact-us"
       },
-      {
-        sublinks:"Privacy Policy",
-        path:"#"
-      },
-    ]
-  },
-  {title:"Skip Hire",
-    li:[
-      {
-        sublinks:"Skip Hire",
-        path:"#"
-      },
-      {
-        sublinks:"RORO Skip Hire",
-        path:"#"
-      },
-      {
-        sublinks:"Builders Waste Clearance",
-        path:"#"
-      },
-      {
-        sublinks:"Waste Management",
-        path:"#"
-      },
+      // {
+      //   sublinks:"Privacy Policy",
+      //   path:"#"
+      // },
     ]
   },
   {
-    title: "Concrete Supply",
-  
+    title: "Skip Hire",
+    path: "/skip-hire",
     li: [
       {
-  
+        sublinks: "Skip Hire",
+        path: "/skip-hire/skip-hire",
+      },
+      {
+        sublinks: "RORO Skip Hire",
+        path: "/skip-hire/roro-skip-hire",
+      },
+      {
+        sublinks: "Builders Waste Clearance",
+        path: "/skip-hire/builders-waste-clearance",
+      },
+      {
+        sublinks: "Waste Management",
+        path: "/skip-hire/waste-management",
+      },
+    ],
+  },
+  {
+    title: "Concrete Supply",
+    path: "/concrete-supply",
+    li: [
+      {
         sublinks: "Concrete Supply",
-        path: "/concrete-supply",
+        path: "/concrete-supply/concrete-supply",
       },
       {
-  
         sublinks: "Screed",
-        path: "/screed",
+        path: "/concrete-supply/screed",
       },
       {
-  
         sublinks: "Ready Mix Concrete",
-        path: "/ready-mix-concrete",
+        path: "/concrete-supply/ready-mix-concrete",
       },
     ],
   },
   {
     title: "Tipper & Grab Services",
+    path: "/tipper-&-grab-services",
     li: [
       {
-  
         sublinks: "Grab Hire",
-        path: "/grab-hire",
+        path: "/tipper-&-grab-services/grab-hire",
       },
       {
-  
         sublinks: "Cage Lorrie’s",
-        path: "/cage-lorries",
+        path: "/tipper-&-grab-services/cage-lorries",
       },
       {
-  
         sublinks: "Man and Van",
-        path: "/man-and-van",
+        path: "/tipper-&-grab-services/man-and-van",
       },
       {
-  
         sublinks: "Aggregates",
-        path: "/aggregates",
+        path: "/tipper-&-grab-services/aggregates",
       },
     ],
   },
@@ -103,7 +99,9 @@ const Footer = () => {
              <div key={id} className='' >
 
             <ul className=' space-y-4 ' >
-              <span className=' h5 font-semibold text-primary hover:text-primary/70 ' >{item.title}</span>
+              {item.title == "Quick Links"? <span className=' h5 font-semibold text-primary hover:text-primary/70 ' >{item.title}</span>: <Link className=' h5 font-semibold text-primary hover:text-primary/70 '  href={`${item.path}`} >{item.title}</Link> }
+              
+
             {item.li.map((el,id)=>{
               return(
                   <li key={id}  className=' text-[14px] hover:text-primary ' ><Link href={el.path}>{el.sublinks}</Link></li>

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function ContactUsPage() {
   return (
     <div>
-      <InnerBanner pagename={"Contact us"} imgpath={""}  />
+      <InnerBanner pagename={"Contact us"} imgpath={"/img/innerimg/contuct.webp"}  />
       <ContactUsForm />
       <Animations />
     </div>
