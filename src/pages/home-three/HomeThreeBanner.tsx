@@ -5,6 +5,7 @@ import DeskTopNavbarTwo from "@/components/navbar/DeskTopNavbarTwo";
 import Blocks from "@/pages/home/Blocks";
 import Mobilenav from "@/components/navbar/Mobilenav"
 import { IconEdit, IconArrowUpRight,IconPhone } from "@tabler/icons-react";
+import Link from "next/link";
 
 const HomeThreeBanner = () => {
   return (
@@ -27,7 +28,10 @@ const HomeThreeBanner = () => {
             
             <div className="smt40px  max-xs:flex-wrap fade-top flex gap-5 items-start ">
              <HomeThreeBannerLink href="/pick-details" className="  " >   Get Instant Quote  <IconEdit className=" size-5 theme-transition-3  group-hover:rotate-45" />{" "} </HomeThreeBannerLink>
-             <ButtonHallow href="/pick-details" className=" max-lg:px-10  " > Our Services <IconArrowUpRight/> </ButtonHallow>
+           
+             <ButtonHallow href="tele: 0208 574 6333" className=" max-lg:px-10  " > 0208 574 6333 <IconArrowUpRight/> </ButtonHallow>
+             
+            
             </div>
           </div>
         </div>
