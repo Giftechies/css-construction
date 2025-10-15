@@ -36,15 +36,18 @@ export default function AreasWeServe() {
       </h2>
 
       <div className="overflow-x-auto">
-        <table className="min-w-full border-separate border-spacing-y-3">
+        {/* Changed table styling to border-separate with small spacing */}
+        <table className="min-w-full border-separate border-spacing-1">
           <tbody>
             {rows.map((row, rowIndex) => (
-              <tr key={rowIndex} className="bg-white shadow-sm rounded-2xl">
+              // All rows are white by default
+              <tr key={rowIndex} className="bg-white shadow-sm rounded-lg">
                 {row.map((area, colIndex) => (
                   <td
                     key={colIndex}
-                    className="relative px-6 py-4 text-gray-700 font-medium border border-gray-100 rounded-lg 
-                               group transition-colors duration-300"
+                    // Added a clear border around each cell
+                    className="relative px-6 py-4 text-gray-700 font-medium border border-gray-200 rounded-lg 
+                                      group transition-colors duration-300"
                   >
                     <span
                       className="relative inline-block cursor-pointer transition-colors duration-300 group-hover:text-primary"
@@ -53,7 +56,7 @@ export default function AreasWeServe() {
                       {/* underline animation */}
                       <span
                         className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-primary 
-                                   transition-all duration-300 group-hover:w-full"
+                                          transition-all duration-300 group-hover:w-full"
                       ></span>
                     </span>
                   </td>
@@ -61,7 +64,8 @@ export default function AreasWeServe() {
                 {/* fill empty cells */}
                 {row.length < columns &&
                   Array.from({ length: columns - row.length }).map((_, idx) => (
-                    <td key={idx} className="px-6 py-4 border border-transparent"></td>
+                    // Empty cells still get the border for consistency
+                    <td key={idx} className="px-6 py-4 border border-gray-200"></td>
                   ))}
               </tr>
             ))}

@@ -1,98 +1,152 @@
-import { IconAddressBook, IconHeadset, IconMessage } from "@tabler/icons-react";
+"use client";
+
+import { IconRuler, IconHammer, IconBuilding, IconMapPin, IconPhone, IconMail } from "@tabler/icons-react";
+import { Mail } from "lucide-react";
 import Link from "next/link";
 
 const ContactUsForm = () => {
-  return (
-    <section className="spy120px fade-wrapper relative" id="scrollPosition">
-      <div className="container">
-        <div className="flex justify-between gap-6 max-md:flex-col">
-          <h3 className="d2 title-animation font-medium sm:max-w-[416px]">
-            Let’s Get in Touch
-          </h3>
-          <p className="l-text fade-top text-black-3 sm:max-w-[332px]">
-            Ready to transform your space? Contact our expert construction team today for consultations, quotes, and project planning. Let’s bring your vision to life with quality, precision, and care.
-          </p>
-        </div>
-        <div className="spt60px grid grid-cols-12 gap-6">
-          <div className="col-start-1 col-end-13 md:col-end-6 xl:col-end-4">
-            <div className="flex gap-6">
-              <div className="w-fit rounded-full bg-primary/5 p-5">
-                <IconHeadset stroke={1} className="size-10" />{" "}
-              </div>
-              <div>
-                <h4 className="h4 font-medium">Help & Support</h4>
+  // Define custom classes for primary color usage
+  const PRIMARY_BG_LIGHT = "bg-primary/10"; 
+  const PRIMARY_TEXT = "text-primary";       
+  const PRIMARY_BG = "bg-primary";         
+  const PRIMARY_BG_HOVER = "hover:bg-primary-dark"; 
 
-                <Link
-                  href="supports@babuZ.com"
-                  className="m-text m-text mt-3 text-black-3"
-                >
-                  supports@babuZ.com
-                </Link>
-              </div>
+  // --- NEW CONTACT DETAILS ---
+  const CONTACT_INFO = [
+    { 
+      icon: IconMail, 
+      title: "Email us", 
+      email: "css@constructionco.com" 
+    },
+  
+  ];
+  // --- NEW ADDRESS AND PHONE ---
+  const PHONE_NUMBER = "0208 574 6333"; 
+  const OFFICE_ADDRESS = "14 Construction Way, London SW1A 0AA, UK"; 
+
+  return (
+    <section className="py-20 md:py-32 bg-gray-50" id="scrollPosition">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header Section */}
+        <div className="flex justify-between gap-12 max-lg:flex-col max-lg:text-center">
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900">
+            Ready to start your project? Let's connect today.
+          </h2>
+       
+        </div>
+
+        {/* Content Grid: Contact Info & Form */}
+        <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-12">
+          
+          {/* Contact Information (Col 1/3) */}
+          <div className="lg:col-span-1 space-y-10 lg:pt-4">
+            
+            {/* 1. Phone Number */}
+            <div className="flex gap-4">
+                <div className={`w-fit rounded-xl ${PRIMARY_BG_LIGHT} p-4 shrink-0 shadow-sm`}>
+                    <IconPhone stroke={1.5} className={`size-8 ${PRIMARY_TEXT}`} />
+                </div>
+                <div>
+                    <h4 className="text-xl font-semibold text-gray-900 mb-1">
+                        Call Our Office
+                    </h4>
+                    <Link
+                        href={`tel:${PHONE_NUMBER.replace(/\s/g, '')}`}
+                        className={`${PRIMARY_TEXT} font-medium hover:opacity-80 transition-colors duration-200`}
+                    >
+                        {PHONE_NUMBER}
+                    </Link>
+                </div>
             </div>
-            <div className="spt60px spb60px flex gap-6">
-              <div className="w-fit rounded-full bg-primary/5 p-5">
-                <IconMessage stroke={1} className="size-10" />{" "}
-              </div>
-              <div>
-                <h4 className="h4 font-medium">Sales</h4>
-                <Link
-                  href="sales@babuZ.com"
-                  className="m-text m-text mt-3 text-black-3"
-                >
-                  sales@babuZ.com
-                </Link>
-              </div>
+
+            {/* 2. Office Address */}
+            <div className="flex gap-4">
+                <div className={`w-fit rounded-xl ${PRIMARY_BG_LIGHT} p-4 shrink-0 shadow-sm`}>
+                    <IconMapPin stroke={1.5} className={`size-8 ${PRIMARY_TEXT}`} />
+                </div>
+                <div>
+                    <h4 className="text-xl font-semibold text-gray-900 mb-1">
+                        Visit Our Main Office
+                    </h4>
+                    <address className="text-gray-600 not-italic">
+                        {OFFICE_ADDRESS}
+                    </address>
+                </div>
             </div>
-            <div className="flex gap-6">
-              <div className="w-fit rounded-full bg-primary/5 p-5">
-                <IconAddressBook stroke={1} className="size-10" />{" "}
+
+            {/* 3. Email Contacts */}
+            {CONTACT_INFO.map((item, index) => (
+              <div key={index} className="flex gap-4">
+                {/* Icon Circle uses PRIMARY_BG_LIGHT */}
+                <div className={`w-fit rounded-xl ${PRIMARY_BG_LIGHT} p-4 shrink-0 shadow-sm`}>
+                  {/* Icon uses PRIMARY_TEXT */}
+                  <item.icon stroke={1.5} className={`size-8 ${PRIMARY_TEXT}`} />
+                </div>
+                <div>
+                  <h4 className="text-xl font-semibold text-gray-900 mb-1">
+                    {item.title}
+                  </h4>
+                  {/* Email Link uses PRIMARY_TEXT */}
+                  <Link
+                    href={`mailto:${item.email}`}
+                    className={`${PRIMARY_TEXT} font-medium hover:opacity-80 transition-colors duration-200`}
+                  >
+                    {item.email}
+                  </Link>
+                </div>
               </div>
-              <div>
-                <h4 className="h4 font-medium">Media & Press</h4>
-                <Link
-                  href="media@babuZ.com"
-                  className="m-text m-text mt-3 text-black-3"
-                >
-                  media@babuZ.com
-                </Link>
-              </div>
-            </div>
+            ))}
           </div>
-          <form className="col-start-1 col-end-13 max-md:mt-6 md:col-start-6 xl:col-start-7">
-            <div className="mb-6 flex items-center gap-6 max-xl:flex-col">
+
+          {/* Contact Form (Col 2/3) */}
+          <form className="lg:col-span-2 bg-white p-8 sm:p-12 rounded-2xl shadow-xl border border-gray-100">
+            
+            {/* Name Fields */}
+            <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
               <input
                 type="text"
                 placeholder="First Name"
-                className="placeholder:m-text w-full bg-white-4 px-5 py-3 placeholder:text-black-3"
+                required
+                className={`w-full bg-white px-5 py-3 border border-gray-300 rounded-lg placeholder:text-gray-500 focus:ring-primary focus:border-primary transition duration-150`}
               />
               <input
                 type="text"
                 placeholder="Last Name"
-                className="placeholder:m-text w-full bg-white-4 px-5 py-3 placeholder:text-black-3"
+                required
+                className={`w-full bg-white px-5 py-3 border border-gray-300 rounded-lg placeholder:text-gray-500 focus:ring-primary focus:border-primary transition duration-150`}
               />
             </div>
-            <div className="mb-6 flex items-center gap-6 max-xl:flex-col ">
+
+            {/* Contact Fields */}
+            <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
               <input
                 type="email"
-                placeholder="Email"
-                className="placeholder:m-text w-full bg-white-4 px-5 py-3 placeholder:text-black-3"
+                placeholder="Email Address"
+                required
+                className={`w-full bg-white px-5 py-3 border border-gray-300 rounded-lg placeholder:text-gray-500 focus:ring-primary focus:border-primary transition duration-150`}
               />
               <input
-                type="number"
-                placeholder="Phone"
-                className="placeholder:m-text w-full bg-white-4 px-5 py-3 placeholder:text-black-3"
+                type="tel"
+                placeholder="Phone Number"
+                className={`w-full bg-white px-5 py-3 border border-gray-300 rounded-lg placeholder:text-gray-500 focus:ring-primary focus:border-primary transition duration-150`}
               />
             </div>
+            
+            {/* Message Field */}
             <textarea
-              placeholder="Message"
-              className="placeholder:m-text w-full bg-white-4 px-5 py-3 outline-none placeholder:text-black-3"
-              rows={2}
+              placeholder="Tell us about your project or question..."
+              required
+              className={`w-full bg-white px-5 py-4 border border-gray-300 rounded-lg placeholder:text-gray-500 focus:ring-primary focus:border-primary outline-none transition duration-150 resize-y`}
+              rows={4}
             />
-            <div className="smt60px">
-              <button className="alter-btn btn-anim group/link m-text relative z-10 inline-flex size-[140px] items-center justify-center gap-4 overflow-hidden rounded-full border border-black-3 bg-inherit font-semibold text-black-4 hover:border-accent-3">
-                send message
-                <span className="pointer-events-none absolute z-[-1] h-0 w-0 -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-accent-3 duration-700 group-hover/link:w-[calc(100%*2.25)] group-hover/link:pt-[calc(100%*2.25)]"></span>
+
+            {/* Submit Button */}
+            <div className="mt-8">
+              <button
+                type="submit"
+                className={`w-full px-8 py-4 text-lg font-bold rounded-xl text-white-1 ${PRIMARY_BG} ${PRIMARY_BG_HOVER} shadow-md transition-all duration-300 ease-in-out transform hover:scale-[1.005]`}
+              >
+                Send Message
               </button>
             </div>
           </form>

@@ -12,7 +12,7 @@ const footer =[
       },
       {
         sublinks:"Area We Serve",
-        path:"area-we-server"
+        path:"/area-we-serve"
       },
       {
         sublinks:"Contact Us",

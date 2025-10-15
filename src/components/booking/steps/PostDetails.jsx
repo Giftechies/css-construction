@@ -7,7 +7,7 @@ import { useFormContext } from "react-hook-form";
 import { Fetchjobtype } from "../action/action";
 import { Skeleton } from "@/components/ui/skeleton"; // ✅ added
 
-export default function PostDetails() {
+export default function PostDetails({jobtype=[]}) {
   const {
     register,
     watch,
@@ -17,27 +17,8 @@ export default function PostDetails() {
   const selected = watch("permitOnHighway");
   const selectedPostcode = watch("postcodeArea");
 
-  const [jobtype, setJobtype] = useState([]);
   const [loading, setLoading] = useState(false); // ✅ added loading state
 
-  useEffect(() => {
-    async function loadJobTypes() {
-      setLoading(true); // ✅ start loading
-      try {
-        const res = await Fetchjobtype();
-        if (res?.success && Array.isArray(res.data)) {
-          console.log("API job types:", res.data);
-          setJobtype(res.data);
-        }
-      } catch (err) {
-        console.error("Error fetching job types:", err);
-      } finally {
-        setLoading(false); // ✅ stop loading
-      }
-    }
-
-    loadJobTypes();
-  }, []);
 
   return (
     <div className="space-y-8">
@@ -141,7 +122,9 @@ export default function PostDetails() {
               />
               No
             </label>
+
           </div>
+            {errors.permitOnHighway &&  <p className=" mt-2 text-red-600" >{errors.permitOnHighway.message}</p> }
 
           {selected === "Yes" && (
             <div className="w-[95%] bg-zinc-100 mt-8 rounded-lg p-6 font-semibold">

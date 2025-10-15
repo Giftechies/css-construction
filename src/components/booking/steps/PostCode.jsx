@@ -16,7 +16,7 @@ export default function PostCode() {
       const res = await FetchpostCode();
 
       if (res) {
-        console.log("api is calling", res);
+      
         setispostcode(res);
         setloading(false)
       }
