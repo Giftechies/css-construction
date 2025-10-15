@@ -43,7 +43,7 @@ export async function GET(req) {
     if(category && page){
        const cleancategory = category.trim().replace(/['"]+/g,"").replace(/-/g," ").toLowerCase()
        const cleanpage = page.trim().replace(/['"]+/g,"").replace(/-/g," ").toLowerCase()
-      const filterdata = res.filter(item => item.category.title.trim().toLowerCase().includes(cleancategory) && item.title.trim().toLowerCase().includes(cleanpage))
+      const filterdata = res.filter(item => item.category.title.trim().toLowerCase()===cleancategory && item.title.trim().toLowerCase()==cleanpage)
       return NextResponse.json({
         success:true,
         message:"fetched successfully from page filtered",
