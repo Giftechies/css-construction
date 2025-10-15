@@ -1,5 +1,7 @@
 import Home from "@/app/(inner-pages)/page";
 import SectionText from "@/components/shared/SectionText";
+import SectionTitle from "@/components/shared/SectionTitle";
+
 import React from "react";
 import HomeThreeBannerLink from "../home-three/HomeThreeBannerLink";
 import Link from "next/link";
@@ -23,9 +25,7 @@ const Servicespage = () => {
             Our Services
           </p> */}
           <SectionSubTitle className=" font-[700] tracking-wider leading-[20px] text-primary  " text="Our Services"/>
-          <h2 className=" h2 text-center text-black-2 font-oswald  font-[700] ">
-            Skip Hire Services You Can Rely On
-          </h2>
+          <SectionTitle  className="h1 text-left  text-black-2  " text=" Skip Hire Services You Can Rely On" />
          
         </div>
         <div className="card flex flex-wrap items-center justify-center gap-10 ">

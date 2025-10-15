@@ -4,6 +4,7 @@ import React from "react";
 import HomeThreeBannerLink from "../home-three/HomeThreeBannerLink";
 import Loan from "@/pages/loan/LoanContent"
 import SectionSubTitle from "@/components/shared/SectionSubTitle";
+import SectionTitle from "@/components/shared/SectionTitle";
 const Project = () => {
   const cards = [
 
@@ -20,9 +21,7 @@ const Project = () => {
       <div className="container  gap-4 ">
         <div className="text mb-8 flex flex-col items-center justify-center gap-4 px-10">
           <SectionSubTitle text="  Recents Projects"/>
-                    <h2 className=" h2 text-center font-[700] ">
-            What we Have Done
-          </h2>
+          <SectionTitle  className="h1 text-center  text-black-2 pt-3 " text=" What we Have Done" />
           <SectionText
             className=" text-center font-[500] tracking-wider  "
             text={

@@ -15,7 +15,7 @@ const Vision = () => {
         
         <SectionSubTitle text="CSS Construction"/>
          
-          <SectionTitle text="Turning waste into a cleaner, greener future." className= " capitalize" />
+          <SectionTitle text="Turning waste into a cleaner, greener future."  className="h1   capitalize " />
           <SectionText className=" text-white-1/60 w-[90%] " text="We cover Central, East, South, West, and North London, including postcodes from EC, WC, W, N, NW, E, SE, SW, CR, BR, UB, HA, TW, IG, and RM."/>
           <HomeThreeBannerLink href="/pick-details" className="  " >   Get Instant Quote  <IconEdit className=" size-5 theme-transition-3  group-hover:rotate-45" />{" "} </HomeThreeBannerLink>
           

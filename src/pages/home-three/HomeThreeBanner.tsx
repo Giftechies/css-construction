@@ -6,6 +6,7 @@ import Blocks from "@/pages/home/Blocks";
 import Mobilenav from "@/components/navbar/Mobilenav"
 import { IconEdit, IconArrowUpRight,IconPhone } from "@tabler/icons-react";
 import Link from "next/link";
+import { PhoneCall } from "lucide-react";
 
 const HomeThreeBanner = () => {
   return (
@@ -29,7 +30,7 @@ const HomeThreeBanner = () => {
             <div className="smt40px  max-xs:flex-wrap fade-top flex gap-5 items-start ">
              <HomeThreeBannerLink href="/pick-details" className="  " >   Get Instant Quote  <IconEdit className=" size-5 theme-transition-3  group-hover:rotate-45" />{" "} </HomeThreeBannerLink>
            
-             <ButtonHallow href="tele: 0208 574 6333" className=" max-lg:px-10  " > 0208 574 6333 <IconArrowUpRight/> </ButtonHallow>
+             <ButtonHallow href="tele: 0208 574 6333" className=" max-lg:px-10  " > <PhoneCall size={17}  /> 0208 574 6333  </ButtonHallow>
              
             
             </div>
