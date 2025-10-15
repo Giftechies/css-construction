@@ -26,7 +26,7 @@ const HomeThreeBanner = () => {
             Strength in Concrete. <br /> Clarity in Waste.
             </h1>
             <p className=" mt-4  tracking-wider " >London’s trusted experts in affordable skip hire services</p>
-            
+             
             <div className="smt40px  max-xs:flex-wrap fade-top flex gap-5 items-start ">
              <HomeThreeBannerLink href="/booking-skip-online" className="  " >   Get Instant Quote  <IconEdit className=" size-5 theme-transition-3  group-hover:rotate-45" />{" "} </HomeThreeBannerLink>
            
