@@ -62,7 +62,8 @@ export default function Cart() {
         </div>
 
         {/* Extras */}
-        <div className="w-full flex flex-col gap-6 h6 font-semibold">
+        <div className="w-full flex flex-col gap-4 h6 font-semibold">
+          { extras && <label className=" "  > Extra </label>}
           <div>
             {Object.entries(extras).map(([id, data]) => (
               <label key={id} className="flex  justify-between gap-8">
@@ -73,6 +74,7 @@ export default function Cart() {
                 <span className="block ">£{data.qty * data.price}</span>
               </label>
             ))}
+            
           </div>
 
           {/* Totals */}

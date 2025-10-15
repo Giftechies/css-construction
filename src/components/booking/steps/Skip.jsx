@@ -10,11 +10,13 @@ export default function Skip({ goToNextStep }) {
   const postcode = watch("postcodeArea");
   const selectedSkip = watch("skipSize");
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false); // ✅ Added loader state
 
   useEffect(() => {
     if (!type || !postcode) return;
 
     async function fetchData() {
+      setLoading(true); // ✅ start loading
       const res = await fetch(
         `/api/frontend/form?postcode=${postcode}&jobType=${type}`,
         { cache: "no-store" }
@@ -38,36 +40,53 @@ export default function Skip({ goToNextStep }) {
       }
 
       setData(formatted);
+      setLoading(false); // ✅ stop loading
     }
 
     fetchData();
   }, [type, postcode]);
 
   if (!type || !postcode) return null;
-  const handleform = (selected)=>{
+
+  const handleform = (selected) => {
     setValue("skipSize", selected);
-     if(goToNextStep)goToNextStep() 
-  }
+    if (goToNextStep) goToNextStep();
+  };
 
   return (
     <section className="skip grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-      {data.map((item, id) =>
-        type === "roll and roll off" ? (
-          <Skipcard
-            key={id}
-            item={item}
-            setValue={setValue}
-            onClick= {handleform(selected)}
-          />
-        ) : (
-          <Cardskip
-            key={id}
-            item={item}
-            isSelected={selectedSkip?.size === item.size}
-            onClick={() => {setValue("skipSize", item); if(goToNextStep)goToNextStep()}}
-          />
-        )
-      )}
+      {loading
+        ? // ✅ Skeleton loader UI
+          Array.from({ length: 6 }).map((_, index) => (
+            <div
+              key={index}
+              className="animate-pulse rounded-lg border p-4 space-y-4 bg-gray-100"
+            >
+              <div className="h-24 bg-gray-300 rounded"></div>
+              <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+              <div className="h-4 bg-gray-300 rounded w-1/2"></div>
+            </div>
+          ))
+        : data.map((item, id) =>
+            type === "roll and roll off" ? (
+              <Skipcard
+                key={id}
+                item={item}
+                setValue={setValue}
+                onClick={() => handleform(item)}
+              />
+            ) : (
+              <Cardskip
+                key={id}
+                item={item}
+                isSelected={selectedSkip?.size === item.size}
+                onClick={() => {
+                  setValue("skipSize", item);
+                  if (goToNextStep) goToNextStep();
+                }}
+              />
+            )
+          )}
     </section>
   );
 }

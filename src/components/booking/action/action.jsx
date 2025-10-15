@@ -1,7 +1,5 @@
 export async function FetchpostCode(){
-    try {
-        console.log("indside fetchpostcode caklling");
-        
+    try {       
         const res = await fetch("/api/form/postcode",{
             method:"GET"
         })
@@ -19,7 +17,7 @@ export async function FetchpostCode(){
 }
 export async function Fetchjobtype(){
     try {
-        console.log("indside fetchpostcode caklling");
+      
         
         const res = await fetch("/api/form/category",{
             method:"GET",
@@ -63,7 +61,7 @@ export async function Fetchrates(){
             method:"GET"
         })
         const data = await res.json()
-        console.log(data,"fetchrate acrion");
+        
         
         if(!data.success){
         console.error(data);
