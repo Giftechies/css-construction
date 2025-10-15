@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import { ConnectDb } from "../../helper/db";
 import pageModel from "../../helper/models/page";
 import serviceCategoryModel from "../../helper/models/serviceCategory"
+
+
+
 export async function GET(req) {
   try {
     await ConnectDb();
@@ -9,6 +12,8 @@ export async function GET(req) {
     const category = searchParams?.get('category')
     const dbcategory = category?.split('-').map(word=>word?.charAt(0).toUpperCase() + word?.slice(1).toLowerCase()).join(" ")
     const page = searchParams.get('page')
+    console.log("pages page>><M><",page);
+    
 
     const res = await pageModel.find().sort({ title: 1 }).populate("category", "title");
     const service = await serviceCategoryModel.find({title:dbcategory})

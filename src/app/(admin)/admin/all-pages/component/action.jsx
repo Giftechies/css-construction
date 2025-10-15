@@ -1,6 +1,8 @@
 export async function Deletepage(id){
     try {
-        const res = await fetch("/api/page",{method:'DELETE'})
+        const res = await fetch(`/api/page/${id}`,{method:'DELETE'})
+        console.log("page deletin calling>>>>");
+        
         const data = await res.json()
         return data
         

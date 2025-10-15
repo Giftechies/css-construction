@@ -17,7 +17,7 @@ export default function Content({data=[]}){
             </div>
 
             {/* sider bar */}
-            <Sidebar className={"sticky top-0 right-0 h-fit col-span-3 "} />
+            <Sidebar className={"sticky top-0 right-0 h-fit col-span-3 hidden lg:block "} />
         </main>
       </section>
     )
