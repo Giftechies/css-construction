@@ -10,8 +10,7 @@ const ContactUsForm = () => {
             Let’s Get in Touch
           </h3>
           <p className="l-text fade-top text-black-3 sm:max-w-[332px]">
-            Great! We&apos;re excited to hear from you and let&apos;s start
-            something special togerter. call us for any inquery.
+            Ready to transform your space? Contact our expert construction team today for consultations, quotes, and project planning. Let’s bring your vision to life with quality, precision, and care.
           </p>
         </div>
         <div className="spt60px grid grid-cols-12 gap-6">

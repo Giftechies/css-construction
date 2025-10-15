@@ -9,9 +9,9 @@ import SectionSubTitle from "@/components/shared/SectionSubTitle";
 
 const Servicespage = () => {
   const cards = [
-    { title: "Skip Hire", content: "We supply a full range of skip sizes for hire in London, from 4-yard mini skips - ideal for small household clearances, through to 8-yard, 10-yard, 12-yard, and 16-yard skips..", link: "dfs",img:"/img/innerimg/skip-hire-pic.jpg" },
-    { title: "Concrete Supply", content: "We are trusted concrete suppliers in London, offering ready mix concrete delivery for small domestic jobs to large construction projects.", link: "dfs",img:"/img/innerimg/concrete.jpg" },
-    { title: "Tipper & Grab Services", content: "Our grab hire service is an affordable alternative to skips for heavy waste. Our grab lorries can collect muck, soil, rubble, concrete, hardcore, and green..", link: "#",img:"/img/innerimg/Tipper-Grab.jpg" },
+    { title: "Skip Hire", content: "We supply a full range of skip sizes for hire in London, from 4-yard mini skips - ideal for small household clearances, through to 8-yard, 10-yard, 12-yard, and 16-yard skips..", link: "/skip-hire",img:"/img/innerimg/skip-hire-pic.jpg" },
+    { title: "Concrete Supply", content: "We are trusted concrete suppliers in London, offering ready mix concrete delivery for small domestic jobs to large construction projects.", link: "/concrete-supply",img:"/img/innerimg/concrete.jpg" },
+    { title: "Tipper & Grab Services", content: "Our grab hire service is an affordable alternative to skips for heavy waste. Our grab lorries can collect muck, soil, rubble, concrete, hardcore, and green..", link: "/tipper-&-grab-services",img:"/img/innerimg/Tipper-Grab.jpg" },
   
   ];
 
@@ -35,6 +35,7 @@ const Servicespage = () => {
                 key={id}
                 className="card1 group w-[380px]    overflow-hidden rounded-[2em] border p-4 bg-white-1 sp "
               >
+             <Link href={item.link} >
                 <div className="img group h-60 w-full overflow-hidden rounded-3xl bg-red-50 ">
                   <img
                     src={item.img}
@@ -42,8 +43,11 @@ const Servicespage = () => {
                     className=" theme-transition-3  object-cover object-center h-full w-full group-hover:scale-[1.1] "
                   />
                 </div>
+             </Link>
                 <div className="text theme-transition-4 flex flex-col items-start justify-center gap-4   p-6  ">
+                 <Link href={item.link} >
                   <h3 className=" h4 font-[700] text-primary font-oswald ">{item.title}</h3>
+                 </Link>
                   <SectionText
                     className=" text-[15px] font-[500] text-justify "
                     text={
@@ -54,7 +58,7 @@ const Servicespage = () => {
 
                   <div className=" border-t h-[8px]  w-full border-black-3/40 "  >
                   
-                 <Link href={"#"} className=" mt-2 flex text-[14px] gap-2 font-semibold " ><span>Read More</span> <i className="ri-arrow-right-line font-medium text-[18px] "></i>  </Link>
+                 <Link href={item.link} className=" mt-2 flex text-[14px] gap-2 font-semibold " ><span>Read More</span> <i className="ri-arrow-right-line font-medium text-[18px] "></i>  </Link>
                  </div>
                 </div>
               </div>
