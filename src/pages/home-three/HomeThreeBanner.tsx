@@ -28,7 +28,7 @@ const HomeThreeBanner = () => {
             <p className=" mt-4  tracking-wider " >London’s trusted experts in affordable skip hire services</p>
             
             <div className="smt40px  max-xs:flex-wrap fade-top flex gap-5 items-start ">
-             <HomeThreeBannerLink href="/pick-details" className="  " >   Get Instant Quote  <IconEdit className=" size-5 theme-transition-3  group-hover:rotate-45" />{" "} </HomeThreeBannerLink>
+             <HomeThreeBannerLink href="/booking-skip-online" className="  " >   Get Instant Quote  <IconEdit className=" size-5 theme-transition-3  group-hover:rotate-45" />{" "} </HomeThreeBannerLink>
            
              <ButtonHallow href="tele: 0208 574 6333" className=" max-lg:px-10  " > <PhoneCall size={17}  /> 0208 574 6333  </ButtonHallow>
              
