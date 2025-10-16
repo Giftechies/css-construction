@@ -78,7 +78,7 @@ const BoonkingOnline = () => {
     const type = methods.watch("jobType");
     
     
-    if (type === " skip collection") {
+    if (type.trim().toLowerCase() === "skip collection") {
       console.log("Redirecting to collection page:", type);
       navigate.push("/collection"); // <-- redirects user
       return; // stop further steps
