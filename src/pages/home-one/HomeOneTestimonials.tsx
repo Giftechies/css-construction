@@ -55,7 +55,6 @@ const HomeOneTestimonials = () => {
         <div className="flex flex-col items-center text-center  gap-2 " >
           <SectionSubTitle text="Testimonial " className=" " />
         <SectionTitle text="What Our Clients Say" className=" text-black-2" />
-        <p className=" text-black-3 " >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos voluptate animi nostrum fugit accusamus ipsam ea iure vitae, voluptatum ab?</p>
       </div>
         <div className="   w-[90%] flex items-center justify-center  ">
           <Swiper

@@ -20,7 +20,7 @@ const Blocks = ({className}) => {
   return (
     <div className={cn(` container  `,className)} >
 
-        <div className='flex  max-lg:flex-col   gap-10'>
+        <div className='flex  max-lg:flex-col   gap-6'>
      
            
           <div className='  Block-card1' >

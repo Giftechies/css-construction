@@ -35,7 +35,7 @@ export default function Home() {
         title={"Welcome to"}
         subheading={" Construction Site Services"}
         text1={
-          "At Construction Site Service, we are proud to be one of the trusted names in skip hire and waste management / removal company in London, UK. With over 20-year experience of our promoters, we have provided thousands of households, contractors, and businesses with fast, affordable, and reliable waste disposal solutions."
+          "Welcome to Construction Site Services, the experts in cheap skip hire service in London, waste management, and building material supply. We are a fully licensed and insured company, offering reliable and affordable waste disposal and recycling services across all London boroughs, suburbs, and postcodes."
         }
         text2={
           ""
@@ -44,6 +44,8 @@ export default function Home() {
         stepText1={"Affordable skip hire in London (all sizes available)."}
         stepText2={"Roll-on Roll-off skips for industrial waste removal"}
         stepText3={"Builders waste clearance and site clearances."}
+        stepText4={"Eco-friendly waste disposal and recycling services"}
+        stepText5={"High-quality ready-mix concrete, screed and floor mixes"}
       />
 
       <ServicePage />

@@ -10,7 +10,7 @@ import SectionSubTitle from "@/components/shared/SectionSubTitle";
 import { usePathname } from "next/navigation";
 
 
-const AboutLocal = ({imagepath1,imagepath2, imagepath3 ,counterNumber,counterText,title,text1,text2,buttonText,stepText1,stepText2,stepText3,subheading}) => {
+const AboutLocal = ({imagepath1,imagepath2, imagepath3 ,counterNumber,counterText,title,text1,text2,buttonText,stepText1="",stepText2="",stepText3="",stepText4="",stepText5="",subheading}) => {
 
   const pathname = usePathname()
   console.log(pathname);
@@ -64,15 +64,21 @@ const AboutLocal = ({imagepath1,imagepath2, imagepath3 ,counterNumber,counterTex
           />
   
           <div className="spt32px flex flex-col gap-3">
-            <div className="m-text fade-top flex items-center gap-2 text-accent-1">
-              <IconCheckbox /> <span>{stepText1?stepText1:"Designing every move with precision and perfection."}</span>
+            <div className="m-text fade-top flex items-start gap-2 text-accent-1">
+              <IconCheckbox /> <span>{stepText1?stepText1:""}</span>
             </div>
-            <div className="m-text fade-top flex items-center gap-2 text-accent-1">
-              <IconCheckbox /> <span>{stepText2?stepText2:"Structured planning ensures smooth and reliable relocation."}</span>
+            <div className="m-text fade-top flex items-start gap-2 text-accent-1">
+              <IconCheckbox /> <span>{stepText2?stepText2:""}</span>
             </div>
-            <div className="m-text fade-top flex items-center gap-2 text-accent-1">
-              <IconCheckbox /> <span>{stepText3? stepText3:"Strong foundations make your moving journey stress-free."}</span>
+            <div className="m-text fade-top flex items-start gap-2 text-accent-1">
+              <IconCheckbox /> <span>{stepText3? stepText3:""}</span>
             </div>
+           { stepText4 && <div className="m-text fade-top flex  items-start gap-2 text-accent-1">
+            <IconCheckbox /> <span>{stepText4?stepText4:""}</span>
+          </div>}
+           { stepText5 && <div className="m-text fade-top flex  items-start gap-2 text-accent-1">
+              <IconCheckbox /> <span>{stepText5? stepText5:""}</span>
+            </div>}
           </div>
           {pathname =="/about-us"? "": 
            

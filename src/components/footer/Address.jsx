@@ -10,10 +10,15 @@ const Address = () => {
           <IconMail />
        info@csserv.uk
         </Link>
-        <Link href={"/#"} className="flex gap-5  items-start  text-left " >
-          <IconMapPin className=" max-md:w-10 w-8 " />
-         Mr. John Smith 123 London Street ,Sampleton London, SW1A 1AA United Kingdom
-        </Link>
+        <Link
+      href="https://www.google.com/maps?q=GK+Depot,+Trout+Road,+West+Drayton,+UB7+7SN"
+      target="_blank"              // 🆕 opens in new tab
+      rel="noopener noreferrer"   // 🔐 security best practice
+      className="flex gap-5 items-start "
+    >
+      <IconMapPin className="max-md:w-10 w-8" />
+      GK Depot, Trout Road, West Drayton, UB7 7SN
+    </Link>
       </div>
     </div>
   )
