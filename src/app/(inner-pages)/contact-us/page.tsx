@@ -4,8 +4,8 @@ import ContactUsForm from "@/pages/contact/ContactUsForm";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact - Banking Solutions for Businesses NextJs Template",
-  description: "Banking Solutions for Businesses NextJs Template",
+  title: "Contact ",
+  description: "",
 };
 
 export default function ContactUsPage() {

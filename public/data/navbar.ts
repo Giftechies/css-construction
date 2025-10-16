@@ -55,27 +55,27 @@ export const navbar =[
   {
     id: uuidv4(),
     menuTitle: "Tipper & Grab Services",
-    path: "/tipper-&-grab-services",
+    path: "/tipper-and-grab-services",
     menuItems: [
       {
         id: uuidv4(),
         title: "Grab Hire",
-        menuItemPath: "/tipper-&-grab-services/grab-hire",
+        menuItemPath: "/tipper-and-grab-services/grab-hire",
       },
       {
         id: uuidv4(),
         title: "Cage Lorrie’s",
-        menuItemPath: "/tipper-&-grab-services/cage-lorries",
+        menuItemPath: "/tipper-and-grab-services/cage-lorries",
       },
       {
         id: uuidv4(),
         title: "Man and Van",
-        menuItemPath: "/tipper-&-grab-services/man-and-van",
+        menuItemPath: "/tipper-and-grab-services/man-and-van",
       },
       {
         id: uuidv4(),
         title: "Aggregates",
-        menuItemPath: "/tipper-&-grab-services/aggregates",
+        menuItemPath: "/tipper-and-grab-services/aggregates",
       },
     ],
   },
@@ -161,27 +161,27 @@ export const mobilenav = [
   {
     id: uuidv4(),
     menuTitle: "Tipper & Grab Services",
-    path: "/tipper-&-grab-services",
+    path: "/tipper-and-grab-services",
     menuItems: [
       {
         id: uuidv4(),
         title: "Grab Hire",
-        menuItemPath: "/tipper-&-grab-services/grab-hire",
+        menuItemPath: "/tipper-and-grab-services/grab-hire",
       },
       {
         id: uuidv4(),
         title: "Cage Lorrie’s",
-        menuItemPath: "/tipper-&-grab-services/cage-lorries",
+        menuItemPath: "/tipper-and-grab-services/cage-lorries",
       },
       {
         id: uuidv4(),
         title: "Man and Van",
-        menuItemPath: "/tipper-&-grab-services/man-and-van",
+        menuItemPath: "/tipper-and-grab-services/man-and-van",
       },
       {
         id: uuidv4(),
         title: "Aggregates",
-        menuItemPath: "/tipper-&-grab-services/aggregates",
+        menuItemPath: "/tipper-and-grab-services/aggregates",
       },
     ],
   },

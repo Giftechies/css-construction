@@ -34,10 +34,10 @@ export default function Sidebar({ className }) {
       label: "Tipper & Grab Services",
       path: "/tipper-grab-services",
       children: [
-        { label: "Grab Hire", path: "/tipper-&-grab-services/grab-hire" },
-        { label: "Cage Lorries", path: "/tipper-&-grab-services/cage-lorries" },
-        { label: "Man and Van", path: "/tipper-&-grab-services/man-and-van" },
-        { label: "Aggregates", path: "/tipper-&-grab-services/aggregates" },
+        { label: "Grab Hire", path: "/tipper-and-grab-services/grab-hire" },
+        { label: "Cage Lorries", path: "/tipper-and-grab-services/cage-lorries" },
+        { label: "Man and Van", path: "/tipper-and-grab-services/man-and-van" },
+        { label: "Aggregates", path: "/tipper-and-grab-services/aggregates" },
       ],
     },
   ];
