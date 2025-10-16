@@ -106,7 +106,6 @@ export async function DELETE(req) {
         await ConnectDb()
 
         const {_id} = await req.json()
-        console.log("sdfsdfsdf>>>>>>>>>>>>>",_id);
         if(!_id){
             return NextResponse.json({
                 success:false,
