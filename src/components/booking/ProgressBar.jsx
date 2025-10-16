@@ -11,7 +11,7 @@ export default function ProgressBar({ className,currentStep, setCurrentStep, ste
   };
 
   return (
-    <div className={cn("relative flex items-center justify-between sm:w-[75%]",className)}>
+    <div className={cn("relative flex items-center justify-between w-full max-w-[900px] mx-auto",className)}>
       {steps.map((step, idx) => {
         const isClickable = idx <= currentStep;
 
@@ -41,7 +41,7 @@ export default function ProgressBar({ className,currentStep, setCurrentStep, ste
             {/* Connector line (background gray) */}
             {idx < steps.length - 1 && (
               <div
-                className="absolute top-[35%] left-[60%] bg-gray-300 h-2 w-[80%] z-35 transition-all -translate-y-1/2 "
+                className="absolute top-[35%] left-[68%] md:left-[60%] bg-gray-300 h-2 w-[62%] md:w-[80%] z-35 transition-all -translate-y-1/2 "
                 
               ></div>
             )}

@@ -41,14 +41,14 @@ const BoonkingOnline = () => {
 
       const extrares = await Fetchextra();
 
-      // If API data is successful and valid, replace the hardcoded list
+    
       if (
         extrares.success &&
         Array.isArray(extrares.data) &&
         extrares.data.length > 0
       ) {
         setfetchextra(extrares.data);
-        console.log(fetchextra, "dfsd<<<<><><><><><>");
+      
       }
     })();
   }, []);
@@ -69,14 +69,16 @@ const BoonkingOnline = () => {
     },
     { title: "Extras", component: <Extra EXTRAS={fetchextra} /> },
     { title: "Cart", component: <Cart /> },
-    // { title: "Checkout", component: <Step6_Checkout /> },
+   
   ];
   const nextStep = async () => {
     // Validate current step before moving forward
     const isValid = await methods.trigger(); // for now: validate all fields
     // if(jobType)
     const type = methods.watch("jobType");
-    if (type === "collection") {
+    
+    
+    if (type === " skip collection") {
       console.log("Redirecting to collection page:", type);
       navigate.push("/collection"); // <-- redirects user
       return; // stop further steps

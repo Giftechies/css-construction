@@ -6,7 +6,7 @@ export default function Cardskip({ item, isSelected, onClick }) {
   return (
     <div 
       className={cn(
-        " group min-h-[16rem]  w-[18rem] cursor-pointer space-y-8  rounded-xl  shadow-md  bg-white-1 p-8  ",
+        " group min-h-[16rem] flex-1 max-w-[18rem] cursor-pointer space-y-8  rounded-xl  shadow-md  bg-white-1 p-8  ",
         { "bg-primary/10 ": isSelected },
       )}
     >
