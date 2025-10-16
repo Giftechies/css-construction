@@ -44,7 +44,7 @@ export const Skipcard = ({ item, onClick, setValue }) => {
 
   return (
     <div className="min-h-[25rem] w-[18rem] rounded-xl shadow-md bg-white-1 p-6">
-      <div className="img mx-auto w-full overflow-hidden rounded-3xl">
+      <div  onClick={handleBuy}  className="img mx-auto w-full cursor-pointer overflow-hidden rounded-3xl">
         <img
           src="/img/innerimg/truck.jpg"
           alt=""
@@ -54,7 +54,7 @@ export const Skipcard = ({ item, onClick, setValue }) => {
 
       <div className="mt-4 flex flex-col items-center justify-center gap-4">
         <div>
-          <span className="h5 font-oswald font-semibold text-primary group-hover:text-white-1">
+          <span  onClick={handleBuy} className="h5 font-oswald  cursor-pointer font-semibold text-primary group-hover:text-white-1">
             {item.label}
           </span>
         </div>
