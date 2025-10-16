@@ -76,7 +76,7 @@ const AboutLocal = ({imagepath1,imagepath2, imagepath3 ,counterNumber,counterTex
           </div>
           {pathname =="/about-us"? "": 
            
-       <HomeThreeBannerLink href="/pick-details" className="  bg-prim rounded-full text-white-1    hover:bg-transparent hover:text-primary  hover:border-primary w-fit mt-6 " >{buttonText?  buttonText:"Get Instant Quote"}</HomeThreeBannerLink>  
+       <HomeThreeBannerLink href="/about-us" className="  bg-prim rounded-full text-white-1    hover:bg-transparent hover:text-primary  hover:border-primary w-fit mt-6 " >{buttonText?  buttonText:"Get Instant Quote"}</HomeThreeBannerLink>  
 
           }
         </div>
