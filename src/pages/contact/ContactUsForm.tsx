@@ -16,7 +16,7 @@ const ContactUsForm = () => {
     { 
       icon: IconMail, 
       title: "Email us", 
-      email: "css@constructionco.com" 
+      email: "info@csserv.uk" 
     },
   
   ];
