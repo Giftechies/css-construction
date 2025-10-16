@@ -22,15 +22,15 @@ const ContactUsForm = () => {
   ];
   // --- NEW ADDRESS AND PHONE ---
   const PHONE_NUMBER = "0208 574 6333"; 
-  const OFFICE_ADDRESS = "14 Construction Way, London SW1A 0AA, UK"; 
+  
 
   return (
     <section className="py-20 md:py-32 bg-gray-50" id="scrollPosition">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
-        <div className="flex justify-between gap-12 max-lg:flex-col max-lg:text-center">
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900">
-            Ready to start your project? Let's connect today.
+        <div className="">
+          <h2 className="h3  font-semibold text-gray-900 text-center   ">
+            Ready to start? Let’s connect!
           </h2>
        
         </div>
@@ -68,9 +68,15 @@ const ContactUsForm = () => {
                     <h4 className="text-xl font-semibold text-gray-900 mb-1">
                         Visit Our Main Office
                     </h4>
-                    <address className="text-gray-600 not-italic">
-                        {OFFICE_ADDRESS}
-                    </address>
+                    <Link
+      href="https://www.google.com/maps?q=GK+Depot,+Trout+Road,+West+Drayton,+UB7+7SN"
+      target="_blank"              // 🆕 opens in new tab
+      rel="noopener noreferrer"   // 🔐 security best practice
+      className="flex gap-5 items-start text-left"
+    >
+      
+      GK Depot, Trout Road, West Drayton, UB7 7SN
+    </Link>
                 </div>
             </div>
 

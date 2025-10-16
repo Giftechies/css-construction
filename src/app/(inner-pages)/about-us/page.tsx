@@ -34,9 +34,9 @@ export default function AboutPage() {
             ""
           }
           buttonText={"Know More"}
-          stepText1={"Affordable skip hire in London (all sizes available)."}
-          stepText2={"Roll-on Roll-off skips for industrial waste removal"}
-          stepText3={"Builders waste clearance and site clearances."}
+          stepText1={"Domestic customers needing small skips for house, garage, loft, and garden rubbish collection and for garbage recycling "}
+          stepText2={"Builders and tradespeople requiring builder’s skips, hardcore removal, and grab lorries for concrete cleaning services"}
+          stepText3={"Commercial clients for office clearances, shop waste collections, and bulk site waste disposal"}
         />
         <Vision/>
         <Projects/>

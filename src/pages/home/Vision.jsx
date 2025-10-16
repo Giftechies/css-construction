@@ -14,8 +14,9 @@ const Vision = () => {
         <div class=" container text-white-1 relative z-10 p-8 text-center gap-6  flex flex-col items-center justify-center  ">
         
         <SectionSubTitle text="CSS Construction"/>
+        <h1 className="h1 font-semibold   capitalize font-oswald "  >Turning waste into a cleaner, greener future.</h1>
          
-          <SectionTitle text="Turning waste into a cleaner, greener future."  className="h1   capitalize " />
+         
           <SectionText className=" text-white-1/60 w-[90%] " text="We cover Central, East, South, West, and North London, including postcodes from EC, WC, W, N, NW, E, SE, SW, CR, BR, UB, HA, TW, IG, and RM."/>
           <HomeThreeBannerLink href="/booking-skip-online" className="  " >   Get Instant Quote  <IconEdit className=" size-5 theme-transition-3  group-hover:rotate-45" />{" "} </HomeThreeBannerLink>
           

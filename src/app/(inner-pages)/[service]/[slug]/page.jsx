@@ -17,7 +17,7 @@ export async function generateMetadata({ params }) {
   const response = await getPageData(params.service, params.slug);
 
   return {
-    title: response?.metatitle || response?.title || "Default Title",
+    title:  response?.metatitle || response?.title || "Default Title",
     description: response?.metadiscription || response?.shortcontent || "",
     openGraph: {
       title: response?.metatitle || response?.title || "Default Title",
