@@ -14,6 +14,8 @@ export default async function Skip({params}) {
   const response = await res.json()
   const data = response.data
   const category = response.category[0]
+  console.log(category);
+  
   return (
     <>
       <InnerBanner

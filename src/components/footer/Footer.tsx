@@ -66,23 +66,23 @@ const footer =[
   },
   {
     title: "Tipper & Grab Services",
-    path: "/tipper-&-grab-services",
+    path: "/tipper-and-grab-services",
     li: [
       {
         sublinks: "Grab Hire",
-        path: "/tipper-&-grab-services/grab-hire",
+        path: "/tipper-and-grab-services/grab-hire",
       },
       {
         sublinks: "Cage Lorrie’s",
-        path: "/tipper-&-grab-services/cage-lorries",
+        path: "/tipper-and-grab-services/cage-lorries",
       },
       {
         sublinks: "Man and Van",
-        path: "/tipper-&-grab-services/man-and-van",
+        path: "/tipper-and-grab-services/man-and-van",
       },
       {
         sublinks: "Aggregates",
-        path: "/tipper-&-grab-services/aggregates",
+        path: "/tipper-and-grab-services/aggregates",
       },
     ],
   },
