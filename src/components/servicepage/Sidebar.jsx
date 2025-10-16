@@ -27,6 +27,7 @@ export default function Sidebar({ className }) {
       children: [
         { label: "Concrete Supply", path: "/concrete-supply/concrete-supply" },
         { label: "Screed", path: "/concrete-supply/screed" },
+        { label: "Ready Mix Concrete", path: "/concrete-supply/ready-mix-concrete" },
       ],
     },
     {
