@@ -11,7 +11,7 @@ const AboutMission = () => {
     <section className="spy80px fade-wrapper bg-gray-200">
       <div className="container">
         <div className="grid items-center gap-6 xl:grid-cols-2">
-          <div className="grid  h-full border-4 items-center gap-5 max-xl:justify-center sm:grid-cols-2">
+          <div className="grid items-center gap-5 max-xl:justify-center sm:grid-cols-2">
             <div className="group theme-transition-3 relative col-start-1 col-end-2 overflow-hidden text-black-4">
               <Image
                 src={'/img/innerimg/skip-hire-pic.jpg'}
