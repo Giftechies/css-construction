@@ -15,6 +15,8 @@ async function getPageData(service, slug) {
 // Generate metadata dynamically
 export async function generateMetadata({ params }) {
   const response = await getPageData(params.service, params.slug);
+  console.log(params.service,params.slug);
+  
 
   return {
     title:  response?.metatitle || response?.title || "Default Title",

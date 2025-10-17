@@ -25,7 +25,7 @@ const Servicespage = () => {
             Our Services
           </p> */}
           <SectionSubTitle className=" font-[700] tracking-wider leading-[20px] text-primary  " text="Our Services"/>
-          <SectionTitle  className="h1 text-left  text-black-2  " text=" Skip Hire Services You Can Rely On" />
+          <SectionTitle  className="h1 text-center  text-black-2  " text=" Skip Hire Services You Can Rely On" />
          
         </div>
         <div className="card flex flex-wrap items-center justify-center gap-10 ">
