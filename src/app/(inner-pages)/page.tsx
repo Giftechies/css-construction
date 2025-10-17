@@ -1,26 +1,24 @@
+import dynamic from "next/dynamic";
 
-import Animations from "@/components/animations/Animations";
-
-import HomeOneTestimonials from "@/pages/home-one/HomeOneTestimonials";
-import HomeThreeBanner from "@/pages/home-three/HomeThreeBanner";
-import { Metadata } from "next";
-
-import AboutLocal from "@/pages/local/AboutPage";
-import ServicePage from "@/pages/services/Servicespage";
-import Projects from "@/pages/projects/Projects";
-import Vision from "@/pages/home/Vision"
-import EducationLoanFaq from "@/pages/education-loan/EducationLoanFaq";
+const HomeThreeBanner = dynamic(() => import("@/pages/home-three/HomeThreeBanner"), { ssr: false });
+const AboutLocal = dynamic(() => import("@/pages/local/AboutPage"), { ssr: false });
+const ServicePage = dynamic(() => import("@/pages/services/Servicespage"), { ssr: false });
+const Projects = dynamic(() => import("@/pages/projects/Projects"), { ssr: false });
+const Vision = dynamic(() => import("@/pages/home/Vision"), { ssr: false });
+const EducationLoanFaq = dynamic(() => import("@/pages/education-loan/EducationLoanFaq"), { ssr: false });
+const HomeOneTestimonials = dynamic(() => import("@/pages/home-one/HomeOneTestimonials"), { ssr: false });
+const Animations = dynamic(() => import("@/components/animations/Animations"), { ssr: false });
 
 export const metadata = {
   title: "CSS Construction | Skip Hire Services",
-  description: ".",
+  description: "Affordable skip hire and waste management services in London.",
 };
 
 export default function Home() {
   return (
     <div>
       <HomeThreeBanner />
-      <AboutLocal
+        <AboutLocal
         imagepath1={"/img/innerimg/project6.webp"}
         imagepath2={
           "/img/innerimg/project2.avif"
@@ -45,15 +43,12 @@ export default function Home() {
         stepText4={"Eco-friendly waste disposal and recycling services"}
         stepText5={"High-quality ready-mix concrete, screed and floor mixes"}
       />
-
       <ServicePage />
-      {/* <HomeTwoServices/> */}
-      <Vision/>
-      <Projects/>
-       <EducationLoanFaq/>
+      <Vision />
+      <Projects />
+      <EducationLoanFaq />
       <HomeOneTestimonials />
       <Animations />
-
     </div>
   );
 }
