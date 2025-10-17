@@ -33,7 +33,7 @@ const AboutLocal = ({
             className="spt80px  spb120px  overflow-hidden"
             
         >
-            <div className="container grid grid-cols-12 items-center space-y-6 lg:gap-24">
+            <div className="container grid grid-cols-12 items-center space-y-6 xl:gap-20">
                 
                 {/* Image Gallery Column (Left on Large Screens) */}
                 <div className="col-span-12 xl:col-span-6">

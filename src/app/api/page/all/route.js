@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { ConnectDb } from "../../../helper/db";
 import pageModel from "../../../helper/models/page";
+import serviceCategoryModel from "@/app/helper/models/serviceCategory"
 
 export async function GET() {
   try {
