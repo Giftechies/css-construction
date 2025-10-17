@@ -15,8 +15,8 @@ export async function POST(req) {
 
     const subject =
       type === "contact"
-        ? "📩 New Contact Form Submission"
-        : "🚛 New Skip Collection Request";
+        ? " New Contact Form Submission"
+        : " New Skip Collection Request";
 
     const html = `
       <h2 style="font-family: sans-serif; color: #333;">${subject}</h2>

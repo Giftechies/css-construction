@@ -20,7 +20,7 @@ const AboutLocal = ({imagepath1,imagepath2, imagepath3 ,counterNumber,counterTex
       className="spt80px fade-wrapper spb120px relative overflow-hidden"
       id="scrollPosition"
     >
-      <div className="container  grid grid-cols-12 items-center gap-6">
+      <div className="container  grid grid-cols-12 items-center gap-24">
         <div className="relative h-full   col-start-1 col-end-13 grid grid-cols-12 items-center   xl:col-end-7 xl:grid-cols-12 xl:items-end gap-5">
           <div className=" col-start-1 max-xl:h-[20vh]  col-end-7 xl:absolute bottom-0 left-0 hover:bottom-2  theme-transition-4 rounded-md overflow-hidden  xl:h-[70%]   xl:col-end-5 ">
             <Image
@@ -52,7 +52,7 @@ const AboutLocal = ({imagepath1,imagepath2, imagepath3 ,counterNumber,counterTex
            
           </div>
         </div>
-        <div className="col-start-1 col-end-13 xl:col-start-8  ">
+        <div className="col-start-1 col-end-13 xl:col-start-7  ">
           <SectionSubTitle text={title? title: "Who we are"} className=" " />
           <SectionTitle
             text={subheading?subheading:"Our Mission & Vision"}
@@ -64,6 +64,7 @@ const AboutLocal = ({imagepath1,imagepath2, imagepath3 ,counterNumber,counterTex
           />
   
           <div className="spt32px flex flex-col gap-3">
+            {pathname =="/about-us"? <p className="h6 font-semibold" >We serve:</p>:""}
             <div className="m-text fade-top flex items-start gap-2 text-accent-1">
               <IconCheckbox /> <span>{stepText1?stepText1:""}</span>
             </div>
@@ -77,7 +78,7 @@ const AboutLocal = ({imagepath1,imagepath2, imagepath3 ,counterNumber,counterTex
             <IconCheckbox /> <span>{stepText4?stepText4:""}</span>
           </div>}
            { stepText5 && <div className="m-text fade-top flex  items-start gap-2 text-accent-1">
-              <IconCheckbox /> <span>{stepText5? stepText5:""}</span>
+              <IconCheckbox className=" "  /> <span>{stepText5? stepText5:""}</span>
             </div>}
           </div>
           {pathname =="/about-us"? "": 
