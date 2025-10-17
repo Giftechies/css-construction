@@ -103,7 +103,7 @@ const BoonkingOnline = () => {
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit(onSubmit)}
-          className="container  z-30 mt-8  flex flex-col items-center gap-8 rounded-lg bg-white-1 p-4 shadow-md"
+          className="container  z-30  py-8   flex flex-col items-center gap-8 rounded-lg bg-white-1  shadow-md"
         >
           <h1 className="h2 title-animation text-center  font-oswald  font-[700] !text-primary   ">
             Your Skip, Ready to Hire
@@ -117,7 +117,7 @@ const BoonkingOnline = () => {
           />
 
           {/* Render current step */}
-          <div className="mx-auto mt-8 w-[70%] ">
+          <div className="mx-auto mt-8  ">
             {steps[currentStep].component}
           </div>
 
