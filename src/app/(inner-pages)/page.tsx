@@ -3,7 +3,7 @@ import Animations from "@/components/animations/Animations";
 
 import HomeOneTestimonials from "@/pages/home-one/HomeOneTestimonials";
 import HomeThreeBanner from "@/pages/home-three/HomeThreeBanner";
-import { Metadata } from "next";
+// import { Metadata } from "next";
 
 import AboutLocal from "@/pages/local/AboutPage";
 import ServicePage from "@/pages/services/Servicespage";
@@ -13,10 +13,10 @@ import Vision from "@/pages/home/Vision"
 
 import EducationLoanFaq from "@/pages/education-loan/EducationLoanFaq";
 
-export const metadata: Metadata = {
-  title: "CSS Construction",
-  description: ".",
-};
+// export const metadata: Metadata = {
+//   title: "CSS Construction",
+//   description: ".",
+// };
 
 export default function Home() {
   return (
