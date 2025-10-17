@@ -16,9 +16,9 @@ const AboutMission = () => {
               <Image
                 src={'/img/innerimg/skip-hire-pic.jpg'}
                 width={306}
-                height={600}
+                height={500}
                 alt="Skip Hire Image"
-                className="block max-xl:mx-auto "
+                className="block max-xl:mx-auto"
               />
               <div className="rounded-16px theme-transition-4 absolute bottom-0 left-0 flex h-0 w-full items-center justify-center bg-[linear-gradient(0deg,rgba(18,18,18,0.80)_0%,rgba(18,18,18,0.20)_100%)] opacity-0 group-hover:visible  group-hover:h-full group-hover:opacity-100">
                 <p className="h3 font-medium text-white-1">Skip Hire</p>
@@ -29,7 +29,7 @@ const AboutMission = () => {
                 <Image
                   src={"/img/innerimg/concrete.jpg"}
                   width={306}
-                  height={300}
+                  height={238}
                   alt="Concrete Supplyimage"
                 />
                 <div className="rounded-16px theme-transition-4 absolute bottom-0 left-0 flex h-0 w-full items-center justify-center bg-[linear-gradient(0deg,rgba(18,18,18,0.80)_0%,rgba(18,18,18,0.20)_100%)] opacity-0 group-hover:visible  group-hover:h-full group-hover:opacity-100">
@@ -40,7 +40,7 @@ const AboutMission = () => {
                 <Image
                   src={"/img/innerimg/Tipper-Grab.jpg"}
                   width={306}
-                  height={300}
+                  height={238}
                   alt="Tipper Grab image"
                 />
                 <div className="rounded-16px theme-transition-4 absolute bottom-0 left-0 flex h-0 w-full items-center justify-center bg-[linear-gradient(0deg,rgba(18,18,18,0.80)_0%,rgba(18,18,18,0.20)_100%)] opacity-0 group-hover:visible  group-hover:h-full group-hover:opacity-100">
