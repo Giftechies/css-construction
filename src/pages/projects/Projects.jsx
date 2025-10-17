@@ -21,7 +21,7 @@ const Project = () => {
       <div className="container  gap-4 ">
         <div className="text mb-8 flex flex-col items-center justify-center gap-4 px-10">
           <SectionSubTitle text="  Recents Projects"/>
-          <SectionTitle  className="h1 text-center  text-black-2 pt-3 " text=" What we Have Done" />
+          <SectionTitle  className="h1 text-center  text-black-2 pt-3 " text=" What We Have Done" />
           <SectionText
             className=" text-center font-[500] tracking-wider  "
             text={

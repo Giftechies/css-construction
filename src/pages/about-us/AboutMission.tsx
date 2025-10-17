@@ -55,7 +55,7 @@ const AboutMission = () => {
                 text="Why choose CS Services?"
                 className="h3 text-primary font-medium "
               />
-              <ul className=" list-disc list-inside space-y-3 mt-6 pl-12 " >
+              <ul className=" list-disc list-inside space-y-3 mt-6 lg:pl-12 " >
                 <li>
                   Low-cost skip hire, recycling & waste management services in
                   London, affordable prices guaranteed{" "}

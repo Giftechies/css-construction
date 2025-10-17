@@ -237,6 +237,9 @@ p{
     h6{
       @apply h6
     }
+    p{
+      @apply text-justify 
+    }
    
   }
   
