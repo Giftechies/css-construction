@@ -46,7 +46,7 @@ const UniFiedPlatform = () => {
             </div>
             <RoundedLink
               buttonText="Apply Now"
-              link="/contact"
+              link="/contact-us"
               className="smt40px"
             />
           </div>

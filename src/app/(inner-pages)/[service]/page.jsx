@@ -20,7 +20,7 @@ export default async function Skip({params}) {
     <>
       <InnerBanner
         imgpath={category?.featureImage}
-        pagename={category.title}
+        pagename={category?.title}
       />
       <CardContainer  data={data}/>
       <Animations/>

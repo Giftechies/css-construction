@@ -1,28 +1,96 @@
-"use client"
+"use client";
 
-import { cn } from "@/lib/utils";
+import { useState } from "react";
+// import { cn } from "@/lib/utils";
+import {cn} from "../../lib/resend"
 
-export default function Collectionform({className}) {
-  const submithandler = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.target);
-    console.log(Object.fromEntries(data)); // Logs all form values
+export default function Collectionform({ className }) {
+  const [form, setForm] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    address: "",
+    postcode: "",
+    skip_size: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState(null); // "success" | "error" | null
+
+  // ----------------------------
+  // Input Handler
+  // ----------------------------
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // ----------------------------
+  // Form Submit Handler
+  // ----------------------------
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus(null);
+
+    // Basic validation
+    if (!form.firstname || !form.email || !form.phone || !form.address) {
+      setStatus("error");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "collection", data: form }),
+      });
+
+      if (!res.ok) throw new Error("Network error");
+      const data = await res.json();
+      console.log("✅ Form sent:", data);
+
+      setStatus("success");
+      setForm({
+        firstname: "",
+        lastname: "",
+        email: "",
+        phone: "",
+        address: "",
+        postcode: "",
+        skip_size: "",
+      });
+    } catch (err) {
+      console.error("❌ Submit failed:", err);
+      setStatus("error");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <form
-      onSubmit={submithandler}
-      className={cn("flex w-full flex-col gap-8 ",className)}
+      onSubmit={handleSubmit}
+      className={cn("flex w-full flex-col gap-8", className)}
     >
-      <h2 className=" h2 !text-primary    font-semibold "  >Request a Skip Pickup </h2>
+      <h2 className="h2 !text-primary font-semibold">
+        Request a Skip Pickup
+      </h2>
+
+      {/* Row 1 */}
       <div className="collectionwrap">
         <div className="flex flex-col gap-1">
-          <label>First Name</label>
+          <label>First Name*</label>
           <input
             type="text"
             name="firstname"
-            className="collectionInput"
+            value={form.firstname}
+            onChange={handleChange}
             placeholder="John"
+            className="collectionInput"
+            required
           />
         </div>
         <div className="flex flex-col gap-1">
@@ -30,20 +98,26 @@ export default function Collectionform({className}) {
           <input
             type="text"
             name="lastname"
+            value={form.lastname}
+            onChange={handleChange}
+            placeholder="Wick"
             className="collectionInput"
-            placeholder=" wick "
           />
         </div>
       </div>
 
+      {/* Row 2 */}
       <div className="collectionwrap">
         <div className="flex flex-col gap-1">
           <label>Email Address*</label>
           <input
             type="email"
             name="email"
-            className="collectionInput"
+            value={form.email}
+            onChange={handleChange}
             placeholder="john@gmail.com"
+            className="collectionInput"
+            required
           />
         </div>
         <div className="flex flex-col gap-1">
@@ -51,34 +125,50 @@ export default function Collectionform({className}) {
           <input
             type="tel"
             name="phone"
-            className="collectionInput"
+            value={form.phone}
+            onChange={handleChange}
             placeholder="547895461"
+            className="collectionInput"
+            required
           />
         </div>
       </div>
 
-      <div className="flex  flex-col gap-1">
+      {/* Address */}
+      <div className="flex flex-col gap-1">
         <label>Collection Address*</label>
         <textarea
           name="address"
-          className="collectionInput min-h-[120px] "
-          placeholder="collection address"
+          value={form.address}
+          onChange={handleChange}
+          placeholder="Collection address"
+          className="collectionInput min-h-[120px]"
+          required
         ></textarea>
       </div>
 
+      {/* Row 3 */}
       <div className="collectionwrap">
         <div className="flex flex-col gap-1">
           <label>Post Code*</label>
           <input
             type="text"
             name="postcode"
-            className="collectionInput"
+            value={form.postcode}
+            onChange={handleChange}
             placeholder="4521"
+            className="collectionInput"
           />
         </div>
+
         <div className="flex flex-col gap-1">
           <label>Skip size*</label>
-          <select name="skip_size" className="collectionInput">
+          <select
+            name="skip_size"
+            value={form.skip_size}
+            onChange={handleChange}
+            className="collectionInput"
+          >
             <option value="">--Select Skip size--</option>
             <option value="4 Yard Skip">4 Yard Skip</option>
             <option value="6 Yard Skip">6 Yard Skip</option>
@@ -93,8 +183,27 @@ export default function Collectionform({className}) {
         </div>
       </div>
 
-      <button type="submit" className="text-white-1 mt-4 rounded-xl bg-primary p-2">
-        Submit
+      {/* Status Feedback */}
+      {status === "success" && (
+        <p className="text-green-600 font-medium">
+          ✅ Request submitted successfully!
+        </p>
+      )}
+      {status === "error" && (
+        <p className="text-red-600 font-medium">
+          ❌ Please fill all required fields or try again later.
+        </p>
+      )}
+
+      {/* Submit Button */}
+      <button
+        type="submit"
+        disabled={loading}
+        className={`text-white mt-4 rounded-xl bg-primary p-3 font-semibold transition-all ${
+          loading ? "opacity-70 cursor-not-allowed" : "hover:bg-primary/90"
+        }`}
+      >
+        {loading ? "Submitting..." : "Submit"}
       </button>
     </form>
   );

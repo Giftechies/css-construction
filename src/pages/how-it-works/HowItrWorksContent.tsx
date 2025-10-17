@@ -154,7 +154,7 @@ const HowItrWorksContent = () => {
               <p className="l-text mt- mt-5 ">
                 Do you want to move hessle free? contact us
               </p>
-              <LinkAccentThree link="/contact" linkText="Call Know" className="smt32px text-black-4 bg-white-1 " />
+              <LinkAccentThree link="/contact-us" linkText="Call Know" className="smt32px text-black-4 bg-white-1 " />
             </div>
 
             {/* contact section end */}

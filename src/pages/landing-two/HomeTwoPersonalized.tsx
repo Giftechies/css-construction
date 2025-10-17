@@ -30,7 +30,7 @@ const HomeTwoPersonalized = () => {
             />
             <RoundedLink
               buttonText="Apply for a loan"
-              link="/contact"
+              link="/contact-us"
               className="smt40px border-white-1 bg-white-1 hover:border-primary hover:bg-primary max-sm:w-[180px] sm:size-[180px] lg:size-[180px]"
             />
           </div>

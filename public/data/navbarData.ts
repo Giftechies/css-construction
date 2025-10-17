@@ -139,6 +139,6 @@ export const navbarData = [
   {
     id: uuidv4(),
     menuTitle: "Contact",
-    path: "/contact",
+    path: "/contact-us",
   },
 ];

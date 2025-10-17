@@ -62,7 +62,7 @@ const AboutMission = () => {
               <div className="info-card spt40px flex gap-7 max-sm:flex-col-reverse">
                 <RoundedLink
                   buttonText="Contact Us"
-                  link="/contact"
+                  link="/contact-us"
                   className="shrink-0 border-accent-3 bg-accent-3 hover:border-accent-3 hover:bg-transparent"
                 />
                 <div>

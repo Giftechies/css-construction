@@ -32,7 +32,7 @@ const CareersDetailsRight = () => {
           Do you want to work with us? Please, send your CV to
           contact@wealthify.com
         </p>
-        <LinkAccentThree link="/contact" linkText="Contact Us" className="smt32px" />
+        <LinkAccentThree link="/contact-us" linkText="Contact Us" className="smt32px" />
       </div>
       <div className="smt60px"></div>
       <SocialMedia />

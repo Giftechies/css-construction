@@ -88,7 +88,7 @@ const HomeThreeFinancialPlan = () => {
           <div className="spt40px">
             <RoundedLink
               buttonText="Apply for a loan"
-              link="/contact"
+              link="/contact-us"
               className="bg-accent-3 text-black-4 hover:border-accent-3 hover:bg-transparent max-sm:w-48 sm:size-[160px] lg:size-[180px]"
             />
           </div>
