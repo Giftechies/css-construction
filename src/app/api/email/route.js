@@ -6,7 +6,6 @@ export async function POST(req) {
     const body = await req.json();
     const { type, data } = body || {};
 
-    // Validate request payload
     if (!type || !data || typeof data !== "object") {
       return NextResponse.json(
         { error: "Invalid request: Missing or malformed 'type' or 'data'." },
@@ -14,13 +13,11 @@ export async function POST(req) {
       );
     }
 
-    // Determine subject dynamically
     const subject =
       type === "contact"
         ? "📩 New Contact Form Submission"
         : "🚛 New Skip Collection Request";
 
-    // Generate clean HTML
     const html = `
       <h2 style="font-family: sans-serif; color: #333;">${subject}</h2>
       <ul style="font-family: sans-serif; line-height: 1.6;">
@@ -35,23 +32,25 @@ export async function POST(req) {
       </ul>
     `;
 
-    // Send email via Resend
-    const email = await resend.emails.send({
-      from: process.env.FROM_EMAIL,
-      to: process.env.TO_EMAIL,
-      subject,
-      html,
-    });
+    // Declare email outside the try so it's accessible after
+    let email;
 
-    // Ensure Resend returned a valid response
-    if (!email?.id) {
-      console.error("Resend email send failed:", email);
+    try {
+      email = await resend.emails.send({
+        from: process.env.FROM_EMAIL,
+        to: process.env.TO_EMAIL,
+        subject,
+        html,
+      });
+    } catch (err) {
+      console.error("Error while sending email via Resend:", err);
       return NextResponse.json(
         { error: "Failed to send email via Resend." },
         { status: 502 }
       );
     }
 
+    // email is now safe to access
     return NextResponse.json({ success: true, email });
   } catch (error) {
     console.error("Email send error:", error);
