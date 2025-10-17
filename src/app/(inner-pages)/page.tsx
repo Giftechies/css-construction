@@ -1,3 +1,9 @@
+export const metadata = {
+  title: "CSS Construction | Skip Hire Services",
+  description: "Affordable skip hire and waste management services in London.",
+};
+
+
 import dynamic from "next/dynamic";
 
 const HomeThreeBanner = dynamic(() => import("@/pages/home-three/HomeThreeBanner"), { ssr: false });
@@ -9,10 +15,7 @@ const EducationLoanFaq = dynamic(() => import("@/pages/education-loan/EducationL
 const HomeOneTestimonials = dynamic(() => import("@/pages/home-one/HomeOneTestimonials"), { ssr: false });
 const Animations = dynamic(() => import("@/components/animations/Animations"), { ssr: false });
 
-export const metadata = {
-  title: "CSS Construction | Skip Hire Services",
-  description: "Affordable skip hire and waste management services in London.",
-};
+
 
 export default function Home() {
   return (
