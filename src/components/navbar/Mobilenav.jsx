@@ -7,11 +7,13 @@ import { mobilenav } from "@/../public/data/navbar";
 import Link from "next/link";
 import Image from "next/image";
 import Media from "../footer/Media";
+import { useRouter } from "next/navigation";
 
 const Mobilenav = ({ className }) => {
   const [sidebarToggle, setSidebarToggle] = useState(false);
   const [sideopen, setSideopen] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
+  const route = useRouter()
 
   const toggleSidebar = () => {
     setSidebarToggle(!sidebarToggle);
@@ -44,7 +46,7 @@ const Mobilenav = ({ className }) => {
           { invisible: sideopen }
         )}
       >
-        <div className="logo w-[80px]">
+        <div onClick={()=>route.push('/')} className="logo w-[80px]">
           <Image
             src={"/img/logo/nav-logo.svg"}
             className="w-full object-center object-cover"
