@@ -10,7 +10,7 @@ export default function CardContainer({data=[]}){
 
 
     return(
-        <section className=" container flex flex-wrap items-center justify-center gap-10 py-10 " >
+        <section className=" container flex flex-wrap  justify-center gap-10 py-10 " >
                  {data.map((item,id)=>(<div
                 key={id}
                 className="card1 group w-[380px]    overflow-hidden rounded-[2em] border p-4 bg-white-1 sp "
