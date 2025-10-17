@@ -19,7 +19,7 @@ export default async function Skip({params}) {
   return (
     <>
       <InnerBanner
-        imgpath={category?.featureImage}
+        imgpath={category?.featureImage || "/img/innerimg/Tipper-Grab.jpg"}
         pagename={category?.title}
       />
       <CardContainer  data={data}/>
