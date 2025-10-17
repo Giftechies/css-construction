@@ -143,7 +143,7 @@ export default function FormCom({
       </div>
 
       <form onSubmit={formhandler} className="all-pages grid grid-cols-12 gap-8 mt-8">
-        <div className="col-span-6 flex flex-col gap-4">
+        <div className=" col-span-12 md:col-span-6 flex flex-col gap-4">
           <span>
             <label htmlFor="title">Title</label>
             <Input
@@ -220,7 +220,7 @@ export default function FormCom({
           </span>
         </div>
 
-        <div className="col-span-6 flex flex-col gap-4">
+        <div className=" col-span-12 md:col-span-6 flex flex-col gap-4">
           <span>
             {!pageimage && !imageLoader ? (
               <span>

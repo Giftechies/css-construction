@@ -13,10 +13,10 @@ import Vision from "@/pages/home/Vision"
 
 import EducationLoanFaq from "@/pages/education-loan/EducationLoanFaq";
 
-// export const metadata: Metadata = {
-//   title: "Interstate removalists",
-//   description: "Providing the solution for relocations.",
-// };
+export const metadata: Metadata = {
+  title: "CSS Construction",
+  description: ".",
+};
 
 export default function Home() {
   return (

@@ -26,7 +26,7 @@ const BannerOne = () => {
             />
             <div className="items-center justify-between max-lg:flex min-[320px]:max-[400px]:flex-col">
               <Link
-                href="/contact"
+                href="/contact-us"
                 className="alter-btn btn-anim smt60px group relative z-10 inline-flex size-[140px] items-center justify-center gap-4 overflow-hidden rounded-full border  bg-primary font-semibold text-white-1 hover:border-accent-3 hover:text-black-4 lg:size-[200px]"
               >
                 <div className="flex flex-col items-center justify-center">

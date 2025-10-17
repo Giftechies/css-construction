@@ -53,7 +53,7 @@ const CarLoanEveryOne = () => {
 
             <RoundedLink
               buttonText="Apply now"
-              link="/contact"
+              link="/contact-us"
               className="smt40px"
             />
           </div>

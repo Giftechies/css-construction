@@ -18,7 +18,7 @@ const FooterMiddleColumn = () => {
     Area We Serve
   </Link>
 
-  <Link className="block hover:text-primary theme-transition-3" href="/contact">
+  <Link className="block hover:text-primary theme-transition-3" href="/contact-us">
     Contact Us
   </Link>
 </ul>

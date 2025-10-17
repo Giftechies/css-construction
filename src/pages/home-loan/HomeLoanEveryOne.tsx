@@ -51,7 +51,7 @@ const HomeLoanEveryOne = () => {
               </li>
             </ul>
 
-            <RoundedLink buttonText="Apply now" link="/contact" className="smt40px" />
+            <RoundedLink buttonText="Apply now" link="/contact-us" className="smt40px" />
           </div>
         </div>
       </div>

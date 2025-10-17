@@ -176,7 +176,7 @@ const ServiceDetailsContent = () => {
             </div>
             <RoundedLink
               buttonText="Let’s Talk Us"
-              link="/contact"
+              link="/contact-us"
               className="lg:size-[160px]"
             />
           </div>

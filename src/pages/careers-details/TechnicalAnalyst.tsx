@@ -78,7 +78,7 @@ const TechnicalAnalyst = () => {
                     <span>Manhattan, New York</span>
                   </div>
                 </div>
-                <LinkAccentThree link="/contact" linkText="Apply For Job" />
+                <LinkAccentThree link="/contact-us" linkText="Apply For Job" />
               </div>
             </div>
           </div>
