@@ -38,10 +38,10 @@ const Mobilenav = ({ className }) => {
 
   return (
     <section>
-      {/* Top nav bar with logo + hamburger */}
+    
       <div
         className={cn(
-          "z-50 absolute inset-0 p-4 max-xl:flex justify-between hidden",
+          "z-50 absolute  top-0 left-0 w-full p-4 max-xl:flex justify-between hidden",
           className,
           { invisible: sideopen }
         )}

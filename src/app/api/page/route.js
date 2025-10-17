@@ -10,13 +10,14 @@ export async function GET(req) {
     await ConnectDb();
     const {searchParams} = new URL(req.url);
     const category = searchParams?.get('category')
-    const dbcategory = category?.split('-').map(word=>word?.charAt(0).toUpperCase() + word?.slice(1).toLowerCase()).join(" ")
+    // const dbcategory = category?.split('-').map(word=>word?.charAt(0).toUpperCase() + word?.slice(1).toLowerCase()).join(" ")
+    const dbcategory = category?.replace(/-/g," ")
     const page = searchParams.get('page')
-    console.log("pages page>><M><",page);
+  
     
 
     const res = await pageModel.find().sort({ title: 1 }).populate("category", "title");
-    const service = await serviceCategoryModel.find({title:dbcategory})
+    const service = await serviceCategoryModel.findOne({title:{$regex:`^${dbcategory}$`,$options:"i"}})
     
     
     
