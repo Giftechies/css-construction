@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"; // ← add at the top of your file
+
 import { NextResponse } from "next/server";
 import settingRate from "../../../helper/models/settingRate";
 import settingRoll from "../../../helper/models/settingroll";

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 import { IconChevronDown, IconX } from "@tabler/icons-react";
 import { mobilenav } from "@/../public/data/navbar";
 import Link from "next/link";
