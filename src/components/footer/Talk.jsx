@@ -11,7 +11,7 @@ const Talk = () => {
             <PhoneCallIcon />
           </div>
           <div className=" flex  flex-col items-start  " >
-            <Link href={"tel:0208 574 6333"} >0208 574 6333</Link>
+            <a href={"tel:0208 574 6333"} >0208 574 6333</a>
 
             <p className=" capitalize  font-semibold  " >Talk To an expert</p>
           </div>
