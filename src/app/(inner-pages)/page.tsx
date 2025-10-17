@@ -10,7 +10,7 @@ import ServicePage from "@/pages/services/Servicespage";
 import Projects from "@/pages/projects/Projects";
 
 import Vision from "@/pages/home/Vision"
-
+clear
 import EducationLoanFaq from "@/pages/education-loan/EducationLoanFaq";
 
 // export const metadata: Metadata = {
