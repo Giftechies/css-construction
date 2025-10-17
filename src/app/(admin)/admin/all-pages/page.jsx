@@ -25,7 +25,7 @@ export default function AllPages() {
 
   useEffect(() => {
     async function fetchpage() {
-      const res = await fetch("/api/page", {
+      const res = await fetch("/api/page/all", {
         method: "GET",
       });
       const data = await res.json();
