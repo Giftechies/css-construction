@@ -1,24 +1,31 @@
-"use client"
-import { Dot, Section } from "lucide-react";
+"use client";
+
 import Sidebar from "./Sidebar";
-import SectionTitle from "../shared/SectionTitle";
 import { useState } from "react";
 
-export default function Content({data=[]}){
- 
-  
+export default function Content({ data = {} }) {
+  return (
+    <section className="w-full py-10">
+      <main
+        className="
+          container mx-auto 
+          grid grid-cols-1 lg:grid-cols-12 gap-8 
+          px-4 sm:px-6 lg:px-8
+        "
+      >
+        {/* Main Content */}
+        <div className="lg:col-span-9">
+          <article
+            className="prose prose-lg max-w-none editor"
+            dangerouslySetInnerHTML={{ __html: data?.content || "" }}
+          />
+        </div>
 
-    return(
-      <section className="   " >
-        <main className="container   grid grid-cols-12 py-10 gap-15  " >
-            <div className=" col-span-9 "  >
-          
-           <div dangerouslySetInnerHTML={{ __html: data.content }} className="editor" />
-            </div>
-
-            {/* sider bar */}
-            <Sidebar className={"sticky top-0 right-0 h-fit col-span-3 hidden lg:block "} />
-        </main>
-      </section>
-    )
+        {/* Sidebar */}
+        <aside className="lg:col-span-3 lg:sticky lg:top-10 h-fit hidden lg:block">
+          <Sidebar />
+        </aside>
+      </main>
+    </section>
+  );
 }
