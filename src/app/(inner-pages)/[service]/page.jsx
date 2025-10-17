@@ -3,7 +3,7 @@ import CardContainer from "../../../components/servicepage/Cardcontainer";
 import Animations from "@/components/animations/Animations";
 
 export default async function Skip({params}) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/page?category=${params.service}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/page?category=${params?.service}`, {
     method: "GET",
     cache: "no-store",
   });
