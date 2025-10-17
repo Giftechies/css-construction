@@ -13,7 +13,7 @@ const Mobilenav = ({ className }) => {
   const [sidebarToggle, setSidebarToggle] = useState(false);
   const [sideopen, setSideopen] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
-  const route = useRouter()
+  
 
   const toggleSidebar = () => {
     setSidebarToggle(!sidebarToggle);
@@ -46,7 +46,10 @@ const Mobilenav = ({ className }) => {
           { invisible: sideopen }
         )}
       >
-        <div onClick={()=>route.push('/')} className="logo w-[80px]">
+       <Link  href={'/'} >
+       
+       
+        <div className="logo w-[80px]">
           <Image
             src={"/img/logo/nav-logo.svg"}
             className="w-full object-center object-cover"
@@ -54,7 +57,7 @@ const Mobilenav = ({ className }) => {
             height={250}
             alt="logo"
           />
-        </div>
+        </div></Link>
         <div onClick={toggleSidebar} className="space-y-2 cursor-pointer">
           <span
             className={cn(
