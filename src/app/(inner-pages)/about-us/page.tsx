@@ -5,6 +5,8 @@ import InnerBanner  from "@/components/ui/InnerBanner"
 import { Metadata } from "next";
 import Vision from "@/pages/home/Vision";
 import Projects from "@/pages/projects/Projects";
+import AboutWhyChooseUs from "@/pages/about-us/AboutWhyChooseUs";
+import AboutMission from "@/pages/about-us/AboutMission";
 
 export const metadata: Metadata = {
   title: "About Us - css construction",
@@ -37,7 +39,11 @@ export default function AboutPage() {
           stepText1={"Domestic customers needing small skips for house, garage, loft, and garden rubbish collection and for garbage recycling "}
           stepText2={"Builders and tradespeople requiring builder’s skips, hardcore removal, and grab lorries for concrete cleaning services"}
           stepText3={"Commercial clients for office clearances, shop waste collections, and bulk site waste disposal"}
+          stepText4={"Industrial Clients can contact us for any eco-friendly Metal Scrap / Plastic Waste / Hazardous Waste (subject to Approval / licensing) management services in all of England & UK."}
         />
+        {/* <AboutWhyChooseUs/> */}
+        <AboutMission/>
+        
         <Vision/>
         <Projects/>
 

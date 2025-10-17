@@ -8,73 +8,91 @@ import Image from "next/image";
 
 const AboutMission = () => {
   return (
-    <section className="spy120px fade-wrapper bg-white-4">
+    <section className="spy80px fade-wrapper bg-gray-200">
       <div className="container">
         <div className="grid items-center gap-6 xl:grid-cols-2">
-          <div className="grid items-center gap-5 max-xl:justify-center sm:grid-cols-2">
+          <div className="grid  h-full border-4 items-center gap-5 max-xl:justify-center sm:grid-cols-2">
             <div className="group theme-transition-3 relative col-start-1 col-end-2 overflow-hidden text-black-4">
               <Image
-                src={imageBig}
+                src={'/img/innerimg/skip-hire-pic.jpg'}
                 width={306}
-                height={500}
-                alt="Mission image"
-                className="block max-xl:mx-auto"
+                height={600}
+                alt="Skip Hire Image"
+                className="block max-xl:mx-auto "
               />
               <div className="rounded-16px theme-transition-4 absolute bottom-0 left-0 flex h-0 w-full items-center justify-center bg-[linear-gradient(0deg,rgba(18,18,18,0.80)_0%,rgba(18,18,18,0.20)_100%)] opacity-0 group-hover:visible  group-hover:h-full group-hover:opacity-100">
-                <p className="h3 font-medium text-white-1">MIssion</p>
+                <p className="h3 font-medium text-white-1">Skip Hire</p>
               </div>
             </div>
             <div className="flex flex-col gap-6">
               <div className="group theme-transition-3 relative text-black-4 ">
                 <Image
-                  src={imageTwo}
+                  src={"/img/innerimg/concrete.jpg"}
                   width={306}
-                  height={238}
-                  alt="Mission image"
+                  height={300}
+                  alt="Concrete Supplyimage"
                 />
                 <div className="rounded-16px theme-transition-4 absolute bottom-0 left-0 flex h-0 w-full items-center justify-center bg-[linear-gradient(0deg,rgba(18,18,18,0.80)_0%,rgba(18,18,18,0.20)_100%)] opacity-0 group-hover:visible  group-hover:h-full group-hover:opacity-100">
-                  <p className="h3 font-medium text-white-1">Vission</p>
+                  <p className="h3 font-medium text-white-1">Concrete Supply</p>
                 </div>
               </div>
               <div className="group theme-transition-3 relative text-black-4 ">
                 <Image
-                  src={imageThree}
+                  src={"/img/innerimg/Tipper-Grab.jpg"}
                   width={306}
-                  height={238}
-                  alt="Mission image"
+                  height={300}
+                  alt="Tipper Grab image"
                 />
                 <div className="rounded-16px theme-transition-4 absolute bottom-0 left-0 flex h-0 w-full items-center justify-center bg-[linear-gradient(0deg,rgba(18,18,18,0.80)_0%,rgba(18,18,18,0.20)_100%)] opacity-0 group-hover:visible  group-hover:h-full group-hover:opacity-100">
-                  <p className="h3 font-medium text-white-1">Core Value</p>
+                  <p className="h3 font-medium text-white-1">Tipper Grab</p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="max-xl:spt60px max-xl:spb60px flex h-full bg-secondary  px-10">
+          <div className=" flex h-full px-10">
             <div className="my-auto">
               <SectionTitle
-                text="A Great Mission Statement"
-                className="h3 font-medium text-white-1"
+                text="Why choose CS Services?"
+                className="h3 text-primary font-medium "
               />
-              <SectionText
-                text="There are different types of banks, including commercial banks, investment banks, central banks, and credit unions. Commercial banks are the most common, serving individual and business customers."
-                className="fade-top mt-3 text-white-1"
-              />
-              <div className="info-card spt40px flex gap-7 max-sm:flex-col-reverse">
-                <RoundedLink
-                  buttonText="Contact Us"
-                  link="/contact-us"
-                  className="shrink-0 border-accent-3 bg-accent-3 hover:border-accent-3 hover:bg-transparent"
-                />
-                <div>
-                  <h5 className="h4 font-medium text-white-1">
-                    Passion over Pedigree
-                  </h5>
-                  <SectionText
-                    text="Highlights the impact of technology on the banking industry, enabling convenient digital access to financial services."
-                    className="fade-top mt-3 text-white-1"
-                  />
-                </div>
-              </div>
+              <ul className=" list-disc list-inside space-y-3 mt-6 pl-12 " >
+                <li>
+                  Low-cost skip hire, recycling & waste management services in
+                  London, affordable prices guaranteed{" "}
+                </li>
+                <li>
+                  {" "}
+                  Same-day and next-day skip delivery across all boroughs
+                </li>
+                <li>
+                  {" "}
+                  Licensed & government approved waste collection, carrier &
+                  transportation service, ensuring responsible waste recycling
+                  and disposal{" "}
+                </li>
+                <li>
+                  {" "}
+                  We are good with Metal, Chemical, Liquid & Plastic material
+                  disposal services
+                </li>
+                <li>
+                  {" "}
+                  Coverage of every London suburb and postcode area for any type
+                  of House / Office / Building clearance service{" "}
+                </li>
+                <li>
+                  {" "}
+                  Friendly, professional service backed by 5-star customer
+                  reviews{" "}
+                </li>
+              </ul>
+                <p className="mt-4" >
+                  We are your local skip hire company, serving areas such
+                  as Camden NW1, Islington N1, Croydon CR0, Hackney E8, Bromley
+                  BR1, and Westminster W1. We are good business partners for
+                  Builders / Architects / government contractors, facility
+                  management companies and Corporate Admins.{" "}
+                </p>
             </div>
           </div>
         </div>
