@@ -1,7 +1,7 @@
-export const metadata = {
-  title: "CSS Construction | Skip Hire Services",
-  description: "Affordable skip hire and waste management services in London.",
-};
+// export const metadata = {
+//   title: "CSS Construction | Skip Hire Services",
+//   description: "Affordable skip hire and waste management services in London.",
+// };
 
 
 import dynamic from "next/dynamic";
