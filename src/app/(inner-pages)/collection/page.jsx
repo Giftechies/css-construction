@@ -1,3 +1,4 @@
+"use client"
 import Innerbanner from "../../../components/ui/InnerBanner"
 import Collectionform from "@/components/ui/Collectionform"
 import CollectionAddress from "@/components/ui/collectionAddress"
