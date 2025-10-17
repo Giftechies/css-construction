@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { IconArrowUpRight, IconBrandTelegram } from '@tabler/icons-react';
 import Link from 'next/link';
-import { cn } from '@/utils/cn';
+import { cn } from  "../../lib/utils";
 
 type HomeThreeBannerLinkProps = {
   href: string;

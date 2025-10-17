@@ -1,9 +1,6 @@
-import Link from "next/link";
-import { IconArrowDown, IconChevronsRight } from "@tabler/icons-react";
-import HomeThreeBannerLink from "@/pages/home-three/HomeThreeBannerLink";
+
 import Breadcrumb from "../shared/Breadcrumbs";
-import SectionText from "../shared/SectionText";
-import DeskTopNavbarThree from "../navbar/DeskTopNavbarThree";
+
 import DeskTopNavbarTwo from "../navbar/DeskTopNavbarTwo";
 import Mobilenav from "../navbar/Mobilenav";
 

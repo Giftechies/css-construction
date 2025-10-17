@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 // import { cn } from "@/lib/utils";
-import {cn} from "../../lib/resend"
+import {cn} from "../../lib/utils"
 
 export default function Collectionform({ className }) {
   const [form, setForm] = useState({

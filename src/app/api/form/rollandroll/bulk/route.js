@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import {ConnectDb} from "../../../../helper/db";
 import RollOnRollRate from "../../../../helper/models/rollandroll";
 import Postcode from "../../../../helper/models/postcode"; // make sure you have this model
-import xlsx from "xlsx";
+import * as xlsx from "xlsx"; // ✅ correct
+
 
 export async function POST(req) {
   try {

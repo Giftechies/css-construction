@@ -1,6 +1,6 @@
 "use client";
 // import logo from "../../../public/img/logo/nav-logo.svg";
-import { cn } from "@/utils/cn";
+import { cn } from "../../lib/utils";
 import {
   IconArrowUpRight,
   IconBrandTelegram,
