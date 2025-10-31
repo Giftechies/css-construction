@@ -11,6 +11,8 @@ export default function Editpage({ params }) {
     async function fetchpage() {
       const res = await FetchPageId(params.id);
       if (res.success && res.data) {
+        
+        
         setIsinitialData(res.data);
       }
     }

@@ -12,25 +12,26 @@ const AboutMission = () => {
       <div className="container">
         <div className="grid items-center gap-6 xl:grid-cols-2">
           <div className="grid items-center gap-5 max-xl:justify-center sm:grid-cols-2">
-            <div className="group theme-transition-3 relative col-start-1 col-end-2 overflow-hidden text-black-4">
+            <div className="group theme-transition-3 relative  overflow-hidden text-black-4">
               <Image
                 src={'/img/innerimg/skip-hire-pic.jpg'}
-                width={306}
-                height={500}
+                width={380}
+                height={600}
                 alt="Skip Hire Image"
-                className="block max-xl:mx-auto"
+                className="block w-[68rem]"
               />
               <div className="rounded-16px theme-transition-4 absolute bottom-0 left-0 flex h-0 w-full items-center justify-center bg-[linear-gradient(0deg,rgba(18,18,18,0.80)_0%,rgba(18,18,18,0.20)_100%)] opacity-0 group-hover:visible  group-hover:h-full group-hover:opacity-100">
                 <p className="h3 font-medium text-white-1">Skip Hire</p>
               </div>
             </div>
             <div className="flex flex-col gap-6">
-              <div className="group theme-transition-3 relative text-black-4 ">
+              <div className=" group theme-transition-3 relative text-black-4 ">
                 <Image
                   src={"/img/innerimg/concrete.jpg"}
-                  width={306}
+                  width={380}
                   height={238}
                   alt="Concrete Supplyimage"
+                  className=" w-full "
                 />
                 <div className="rounded-16px theme-transition-4 absolute bottom-0 left-0 flex h-0 w-full items-center justify-center bg-[linear-gradient(0deg,rgba(18,18,18,0.80)_0%,rgba(18,18,18,0.20)_100%)] opacity-0 group-hover:visible  group-hover:h-full group-hover:opacity-100">
                   <p className="h3 font-medium text-white-1">Concrete Supply</p>
@@ -39,9 +40,10 @@ const AboutMission = () => {
               <div className="group theme-transition-3 relative text-black-4 ">
                 <Image
                   src={"/img/innerimg/Tipper-Grab.jpg"}
-                  width={306}
+                  width={380}
                   height={238}
                   alt="Tipper Grab image"
+                  className="w-full"
                 />
                 <div className="rounded-16px theme-transition-4 absolute bottom-0 left-0 flex h-0 w-full items-center justify-center bg-[linear-gradient(0deg,rgba(18,18,18,0.80)_0%,rgba(18,18,18,0.20)_100%)] opacity-0 group-hover:visible  group-hover:h-full group-hover:opacity-100">
                   <p className="h3 font-medium text-white-1">Tipper Grab</p>
@@ -49,7 +51,7 @@ const AboutMission = () => {
               </div>
             </div>
           </div>
-          <div className=" flex h-full px-10">
+          <div className=" flex h-full ">
             <div className="my-auto">
               <SectionTitle
                 text="Why choose CS Services?"

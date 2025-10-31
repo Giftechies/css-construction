@@ -54,7 +54,7 @@ export default function Skip({ goToNextStep }) {
   };
 
   return (
-    <section className="skip grid gap-8  justify-center md:grid-cols-2 lg:grid-cols-3">
+    <section className="skip grid gap-8  justify-center md:grid-cols-2 lg:grid-cols-3 sm:px-8 lg:px-32">
       {loading
         ? // ✅ Skeleton loader UI
           Array.from({ length: 6 }).map((_, index) => (
@@ -62,9 +62,9 @@ export default function Skip({ goToNextStep }) {
               key={index}
               className="animate-pulse rounded-lg border p-4 space-y-4 bg-gray-100"
             >
-              <div className="h-24 bg-gray-300 rounded"></div>
-              <div className="h-4 bg-gray-300 rounded w-3/4"></div>
-              <div className="h-4 bg-gray-300 rounded w-1/2"></div>
+              <div className="min-h-[25rem] w-[18rem] bg-gray-300 rounded"></div>
+              <div className="min-h-[25rem] w-[18rem] bg-gray-300 rounded "></div>
+              <div className="min-h-[25rem] w-[18rem] bg-gray-300 rounded "></div>
             </div>
           ))
         : data.map((item, id) =>

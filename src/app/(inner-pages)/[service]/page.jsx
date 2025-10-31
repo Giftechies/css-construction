@@ -1,3 +1,4 @@
+
 import InnerBanner from "@/components/ui/InnerBanner";
 import CardContainer from "../../../components/servicepage/Cardcontainer";
 import Animations from "@/components/animations/Animations";
@@ -12,14 +13,18 @@ export default async function Skip({params}) {
     throw new Error("Failed to fetch data");
   }
   const response = await res.json()
-  const data = response.data
-  const category = response.category[0]
-  console.log(category);
+  if(response){
+
+    var data = response.data
+    var category = response.category
+  }
+  
+ 
   
   return (
     <>
       <InnerBanner
-        imgpath={category?.featureImage || "/img/innerimg/Tipper-Grab.jpg"}
+        imgpath={category?.featureImage || ""}
         pagename={category?.title}
       />
       <CardContainer  data={data}/>
