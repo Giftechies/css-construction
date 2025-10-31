@@ -6,15 +6,7 @@ import Loan from "@/pages/loan/LoanContent"
 import SectionSubTitle from "@/components/shared/SectionSubTitle";
 import SectionTitle from "@/components/shared/SectionTitle";
 const Project = () => {
-  const cards = [
 
-      {title:"df",content:"ds",link:"dfs" },
-      {title:"df",content:"ds",link:"dfs" },
-      {title:"df",content:"ds",link:"dfs" },
-      {title:"df",content:"ds",link:"dfs" },
-      {title:"df",content:"ds",link:"dfs" },
-      {title:"df",content:"ds",link:"dfs" },
-  ]
 
   return (
     <div className=" bg-white-1/40 py-10 xl:py-25  ">

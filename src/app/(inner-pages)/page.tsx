@@ -23,12 +23,12 @@ export default function Home() {
     <div>
       <HomeThreeBanner />
       <AboutLocal
-        imagepath1={"/img/innerimg/project6.webp"}
+        imagepath1={"/img/innerimg/1.png"}
         imagepath2={
-          "/img/innerimg/project2.avif"
+          "/img/innerimg/2.png"
         }
         imagepath3={
-          "/img/innerimg/project4.avif"
+          "/img/innerimg/3.png"
         }
         counterText={"Family choose us"}
         counterNumber={50}

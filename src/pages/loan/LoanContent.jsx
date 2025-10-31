@@ -1,10 +1,10 @@
 "use client"
-import loan1 from "@/../public/img/innerimg/project1.webp";
-import loan2 from "@/../public/img/innerimg/project2.avif";
-import loan3 from "@/../public/img/innerimg/skip-hire.jpg";
-import loan4 from "@/../public/img/innerimg/project4.avif";
-import loan5 from "@/../public/img/innerimg/project6.webp";
-import loan6 from "@/../public/img/innerimg/project1.webp";
+import loan1 from "@/../public/img/innerimg/Tipper-Grab.jpg";
+import loan2 from "@/../public/img/innerimg/Man and Van.png";
+import loan3 from "@/../public/img/innerimg/Aggregates.png";
+import loan4 from "@/../public/img/innerimg/concrete.jpg";
+import loan5 from "@/../public/img/innerimg/1.png";
+import loan6 from "@/../public/img/innerimg/3.png";
 import RoundedLink from "@/components/link/Round";
 import {  IconX } from "@tabler/icons-react";
 import Image from "next/image";
