@@ -59,7 +59,7 @@ export default function PostCode() {
           <Skeleton className="w-[20%] h-5" />
         </div>
       ) : (
-        <div className="w-full px-4 md:px-8 lg:px-16 xl:px-24">
+        <div className="w-full  md:px-8 lg:px-16 xl:px-24">
           <h5 className="text-center text-lg sm:text-xl md:text-2xl font-semibold leading-snug">
             <span className="font-semibold text-primary">Step 1:</span> Select
             the postcode area where your skip will be delivered.

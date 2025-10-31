@@ -19,9 +19,9 @@ const Project = () => {
   return (
     <div className=" bg-white-1/40 py-10 xl:py-25  ">
       <div className="container  gap-4 ">
-        <div className="text mb-8 flex flex-col items-center justify-center gap-4 px-10">
+        <div className="text mb-8 flex flex-col items-center justify-center gap-4 ">
           <SectionSubTitle text="  Recents Projects"/>
-          <SectionTitle  className="h1 text-center  text-black-2 pt-3 " text=" What We Have Done" />
+          <SectionTitle  className="h1 text-center  text-black-2  " text=" What We Have Done" />
           <SectionText
             className=" text-center font-[500] tracking-wider  "
             text={

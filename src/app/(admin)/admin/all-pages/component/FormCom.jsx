@@ -20,6 +20,7 @@ export default function FormCom({
   initalData = {},
   mode = "create",
 }) {
+  console.log("page>>>",initalData);
 
   const [slug, setslug] = useState(initalData.slug || "");
   const [title, settitle] = useState(initalData.title || "");
@@ -29,7 +30,7 @@ export default function FormCom({
   const [imagealt, setimagealt] = useState(initalData.imagealt || "");
   const [metatitle, setmetatitle] = useState(initalData.metatitle || "");
   const [metadiscription, setmetadiscription] = useState(initalData.metadiscription || "");
-  const [category, setCategory] = useState(initalData.category || "");
+  const [category, setCategory] = useState(initalData.category?._id || "");
   const [imageLoader, setImageLoader] = useState(false);
 
   // ✅ Category state
@@ -43,8 +44,7 @@ export default function FormCom({
     async function loadcategory(){
       const res = await fetch("/api/service-category",{method:"GET"})
       const data = await res.json()
-      console.log("category",data.data);
-      setCategories(data.data)
+      setCategories(data?.data)
     }
     loadcategory()
   }, []);
@@ -117,7 +117,7 @@ export default function FormCom({
       setimagealt(initalData.imagealt || "");
       setmetatitle(initalData.metatitle || "");
       setmetadiscription(initalData.metadiscription || "");
-      setCategory(initalData.category || "");
+      setCategory(initalData.category?._id || "");
     }
   }, [initalData, mode]);
 
@@ -142,8 +142,9 @@ export default function FormCom({
         </Link>
       </div>
 
-      <form onSubmit={formhandler} className="all-pages grid grid-cols-12 gap-8 mt-8">
-        <div className=" col-span-12 md:col-span-6 flex flex-col gap-4">
+      <form onSubmit={formhandler}>
+      <div  className="all-pages grid grid-cols-12 gap-8 mt-8">
+          <div className=" col-span-12 md:col-span-6 flex flex-col gap-4">
           <span>
             <label htmlFor="title">Title</label>
             <Input
@@ -187,7 +188,7 @@ export default function FormCom({
           <span className="flex flex-col">
             <label htmlFor="shortcontent">Short Content</label>
             <textarea
-              className="h-18 max-h-30 border-2"
+              className="h-[18.4rem] max-h-96 border-2"
               value={shortcontent}
               name="shortcontent"
               placeholder="write short content"
@@ -196,28 +197,7 @@ export default function FormCom({
             {errors.shortcontent && <p className="text-red-500 text-sm">{errors.shortcontent}</p>}
           </span>
 
-          <span>
-            <label htmlFor="metatitle">Meta Title</label>
-            <Input
-              type="text"
-              value={metatitle}
-              name="metatitle"
-              onChange={(e) => setmetatitle(e.target.value)}
-            />
-            {errors.metatitle && <p className="text-red-500 text-sm">{errors.metatitle}</p>}
-          </span>
-
-          <span className="flex-col flex">
-            <label htmlFor="metadiscription">Meta Description</label>
-            <textarea
-              className="border h-30"
-              type="text"
-              value={metadiscription}
-              name="metadiscription"
-              onChange={(e) => setmetadiscription(e.target.value)}
-            />
-            {errors.metadiscription && <p className="text-red-500 text-sm">{errors.metadiscription}</p>}
-          </span>
+       
         </div>
 
         <div className=" col-span-12 md:col-span-6 flex flex-col gap-4">
@@ -251,8 +231,7 @@ export default function FormCom({
               </span>
             )}
           </span>
-
-          <span>
+            <span>
             <label htmlFor="imagealt">Image Alt</label>
             <Input
               type="text"
@@ -262,8 +241,34 @@ export default function FormCom({
             />
             {errors.imagealt && <p className="text-red-500 text-sm">{errors.imagealt}</p>}
           </span>
+             <span>
+            <label htmlFor="metatitle">Meta Title</label>
+            <Input
+              type="text"
+              value={metatitle}
+              name="metatitle"
+              onChange={(e) => setmetatitle(e.target.value)}
+            />
+            {errors.metatitle && <p className="text-red-500 text-sm">{errors.metatitle}</p>}
+          </span>
 
-          <span className="">
+          <span className="flex-col flex">
+            <label htmlFor="metadiscription">Meta Description</label>
+            <textarea
+              className="border h-30"
+              type="text"
+              value={metadiscription}
+              name="metadiscription"
+              onChange={(e) => setmetadiscription(e.target.value)}
+            />
+            {errors.metadiscription && <p className="text-red-500 text-sm">{errors.metadiscription}</p>}
+          </span>
+
+        
+
+         
+        </div>
+         <span className="col-span-12">
             <label htmlFor="content">Content</label>
             <EditorClient
               value={content}
@@ -272,7 +277,7 @@ export default function FormCom({
             />
             {errors.content && <p className="text-red-500 text-sm">{errors.content}</p>}
           </span>
-        </div>
+      </div>
       </form>
 
       <div className="flex justify-end">

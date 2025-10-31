@@ -31,14 +31,14 @@ const LoanContent = () => {
           <div className="flex   w-fit flex-col gap-6">
             <div
               onClick={() => open(loan1)}
-              className="group theme-transition-3 relative cursor-pointer"
+              className="group theme-transition-3 relative cursor-pointer w-full "
             >
               <Image
                 src={loan1}
                 width={416}
                 height={425}
                 alt="loan image one"
-                className=" w-[416px] h-[425px] object-cover object-center "
+                className=" w-full sm:w-[416px] h-[425px] object-cover object-center "
               />
               {/* hover content */}
               <div className="rounded-16px theme-transition-4 absolute bottom-0 left-0 flex h-0 w-full items-center justify-center gap-6 bg-[linear-gradient(0deg,#005655_0%,rgba(9,91,90,0.20)_100%)] opacity-0 group-hover:visible group-hover:h-full group-hover:opacity-100 max-sm:flex-col-reverse  sm:flex-col xxl:gap-8">
@@ -161,20 +161,16 @@ const LoanContent = () => {
 
       {/* Popup */}
       {ispopopen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center ">
+        <div className="fixed inset-0 z-50 flex items-center justify-center  ">
           <div className=" absolute inset-0 z-0 bg-black-4/60 " ></div>
-          <div
-            onClick={closed}
-            className="absolute top-5 right-10 cursor-pointer text-white group "
-          >
-            <IconX  className=" z-40 size-16 group-hover:rotate-90 theme-transition-3 text-primary " />
-          </div>
-          <div className="w-[80%] h-[80%] z-40 ">
+         
+          <div className="w-[90%] h-[90%] z-30 relative">
             <img
               src={imgpath}
               className="w-full h-full object-center object-cover"
               alt="Popup Loan"
             />
+             <IconX  onClick={closed} className="absolute top-2 right-4 rounded-full bg-white-1 size-8 md:size-12 group-hover:rotate-90 theme-transition-3 text-primary " />
           </div>
         </div>
       )}
