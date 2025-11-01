@@ -1,19 +1,12 @@
 "use client";
-// import logo from "../../../public/img/logo/nav-logo.svg";
 import { cn } from "../../lib/utils";
 import {
-  IconArrowUpRight,
-  IconBrandTelegram,
   IconChevronDown,
-  IconEdit,
-  IconLock,
 } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-// import { navbarData } from "../../../public/data/navbarData";
 import { navbar, navbar2 } from "../../../public/data/navbar";
-import { PhoneCallIcon } from "lucide-react";
 import HomeThreeBannerLink from "@/pages/home-three/HomeThreeBannerLink";
 
 const DeskTopNavbarTwo = ({ className }: { className?: string }) => {
@@ -146,18 +139,6 @@ const DeskTopNavbarTwo = ({ className }: { className?: string }) => {
           </ul>
 
           <div className="flex gap-8">
-            {/* <Link
-            href={`tel:123456789`}
-            className={cn(
-              "l-text theme-transition-3 flex items-center gap-1  hover:text-primary  text-white-1"
-            
-            )}
-          >
-            <PhoneCallIcon className=" text-primary mr-2 " />
-            <span>123456789</span>
-          </Link> */}
-          
-
             <HomeThreeBannerLink href="/booking-skip-online" >Order Online</HomeThreeBannerLink>
           </div>
         </div>

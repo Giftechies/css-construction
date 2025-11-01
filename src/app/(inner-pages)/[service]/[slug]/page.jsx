@@ -6,7 +6,6 @@ import Animations from "@/components/animations/Animations";
 async function getPageData(service, slug) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/page?category=${service}&page=${slug}`,
-    { cache: "no-store" } // optional: ensure fresh data
   );
   const data = await res.json();
   return data.data[0];

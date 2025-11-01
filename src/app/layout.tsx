@@ -27,16 +27,16 @@ export default function RootLayout({
         rel="stylesheet"
       />
       <body>
-      {/* <ReactLenis 
+      <ReactLenis 
   root 
   options={{ smooth: true, smoothTouch: true, duration: 2.5 }}
-> */}
+>
     <main>
       <div className="relative">{children}</div>
     
     </main>
 
-{/* </ReactLenis> */}
+</ReactLenis>
       </body>
     </html>
   );
