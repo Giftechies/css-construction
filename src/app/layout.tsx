@@ -29,7 +29,7 @@ export default function RootLayout({
       <body>
       <ReactLenis 
   root 
-  options={{ smooth: true, smoothTouch: true, duration: 2.5 }}
+  options={{ smooth: true, smoothTouch: true, duration: 1 }}
 >
     <main>
       <div className="relative">{children}</div>

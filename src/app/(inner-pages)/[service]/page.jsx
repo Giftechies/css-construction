@@ -1,34 +1,37 @@
-
 import InnerBanner from "@/components/ui/InnerBanner";
-import CardContainer from "../../../components/servicepage/Cardcontainer";
+import CardContainer from "@/components/servicepage/Cardcontainer";
 import Animations from "@/components/animations/Animations";
+import { headers } from "next/headers";
 
-export default async function Skip({params}) {
-  const res = await fetch(`/api/page?category=${params?.service}`, {
-    method: "GET",
-   
+export default async function Skip({ params }) {
+  if (!params?.service) throw new Error("Missing service parameter");
+
+  const host = headers().get("host");
+  const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
+
+  const url = `${protocol}://${host}/api/page?category=${params.service}`;
+
+  const res = await fetch(url, {
+    next: { revalidate: 60 }, // ISR (60 sec)
   });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  const response = await res.json()
-  if(response){
+  if (!res.ok) throw new Error("Failed to fetch data");
 
-    var data = response.data
-    var category = response.category
-  }
-  
- 
-  
+  const response = await res.json();
+
+  if (!response?.data || !response?.category)
+    throw new Error("Invalid API response");
+
+  const { data, category } = response;
+
   return (
     <>
       <InnerBanner
-        imgpath={category?.featureImage || ""}
-        pagename={category?.title}
+        imgpath={category.featureImage || ""}
+        pagename={category.title}
       />
-      <CardContainer  data={data}/>
-      <Animations/>
+      <CardContainer data={data} />
+      <Animations />
     </>
   );
 }
