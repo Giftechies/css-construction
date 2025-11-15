@@ -22,6 +22,7 @@ export default async function Home() {
   
   
   return (
+
     <div>
       <HomeThreeBanner />
       <AboutLocal
@@ -54,6 +55,7 @@ export default async function Home() {
       {/* <HomeTwoServices/> */}
       <Vision/>
       <Projects/>
+      
        <EducationLoanFaq/>
       <HomeOneTestimonials />
       <Animations />

@@ -33,6 +33,7 @@ const cards = [
           <SectionTitle  className="h1 text-center  text-black-2  " text=" Skip Hire Services You Can Rely On" />
          
         </div>
+        
         <div className="card flex flex-wrap items-center justify-center gap-10 ">
           {cards?.map((item, id) => {
             return (
@@ -40,30 +41,30 @@ const cards = [
                 key={id}
                 className="card1 group w-[380px]    overflow-hidden rounded-[2em] border p-4 bg-white-1 sp "
               >
-             <Link href={`item?.slug`} >
+             <Link href={`item?.link`} >
                 <div className="img group h-60 w-full overflow-hidden rounded-3xl bg-red-50 ">
                   <Image
-                    src={item?.featureImage}
+                    src={item?.img}
                     alt={item?.title || "service image" }
                     className=" theme-transition-3  object-cover object-center h-full w-full group-hover:scale-[1.1] "
                   />
                 </div>
              </Link>
                 <div className="text theme-transition-4 flex flex-col items-start justify-center gap-4   p-6  ">
-                 <Link href={item?.slug} >
+                 <Link href={item?.link} >
                   <h3 className=" h4 font-[700] text-primary font-oswald ">{item?.title}</h3>
                  </Link>
                   <SectionText
                     className=" text-[15px] font-[500] text-justify "
                     text={
-                      item?.discription
+                      item?.content
                     }
                   />
 
 
                   <div className=" border-t h-[8px]  w-full border-black-3/40 "  >
                   
-                 <Link href={item.slug} className=" mt-2 flex text-[14px] gap-2 font-semibold " ><span>Read More</span> <i className="ri-arrow-right-line font-medium text-[18px] "></i>  </Link>
+                 <Link href={item.link} className=" mt-2 flex text-[14px] gap-2 font-semibold " ><span>Read More</span> <i className="ri-arrow-right-line font-medium text-[18px] "></i>  </Link>
                  </div>
                 </div>
               </div>
