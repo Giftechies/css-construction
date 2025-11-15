@@ -1,25 +1,25 @@
 
 import Animations from "@/components/animations/Animations";
-
 import HomeOneTestimonials from "@/pages/home-one/HomeOneTestimonials";
 import HomeThreeBanner from "@/pages/home-three/HomeThreeBanner";
 import { Metadata } from "next";
-
 import AboutLocal from "@/pages/local/AboutPage";
-import ServicePage from "@/pages/services/Servicespage";
+import ServicePage from "@/components/servicepage/Servicespage";
 import Projects from "@/pages/projects/Projects";
-
 import Vision from "@/pages/home/Vision"
-
 import EducationLoanFaq from "@/pages/education-loan/EducationLoanFaq";
+
+
 
 // export const metadata: Metadata = {
 //   title: "Interstate removalists",
 //   description: "Providing the solution for relocations.",
 // };
 
-export default function Home() {
-  console.log('dfsdsd>>>');
+export default async function Home() {
+  
+
+  
   
   return (
     <div>
