@@ -19,6 +19,8 @@ import EducationLoanFaq from "@/pages/education-loan/EducationLoanFaq";
 // };
 
 export default function Home() {
+  console.log('dfsdsd>>>');
+  
   return (
     <div>
       <HomeThreeBanner />

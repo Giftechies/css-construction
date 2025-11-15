@@ -51,6 +51,9 @@ export  async function GET(req){
         
     } catch (error) {
         console.log("error at get in servicecategory",error);
+        console.log("SERVICE ERROR >>>", error.message);
+console.log("STACK >>>", error.stack);
+
         
         return NextResponse.json({
             success:false,
