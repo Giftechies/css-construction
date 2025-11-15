@@ -1,5 +1,4 @@
-import React from 'react'
-import SectionText from '../shared/SectionText'
+
 
 const OurService = () => {
   return (
