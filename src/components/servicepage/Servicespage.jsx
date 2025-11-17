@@ -5,6 +5,7 @@ import Link from "next/link";
 import SectionSubTitle from "@/components/shared/SectionSubTitle";
 // import { headers } from "next/headers";
 import Image from "next/image";
+import {fetchServices} from '@/api/serviceapi'
 const Servicespage = async () => {
 
 // const host = headers().get("host")
@@ -44,6 +45,8 @@ const cards = [
              <Link href={`item?.link`} >
                 <div className="img group h-60 w-full overflow-hidden rounded-3xl bg-red-50 ">
                   <Image
+                  width={250}
+                  height={250}
                     src={item?.img}
                     alt={item?.title || "service image" }
                     className=" theme-transition-3  object-cover object-center h-full w-full group-hover:scale-[1.1] "
