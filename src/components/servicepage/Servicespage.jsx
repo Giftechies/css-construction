@@ -5,7 +5,7 @@ import Link from "next/link";
 import SectionSubTitle from "@/components/shared/SectionSubTitle";
 // import { headers } from "next/headers";
 import Image from "next/image";
-import {fetchServices} from '@/api/serviceapi'
+import {fetchServices} from '@/api/serviceApi'
 const Servicespage = async () => {
 
   const res = await fetchServices()
