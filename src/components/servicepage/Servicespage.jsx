@@ -3,30 +3,12 @@ import SectionText from "@/components/shared/SectionText";
 import SectionTitle from "@/components/shared/SectionTitle";
 import Link from "next/link";
 import SectionSubTitle from "@/components/shared/SectionSubTitle";
-// import { headers } from "next/headers";
 import Image from "next/image";
 import {fetchServices} from '@/api/serviceApi'
 const Servicespage = async () => {
 
   const res = await fetchServices()
   const cards = res.data
-  console.log(cards,'fetchServices');
-  
-
-
-// const host = headers().get("host")
-//   const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
-//   const res1 = await fetch(`${protocol}://${host}/api/service-category`,{
-//     method:'GET'
-//   })
-//   const res= await res1.json()
-const card = [
-    // { title: "Skip Hire", content: "We supply a full range of skip sizes for hire in London, from 4-yard mini skips - ideal for small household clearances, through to 8-yard, 10-yard, 12-yard, and 16-yard skips..", link: "/skip-hire",img:"/img/innerimg/skip-hire-pic.jpg" },
-    // { title: "Concrete Supply", content: "We are trusted concrete suppliers in London, offering ready mix concrete delivery for small domestic jobs to large construction projects.", link: "/concrete-supply",img:"/img/innerimg/concrete.jpg" },
-    // { title: "Tipper & Grab Services", content: "Our grab hire service is an affordable alternative to skips for heavy waste. Our grab lorries can collect muck, soil, rubble, concrete, hardcore, and green..", link: "/tipper-and-grab-services",img:"/img/innerimg/Tipper-Grab.jpg" },
-  
-  ];
-
   if (!cards || cards.length === 0) {
     // Handle the case where the API returns no data
     return (
