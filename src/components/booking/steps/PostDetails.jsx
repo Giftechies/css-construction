@@ -21,7 +21,7 @@ export default function PostDetails({jobtype=[]}) {
 
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 postdetails ">
       <h5 className="h5 text-center">
         <span className="font-semibold text-primary">Step 2:</span> Please
         Indicate your skip requirements below
@@ -127,7 +127,7 @@ export default function PostDetails({jobtype=[]}) {
             {errors.permitOnHighway &&  <p className=" mt-2 text-red-600" >{errors.permitOnHighway.message}</p> }
 
           {selected === "Yes" && (
-            <div className="w-[95%] bg-zinc-100 mt-8 rounded-lg p-6 font-semibold">
+            <div className="w-[50%] bg-zinc-100 mt-8 rounded-lg p-6 font-semibold">
               <span className="font-medium">
                 As your skip requires a licence to be kept on the road, please
                 call the number below so we can get the correct information from

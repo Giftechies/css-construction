@@ -12,11 +12,11 @@ export async function POST(req) {
     }
 
     // Optional: limit file size (e.g., 2 MB)
-    const MAX_SIZE = 2 * 1024 * 1024;
+    const MAX_SIZE = 1 * 1024 * 1024;
     if (file.size > MAX_SIZE) {
       return NextResponse.json({
         success: false,
-        message: "File is too large. Max 2 MB allowed.",
+        message: "File is too large. Max 1 MB allowed.",
       });
     }
 
@@ -28,9 +28,7 @@ export async function POST(req) {
       access: "public",     // file is publicly accessible
       contentType: file.type,
     });
-    console.log(upload.url);
     
-
     return NextResponse.json({
       success: true,
       filePath: upload.url, // public URL of uploaded file

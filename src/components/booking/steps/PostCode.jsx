@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import Select, { components } from "react-select";
 import { FetchpostCode } from "../action/action";
-import { Skeleton } from "@/components/ui/skeleton";
+
 
 export default function PostCode() {
   const [Ispostcode, setispostcode] = useState([]);
@@ -49,97 +49,98 @@ export default function PostCode() {
   };
 
   const { control } = useFormContext();
+// Only replace your return section with this:
 
-  return (
-    <>
-      {loading ? (
-        <div className="flex flex-col items-center gap-3">
-          <Skeleton className="w-[80%] h-5" />
-          <Skeleton className="w-[80%] h-5" />
-          <Skeleton className="w-[20%] h-5" />
-        </div>
-      ) : (
-        <div className="w-full  md:px-8 lg:px-16 xl:px-24">
-          <h5 className="text-center text-lg sm:text-xl md:text-2xl font-semibold leading-snug">
-            <span className="font-semibold text-primary">Step 1:</span> Select
-            the postcode area where your skip will be delivered.
-          </h5>
+return (
+  <>
+    <div className="w-full md:px-8 lg:px-16 xl:px-24">
+      <h5 className="text-center text-lg sm:text-xl md:text-2xl font-semibold leading-snug">
+        <span className="font-semibold text-primary">Step 1:</span> Select
+        the postcode area where your skip will be delivered.
+      </h5>
 
-          <Controller
-            name="postcodeArea"
-            control={control}
-            rules={{ required: "Please select a postcode" }}
-            render={({ field, fieldState }) => (
-              <div className="mt-6 flex flex-col items-center space-y-2">
-                <label className="h6 block text-center font-bold">
-                  Postcode*
-                </label>
+      <Controller
+        name="postcodeArea"
+        control={control}
+        rules={{ required: "Please select a postcode" }}
+        render={({ field, fieldState }) => {
+          // *** NEW: use hardcoded list during loading ***
+          const finalOptions = loading
+            ? POSTCODE.map((pc) => ({ value: pc, label: pc }))
+            : postcodeOptions;
 
-                <div className="w-full max-w-[850px]">
-                  <Select
-                    value={
-                      field.value
-                        ? { value: field.value, label: field.value }
-                        : null
-                    }
-                    onChange={(option) => field.onChange(option?.value)}
-                    options={postcodeOptions}
-                    menuPosition="fixed"
-                    menuShouldBlockScroll={true}
-                    components={{
-                      Menu: CustomMenu,
-                      MenuList: CustomMenuList,
-                    }}
-                    classNames={{
-                      menu: () =>
-                        "bg-white-1 shadow-lg border rounded-md z-[9999] tracking-wider w-full",
-                      menuList: () =>
-                        "max-h-48 p-4 overflow-y-scroll scrollbar-thin scrollbar-thumb-primary scrollbar-track-gray-200",
-                      option: ({ isFocused, isSelected }) =>
-                        `px-3 py-2 cursor-pointer tracking-wider ${
-                          isSelected
-                            ? "bg-primary/60 text-white"
-                            : isFocused
-                            ? "bg-gray-100"
-                            : ""
-                        }`,
-                      singleValue: () =>
-                        "tracking-wider text-primary font-semibold",
-                    }}
-                    styles={{
-                      control: (provided, state) => ({
-                        ...provided,
-                        borderRadius: ".5rem",
-                        borderColor: state.isFocused ? "#F39740" : "#ccc",
-                        boxShadow: state.isFocused
-                          ? "0 0 0 1px #ED7527"
-                          : "none",
-                        minHeight: 48,
-                        width: "100%",
-                        padding: "0 0.75rem",
-                      }),
-                      menuPortal: (base) => ({ ...base, zIndex: 9999 }),
-                      menuList: (provided) => ({
-                        ...provided,
-                        maxHeight: 200,
-                        overflowY: "auto",
-                        overscrollBehavior: "contain",
-                        WebkitOverflowScrolling: "touch",
-                      }),
-                    }}
-                  />
-                </div>
+          return (
+            <div className="mt-6 flex flex-col items-center space-y-2">
+              <label className="h6 block text-center font-bold">
+                Postcode*
+              </label>
 
-                {fieldState.error && (
-                  <p className="mt-2 text-sm text-red-500">
-                    {fieldState.error.message}
-                  </p>
-                )}
+              <div className="w-full max-w-[850px]">
+                <Select
+                  value={
+                    field.value
+                      ? { value: field.value, label: field.value }
+                      : null
+                  }
+                  onChange={(option) => field.onChange(option?.value)}
+                  options={finalOptions}
+                  menuPosition="fixed"
+                  menuShouldBlockScroll={true}
+                  components={{
+                    Menu: CustomMenu,
+                    MenuList: CustomMenuList,
+                  }}
+                  classNames={{
+                    menu: () =>
+                      "bg-white-1 shadow-lg border rounded-md z-[9999] tracking-wider w-full",
+                    menuList: () =>
+                      "max-h-48 p-4 overflow-y-scroll scrollbar-thin scrollbar-thumb-primary scrollbar-track-gray-200",
+                    option: ({ isFocused, isSelected }) =>
+                      `px-3 py-2 cursor-pointer tracking-wider ${
+                        isSelected
+                          ? "bg-primary/60 text-white"
+                          : isFocused
+                          ? "bg-gray-100"
+                          : ""
+                      }`,
+                    singleValue: () =>
+                      "tracking-wider text-primary font-semibold",
+                  }}
+                  styles={{
+                    control: (provided, state) => ({
+                      ...provided,
+                      borderRadius: ".5rem",
+                      borderColor: state.isFocused ? "#F39740" : "#ccc",
+                      boxShadow: state.isFocused
+                        ? "0 0 0 1px #ED7527"
+                        : "none",
+                      minHeight: 48,
+                      width: "100%",
+                      padding: "0 0.75rem",
+                    }),
+                    menuPortal: (base) => ({ ...base, zIndex: 9999 }),
+                    menuList: (provided) => ({
+                      ...provided,
+                      maxHeight: 200,
+                      overflowY: "auto",
+                      overscrollBehavior: "contain",
+                      WebkitOverflowScrolling: "touch",
+                    }),
+                  }}
+                />
               </div>
-            )}
-          />
-        </div>
-      )}
-    </>
-  );
+
+              {fieldState.error && (
+                <p className="mt-2 text-sm text-red-500">
+                  {fieldState.error.message}
+                </p>
+              )}
+            </div>
+          );
+        }}
+      />
+    </div>
+  </>
+);
+
 }

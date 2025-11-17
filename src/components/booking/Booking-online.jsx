@@ -1,14 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
-// import {PostCode,PostDetails,Skip,Cart,Extra} from "@/components/booking/steps"
 import PostCode from "@/components/booking/steps/PostCode";
 import Extra from "@/components/booking/steps/Extra";
 import Cart from "@/components/booking/steps/Cart";
 import PostDetails from "@/components/booking/steps/PostDetails";
 import Skip from "@/components/booking/steps/Skip";
 import ProgressBar from "./ProgressBar";
-import SectionSubTitle from "../shared/SectionSubTitle";
 import { useRouter } from "next/navigation";
 import { Fetchjobtype, Fetchextra } from "./action/action";
 

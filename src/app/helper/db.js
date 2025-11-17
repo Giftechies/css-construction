@@ -11,11 +11,11 @@ export const ConnectDb = async () => {
 
   try {
     const conn = await mongoose.connect(process.env.MONGOOSE_URL, {
-      dbName: "css_constructions", // avoid spaces in db name
+      dbName: "css_constructions",
     });
 
     isConnected = true;
-    console.log("✅ DB connected:", conn.connection.host);
+    console.log("✅ DB connected:");
   } catch (error) {
     console.error("❌ DB connection error:", error);
   }
