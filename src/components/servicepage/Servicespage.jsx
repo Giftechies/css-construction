@@ -37,7 +37,7 @@ const Servicespage = async () => {
                 key={id}
                 className="card1 group w-[380px]    overflow-hidden rounded-[2em] border p-4 bg-white-1 sp "
               >
-             <Link href={`item?.slug`} >
+             <Link href={item?.slug} >
                 <div className="img group h-60 w-full overflow-hidden rounded-3xl bg-red-50 ">
                   <Image
                   width={250}

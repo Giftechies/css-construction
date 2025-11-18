@@ -16,9 +16,7 @@
     {
       label:"Category",
       path:"/admin/category",
-    },
-
-        {
+    },  {
       label:"All Pages",
       path:"#",
       children:[
