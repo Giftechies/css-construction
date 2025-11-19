@@ -18,6 +18,8 @@ export async function PUT(req, { params }) {
 // DELETE
 export async function DELETE(req, { params }) {
   try {
+    console.log(params,"delete>>>>");
+    
     await ConnectDb();
     await Postcode.findByIdAndDelete(params.id);
     return new Response(JSON.stringify({ success: true }), { status: 200 });
