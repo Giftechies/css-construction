@@ -32,11 +32,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('js', new Date());
             gtag('config', 'G-EXNY5VTVP8');
           `}
+ 
         </Script>
+          <meta name="google-site-verification" content="MgFknRf99-9T2nG0Zfk7zn2Of23vjioaPMLgJ6vYVaM" />
       </head>
 
       <body>
-        {/* Providers is a client component that supplies Redux, Lenis, etc. */}
         <Providers>{children}</Providers>
       </body>
     </html>
