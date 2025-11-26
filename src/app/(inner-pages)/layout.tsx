@@ -12,10 +12,8 @@ export default function RootLayout({
     <div className="relative">
       {/* <NavbarContainerThree /> */}
       {children}
-        <Footer />
-            <ScrollProgressButton />
-      
-      {/* <Footer /> */}
+       <ScrollProgressButton />
+      <Footer />
     </div>
   );
 }

@@ -1,10 +1,4 @@
 "use client";
-import image1 from "@/../public/images/home-one/home-one-testimonial-1.png";
-import image2 from "@/../public/images/home-one/home-one-testimonial-2.png";
-import image3 from "@/../public/images/home-one/home-one-testimonial-3.png";
-import image4 from "@/../public/images/home-one/home-one-testimonial-4.png";
-import image5 from "@/../public/images/home-one/home-one-testimonial-5.png";
-import Lines from "@/components/shared/Lines";
 import SectionSubTitle from "@/components/shared/SectionSubTitle";
 import SectionTitle from "@/components/shared/SectionTitle";
 import { Autoplay, Navigation } from "swiper/modules";
