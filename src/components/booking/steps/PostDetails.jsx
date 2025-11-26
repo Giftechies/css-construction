@@ -21,7 +21,7 @@ export default function PostDetails({jobtype=[]}) {
 
 
   return (
-    <div className="space-y-8 postdetails ">
+    <div className="space-y-8 postdetails w-fit ">
       <h5 className="h5 text-center">
         <span className="font-semibold text-primary">Step 2:</span> Please
         Indicate your skip requirements below
@@ -124,23 +124,26 @@ export default function PostDetails({jobtype=[]}) {
             </label>
 
           </div>
-            {errors.permitOnHighway &&  <p className=" mt-2 text-red-600" >{errors.permitOnHighway.message}</p> }
+            {errors.permitOnHighway &&  <p className=" mt-2 text-red-600 w-fit border " >{errors.permitOnHighway.message}</p> }
 
           {selected === "Yes" && (
-            <div className="w-[50%] bg-zinc-100 mt-8 rounded-lg p-6 font-semibold">
-              <span className="font-medium">
+            <div className=" w-96 overflow-hidden  bg-zinc-100 mt-8 rounded-lg p-2 font-semibold "  >
+           <span className="font-medium text-[14px] ">
                 As your skip requires a licence to be kept on the road, please
                 call the number below so we can get the correct information from
                 you.
               </span>
-              <a href="tel:#">
-                <span className="text-primary flex gap-2 h4 mt-3 font-oswald">
-                  <IconPhoneCall size={35} />
-                  1234657
+              <a href="tel:0208 574 6333">
+                <span className="text-primary flex items-center  gap-2 h6 mt-3 font-oswald">
+                  <IconPhoneCall size={20} />
+                 0208 574 6333
                 </span>
               </a>
-            </div>
+          </div>
           )}
+
+
+        
         </div>
       </div>
 

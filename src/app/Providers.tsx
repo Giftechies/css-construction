@@ -13,11 +13,11 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     <ReduxProvider store={store}>
       <ReactLenis root options={{ smooth: true, smoothTouch: true, duration: 1 }}>
         <main>
-          {/* <div className="relative min-h-screen flex flex-col"> */}
-            {/* <div className="flex-1"> */}
+          <div className="relative min-h-screen flex flex-col">
+            <div className="flex-1">
               {children}
-              {/* </div> */}
-          {/* </div> */}
+              </div>
+          </div>
         </main>
       </ReactLenis>
     </ReduxProvider>
