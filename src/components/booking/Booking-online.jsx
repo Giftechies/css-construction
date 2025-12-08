@@ -1,14 +1,17 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useForm, FormProvider } from "react-hook-form";
-import PostCode from "@/components/booking/steps/PostCode";
-import Extra from "@/components/booking/steps/Extra";
-import Cart from "@/components/booking/steps/Cart";
-import PostDetails from "@/components/booking/steps/PostDetails";
-import Skip from "@/components/booking/steps/Skip";
+import { useForm, FormProvider, } from "react-hook-form";
+import PostCode from "./steps/PostCode";
+import Extra from "./steps/Extra";
+import Cart from "./steps/Cart";
+import PostDetails from "./steps/PostDetails";
+import Skip from "./steps/Skip";
 import ProgressBar from "./ProgressBar";
 import { useRouter } from "next/navigation";
-import { Fetchjobtype, Fetchextra } from "./action/action";
+import { Fetchjobtype, Fetchextra,FetchTimeSlots, createCheckoutSession   } from "@/app/apiCalls/form";
+import UserInfo from "./steps/UserInfo";
+import toast from "react-hot-toast";
+
 
 const BoonkingOnline = () => {
   // 🟢 Default form values
@@ -16,74 +19,90 @@ const BoonkingOnline = () => {
     postcodeArea: "",
     fullPostcode: "",
     deliveryDate: "",
+    timeSlot: "",
     permitOnHighway: false,
     jobType: "",
-    skipSize: [],
-    extras: [],
-    cart: [],
+    skipSize: {},
+    extras: {},
+    totalamount: null,
     customer: {
-      name: "",
-      phone: "",
+      lastName: "",
+      firstName: "",
+      phoneNumber: "",
       email: "",
-      address: "",
     },
   };
 
-  // let fetchextra =[]
+
+  const route = useRouter()
   const [fetchjob, setfetchjob] = useState([]);
   const [fetchextra, setfetchextra] = useState([]);
+  const [fetchedTimeSlots, setFetchedTimeSlots] = useState([]);
   useEffect(() => {
-    (async () => {
+    ;(async () => {
       const res = await Fetchjobtype();
       setfetchjob(res.data);
 
       const extrares = await Fetchextra();
-
-    
+      console.log(extrares,'exnt>>>');
+      console.log(extrares.data,'data>>>');
+      if(extrares.success){
+        console.log("extra fecth>");
+        
+      }
       if (
         extrares.success &&
         Array.isArray(extrares.data) &&
         extrares.data.length > 0
       ) {
         setfetchextra(extrares.data);
-      
+        
+        console.log(fetchextra,'exnt>>>');
+      console.log("extra fecth>>>>>>");
       }
+      
+      const fetchtime = await FetchTimeSlots();
+      setFetchedTimeSlots(fetchtime.data);
+
+      
     })();
   }, []);
-
-  const { register, handleSubmit } = useForm();
-
+  
+  // const { register, handleSubmit } = useForm();
   const navigate = useRouter();
-
   const methods = useForm({ defaultValues });
   const [currentStep, setCurrentStep] = useState(0);
 
   const steps = [
     { title: "Postcode", component: <PostCode /> },
-    { title: "Details", component: <PostDetails jobtype={fetchjob} /> },
+    { title: "Details", component: <PostDetails jobtype={fetchjob} slots={fetchedTimeSlots} /> },
     {
       title: "Skip Size",
       component: <Skip goToNextStep={() => setCurrentStep(currentStep + 1)} />,
     },
     { title: "Extras", component: <Extra EXTRAS={fetchextra} /> },
+    { title: "UserInfo", component: <UserInfo /> },
     { title: "Cart", component: <Cart /> },
    
   ];
+  
   const nextStep = async () => {
-    // Validate current step before moving forward
+    const permit = methods.watch("permitOnHighway")
     const isValid = await methods.trigger(); // for now: validate all fields
-    // if(jobType)
     const type = methods.watch("jobType");
-    
-    
     if (type.trim().toLowerCase() === "skip collection") {
-      console.log("Redirecting to collection page:", type);
       navigate.push("/collection"); // <-- redirects user
       return; // stop further steps
+    }
+    if(permit ==="Yes" && currentStep>0){
+      toast.error("Not allowed.Please call us!")
+      return;
+  
     }
     if (isValid && currentStep < steps.length - 1) {
       setCurrentStep((s) => s + 1);
     }
+   
   };
 
   const prevStep = () => {
@@ -92,18 +111,29 @@ const BoonkingOnline = () => {
     }
   };
 
-  const onSubmit = (data) => {
-    console.log("✅ Final submit:", data);
-    // call API or payment gateway here
-  };
+  const onSubmit = async (data) => {
+    
+   if(currentStep === steps.length-1 && data.totalamount !==null &&  data.totalamount !== 0){
+  const result = await createCheckoutSession(data);
+  console.log("session result>>>>>",result);
+
+  if (result.success) {
+    window.location.href = result.url;
+  } else {
+    toast.error("Payment session error :" + result.message);
+  }
+   }
+};
+
   return (
-    <>
+    <div className="relative   " >
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit(onSubmit)}
-          className="container  z-30  py-8   flex flex-col items-center gap-8 rounded-lg bg-white-1  shadow-md"
+          className="container relative  z-30  py-8    flex flex-col items-center gap-8 rounded-lg  bg-white  shadow-md"
         >
-          <h1 className="h2 title-animation text-center  font-oswald  font-[700] !text-primary   ">
+            
+          <h1 className="h2 title-animation text-center  font-oswald     ">
             Your Skip, Ready to Hire
           </h1>
           {/* Progress bar */}
@@ -125,7 +155,7 @@ const BoonkingOnline = () => {
               <button
                 type="button"
                 onClick={prevStep}
-                className="rounded-full bg-primary px-4 py-2 text-white-1"
+                className="rounded-full bg-primary px-4 py-2 text-white"
               >
                 Previous
               </button>
@@ -135,14 +165,14 @@ const BoonkingOnline = () => {
               <button
                 type="button"
                 onClick={nextStep}
-                className=" rounded-full bg-primary px-8 py-2 text-white-1"
+                className=" rounded-full bg-primary px-8 py-2 text-white"
               >
                 Next
               </button>
             ) : (
               <button
                 type="submit"
-                className=" rounded-full bg-green-600 px-4 py-2 text-white-1"
+                className=" rounded-full bg-primaryblue px-4 py-2 text-white"
               >
                 Submit
               </button>
@@ -150,7 +180,9 @@ const BoonkingOnline = () => {
           </div>
         </form>
       </FormProvider>
-    </>
+    </div>
+
+ 
   );
 };
 

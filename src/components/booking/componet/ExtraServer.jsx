@@ -1,6 +1,6 @@
 
 // ❌ Do NOT use "use client" here — this is server-side
-import { Fetchextra } from "../action/action";
+import { Fetchextra } from "../ApiCalls/action";
 
 export default async function ExtraServer() {
   try {

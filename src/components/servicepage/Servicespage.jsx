@@ -4,7 +4,7 @@ import SectionTitle from "@/components/shared/SectionTitle";
 import Link from "next/link";
 import SectionSubTitle from "@/components/shared/SectionSubTitle";
 import Image from "next/image";
-import {fetchServices} from '@/api/serviceApi'
+import {fetchServices} from '@/app/apiCalls/form'
 const Servicespage = async () => {
 
   const res = await fetchServices()

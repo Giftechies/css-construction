@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import Select, { components } from "react-select";
-import { FetchpostCode } from "../action/action";
+import { FetchpostCode } from "../ApiCalls/action";
 
 
 export default function PostCode() {

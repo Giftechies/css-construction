@@ -1,61 +1,79 @@
 "use client";
-import SectionInnerTitle from "@/components/shared/SectionInnerTitle";
-import { cn } from "@/utils/cn";
-import { IconPhoneCall } from "@tabler/icons-react";
-import React, { useEffect, useState } from "react";
-import { useFormContext } from "react-hook-form";
-import { Fetchjobtype } from "../action/action";
-import { Skeleton } from "@/components/ui/skeleton"; // ✅ added
 
-export default function PostDetails({jobtype=[]}) {
+import { cn } from "@/lib/utils";
+import React, { useEffect, useState } from "react";
+import { useFormContext, Controller } from "react-hook-form"; // Added Controller for better Select handling
+import { Skeleton } from "@/components/ui/skeleton";
+import { Phone } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectTrigger,
+  SelectValue,
+  SelectItem,
+} from "@/components/ui/select"; // Ensure path matches your project
+
+export default function PostDetails({ jobtype = [], slots = [] }) {
   const {
     register,
     watch,
+    control, // Destructure control for easier Select management
     formState: { errors },
   } = useFormContext();
+const [selectedPermit,setselectedPermit] = useState(watch("permitOnHighway") || '')
+const [selectedPostcode,setselectedPostcode] = useState(watch("postcodeArea") || "")
 
-  const selected = watch("permitOnHighway");
-  const selectedPostcode = watch("postcodeArea");
 
-  const [loading, setLoading] = useState(false); // ✅ added loading state
+  const [loading, setLoading] = useState(false);
 
+  // Default fallback options if jobtype prop is empty
+  const defaultJobTypes = [
+    "Skip Delivery",
+    "Roll on Roll off",
+    "Skip Collection",
+    "Skip Exchange",
+    "Skip Wait and Load",
+    "Transit Waste Removal",
+  ];
 
   return (
-    <div className="space-y-8 postdetails w-fit ">
+    <div className="space-y-8 postdetails ">
       <h5 className="h5 text-center">
         <span className="font-semibold text-primary">Step 2:</span> Please
         Indicate your skip requirements below
       </h5>
 
-      {/* Postcode + Date */}
-      <div className="flex justify-between gap-8">
-        {/* Full Postcode */}
-        <div className="w-1/2">
+      {/* Top Row: Postcode, Date, Time Slot (Using Grid for better layout) */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        {/* 1. Full Postcode */}
+        <div className="w-full">
           <label className="mb-2 block h6 text-primary font-semibold">
             Full Postcode
           </label>
-          <div className="flex postcode overflow-hidden">
-            <span className="top-[2.1rem] left-4 py-1 border-r-2 border-primary/50 pr-2">
-              {selectedPostcode}
-            </span>
+          <div className="flex postcode overflow-hidden relative">
+            {/* Postcode Area Prefix */}
+            <div className="absolute left-0 top-0 bottom-0 flex items-center pl-3 pr-2 border-r-2 border-primary/50 pointer-events-none bg-transparent z-10">
+              <span className="font-medium">{selectedPostcode}</span>
+            </div>
             <input
               type="text"
               {...register("fullPostcode", {
                 required: "Full postcode is required",
               })}
-              className="text-black-4 font-medium tracking-wider px-2 placeholder-black-3/80 w-full"
-              placeholder="E.g. SE1 2AB"
+              className="pl-16  text-black font-medium tracking-wider  placeholder-black-3/80 w-full  "
+              placeholder="2AB"
             />
           </div>
           {errors.fullPostcode && (
-            <p className="text-center h6 text-red-400">
+            <p className="text-sm mt-1 text-red-400">
               {errors.fullPostcode.message}
             </p>
           )}
         </div>
 
-        {/* Delivery Date */}
-        <div className="w-1/2">
+        {/* 2. Delivery Date */}
+        <div className="w-full">
           <label className="mb-2 block h6 text-primary font-semibold">
             Delivery Date
           </label>
@@ -64,20 +82,54 @@ export default function PostDetails({jobtype=[]}) {
             {...register("deliveryDate", {
               required: "Delivery date is required",
             })}
-            className="date !py-3"
+            className="w-full postcode "
             onFocus={(e) => e.target.showPicker?.()}
           />
           {errors.deliveryDate && (
-            <p className="text-center h6 text-red-400">
+            <p className="text-sm mt-1 text-red-400">
               {errors.deliveryDate.message}
             </p>
           )}
         </div>
+
+        {/* 3. Time Slot */}
+        <div className="w-full">
+          <label className="mb-2 block h6 text-primary font-semibold">
+            Time slot
+          </label>
+          <Controller
+            control={control}
+            name="timeSlot"
+            render={({ field }) => (
+              <Select onValueChange={field.onChange} value={field.value}  >
+                <SelectTrigger className="w-full postcode !py-5 ">
+                  <SelectValue placeholder="Select a time slot" />
+                </SelectTrigger>
+                <SelectContent >
+                  {slots?.length > 0 ? (
+                    slots.map((slot, idx) => (
+                      <SelectItem
+                        key={idx}
+                        value={`${slot.startTime}${slot.startSession} - ${slot.endTime}${slot.endSession}`}
+                      >
+                        {slot.startTime}{slot.startSession} - {slot.endTime}{slot.endSession}
+                      </SelectItem>
+                    ))
+                  ) : (
+                    <SelectItem value="anytime" disabled>
+                      No slots available
+                    </SelectItem>
+                  )}
+                </SelectContent>
+              </Select>
+            )}
+          />
+        </div>
       </div>
 
       {/* Permit Section */}
-      <div className="relative min-h-32 w-full rounded-3xl border-2 border-primary px-10 py-10">
-        <span className="absolute -top-[1.3rem] left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-2 font-semibold text-white-1">
+      <div className="relative min-h-32 w-full rounded-3xl border-2 border-primary px-10 py-10 mt-12">
+        <span className="absolute -top-[1.3rem] left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-2 font-semibold text-white">
           Permit check
         </span>
 
@@ -85,22 +137,23 @@ export default function PostDetails({jobtype=[]}) {
           Will the skip be placed on a public highway?
         </span>
 
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col  items-center justify-center">
           <div className="flex gap-4">
             {/* Yes Option */}
             <label
               className={cn(
-                "h6 rounded-full border-2 border-primary px-6 py-2 font-semibold",
-                { "bg-primary/10 text-primary": selected === "Yes" }
+                "cursor-pointer h6 rounded-full border-2 border-primary px-6 py-2 font-semibold transition-colors",
+                { "bg-primary/30 text-primary": selectedPermit === "Yes" }
               )}
             >
               <input
                 type="radio"
                 value="Yes"
+                 onClick={()=>setselectedPermit("Yes")}
                 {...register("permitOnHighway", {
                   required: "Please select an option",
                 })}
-                className="mr-2 appearance-none w-3 h-3 border-2 border-primary rounded-full checked:bg-primary checked:border-primary focus:ring-2 focus:ring-primary transition"
+                className="hidden" // Hidden because custom styling is on the label
               />
               Yes
             </label>
@@ -108,88 +161,92 @@ export default function PostDetails({jobtype=[]}) {
             {/* No Option */}
             <label
               className={cn(
-                "h6 rounded-full border-2 border-primary px-6 py-2 font-semibold",
-                { "bg-primary/10 text-primary": selected === "No" }
+                "cursor-pointer h6 rounded-full border-2 border-primary px-6 py-2 font-semibold transition-colors",
+                { "bg-primary/30 text-primary": selectedPermit === "No" }
               )}
             >
               <input
                 type="radio"
+                onClick={()=>setselectedPermit("No")}
                 value="No"
                 {...register("permitOnHighway", {
                   required: "Please select an option",
                 })}
-                className="mr-2 appearance-none w-3 h-3 border-2 border-primary rounded-full checked:bg-primary checked:border-primary focus:ring-2 focus:ring-primary transition"
+                className="hidden"
               />
               No
             </label>
-
           </div>
-            {errors.permitOnHighway &&  <p className=" mt-2 text-red-600 w-fit border " >{errors.permitOnHighway.message}</p> }
 
-          {selected === "Yes" && (
-            <div className=" w-96 overflow-hidden  bg-zinc-100 mt-8 rounded-lg p-2 font-semibold "  >
-           <span className="font-medium text-[14px] ">
+          {errors.permitOnHighway && (
+            <p className="mt-2 text-red-600">
+              {errors.permitOnHighway.message}
+            </p>
+          )}
+
+          {/* Logic: Show P Tag on Yes Click */}
+          {selectedPermit === "Yes" && (
+            <div className={cn("w-fit md:w-96 bg-zinc-100 mt-8 rounded-lg p-6  animate-in fade-in slide-in-from-top-2 h-0 transition-all duration-500 es ",{"h-40":selectedPermit==="Yes"})}>
+              <p className="font-medium text-zinc-800">
                 As your skip requires a licence to be kept on the road, please
                 call the number below so we can get the correct information from
                 you.
-              </span>
-              <a href="tel:0208 574 6333">
-                <span className="text-primary flex items-center  gap-2 h6 mt-3 font-oswald">
-                  <IconPhoneCall size={20} />
-                 0208 574 6333
-                </span>
+              </p>
+              <a
+                href="tel:1234657"
+                className="inline-flex justify-center items-center gap-2 text-primary h5 mt-3 font-oswald hover:underline"
+              >
+                <Phone size={20} />
+                1234657
               </a>
-          </div>
+            </div>
           )}
-
-
-        
         </div>
       </div>
 
-      {/* Job Type Dropdown */}
+      {/* Job Type Section - Converted to Shadcn Select */}
       <div className="mb-4">
-        <label className="mb-2 block text-sm font-medium">Job Type</label>
+        <label className="mb-2 block h6 text-primary font-semibold">
+          Job Type
+        </label>
 
         {loading ? (
-          // ✅ Skeleton Loader
           <div className="flex flex-col gap-2">
             <Skeleton className="w-full h-10 rounded-full" />
-            <Skeleton className="w-3/4 h-10 rounded-full" />
           </div>
         ) : (
-          <select
-            {...register("jobType", { required: "Job type is required" })}
-            className="w-full rounded-full outline-none border tracking-wider px-4 focus:border-primary py-2"
-          >
-            <option value="">-- Select Job Type --</option>
-
-            {jobtype && jobtype.length > 0
-              ? jobtype.map((item) => (
-                  <option key={item._id} value={item.category.toLowerCase()}>
-                    {item.category}
-                  </option>
-                ))
-              : // fallback options if API not loaded
-                [
-                  "Skip Delivery",
-                  "Roll on Roll off",
-                  "Skip Collection",
-                  "Skip Exchange",
-                  "Skip Wait and Load",
-                  "Transit Waste Removal",
-                ].map((label) => (
-                  <option key={label} value={label.toLowerCase()}>
-                    {label}
-                  </option>
-                ))}
-          </select>
+          <Controller
+            control={control}
+            name="jobType"
+            rules={{ required: "Job type is required" }}
+            render={({ field }) => (
+              <Select onValueChange={field.onChange} value={field.value}>
+                <SelectTrigger className="w-full border-primary rounded-full  px-4 py-6">
+                  <SelectValue placeholder="-- Select Job Type --" />
+                </SelectTrigger>
+                <SelectContent>
+                  {jobtype && jobtype.length > 0
+                    ? jobtype.map((item) => (
+                        <SelectItem
+                          key={item._id}
+                          value={item.category.toLowerCase()}
+                        >
+                          {item.category}
+                        </SelectItem>
+                      ))
+                    : defaultJobTypes.map((label) => (
+                        <SelectItem key={label} value={label.toLowerCase()}>
+                          {label}
+                        </SelectItem>
+                      ))}
+                </SelectContent>
+              </Select>
+            )}
+          />
         )}
 
         {errors.jobType && (
-          <p className="text-center h6 text-red-400 mt-2">
-            {errors.jobType.message}
-          </p>
+          <p className="text-red-500 mt-2 ml-2">{errors.jobType.message}</p>
         )}
       </div>
     </div>

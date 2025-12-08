@@ -1,0 +1,511 @@
+
+const base_url= process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
+
+export async function RequestOtp (email){
+    try {
+        const res = await fetch('/api/auth/otp/send', {
+            method: 'POST',
+            body: JSON.stringify({email}),
+        })
+        
+        const data = await res.json()
+        if (!res.ok) {
+            return {
+                success:false,
+                message: data.message || 'Failed to request OTP'
+            }
+        }
+        return {
+            success:true,
+            message: data.message || 'OTP sent successfully'
+        }
+        
+    } catch (error) {
+        return {
+            success:false,
+            message: error.message || 'Failed to request OTP'
+        }
+        
+    }
+}
+
+export async function FetchpostCode() {
+    try {
+        const res = await fetch(`/api/form/postcode`, {
+            method: "GET"
+        })
+        const data = await res.json()
+        if (data) {
+            return data
+
+        }
+
+    } catch (error) {
+        console.log(error);
+
+
+    }
+}
+export async function Fetchjobtype() {
+    try {
+        const res = await fetch(`/api/form/category`, {
+            method: "GET",
+        })
+        const data = await res.json()
+        if (data) {
+            return data
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function Fetchextra() {
+    try {
+        const res = await fetch(`/api/form/extra`, {
+            method: 'GET'
+        })
+        const data = await res.json()
+        if (!data.success) {
+            return data
+        }
+        return data
+
+    } catch (error) {
+        console.log(error);
+
+
+    }
+}
+
+export async function Fetchrates() {
+    try {
+
+        const res = await fetch(`/api/form/rates`, {
+            method: "GET"
+        })
+        const data = await res.json()
+
+
+        if (!data.success) {
+            console.error(data);
+
+        }
+        return data
+
+    } catch (error) {
+        console.log(error);
+
+
+    }
+}
+
+export async function CreateTimeSlot(payload) {
+    try {
+        console.log(payload, 'createTimesloat 82');
+
+        const res = await fetch(`/api/form/timeslot`, {
+            method: "POST",
+            cache: 'no-store',
+            body: JSON.stringify(payload),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        const data = await res.json()
+        if (!res.ok) {
+            return {
+                success: false,
+                error: data.error || 'Failed to create time slot'
+            }
+        }
+        return {
+            success: true,
+            data: data.data
+        }
+
+
+
+    } catch (error) {
+        return {
+            error: error.message,
+            success: false
+
+        }
+
+    }
+}
+
+export async function FetchTimeSlots() {
+    try {
+        const res = await fetch(`/api/form/timeslot`, {
+            method: "GET",
+            cache: 'no-store'
+        })
+        const data = await res.json()
+        if (!res.ok) {
+            return {
+                success: false,
+                error: data.error || 'Failed to fetch time slots'
+            }
+        }
+        return {
+            success: true,
+            data: data.data
+        }
+
+    } catch (error) {
+        return {
+            success: false,
+            error: error.message
+        }
+
+    }
+}
+export async function UpdateTimeSlot(id, payload) {
+    try {
+        const res = await fetch(`/api/form/timeslot/${id}`, {
+            method: "PATCH",
+            cache: "no-store",
+            body: JSON.stringify(payload),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+            return {
+                success: false,
+                error: data.error || "Failed to update time slot",
+            };
+        }
+
+        return {
+            success: true,
+            data: data.data,
+        };
+    } catch (error) {
+        return {
+            success: false,
+            error: error.message,
+        };
+    }
+}
+
+export async function DeleteTimeSlot(id) {
+    try {
+        const res = await fetch(`/api/form/timeslot/${id}`, {
+            method: "DELETE",
+            cache: "no-store",
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+            return {
+                success: false,
+                error: data.error || "Failed to delete time slot",
+            };
+        }
+
+        return {
+            success: true,
+            message: data.message || "Time slot deleted",
+        };
+    } catch (error) {
+        return {
+            success: false,
+            error: error.message,
+        };
+    }
+}
+
+
+export async function createCheckoutSession(data){
+    try {
+        const res = await fetch('/api/checkout/session', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const result = await res.json();
+
+        if (!res.ok) {
+            return {
+                success:false,
+                message: result.message || 'Failed to create Stripe session'
+            }
+        }
+        return {
+            success:true,
+            url: result.url,
+            sessionId: result.sessionId
+        };
+
+        
+    } catch (error) {
+        return {
+            success:false,
+            message: error.message || 'Failed to create Stripe session'
+        }
+        
+    }
+}
+export async function fetchServices(){
+  try {
+    const res = await fetch(`${base_url}/api/service-category`,{
+      method:"GET",
+    })
+    if(!res.ok){
+      
+      return [];
+    }
+    const data = await res.json()
+    return data;
+
+    
+  } catch (error) {
+       console.error("Failed to fetch services:", error);
+    return [];
+    
+  }
+}
+export async function ProfileUpdate(id,formData){
+  
+    try {
+
+        const res = await fetch(`/api/user/${id}`,{
+            method:"PUT",
+            body: JSON.stringify(formData) ,
+            headers:{
+                'Content-Type':"applicaton/json"
+            }
+        })
+        const data = await res.json()
+        if(!res.ok){
+            return{
+                success:false,
+                message:data.message
+            }
+        }
+
+        return{
+            success:true,
+            message:data.message,
+            data:data
+        }
+    } catch (error) {
+        return{
+            success:false,
+            message:error.message || "update failed!!"
+        }
+        
+    }
+}
+
+export async function ProfileFetch({id}){
+  
+    try {    
+        const res = await fetch(`/api/user/${id}`,{
+            method:"GET",
+        })
+        const data = await res.json()
+        if(!res.ok){
+            return{
+                success:false,
+                message:data.message
+            }
+        }
+        return{
+            success:true,
+            message:data.message,
+            data:data.user
+        }
+    } catch (error) {
+        return{
+            success:false,
+            message:error.message || "update failed!!"
+        }
+        
+    }
+}
+// fetch all orders for user by user id
+export async function fetchAllOrders(id){
+    try {
+        const res = await fetch(`/api/orders/${id}`,{
+            method:"GET",
+            cache:'no-store'
+        })
+        const data =await res.json();
+        if(!res.ok){
+            return{
+                success:false,
+                message:'order not fetch.Please try again!'
+            }
+        };
+console.log(data,'order get');
+
+        return {
+                success:true,
+                message:'order fetch successfully!',
+                data:data.orders
+            }
+        
+    } catch (error) {
+          return{
+            success:false,
+            message:error.message || "something went worng!!"
+        }
+    }
+}
+
+export async function logout() {
+    try {
+        const res = await fetch('/api/auth/logout',{
+            method:"POST"
+        })
+        return {
+            success:true,
+            message:'logout successfully!'
+        }
+        
+    } catch (error) {
+           return{
+            success:false,
+            message:error.message || "something went worng!!"
+        }
+    }
+    
+}
+export async function OrderAdmin(status) {
+    try { 
+        let query= {}
+        if (status) {
+           
+            query = new URLSearchParams({ status }).toString();
+        }
+
+
+        const res = await fetch(`${base_url}/api/orders?${query}`, {
+            method: "GET",
+            cache: "no-store",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        if (!res.ok) {
+            return {
+                success: false,
+                message: "Fetching orders failed. Please try again!"
+            };
+        }
+
+        const data = await res.json();
+
+        return data
+    
+
+    } catch (error) {
+        return {
+            success: false,
+            message: error.message || "Something went wrong!"
+        };
+    }
+}
+
+// admin order update
+export async function  updateOrderStatus(id,status){
+    try {
+
+        const res = await fetch(`/api/orders/order-id/${id}`,{
+            method:"PUT",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({status})
+        })
+        const data = await res.json()
+        if(!res.ok){
+            return {
+                success:false,
+                message:'update failed. Please try again!'
+            }
+        };
+
+        return{
+            success:true,
+            message:'Update successfully!',
+            data
+        }
+        
+    } catch (error) {
+        return{
+            success:false,
+            message:error.message || 'Update failed'
+        }
+        
+    }
+}
+
+
+
+
+// Server api
+
+export async function fetchSingleOrder(id){
+    try {
+        const res = await fetch(`${base_url}/api/orders/order-id/${id}`,{
+            method:'GET',
+            cache:'no-store'
+        })
+        const data = await res.json()
+        if(!res.ok){
+            return{
+                success:false,
+                message:'something went worng'
+            }
+        }
+        return{
+            success:true,
+            message:'order fetch successfully',
+            data:data.data
+        }
+    } catch (error) {
+         return {
+            success: false,
+            message: error.message || "Something went wrong!"
+        };
+    }
+}
+
+
+export async function adminLogin(formData){
+    try {
+        const res = await fetch(`${base_url}/api/admin/login`,{
+            method:'POST',
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(formData)
+        })
+        const data = await res.json()
+        if(!res.ok){
+            return{
+                success:false,
+                message:data.message || 'Login failed. Please try again!'
+            }
+        }
+        return{
+            success:true,
+            message:'Login successfully!',
+            data:data
+        }
+    }catch (error) {
+         return {
+            success: false,
+            message: error.message || "Something went wrong!"
+        };
+    }
+}
