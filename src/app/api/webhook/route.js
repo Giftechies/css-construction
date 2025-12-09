@@ -1,5 +1,5 @@
 import Stripe from "stripe";
-import { ConnectDb } from "@/app/helper/DB/db";
+import { ConnectDb } from "@/app/helper/db";
 import Order from "@/app/helper/models/order";
 
 //  Force Node runtime (required for raw body)

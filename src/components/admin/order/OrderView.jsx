@@ -116,7 +116,7 @@ export default function AdminOrderPreview({ orderData }) {
           Placed on {safeFormatDate(createdAt, "dd MMM yyyy, hh:mm a")}
         </p>
       </div>
-      <Button onClick={()=>route.push("/quick-skip/admin/orders/")} ><ArrowLeftIcon/> Back</Button>
+      <Button onClick={()=>route.push("/css-admin/online-booking-form/orders/")} ><ArrowLeftIcon/> Back</Button>
       </header>
 
       {/* GRID LAYOUT */}

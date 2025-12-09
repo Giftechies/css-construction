@@ -1,5 +1,5 @@
 import User  from "@/app/helper/models/user";
-import { ConnectDb } from "@/app/helper/DB/db";
+import { ConnectDb } from "@/app/helper/db";
 import { NextResponse } from "next/server";
 
 

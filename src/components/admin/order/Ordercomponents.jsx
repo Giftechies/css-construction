@@ -95,7 +95,10 @@ export default function Ordercomponent({ orderData }) {
         </div>
     ))}
 </div>
-            <div onClick={() => setStatus(null)} className="flex justify-end mt-4" ><Button>Reset Filter</Button></div>
+            <div onClick={() => setStatus(null)} className="flex justify-between mt-6" >
+                <h3 className="h3 font-semibold" >Order Management</h3>
+                <Button className="text-white-1" >Reset Filter</Button>
+            </div>
 
             {/* TABLE */}
             <div className="mt-8 px-4 min-h-[300px]">
@@ -119,8 +122,8 @@ export default function Ordercomponent({ orderData }) {
                                 <TableCell className={'capitalize truncate max-w-[180px]'} >{o.adminOrderStatus}</TableCell>
                                 <TableCell className={'capitalize truncate max-w-[180px]'}>{Dateformate(o.deliveryDate)}</TableCell>
                                 <TableCell>£ {o?.totalamount}</TableCell>
-                                <TableCell className="flex gap-4">
-                                    <Button className={'cursor-pointer'} onClick={() => route.push(`/quick-skip/admin/orders/view/${o._id}`)} variant="secondary"><Eye /></Button>
+                                <TableCell className="flex gap-4 text-white-1 ">
+                                    <Button className={'cursor-pointer '} onClick={() => route.push(`/css-admin/online-booking-form/orders/view/${o._id}`)} ><Eye /></Button>
                                   <OrderEdit id={o._id} existStatus={o?.adminOrderStatus} onStatusUpdate={onStatusUpdate} />
                                 </TableCell>
                             </TableRow>

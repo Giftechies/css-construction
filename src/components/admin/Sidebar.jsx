@@ -5,6 +5,7 @@ import { ChartArea, ChevronDown, ChevronRight } from "lucide-react"
 import { useRouter, usePathname } from "next/navigation"
 import { useState, useEffect } from "react"
 import {menu} from "@/data/adminMenu" 
+import Link from "next/link"
 
 export default function Sidebar({ className }) {
   const pathname = usePathname()
@@ -66,7 +67,7 @@ export default function Sidebar({ className }) {
                   {el.children.map((child, cId) => {
                     const isChildActive = pathname === child.path
                     return (
-                      <a
+                      <Link
                         key={cId}
                         href={child.path}
                         className={cn(
@@ -75,7 +76,7 @@ export default function Sidebar({ className }) {
                         )}
                       >
                         {child.label}
-                      </a>
+                      </Link>
                     )
                   })}
                 </div>

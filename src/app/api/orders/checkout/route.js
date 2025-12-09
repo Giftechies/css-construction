@@ -1,6 +1,6 @@
 // pages/api/orders/checkout.js
 
-import { ConnectDb } from '@/app/helper/DB/db';
+import { ConnectDb } from '@/app/helper/db';
 import User from '@/app/helper/models/user';
 import Order from '@/app/helper/models/order';
 import { NextResponse } from 'next/server';
