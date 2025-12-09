@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import Order from "@/app/helper/models/order";
 import Stripe from "stripe";
-import { ConnectDb } from "@/app/helper/DB/db";
+import { ConnectDb } from "@/app/helper/db";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
