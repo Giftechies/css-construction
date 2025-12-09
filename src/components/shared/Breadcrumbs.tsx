@@ -22,7 +22,7 @@ export default function Breadcrumb() {
       {/* Home Link */}
       <Link
         href="/"
-        className="text-white hover:text-[var(--primary)] cursor-pointer whitespace-nowrap"
+        className="text-white-1 hover:text-[var(--primary)] cursor-pointer whitespace-nowrap"
       >
         Home
       </Link>
@@ -39,7 +39,7 @@ export default function Breadcrumb() {
             // Use real href so Next.js can handle the navigation natively
             <Link
               href={crumb.href}
-              className="text-white hover:text-[var(--primary)] transition-colors cursor-pointer whitespace-nowrap"
+              className="text-white-1 hover:text-[var(--primary)] transition-colors cursor-pointer whitespace-nowrap"
             >
               {crumb.label}
             </Link>

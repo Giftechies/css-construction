@@ -199,7 +199,7 @@ export default function Collectionform({ className }) {
       <button
         type="submit"
         disabled={loading}
-        className={`text-white mt-4 rounded-xl bg-primary text-white-1 p-3 font-semibold transition-all ${
+        className={`text-white-1 mt-4 rounded-xl bg-primary text-white-1 p-3 font-semibold transition-all ${
           loading ? "opacity-70 cursor-not-allowed" : "hover:bg-primary/90"
         }`}
       >

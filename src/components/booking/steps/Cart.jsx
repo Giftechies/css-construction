@@ -1,10 +1,11 @@
 "use client";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 
 export default function Cart() {
-  const { watch } = useFormContext();
+  const { watch,setValue } = useFormContext();
   const skipsize = watch("skipSize") || {};
   const extras = watch("extras") || {};
 
@@ -35,40 +36,44 @@ export default function Cart() {
   // Final total
   const total = subtotal + vat;
 
+useEffect(() => {
+  setValue("totalamount", total); // 🔥 sync total → form
+}, [total, setValue]);
+
   return (
        <section>
       <h6 className="h5 text-center">
         <span className="font-semibold text-primary">Step 5: </span>Your Cart
       </h6>
 
-      <div className="shadow max-w-[30rem] mx-auto mt-8 flex flex-col gap-4 p-6">
+      <div className="shadow max-w-120 mx-auto mt-8 flex flex-col gap-4 p-6">
         {/* Job Type Row */}
         <div className="flex justify-between gap-8">
-          <div className="logo  size-[5rem] shrink-0  border rounded-full overflow-hidden">
+          <div className="logo  size-20 shrink-0  border rounded-full overflow-hidden">
             <Image
               height={100}
               width={100}
               alt="logo"
-              src={"/img/innerimg/lorry.png"}
-              className="w-full h-full object-contain object-center"
+                src={"/img/innerimg/lorry.png"}
+              className="w-full h-full object-cover object-center"
             />
           </div>
-          <div className="flex flex-1 justify-between items-center">
-            <h3 className="h4 mb-4 text-black-2 font-semibold text-center">
+          <div className="flex flex-col flex-1 justify-between items-center">
+            <h3 className="h4  text-black-2 font-semibold text-center">
               Skip-{skipsize?.size}
             </h3>
-            <span>£{skipsize?.rate || 0}</span>
+            <div className="w-full h6 flex justify-end" ><span>£{skipsize?.rate || 0}</span></div>
           </div>
         </div>
 
         {/* Extras */}
         <div className="w-full flex flex-col gap-4 h6 font-semibold">
-          { extras && <label className=" "  > Extra </label>}
-          <div>
-            {Object.entries(extras).map(([id, data]) => (
-              <label key={id} className="flex  justify-between gap-8">
-                <span className="w-44 block text-gray-500 text-[14px]">{id}</span>
-                <span className="block flex-1 text-gray-500 text-[14px] " >
+          <div className=" border-y py-1 " >
+          { extras && <label className=" mb-2 block "  > Extra </label>}
+            {Object.entries(extras).map(([id, data],idx) => (
+            <label key={id} className={cn(`flex items-center justify-between mb-1 gap-8 text-black-4 `,{" text-black-4/70 ":idx%2===0})}>
+                <span className={cn(`w-44 block text-black/80 text-[14px]`,{"text-black/50":idx%2===0})}>{id}</span>
+                <span className={cn(`block text-black/80 text-[14px]`,{"text-black/50":idx%2===0})} >
                   {data.qty} × £{data.price}
                 </span>
                 <span className="block ">£{data.qty * data.price}</span>
@@ -88,7 +93,7 @@ export default function Cart() {
             <span>£{vat.toFixed(2)}</span>
           </label>
 
-          <label className="flex justify-between">
+          <label className="flex justify-between border-t-2 pt-1  font-semibold text-black">
             <span className="text-gray-500 text-[14px]">Total</span>
             <span>£{total.toFixed(2)}</span>
           </label>

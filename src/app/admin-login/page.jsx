@@ -65,7 +65,7 @@ export default function AdminLoginPage() {
         />
 
         <form onSubmit={loginHandler}>
-          <label className="text-white mb-2 block">Email Address</label>
+          <label className="text-white-1 mb-2 block">Email Address</label>
           <Input
             type="email"
             name="email"
@@ -73,7 +73,7 @@ export default function AdminLoginPage() {
             className="placeholder:text-white/80"
           />
 
-          <label className="text-white mb-2 block mt-4">Password</label>
+          <label className="text-white-1 mb-2 block mt-4">Password</label>
           <Input
             type="password"
             name="password"

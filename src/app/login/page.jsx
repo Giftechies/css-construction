@@ -51,8 +51,8 @@ export default function LoginForm() {
       <div className="absolute inset-0 h-full w-full bg-black/50 z-10" />
 
       {/* Form container */}
-      <div className="h-[250px] w-[500px] m-auto z-30 border border-white/20 p-6 rounded-md text-white bg-white/10 backdrop-blur-sm">
-        <form onSubmit={handleForm} className="flex flex-col gap-2 text-white ">
+      <div className="h-[250px] w-[500px] m-auto z-30 border border-white/20 p-6 rounded-md text-white-1 bg-white/10 backdrop-blur-sm">
+        <form onSubmit={handleForm} className="flex flex-col gap-2 text-white-1 ">
           <div className="log w-FULL mx-auto">
             {/* <Image alt="logo" src={"/img/logo/nav-logo.svg"} width={200} height={200} /> */}
             QUICK SKIP HIRE

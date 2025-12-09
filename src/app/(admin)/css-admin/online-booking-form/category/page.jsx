@@ -197,7 +197,7 @@ export default function CategoryPage() {
                         <Button
                           onClick={() => handleUpdate(cat._id)}
                           disabled={updating}
-                          className="bg-green-600 text-white px-3 py-1 rounded disabled:opacity-50"
+                          className="bg-green-600 text-white-1 px-3 py-1 rounded disabled:opacity-50"
                         >
                           {updating && (
                             <Loader2 className="mr-2 h-4 w-4 animate-spin inline-block" />
@@ -209,7 +209,7 @@ export default function CategoryPage() {
                             setEditId(null);
                             setEditValue("");
                           }}
-                          className="bg-gray-400 text-white px-3 py-1 rounded"
+                          className="bg-gray-400 text-white-1 px-3 py-1 rounded"
                         >
                           Cancel
                         </Button>

@@ -1,9 +1,9 @@
 // app/api/checkout/session/route.js
 import Stripe from 'stripe';
 import { NextResponse } from 'next/server';
-import { ConnectDb } from '@/app/helpers/DB/db';
-import Order from '@/app/helpers/models/order';
-import User from '@/app/helpers/models/user';
+import { ConnectDb } from '@/app/helper/db';
+import Order from '@/app/helper/models/order';
+import User from '@/app/helper/models/user';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 

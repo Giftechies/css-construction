@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
-import Order from "@/app/helpers/models/order"
-import { ConnectDb } from "@/app/helpers/DB/db"
+import Order from "@/app/helper/models/order"
+import { ConnectDb } from "@/app/helper/DB/db"
 
 
 

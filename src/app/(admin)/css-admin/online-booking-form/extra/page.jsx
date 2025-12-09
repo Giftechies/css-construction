@@ -204,7 +204,7 @@ export default function ExtraPage() {
       {/* ✅ Bulk Upload Toast */}
       {bulkMessage && (
         <div
-          className={`fixed top-5 right-5 px-4 py-2 rounded shadow-lg text-white z-50 ${
+          className={`fixed top-5 right-5 px-4 py-2 rounded shadow-lg text-white-1 z-50 ${
             bulkMessage.type === "success" ? "bg-green-600" : "bg-red-600"
           }`}
         >

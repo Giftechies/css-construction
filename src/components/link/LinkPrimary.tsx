@@ -24,7 +24,7 @@ const LinkPrimary = ({
         className,
       )}
     >
-      <span className="text-white ease absolute inset-0 flex h-full w-full -translate-x-full items-center justify-center bg-accent-2 duration-300 group-hover:translate-x-0">
+      <span className="text-white-1 ease absolute inset-0 flex h-full w-full -translate-x-full items-center justify-center bg-accent-2 duration-300 group-hover:translate-x-0">
         <IconArrowRight />
       </span>
       <span className="ease absolute flex h-full w-full transform items-center justify-center text-white-4 transition-all duration-300 group-hover:translate-x-full">

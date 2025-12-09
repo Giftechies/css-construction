@@ -26,7 +26,7 @@ const ButtonPrimary = ({
       )}
     >
       {/* Arrow slide in */}
-      <span className="text-white ease absolute inset-0 flex h-full w-full -translate-x-full items-center justify-center bg-prim duration-300 group-hover:translate-x-0">
+      <span className="text-white-1 ease absolute inset-0 flex h-full w-full -translate-x-full items-center justify-center bg-prim duration-300 group-hover:translate-x-0">
         <IconArrowRight />
       </span>
 

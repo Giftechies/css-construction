@@ -4,7 +4,7 @@ import * as jose from 'jose';
 // IMPORTANT: Ensure your JWT_KEY environment variable is set in your .env file
 // and is accessible here. This key must match the one used to sign the token 
 // in your login API (pages/api/auth/login.js).
-const JWT_SECRET = new TextEncoder().encode(process.env.JWT_KEY ||"SECRET_KEY");
+const JWT_KEY = new TextEncoder().encode(process.env.JWT_KEY ||"SECRET_KEY");
 
 export async function middleware(request) {
   const protectedPath = '/admin';
@@ -29,7 +29,7 @@ export async function middleware(request) {
     try {
       // 3. Verify the token using jose for the Edge Runtime
       // This step securely checks the token's signature and expiration.
-      const { payload } = await jose.jwtVerify(token, JWT_SECRET);
+      const { payload } = await jose.jwtVerify(token, JWT_KEY);
 
       // 4. Authorization Check (Does the user have the 'admin' role?)
       const userRole = payload.role;

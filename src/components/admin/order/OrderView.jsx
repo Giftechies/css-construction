@@ -171,7 +171,7 @@ export default function AdminOrderPreview({ orderData }) {
         {/* RIGHT SIDE */}
         <div className="space-y-8">
           {/* FINANCIAL SUMMARY */}
-          <section className="bg-indigo-600 text-white p-6 rounded-xl shadow-md">
+          <section className="bg-indigo-600 text-white-1 p-6 rounded-xl shadow-md">
             <h2 className="text-xl font-bold mb-4">Financial Summary</h2>
 
             <div className="space-y-3 text-white/90">

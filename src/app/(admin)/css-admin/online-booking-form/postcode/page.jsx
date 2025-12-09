@@ -157,7 +157,7 @@ export default function PostcodePage() {
       {/* ✅ Bulk Upload Popup */}
       {bulkMessage && (
         <div
-          className={`fixed top-5 right-5 px-4 py-2 rounded shadow-lg text-white z-50 transition-opacity duration-300
+          className={`fixed top-5 right-5 px-4 py-2 rounded shadow-lg text-white-1 z-50 transition-opacity duration-300
           ${bulkMessage.type === "success" ? "bg-green-600" : "bg-red-600"}`}
         >
           {bulkMessage.text}

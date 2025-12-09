@@ -189,7 +189,7 @@ export default function Calendar({ register, setValue }) {
             onClick={() => setRange(label)}
             className={`px-4 py-2 rounded-full border ${
               range === label
-                ? "bg-zinc-600 text-white border-black"
+                ? "bg-zinc-600 text-white-1 border-black"
                 : "bg-white text-black border-gray-300"
             }`}
           >

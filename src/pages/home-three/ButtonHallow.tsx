@@ -13,7 +13,7 @@ const HomeThreeBannerLink: React.FC<HomeThreeBannerLinkProps> = ({ href, childre
   return (
     <a
       href={`${href}`}
-      className={cn("s-text theme-transition-3 px-6 flex items-center gap-3 border  tracking-wider  font-[600] border-primary bg-primary py-[10px] text-white-1  hover:bg-transparent capitalize    w-fit   rounded-full text-white  border-white  bg-transparent hover:border-primary hover:text-primary   ", className)}
+      className={cn("s-text theme-transition-3 px-6 flex items-center gap-3 border  tracking-wider  font-[600] border-primary bg-primary py-[10px] text-white-1  hover:bg-transparent capitalize    w-fit   rounded-full text-white-1  border-white  bg-transparent hover:border-primary hover:text-primary   ", className)}
     >
         
       {children}

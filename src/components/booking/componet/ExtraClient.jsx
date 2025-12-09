@@ -95,7 +95,7 @@ export default function ExtraClient({ extras }) {
                                 value[extra.label].qty - 1
                               )
                             }
-                            className="rounded bg-gray-300 px-2 text-white hover:bg-gray-200"
+                            className="rounded bg-gray-300 px-2 text-white-1 hover:bg-gray-200"
                           >
                             -
                           </button>
@@ -110,7 +110,7 @@ export default function ExtraClient({ extras }) {
                                 value[extra.label].qty + 1
                               )
                             }
-                            className="rounded bg-gray-300 px-2 text-white hover:bg-gray-200"
+                            className="rounded bg-gray-300 px-2 text-white-1 hover:bg-gray-200"
                           >
                             +
                           </button>

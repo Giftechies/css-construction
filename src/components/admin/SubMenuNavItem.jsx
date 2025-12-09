@@ -20,7 +20,7 @@ export default function SubMenuNavItem({ item }) {
         className={`flex items-center justify-between w-full ${
           isSubmenuActive
             ? "bg-white text-black hover:bg-gray-100"
-            : "text-white hover:bg-blue-800"
+            : "text-white-1 hover:bg-blue-800"
         } px-4 py-3 rounded-lg transition-all`}
       >
         <div className="flex items-center space-x-3">
@@ -44,7 +44,7 @@ export default function SubMenuNavItem({ item }) {
                   className={`flex items-center space-x-3 ${
                     isActive
                       ? "bg-white text-black hover:bg-gray-100"
-                      : "text-white/80 hover:text-white hover:bg-blue-800"
+                      : "text-white/80 hover:text-white-1 hover:bg-blue-800"
                   } px-4 py-2 rounded-lg transition-all text-sm`}
                 >
                   <span>{subItem.title}</span>

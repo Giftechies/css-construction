@@ -1,8 +1,8 @@
 // pages/api/orders/checkout.js
 
-import { ConnectDb } from '@/app/helpers/DB/db';
-import User from '@/app/helpers/models/user';
-import Order from '@/app/helpers/models/order';
+import { ConnectDb } from '@/app/helper/DB/db';
+import User from '@/app/helper/models/user';
+import Order from '@/app/helper/models/order';
 import { NextResponse } from 'next/server';
 
 export async function POST(req) {
