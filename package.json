@@ -63,6 +63,7 @@
     "sass": "^1.70.0",
     "sharp": "^0.34.3",
     "split-type": "^0.3.4",
+    "stripe": "^20.0.0",
     "swiper": "^11.0.5",
     "tailwind-merge": "^2.6.0",
     "tailwind-scrollbar": "^2.1.0",
