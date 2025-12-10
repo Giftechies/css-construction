@@ -130,6 +130,7 @@ export default function OrderView({ order, setSelectedOrder }) {
             <PriceSummaryRow icon={FaPlusCircle} label="VAT 20% " value={formatCurrency((skipRate + totalExtrasCost) * 0.2)} />
             <PriceSummaryRow 
               icon={FaDollarSign} 
+              
               label="Total Amount" 
               value={formatCurrency(order.totalamount)} 
               isTotal={true}
