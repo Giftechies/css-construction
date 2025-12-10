@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { ConnectDb } from "@/app/helpers/DB/db";
-import User from "@/app/helpers/models/user";
+import { ConnectDb } from "@/app/helper/db";
+import User from "@/app/helper/models/user";
 
 import { SignJWT } from "jose";
 

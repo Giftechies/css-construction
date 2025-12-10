@@ -26,7 +26,7 @@ export async function sendOTPEmail(email, otp) {
     const OTP_EXPIRY_MINUTES = 5; // Use the same value as in your generate route
 
     const mailOptions = {
-      from: process.env.FROM_EMAIL || 'no-reply@quick-skip.com',
+      from: process.env.FROM_EMAIL || 'no-reply@css-construction.com',
       to: email,
       subject: 'Your Login Verification Code',
       html: `
