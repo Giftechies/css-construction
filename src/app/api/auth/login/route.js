@@ -1,112 +1,85 @@
-// import { NextResponse } from "next/server";
-// import { cookies } from "next/headers";
-// import userModel from "../../../helper/models/user";
-// import { ConnectDb } from "../../../helper/db";
-// import bcrypt from "bcrypt";
-// import jwt from "jsonwebtoken";
-
-// export async function POST(req) {
-//   try {
-//     await ConnectDb();
-
-//     const { username, password } = await req.json();
-
-//     // 1. Check if user exists
-//     const existUser = await userModel.findOne({ username });
-//     if (!existUser) {
-//       return NextResponse.json(
-//         { success: false, message: "User not exist!" },
-//         { status: 404 }
-//       );
-//     }
-
-//     // 2. Compare password
-//     const isPasswordValid = await bcrypt.compare(password, existUser.password);
-//     if (!isPasswordValid) {
-//       return NextResponse.json(
-//         { success: false, message: "Invalid password" },
-//         { status: 401 }
-//       );
-//     }
-
-//     // 3. Generate JWT
-//     const token = jwt.sign(
-//       { username: existUser.username, id: existUser._id },
-//       process.env.JWT_KEY,
-//       { expiresIn: "60m" }
-//     );
-
-//     // 4. Set cookie (HttpOnly for security)
-//     cookies().set("token", token, {
-//       httpOnly: true,
-//       secure: process.env.NODE_ENV === "production",
-//       maxAge: 60 * 60, // 1 hour
-//       path: "/",
-//     });
-
-//     // 5. Return success
-//     return NextResponse.json(
-//       {
-//         success: true,
-//         message: "Login successful",
-//         user: {
-//           id: existUser._id,
-//           username: existUser.username,
-//           role:existUser.role,
-//         },
-//       },
-//       { status: 200 }
-//     );
-//   } catch (error) {
-//     console.error("❌ Login error:", error);
-//     return NextResponse.json(
-//       { success: false, message: "Login failed!" },
-//       { status: 500 }
-//     );
-//   }
-// }
 import { NextResponse } from "next/server";
-import { ConnectDb } from "../../../helper/db";
-import userModel from "../../../helper/models/user";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+import { ConnectDb } from "@/app/helpers/DB/db";
+import User from "@/app/helpers/models/user";
+
+import { SignJWT } from "jose";
 
 export async function POST(req) {
   try {
     await ConnectDb();
 
-    const { username, password } = await req.json();
+    const { email, password } = await req.json();
 
-    const existUser = await userModel.findOne({ username });
-    if (!existUser)
-      return NextResponse.json({ success: false, message: "User not exist!" }, { status: 404 });
+    if (!email || !password) {
+      return NextResponse.json(
+        { success: false, message: "Email and password are required" },
+        { status: 400 }
+      );
+    }
 
-    const isPasswordValid = await bcrypt.compare(password, existUser.password);
-    if (!isPasswordValid)
-      return NextResponse.json({ success: false, message: "Invalid password" }, { status: 401 });
+    const user = await User.findOne({ email: email.trim().toLowerCase() });
 
-    const token = jwt.sign({ username: existUser.username, id: existUser._id,role:existUser.role }, process.env.JWT_KEY, {
-      expiresIn: "120m",
-    });
+    if (!user) {
+      return NextResponse.json(
+        { success: false, message: "User not found" },
+        { status: 404 }
+      );
+    }
 
-    // ✅ Create response and attach cookie properly
-    const res = NextResponse.json({
-      success: true,
-      message: "Login successful",
-      user: { id: existUser._id, username: existUser.username, role: existUser.role },
-    });
-   
+    // Secure password verify
+    console.log(user.password,password);
+    const isValid = user.password == password;
+    if (!isValid) {
+      return NextResponse.json(
+        { success: false, message: "Invalid password" },
+        { status: 401 }
+      );
+    }
 
-    res.cookies.set("token", token, {
+    // Create JWT using jose
+    const secretKey = new TextEncoder().encode(process.env.JWT_SECRET);
+
+    const token = await new SignJWT({
+      userId: user._id.toString(),
+      role: user.role,
+      email: user.email,
+      phoneNumber: user.phoneNumber,
+      firstName: user.firstName,
+      lastName: user.lastName,
+    })
+      .setProtectedHeader({ alg: "HS256" })
+      .setIssuedAt()
+      .setExpirationTime("7d")
+      .sign(secretKey);
+
+    const response = NextResponse.json(
+      {
+        success: true,
+        message: "Login successful",
+        user: {
+          email: user.email,
+          role: user.role,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          phoneNumber: user.phoneNumber,
+        },
+      },
+      { status: 200 }
+    );
+
+    // Set JWT cookie
+    response.cookies.set("auth_token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      maxAge: 60 * 60,
+      maxAge: 7 * 24 * 60 * 60,
       path: "/",
     });
 
-    return res;
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json({ success: false, message: "Login failed!" }, { status: 500 });
+    return response;
+  } catch (err) {
+    return NextResponse.json(
+      { success: false, message: err.message || "Login failed" },
+      { status: 500 }
+    );
   }
 }

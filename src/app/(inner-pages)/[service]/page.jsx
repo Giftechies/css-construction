@@ -17,18 +17,16 @@ export default async function Skip({ params }) {
 
   if (!res.ok) throw new Error("Failed to fetch data");
 
-  const response = await res.json();
+  const response = await res?.json();
 
-  if (!response?.data || !response?.category)
-    throw new Error("Invalid API response");
 
   const { data, category } = response;
 
   return (
     <>
       <InnerBanner
-        imgpath={category.featureImage || ""}
-        pagename={category.title}
+        imgpath={category?.featureImage || ""}
+        pagename={category?.title}
       />
       <CardContainer data={data} />
       <Animations />

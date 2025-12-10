@@ -174,7 +174,7 @@ export default function AdminOrderPreview({ orderData }) {
           <section className="bg-indigo-600 text-white-1 p-6 rounded-xl shadow-md">
             <h2 className="text-xl font-bold mb-4">Financial Summary</h2>
 
-            <div className="space-y-3 text-white/90">
+            <div className="space-y-3 text-white-1/90">
               <div className="flex justify-between text-lg">
                 <span>Skip Base Rate</span>
                 <span>{formatCurrency(skipSize?.rate)}</span>

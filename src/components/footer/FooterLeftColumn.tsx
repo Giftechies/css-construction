@@ -39,7 +39,7 @@ const FooterLeftColumn = () => {
       </div >
       {/* <div className=" flex text-center flex-nowrap mt-3" >
            <p className="m-text text-white-1  ">
-          Copyright @ {new Date().getFullYear()} <span className=" " >CSS Construction.</span> All rights reserved.
+          Copyright @ {new Date().getFullYear()} <span className=" " >bg-black-4/.</span> All rights reserved.
         </p>
       </div> */}
     </div>

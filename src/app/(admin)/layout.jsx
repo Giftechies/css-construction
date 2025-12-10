@@ -40,7 +40,7 @@ export default function RootLayout({ children }) {
             <SheetTrigger>
            
             </SheetTrigger>
-            <SheetContent side="left" className=" bg-black-4 text-white-1 ">
+            <SheetContent side="left" className=" bg-black-4 text-white-1-1 ">
               <SheetHeader>
                 <SheetTitle>
                   {" "}

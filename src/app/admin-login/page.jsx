@@ -49,7 +49,7 @@ export default function AdminLoginPage() {
   return (
     <section className="relative flex items-center justify-center min-h-screen bg-gray-500/50">
       <Image
-        src="/bgPic.webp"
+        src="/img/innerimg/2.png"
         alt="Admin Login"
         width={600}
         height={400}
@@ -57,11 +57,11 @@ export default function AdminLoginPage() {
       />
       <div className="z-10 bg-white/10 p-4 rounded-lg shadow-lg max-w-md w-full border border-white/50 backdrop-blur-md">
         <Image
-          src="/logo.png"
+          src="/img/logo/nav-logo.svg"
           alt="Logo"
           width={100}
           height={100}
-          className="mx-auto mb-4"
+          className="mx-auto mb-4 object-cover "
         />
 
         <form onSubmit={loginHandler}>
@@ -70,7 +70,7 @@ export default function AdminLoginPage() {
             type="email"
             name="email"
             placeholder="Enter your email"
-            className="placeholder:text-white/80"
+            className="placeholder:text-white-1/80"
           />
 
           <label className="text-white-1 mb-2 block mt-4">Password</label>
@@ -78,12 +78,12 @@ export default function AdminLoginPage() {
             type="password"
             name="password"
             placeholder="Enter your password"
-            className="placeholder:text-white/80"
+            className="placeholder:text-white-1/80"
           />
 
           <Button
             type="submit"
-            className="w-full mt-6 bg-primaryblue/90 hover:bg-primaryblue text-white"
+            className="w-full mt-6 bg-primary/90 hover:bg-primary text-white-1"
           >
             Login
           </Button>
