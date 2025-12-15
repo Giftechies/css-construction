@@ -8,6 +8,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navbar, navbar2 } from "../../../public/data/navbar";
 import HomeThreeBannerLink from "@/pages/home-three/HomeThreeBannerLink";
+import { CircleUser } from "lucide-react";
 
 const DeskTopNavbarTwo = ({ className }: { className?: string }) => {
   const pathName = usePathname();
@@ -19,9 +20,9 @@ const DeskTopNavbarTwo = ({ className }: { className?: string }) => {
     >
       <div
         className="    theme-transition-3 mx-auto hidden
-      w-full items-center justify-center container xl:grid grid-cols-12    "
+      w-full items-center justify-between container xl:flex"
       >
-        <ul className="flex items-center  gap-8 xl:col-start-1 col-end-7  ">
+        <ul className="flex items-center  gap-8  ">
           {navbar.map(({ id, menuTitle, path, menuItems }) => {
             let isActive = menuItems?.some(
               (path) => pathName == path.menuItemPath,
@@ -74,13 +75,13 @@ const DeskTopNavbarTwo = ({ className }: { className?: string }) => {
             );
           })}
         </ul>
-        <div className=" absolut left-1/2 top-4 -translate-x-1/2  " >
+        <div className="  " >
           <Link href={`/`}>
             <Image src={'/img/logo/nav-logo.svg'} width={200} height={60} className=" w-30 " alt="Desktop Logo" />
           </Link>
         </div>
 
-        <div className="  flex gap-10 col-start-9 col-end-13 " >
+        <div className="  flex gap-8   " >
           <ul className="flex items-center justify-between gap-10  ">
             {navbar2.map(({ id, menuTitle, path, menuItems }) => {
               let isActive = menuItems?.some(
@@ -137,6 +138,10 @@ const DeskTopNavbarTwo = ({ className }: { className?: string }) => {
               );
             })}
           </ul>
+           
+           <Link href={'/profile'} className="  flex items-center justify-center " >
+            <CircleUser/>
+           </Link>
 
           <div className="flex gap-8">
             <HomeThreeBannerLink href="/booking-skip-online" >Order Online</HomeThreeBannerLink>

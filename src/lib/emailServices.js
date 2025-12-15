@@ -1,52 +1,43 @@
-// utils/emailService.js
+// utils/resendEmailService.js
 
-import nodemailer from 'nodemailer';
-
-// --- NODEMAILER TRANSPORTER CONFIGURATION ---
-// This object handles the connection details to the SMTP server (Mailtrap)
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST, 
-  port: process.env.SMTP_PORT, 
-  // Mailtrap usually does not require a secure (TLS) connection on its default development ports
-  secure: process.env.SMTP_PORT == 465, // Only set secure: true if using port 465/587 with SSL/TLS
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
+import { resend } from "@/lib/resend"
 
 /**
- * Sends the OTP code to the specified email address using the configured SMTP transporter.
- * @param {string} email - The recipient's email address.
- * @param {string} otp - The generated OTP code.
- * @returns {Promise<boolean>} - True if email sending succeeded, false otherwise.
+ * Sends an OTP email via Resend API
+ * @param {string} email - Recipient email
+ * @param {string} otp - OTP to send
+ * @param {boolean} isResend - Whether this is a resend
+ * @param {number} expiryMinutes - OTP expiry minutes
  */
-export async function sendOTPEmail(email, otp) {
+export async function sendOTPEmail(email, otp, isResend = false, expiryMinutes = 5) {
   try {
-    const OTP_EXPIRY_MINUTES = 5; // Use the same value as in your generate route
+    const subject = isResend
+      ? "Your OTP Has Been Resent"
+      : "Your Login OTP Code";
 
-    const mailOptions = {
-      from: process.env.FROM_EMAIL || 'no-reply@css-construction.com',
-      to: email,
-      subject: 'Your Login Verification Code',
-      html: `
-        <p>Your one-time login code is:</p>
-        <h2 style="color: #333; background: #f0f0f0; padding: 10px; border-radius: 5px; display: inline-block;">${otp}</h2>
-        <p>This code is valid for ${OTP_EXPIRY_MINUTES} minutes.</p>
-        <p>If you did not request this code, please ignore this email.</p>
-      `,
-      text: `Your one-time login code is ${otp}. It expires in ${OTP_EXPIRY_MINUTES} minutes.`,
-    };
+    const html = `
+      <p>${isResend ? "Here is your new OTP:" : "Your one-time password is:"}</p>
+      <h2>${otp}</h2>
+      <p>This code expires in ${expiryMinutes} minutes.</p>
+      <p>If you did not request this, please ignore this email.</p>
+    `;
 
-    const info = await transporter.sendMail(mailOptions);
-    
-    // Log the message ID to find the email in your Mailtrap inbox
-    console.log(`Email sent to ${email}. Message ID: ${info.messageId}`); 
+    const { data, error } = await resend.emails.send({
+      from: process.env.FROM_EMAIL, // must be a verified sender/domain
+      to: [email],
+      subject,
+      html,
+    });
+
+    if (error) {
+      console.error("Resend API error:", error);
+      return false;
+    }
+
+    console.log(`Sent OTP via Resend to ${email}, id:`, data.id);
     return true;
-
-  } catch (error) {
-    console.error('Email sending failed (Mailtrap/Nodemailer Error):', error);
-    // In a production environment, you might log a service failure to a monitoring tool.
+  } catch (err) {
+    console.error("Resend email failed:", err);
     return false;
   }
 }

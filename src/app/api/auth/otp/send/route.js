@@ -31,7 +31,7 @@ export async function POST(request) {
 
     if (!user) {
       return NextResponse.json(
-        { success: false, message: "userModel does not exist." },
+        { success: false, message: "user does not exist." },
         { status: 404 }
       );
     }
@@ -66,7 +66,7 @@ export async function POST(request) {
       expiresAt,
     });
 
-    await sendOTPEmail(email, otp);
+    await sendOTPEmail(email, otp,);
 
     return NextResponse.json(
       { success: true, message: "OTP sent to your email." },
