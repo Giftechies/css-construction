@@ -1,8 +1,8 @@
 
 // api/auth/otp/generate/route.js
 import { NextResponse } from 'next/server';
-import bcrypt from 'bcrypt';
 import crypto from 'crypto';
+import bcrypt from 'bcryptjs'
 
 import { ConnectDb } from '@/app/helper/db';
 import userModel from '@/app/helper/models/user';
