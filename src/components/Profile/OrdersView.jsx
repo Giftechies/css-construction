@@ -4,6 +4,7 @@ import { fetchAllOrders } from "@/app/apiCalls/form";
 import { useEffect, useState } from "react";
 import { FaCalendarAlt, FaClock, FaTag, FaRulerCombined, FaMapMarkerAlt, FaRoad, FaDollarSign, FaInfoCircle, FaPlusCircle, FaReceipt, FaCube } from 'react-icons/fa'; // Added FaReceipt and FaCube
 import { Button } from "../ui/button";
+import { MoveLeft } from "lucide-react";
 
 // Utility function to format currency
 const formatCurrency = (amount) => {
@@ -28,10 +29,7 @@ export default function OrderView({ order, setSelectedOrder }) {
 
   const skipRate = order.skipSize?.rate || 0;
   const totalExtrasCost = calculateTotalExtrasCost(order.extras);
-  // Assuming totalamount includes the skip rate and extras cost, but calculating it here for clarity if needed
-  // const calculatedTotal = skipRate + totalExtrasCost; // Use this if totalamount is not guaranteed to be correct
 
-  // Helper component for styled data rows
   const DataRow = ({ icon: Icon, label, value }) => (
     <div className="flex items-center space-x-3 text-gray-700 p-2 bg-gray-50 rounded-lg shadow-sm">
       <Icon className="w-5 h-5 text-indigo-600 flex-shrink-0" />
@@ -62,7 +60,7 @@ export default function OrderView({ order, setSelectedOrder }) {
       </h2>
       <div className={'flex justify-end '}>
         <Button className={' cursor-pointer text-white-1 '} size="sm" onClick={() => setSelectedOrder(null)}>
-          ← Back to Orders
+           <MoveLeft/>  Back to Orders
         </Button>
       </div>
 

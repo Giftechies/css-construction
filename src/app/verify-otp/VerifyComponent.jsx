@@ -58,7 +58,7 @@ export default function VerifyOtpPage() {
             <div className="absolute inset-0 h-full w-full bg-black/50 -z-10" />
 
             {/* OTP Container */}
-            <div className="p-8 bg-white-1/10 border rounded-md w-[400px] backdrop-blur flex flex-col items-center ">
+            <div className="p-8 bg-black-4/20 border rounded-md w-[400px] backdrop-blur flex flex-col items-center ">
                 <h2 className="text-xl mb-4 font-semibold">Verify OTP</h2>
 
                 <p className="text-sm mb-6">

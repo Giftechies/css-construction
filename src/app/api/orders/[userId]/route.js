@@ -5,7 +5,11 @@ import { ConnectDb } from "@/app/helper/db";
 export async function GET(req, { params }) {
   try {
     await ConnectDb();
-    const { userId } =await params;
+    console.log("ordrer api");
+    
+    const { userId } = params;
+    console.log(userId,"params id");
+    
 
     if (!userId) {
       return NextResponse.json(
@@ -26,7 +30,7 @@ export async function GET(req, { params }) {
     return NextResponse.json({
       success: true,
       message: "Orders fetched successfully",
-      orders,
+      orders
     });
 
   } catch (error) {

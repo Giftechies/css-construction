@@ -3,27 +3,35 @@ import { useEffect, useState } from "react"
 import ProfileSideBar from "./ProfileSideBar"
 import Order from "./Order"
 import MyProfile from "./MyProfile"
-import { ProfileFetch } from "@/app/apiCalls/form"
+import { fetchAllOrders, ProfileFetch } from "@/app/apiCalls/form"
 import OrderView from "./OrdersView"
 import { Loader2 } from "lucide-react"
 
-export default function ProfileComponent({ id }) {
+export default function ProfileComponent({ id,}) {
 
     const getUserDetail = async () => {
         const user = await ProfileFetch({ id })
         setuser(user.data)
     }
+    
+    const getOrders = async ()=>{
+              const res = await fetchAllOrders(id)
+              setOrder(res.data)
+    }
+     
     const [currentStep, setCurrentStep] = useState(0)
     const [user, setuser] = useState()
+    const [order,setOrder]=useState()
     const [selectedOrder, setSelectedOrder] = useState(null);
     const components = [
         { label: "My Profile", component: <MyProfile user={user} getUserDetail={getUserDetail} /> },
-        { label: "Orders", component: <Order id={id} setSelectedOrder={setSelectedOrder} /> },
+        { label: "Orders", component: <Order order={order} setSelectedOrder={setSelectedOrder} /> },
     ]
 
 
     useEffect(() => {
         getUserDetail();
+        getOrders();
     }, [])
 
     const Content = selectedOrder ? (<OrderView order={selectedOrder} setSelectedOrder={setSelectedOrder} />) : (components[currentStep].component)

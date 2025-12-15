@@ -5,29 +5,9 @@ import { fetchAllOrders } from "@/app/apiCalls/form";
 import { Eye } from "lucide-react";
 import { format } from "date-fns";
 
-export default function Order({ id, setSelectedOrder }) {
-    const [orders, setOrders] = useState([]);
+export default function Order({ order=[], setSelectedOrder }) {
+    const [orders, setOrders] = useState( order || []);
     const [loading, setLoading] = useState(false);
-
-    const fetchAllorder = async () => {
-        try {
-            setLoading(true);
-            const res = await fetchAllOrders(id);
-
-            if (res?.success) {
-                setOrders(res.data);
-            } else {
-                setOrders([]);
-            }
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    useEffect(() => {
-        fetchAllorder();
-    }, []);
-
     if (loading) return <div>Loading...</div>;
 
     return (
@@ -46,7 +26,7 @@ export default function Order({ id, setSelectedOrder }) {
                 </TableHeader>
 
                 <TableBody>
-                    {orders.map((order) => {
+                    {orders?.map((order) => {
                         const isDelivered =
                             order.adminOrderStatus?.toLowerCase() === "delivered";
 

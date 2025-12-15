@@ -37,7 +37,7 @@ export async function POST(req) {
     }
 
     // Create JWT using jose
-    const secretKey = new TextEncoder().encode(process.env.JWT_SECRET);
+    const secretKey = new TextEncoder().encode(process.env.JWT_KEY);
 
     const token = await new SignJWT({
       userId: user._id.toString(),

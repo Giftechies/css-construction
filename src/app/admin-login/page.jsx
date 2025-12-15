@@ -40,7 +40,7 @@ export default function AdminLoginPage() {
       }
 
       toast.success("Login successful!");
-      route.push("/quick-skip/admin");
+      route.push("/css-admin");
     } catch (error) {
       toast.error("Something went wrong. Try again.");
     }
@@ -55,7 +55,7 @@ export default function AdminLoginPage() {
         height={400}
         className="-z-20 absolute inset-0 w-full h-full object-cover"
       />
-      <div className="z-10 bg-white/10 p-4 rounded-lg shadow-lg max-w-md w-full border border-white/50 backdrop-blur-md">
+      <div className="z-10 bg-white-1/10 p-4 rounded-lg shadow-lg max-w-md w-full border border-white-1/50 backdrop-blur-md">
         <Image
           src="/img/logo/nav-logo.svg"
           alt="Logo"

@@ -336,20 +336,19 @@ export async function ProfileFetch({id}){
 }
 // fetch all orders for user by user id
 export async function fetchAllOrders(id){
+  
     try {
         const res = await fetch(`/api/orders/${id}`,{
             method:"GET",
             cache:'no-store'
-        })
-        const data =await res.json();
+        })        
         if(!res.ok){
             return{
                 success:false,
                 message:'order not fetch.Please try again!'
             }
         };
-console.log(data,'order get');
-
+        const data =await res.json();
         return {
                 success:true,
                 message:'order fetch successfully!',

@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 import { ChartArea, ChevronDown, ChevronRight } from "lucide-react"
 import { useRouter, usePathname } from "next/navigation"
 import { useState, useEffect } from "react"
-import {menu} from "@/data/adminMenu" 
+import { menu } from "@/data/adminMenu"
 import Link from "next/link"
 
 export default function Sidebar({ className }) {
@@ -35,6 +35,7 @@ export default function Sidebar({ className }) {
 
           const isActive = pathname === el.path || isChildActive
           const isOpen = openMenu === id
+          const Icon = el.icon
 
           return (
             <div key={id} className="flex flex-col">
@@ -48,11 +49,11 @@ export default function Sidebar({ className }) {
                   }
                 }}
                 className={cn(
-                  "rounded-xl font-[300] w-full p-3 flex justify-between items-center cursor-pointer hover:text-black-1 hover:bg-white-2",
+                  "rounded-xl font-[300] w-full p-3 flex justify-between items-center cursor-pointer hover:bg-primary hover:text-white-1 ",
                   { "bg-white-1 text-black-4 font-[500]": isActive }
                 )}
               >
-                <span>{el.label}</span>
+                <div className="  flex  gap-4"  >    <Icon />   <span>{el.label}</span> </div>
                 {hasChildren &&
                   (isOpen ? (
                     <ChevronDown size={16} />
@@ -62,25 +63,30 @@ export default function Sidebar({ className }) {
               </div>
 
               {/* Submenu */}
-              {hasChildren && isOpen && (
-                <div className="ml-4 flex flex-col gap-1 mt-1">
-                  {el.children.map((child, cId) => {
-                    const isChildActive = pathname === child.path
-                    return (
-                      <Link
-                        key={cId}
-                        href={child.path}
-                        className={cn(
-                          "rounded-lg font-[300] w-full p-2 pl-4 hover:text-black-1 hover:bg-white-2",
-                          { "bg-white-1 text-black-4 font-[500]": isChildActive }
-                        )}
-                      >
-                        {child.label}
-                      </Link>
-                    )
-                  })}
-                </div>
-              )}
+            {<div className={cn(`ml-4 flex flex-col gap-1 mt-1 border-l pl-2 h-0 theme-transition-3 overflow-hidden  duration-700 transition-all `, { 'h-fit': isOpen && hasChildren })}>
+                {el?.children?.map((child, cId) => {
+                  const isChildActive = pathname === child.path
+                  const Icon = child.icon
+                  return (
+                    <Link
+                      key={cId}
+                      href={child.path}
+                      className={cn(
+                        "rounded-lg font-[300] w-full p-2  hover:text-white-1 hover:bg-primary",
+                        { "bg-white-1 text-black-4 font-[800]  ": isChildActive }
+                      )}
+                    >
+                      <div className="flex  items-center gap-4" >
+                        <Icon className="size-5" />
+                        <span>
+                          {child.label}
+                        </span>
+                      </div>
+                    </Link>
+                  )
+                })}
+              </div>
+              }
             </div>
           )
         })}
