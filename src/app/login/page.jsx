@@ -25,7 +25,7 @@ export default function LoginForm() {
 
       } else {
         
-       toast.error(data.message);
+       toast.error(data.message||"OTP sent successfully!");
       }
     } catch (err) {
     

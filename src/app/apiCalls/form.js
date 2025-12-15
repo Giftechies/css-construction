@@ -9,7 +9,7 @@ export async function RequestOtp (email){
         })
         
         const data = await res.json()
-        if (!res.ok) {
+        if (!res.ok || !data.success) {
             return {
                 success:false,
                 message: data.message || 'Failed to request OTP'

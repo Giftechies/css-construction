@@ -66,16 +66,21 @@ export async function POST(request) {
       expiresAt,
     });
 
-    await sendOTPEmail(email, otp,);
+    const data = await sendOTPEmail(email, otp,);
 
+    console.log(data);
+     if(!data){
+      throw new Error("Something went wrong!");
+      
+     }
+      
     return NextResponse.json(
       { success: true, message: "OTP sent to your email." },
       { status: 200 }
     );
   } catch (err) {
-    console.error("OTP Generate Error:", err);
     return NextResponse.json(
-      { success: false, message: "Server error" },
+      { success: false, message: err.message },
       { status: 500 }
     );
   }
