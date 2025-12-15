@@ -12,8 +12,8 @@ const navigate = useRouter()
 const hanldelogout = async()=>{
   const res = await logout()
   if(res.success){
+    navigate.push('/')
     toast.success('logout successfully!')
-    navigate.push('/form')
 
   }
 }

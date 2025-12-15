@@ -22,10 +22,11 @@ export default function LoginForm() {
       if (data?.success) {
    
   router.push(`/verify-otp?email=${email}`);
+  toast.success( data.message || "OTP sent successfully!")
 
       } else {
         
-       toast.error(data.message||"OTP sent successfully!");
+       toast.error(data.message||"jSomething went wrong!");
       }
     } catch (err) {
     
